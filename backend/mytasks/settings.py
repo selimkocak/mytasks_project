@@ -41,12 +41,15 @@ INSTALLED_APPS = [
     # 3.part api
     'rest_framework',
     # my api
-    'custom_user',
-    'company',
-    'notification',
-    'assignment',
-    'rating',
     'api',
+    'assignment',
+    'comment',
+    'company',
+    'custom_user',
+    'notification',
+    'project',
+    'rating',
+    
 ]
 
 REST_FRAMEWORK = {
@@ -54,7 +57,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
