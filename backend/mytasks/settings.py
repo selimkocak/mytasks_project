@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    
+    # 3.part api
     'rest_framework',
+    # my api
     'custom_user',
     'company',
     'notification',
+    'assignment',
+    'rating',
     'api',
 ]
 

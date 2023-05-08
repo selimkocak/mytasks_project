@@ -28,7 +28,7 @@ Bu genel kurallar, MyTasks projesinin iş planına dahil edilerek takım üyeler
         +5. Görev kartı modeli ve ilişkileri
         +6. Kanban tahtası modeli ve ilişkileri
         +7. Kullanıcı bildirimleri sistemi
-        8. Ortak görevler ve atamalar
+        +8. Ortak görevler ve atamalar
         9. Görevlere yıldız puan verme sistemi
         10. Görevlere yorum yapma özelliği
         11. Proje modeli ve ilişkileri
