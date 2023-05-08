@@ -1,0 +1,108 @@
+Öncelikle, iş planınızı frontend ve backend şeklinde iki ana bölüme ayırarak başlayalım. Bu, projenizin daha iyi organize edilmesine ve kolay yönetilmesine yardımcı olacaktır.
+
+MyTasks projesinin iş planına ekleyeceğiniz "Genel Kurallar" başlıklı bir bölüm aşağıda belirtilmiştir:
+
+Genel Kurallar:
+
+1. Uygulamanın temel amacına uygun gelişmiş bir model yapısı kullanılmalıdır. Bu sayede, MyTasks projesinin verimli ve ölçeklenebilir olması sağlanacaktır.
+2. Backend ve frontend tarafında yapılan çalışmalarda, sayfa başına boş satırlar dahil olmak üzere, maksimum 120 satır kuralına dikkat edilmelidir. Bu, kodun okunabilirliğini ve bakımını kolaylaştırmak için önemlidir.
+3. Eğer bir sayfa 120 satırdan fazla kod içeriyorsa, yeni bir sayfa oluşturulmalı ve kodlar mantıklı bir şekilde bölünmelidir. Bu, projenin genel yapısının düzenli ve modüler olmasına yardımcı olacaktır.
+4. Proje yapısı, bir akçaağaç dal yaprak benzetiminde olduğu gibi simetrik bir path yapısına sahip olmalıdır. Bu, projenin organize edilmesini ve gelecekteki genişletmeler için hazırlıklı olmasını sağlar.
+Bu genel kurallar, MyTasks projesinin iş planına dahil edilerek takım üyelerinin bu kuralları uygulaması sağlanmalıdır. Bu sayede, projenin başarılı bir şekilde tamamlanması için ihtiyaç duyulan etkili işbirliği ve takım çalışması desteklenmiş olacaktır.
+İş planı öncelik sırasına göre şu şekilde ayırabiliriz:
+
+**Backend**
+
++1. Kullanıcı kimlik doğrulama sistemi
+2. API tasarımı ve uygulama
+    MyTasks projesinde API tasarımı ve uygulama için şu adımları takip edebilirsiniz:
+
+        Proje için kullanılacak API mimarisine karar verin. Bu örnekte, RESTful API kullanacağız.
+        Veri modelleri ve ilişkileri belirleyin.
+        Serializer sınıflarını oluşturun.
+        View sınıflarını ve fonksiyonlarını oluşturun.
+        API endpoint'lerini tanımlayın ve urls.py dosyasına ekleyin.
+        API güvenliğini ve kimlik doğrulama yöntemlerini ayarlayın
+        +3. Custom_user modeli ve ilişkileri
+        +4. Company modeli ve ilişkileri
+        +5. Görev kartı modeli ve ilişkileri
+        +6. Kanban tahtası modeli ve ilişkileri
+        +7. Kullanıcı bildirimleri sistemi
+        8. Ortak görevler ve atamalar
+        9. Görevlere yıldız puan verme sistemi
+        10. Görevlere yorum yapma özelliği
+        11. Proje modeli ve ilişkileri
+
+**Frontend**
+
+1. Kullanıcı kayıt ve giriş ekranları
+2. Kullanıcı profili ve ayarlar sayfası
+3. Görev kartı oluşturma, düzenleme ve silme ekranları
+4. Görevlerin görüntülenmesi ve filtreleme özellikleri
+5. Kanban tahtası görünümü ve sürükle-bırak özelliği
+6. Kullanıcı bildirimleri arayüzü
+7. Ortak görevler ve atamalar sayfası
+8. Görevlere yıldız puan verme arayüzü
+9. Görevlere yorum yapma ve yanıt verme özellikleri
+10. Proje oluşturma, düzenleme ve silme sayfaları
+11. Proje ilerlemesi ve raporlar sayfası
+
+Frontend ve backend önceliklerini belirledikten sonra, iş planınızı daha ayrıntılı şekilde geliştirebilirsiniz. İlk olarak backend kısmında çalışmalara başlayarak, iş planınızı adım adım ilerletebilirsiniz. Aşağıda örnek olarak "Kullanıcı kimlik doğrulama sistemi" başlığının altında olabilecek adımları listeledim:
+
+**Backend: Kullanıcı kimlik doğrulama sistemi**
+
+1.1. Django ve djangorestframework-simplejwt kütüphanelerini kullanarak token tabanlı kimlik doğrulama sistemi oluşturma
+1.2. Kullanıcı modelini ve serializerlarını oluşturma
+1.3. Kullanıcı kayıt, giriş ve çıkış işlemlerini gerçekleştiren view'lar oluşturma
+1.4. Email doğrulama sistemi için view'lar ve serializerlar geliştirme
+1.5. Şifre sıfırlama işlemleri için view'lar ve serializerlar geliştirme
+
+İş planınızı bu şekilde adım adım ilerleterek daha ayrıntılı ve organize bir şekilde geliştirebilirsiniz. Böylece projenizin tüm aş
+
+10. Takım yönetimi ve işbirliği
+10.1. Takım üyelerinin ve rollerinin yönetimi
+10.2. Takım içi mesajlaşma ve toplantı planlama özellikleri
+10.3. Takım üyelerinin yetki ve erişim düzeylerinin belirlenmesi
+10.4. Takım üyelerinin performans değerlendirmeleri ve geri bildirimleri
+10.5. Takım üyelerinin görevlere göre iş yükünün gözlemlenmesi
+
+11. Raporlama ve analiz
+11.1. Görev ve proje durumlarına göre raporların oluşturulması
+11.2. İlerleme raporları ve zaman çizelgesi analizi
+11.3. Takım üyelerinin performans raporları
+11.4. Görev ve projelerin maliyet analizi
+11.5. Özelleştirilebilir rapor şablonları ve otomatik raporlama
+
+12. Entegrasyonlar ve API
+12.1. Üçüncü taraf uygulamalar ve hizmetlerle entegrasyon
+12.2. RESTful API ile diğer sistemlerle bağlantı kurma
+12.3. Özelleştirilebilir webhook ve otomasyonlar
+12.4. Entegrasyonlar için belgeleme ve örnek kodlar
+12.5. API güvenliği ve yetkilendirme
+
+13. Kullanıcı arayüzü ve kullanılabilirlik
+13.1. Kullanıcı dostu ve sezgisel tasarım
+13.2. Mobil uyumlu ve duyarlı tasarım
+13.3. Kullanılabilirlik ve erişilebilirlik standartlarına uygunluk
+13.4. Kullanıcıların tercihlerine göre özelleştirilebilir arayüz
+13.5. Kullanıcı deneyimi testleri ve geri bildirim toplama
+
+14. Güvenlik ve veri koruma
+14.1. Kullanıcı verilerinin şifrelenmesi ve güvenli iletişim
+14.2. Düzenli güvenlik güncellemeleri ve yamalar
+14.3. Veri yedekleme ve kurtarma planı
+14.4. Kullanıcıların verilerine erişim izinleri ve denetimi
+14.5. Veri koruma ve gizlilik politikalarına uyumluluk
+
+15. Sürdürülebilirlik ve ölçeklenebilirlik
+15.1. Uygulamanın performans optimizasyonu ve kaynak kullanımının minimize edilmesi
+15.2. Büyüyen kullanıcı sayısı ve iş yüküne göre ölçeklenebilir yapı
+15.3. Yeni özellikler ve iyileştirmelerin kolay entegrasyonu
+15.4. Sürekli entegrasyon ve sürekli teslimat (CI/CD) süreçleri
+15.5. Yazılımın sürdürülebilirliği ve gelecekteki teknolojilere uyum sağlama
+
+Bu maddeler projenizin başarılı bir şekilde tamamlanması için önemli bir rehber niteliğinde olacaktır. 
+Bu liste, proje sürecindeki tüm adımları ve gereksinimleri kapsamlı bir şekilde ele alarak, projenizin 
+yönetimini ve organizasyonunu kolaylaştırmaya yardımcı olacaktır. Yine de, her proje farklıdır ve bu liste,
+sizin projenize özgü ek gereksinimlerle güncellenmelidir. Proje sürecinizdeki her aşamada, başarıyı sağlamak 
+için bu liste üzerinden düzenli olarak kontrol sağlamak önemlidir.
