@@ -1,18 +1,33 @@
 // frontend\src\App.js
 import React from 'react';
-import SharedTasks from './components/tasks/SharedTasks';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/navbar/Navbar';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import KanbanBoard from './components/kanban/KanbanBoard';
+import NotificationPanel from './components/notifications/NotificationPanel';
+import CreateProject from './components/project/CreateProject';
+import UserProfile from './components/user/UserProfile';
+import UserSettings from './components/user/UserSettings';
+import ProjectDetails from './components/project/ProjectDetails';
+import TasksList from './components/tasks/TasksList';
 
 const App = () => {
-  const tasks = [
-    { id: 1, title: 'Task 1', description: 'This is task 1', assignedUser: 'User1' },
-    { id: 2, title: 'Task 2', description: 'This is task 2', assignedUser: 'User2' },
-    // ...
-  ];
-
   return (
-    <div className="App">
-      <SharedTasks tasks={tasks} />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<KanbanBoard />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/notifications" element={<NotificationPanel />} />
+        <Route path="/projects/create" element={<CreateProject />} />
+        <Route path="/user/profile" element={<UserProfile />} />
+        <Route path="/user/settings" element={<UserSettings />} />
+        <Route path="/projects/:projectId" element={<ProjectDetails />} />
+        <Route path="/tasks" element={<TasksList />} />
+      </Routes>
+    </Router>
   );
 };
 
