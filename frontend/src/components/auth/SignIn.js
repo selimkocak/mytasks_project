@@ -1,22 +1,24 @@
 // frontend/src/components/auth/SignIn.js
 import React, { useState } from 'react';
-import api from '../../services/api'; // api'yi import ettik
+import { useNavigate } from 'react-router-dom'; // useNavigate'ı import ettik
+import api from '../../services/api'; 
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // useNavigate hook'unu çağırarak bir navigate fonksiyonu oluşturduk
 
-  const handleSignIn = async (e) => { // fonksiyonu async olarak tanımladık
+  const handleSignIn = async (e) => { 
     e.preventDefault();
     
     try {
-      // Burada kullanıcının giriş işlemi gerçekleştirilir
-      const response = await api.login({email, password}); // login fonksiyonunu çağırıyoruz
-      console.log(response.data); // başarılı giriş durumunda dönen veriyi log'luyoruz
+      const response = await api.login({email, password});
+      console.log(response.data);
 
-      // Burada başarılı giriş durumunda yapılacak işlemler (ör. token'ın localStorage'a kaydedilmesi) gerçekleştirilebilir
+      // Kullanıcının girişi başarılı olursa TasksList sayfasına yönlendir
+      navigate('/tasks');
     } catch (error) {
-      console.error(error); // hatalı giriş durumunda hatayı log'luyoruz
+      console.error(error);
     }
   };
 

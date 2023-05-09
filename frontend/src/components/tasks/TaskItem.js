@@ -1,7 +1,7 @@
 // frontend\src\components\tasks\TaskItem.js
 import React from 'react';
-import CommentForm from './CommentForm';
-import CommentList from './CommentList';
+import CommentForm from '../comments/CommentForm';
+import CommentList from '../comments/CommentList';
 
 const TaskItem = ({ task, onCommentSubmit }) => (
   <div className="task-item">
