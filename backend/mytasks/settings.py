@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'comment',
     'company',
     'custom_user',
+    'kanban',
     'notification',
     'project',
     'rating',

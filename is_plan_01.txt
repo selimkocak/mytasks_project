@@ -14,7 +14,7 @@ Bu genel kurallar, MyTasks projesinin iş planına dahil edilerek takım üyeler
 **Backend**
 
 +1. Kullanıcı kimlik doğrulama sistemi
-2. API tasarımı ve uygulama
++2. API tasarımı ve uygulama
     MyTasks projesinde API tasarımı ve uygulama için şu adımları takip edebilirsiniz:
 
         Proje için kullanılacak API mimarisine karar verin. Bu örnekte, RESTful API kullanacağız.
@@ -23,15 +23,15 @@ Bu genel kurallar, MyTasks projesinin iş planına dahil edilerek takım üyeler
         View sınıflarını ve fonksiyonlarını oluşturun.
         API endpoint'lerini tanımlayın ve urls.py dosyasına ekleyin.
         API güvenliğini ve kimlik doğrulama yöntemlerini ayarlayın
-        +3. Custom_user modeli ve ilişkileri
-        +4. Company modeli ve ilişkileri
-        +5. Görev kartı modeli ve ilişkileri
-        +6. Kanban tahtası modeli ve ilişkileri
-        +7. Kullanıcı bildirimleri sistemi
-        +8. Ortak görevler ve atamalar
-        +9. Görevlere yıldız puan verme sistemi
-        +10. Görevlere yorum yapma özelliği
-        +11. Proje modeli ve ilişkileri
++3. Custom_user modeli ve ilişkileri
++4. Company modeli ve ilişkileri
++5. Görev kartı modeli ve ilişkileri
++6. Kanban tahtası modeli ve ilişkileri
++7. Kullanıcı bildirimleri sistemi
++8. Ortak görevler ve atamalar
++9. Görevlere yıldız puan verme sistemi
++10. Görevlere yorum yapma özelliği
++11. Proje modeli ve ilişkileri
 
 **Frontend**
 
