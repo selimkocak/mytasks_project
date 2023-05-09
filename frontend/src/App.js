@@ -18,8 +18,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<KanbanBoard />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
         <Route path="/notifications" element={<NotificationPanel />} />
         <Route path="/projects/create" element={<CreateProject />} />
         <Route path="/user/profile" element={<UserProfile />} />

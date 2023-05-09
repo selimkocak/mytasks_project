@@ -1,0 +1,53 @@
+Veritabanı optimizasyonu, bir Django uygulamasında performansı artırmak için çok önemlidir. 
+İki ana teknik vardır: indeksleme ve veritabanı normalizasyonu.
+
+**1. İndeksleme:**
+Django'da model alanlarınızı indekslemek, veritabanı sorgularınızı hızlandırabilir. 
+İndeks, bir veritabanı tablosunda verileri hızlı bir şekilde bulmak için kullanılan 
+bir veri yapısıdır. Bir alana indeks eklemek için, model alanının tanımında `db_index=True` 
+parametresini ekleyebilirsiniz. 
+
+Örneğin, `models.py` dosyasında bir `User` modeliniz olduğunu varsayalım:
+
+```python
+class User(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(unique=True)
+```
+
+Eğer bir kullanıcıyı e-posta adresine göre sık sık sorguluyorsanız, e-posta alanına bir 
+indeks eklemek mantıklı olabilir:
+
+```python
+class User(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(unique=True, db_index=True)
+```
+
+**2. Veritabanı Normalizasyonu:**
+Veritabanı normalizasyonu, verinin uygun bir şekilde organize edildiğinden ve gereksiz yinelenen 
+verinin minimuma indirildiğinden emin olmanın bir yoludur. Bu, veritabanı performansını artırır 
+ve veri bütünlüğünü korur.
+
+Veritabanı normalizasyonu genellikle tablolar arasında doğru ilişkilerin kurulması ve verinin 
+uygun bir şekilde dağıtılması anlamına gelir. Django, veritabanı normalizasyonunu kolaylaştırmak 
+için bir dizi model alanı ve ilişki türü sunar (`ForeignKey`, `OneToOneField`, `ManyToManyField` vb.).
+
+Bir `Project` ve `Task` modeliniz olduğunu düşünün:
+
+```python
+class Project(models.Model):
+    name = models.CharField(max_length=200)
+
+class Task(models.Model):
+    name = models.CharField(max_length=200)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+```
+
+Bu örnekte, `Task` modeli, bir `Project` ile `ForeignKey` ilişkisi kullanarak normalleştirilmiştir. 
+Bu, her görevin hangi projeye ait olduğunu belirtir ve her bir projenin birden çok görevi olabilir.
+
+Bu özelliklerin her ikisi de bir Django uygulamasının veritabanı performansını önemli ölçüde iyileştirebilir. 
+Ancak, her ikisinin de düşündürücü bir şekilde kullanılması gerektiğini unutmayın. İndeksleme, veritabanına 
+ek bir yük getirebilir ve veritabanı normalizasyonu, gereksiz karmaşıklığa yol açabilir. Bu yüzden her 
+ikisini de dikkatlice ve gerektiği yerde kullanın.
