@@ -44,7 +44,7 @@ Bu genel kurallar, MyTasks projesinin iş planına dahil edilerek takım üyeler
 +7. Ortak görevler ve atamalar sayfası
 +8. Görevlere yıldız puan verme arayüzü
 +9. Görevlere yorum yapma ve yanıt verme özellikleri
-10. Proje oluşturma, düzenleme ve silme sayfaları
++10. Proje oluşturma, düzenleme ve silme sayfaları
 11. Proje ilerlemesi ve raporlar sayfası
 
 Güvenli bir iletişim sağlamak için, aşağıdaki iş planını önceliklere göre takip edebilirsiniz:
