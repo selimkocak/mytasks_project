@@ -35,17 +35,31 @@ Bu genel kurallar, MyTasks projesinin iş planına dahil edilerek takım üyeler
 
 **Frontend**
 
-1. Kullanıcı kayıt ve giriş ekranları
-2. Kullanıcı profili ve ayarlar sayfası
-3. Görev kartı oluşturma, düzenleme ve silme ekranları
-4. Görevlerin görüntülenmesi ve filtreleme özellikleri
-5. Kanban tahtası görünümü ve sürükle-bırak özelliği
-6. Kullanıcı bildirimleri arayüzü
-7. Ortak görevler ve atamalar sayfası
-8. Görevlere yıldız puan verme arayüzü
++1. Kullanıcı kayıt ve giriş ekranları
++2. Kullanıcı profili ve ayarlar sayfası
++3. Görev kartı oluşturma, düzenleme ve silme ekranları
++4. Görevlerin görüntülenmesi ve filtreleme özellikleri
++5. Kanban tahtası görünümü ve sürükle-bırak özelliği
++6. Kullanıcı bildirimleri arayüzü
++7. Ortak görevler ve atamalar sayfası
++8. Görevlere yıldız puan verme arayüzü
 9. Görevlere yorum yapma ve yanıt verme özellikleri
 10. Proje oluşturma, düzenleme ve silme sayfaları
 11. Proje ilerlemesi ve raporlar sayfası
+
+Güvenli bir iletişim sağlamak için, aşağıdaki iş planını önceliklere göre takip edebilirsiniz:
+1. **HTTPS Kullanımı:** API ile iletişim kurarken, trafiği şifrelemek için HTTPS protokolünü kullanın. Bu, biri verilerinizi ele geçirmeye çalışsa bile, onları okuyamayacağı anlamına gelir.
++2. **CORS Ayarları:** Cross-Origin Resource Sharing (CORS) ayarları, belirli bir web uygulamasının başka bir domain'den kaynakları istemesine izin verir veya engeller. CORS ayarlarınızı kontrol edin ve yalnızca güvendiğiniz domainlerden istekleri kabul ettiğinizden emin olun.
+3. **Kimlik Doğrulama ve Yetkilendirme:** Kullanıcıların kimliklerini doğrulamak ve belirli API endpointlerine erişimlerini yönetmek için bir sistem oluşturun. Bu genellikle JSON Web Token (JWT) veya OAuth kullanılarak yapılır.
+4. **API Key Kullanımı:** Her bir istekte API key kullanarak, kimin API'nizi kullandığını takip edebilir ve kontrol edebilirsiniz. Bu, kötü niyetli kullanıcıların API'nizi kötüye kullanmasını önler.
+5. **Rate Limiting:** Her kullanıcının veya IP'nin belirli bir zaman diliminde yapabileceği maksimum istek sayısını sınırlayın. Bu, bir saldırganın sisteminizi boğmasını veya DDoS saldırısına uğratmasını önler.
+6. **Input Validation:** Gelen veriyi her zaman doğrulayın. Kullanıcının girdiği verinin beklenen formatta olduğundan ve kötü amaçlı içerik taşımadığından emin olun.
+7. **Error Handling:** Hata mesajlarınızın çok fazla bilgi vermediğinden emin olun. Örneğin, bir hata mesajı veritabanı şemasını veya backend teknolojilerinizi ifşa etmemelidir.
+8. **Logging and Monitoring:** API isteklerini ve yanıtlarını loglayın ve anormal aktiviteyi saptayabilecek bir izleme sistemi kurun.
+
+Bu adımların her biri önemlidir ve uygulamanın güvenliğini sağlama konusunda birbirine yardımcı olur. Bu nedenle, her bir adımı dikkatlice uygulamak önemlidir.
+
+
 
 Frontend ve backend önceliklerini belirledikten sonra, iş planınızı daha ayrıntılı şekilde geliştirebilirsiniz. İlk olarak backend kısmında çalışmalara başlayarak, iş planınızı adım adım ilerletebilirsiniz. Aşağıda örnek olarak "Kullanıcı kimlik doğrulama sistemi" başlığının altında olabilecek adımları listeledim:
 
@@ -106,3 +120,19 @@ Bu liste, proje sürecindeki tüm adımları ve gereksinimleri kapsamlı bir şe
 yönetimini ve organizasyonunu kolaylaştırmaya yardımcı olacaktır. Yine de, her proje farklıdır ve bu liste,
 sizin projenize özgü ek gereksinimlerle güncellenmelidir. Proje sürecinizdeki her aşamada, başarıyı sağlamak 
 için bu liste üzerinden düzenli olarak kontrol sağlamak önemlidir.
+
+
+Bu güncellemeyle, her TaskItem bileşeni artık bir StarRating bileşeni içerir ve her bir görevin mevcut yıldız 
+derecelendirmesini görüntüler. Yeni bir derecelendirme yapıldığında, onRatingChange işlevini, görevin ID'si 
+ve yeni derecelendirme ile birlikte çağırır.
+
+Bu bileşenler ve güncellemeler, yıldız derecelendirme özelliğini uygulamanıza ekler. Ancak, bu özellik tamamen 
+işlevsel hale gelmeden önce, onRatingChange işlevini, yıldız derecelendirmeyi sunucuda güncellemek için kullanacak 
+şekilde uygulamanızın ana bileşenine (muhtemelen App.js) eklemeniz gerekecektir. Bu işlev, bir API isteği göndermeli
+ ve yanıt geldiğinde uygulamanın durumunu güncellemelidir.
+
+Bununla birlikte, bu kod parçacıkları örnek amaçlıdır ve uygulamanızın geri kalanına ve kullanılan teknolojilere 
+bağlı olarak ayarlamalar yapmanız gerekebilir. Örneğin, yıldız derecelendirme özelliğini uygulamanızın bir parçası 
+olarak kullanmak istiyorsanız, sunucunuzun bu özelliği desteklemesi gerekir. Bu, sunucunun bir görevin derecelendirmesini 
+alabilmesi, güncelleyebilmesi ve istemciye geri gönderebilmesi anlamına gelir. Bunun nasıl yapılacağı, kullandığınız 
+back-end teknolojisine ve uygulamanızın genel yapısına bağlıdır.
