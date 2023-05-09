@@ -1,3 +1,4 @@
+# backend\rating\models.py
 from django.db import models
 from custom_user.models import CustomUser
 from assignment.models import Task

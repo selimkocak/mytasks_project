@@ -1,3 +1,4 @@
+# backend\kanban\models.py
 from django.db import models
 from company.models import Company
 
