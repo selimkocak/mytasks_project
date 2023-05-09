@@ -45,7 +45,7 @@ Bu genel kurallar, MyTasks projesinin iş planına dahil edilerek takım üyeler
 +8. Görevlere yıldız puan verme arayüzü
 +9. Görevlere yorum yapma ve yanıt verme özellikleri
 +10. Proje oluşturma, düzenleme ve silme sayfaları
-11. Proje ilerlemesi ve raporlar sayfası
++11. Proje ilerlemesi ve raporlar sayfası
 
 Güvenli bir iletişim sağlamak için, aşağıdaki iş planını önceliklere göre takip edebilirsiniz:
 1. **HTTPS Kullanımı:** API ile iletişim kurarken, trafiği şifrelemek için HTTPS protokolünü kullanın. Bu, biri verilerinizi ele geçirmeye çalışsa bile, onları okuyamayacağı anlamına gelir.
