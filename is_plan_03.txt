@@ -11,19 +11,19 @@ Projenizde çok sayıda bileşen ve işlevsellik olduğu için, iş planı oluş
     - Şirket oluşturma, güncelleme ve silme işlemleri için formlar oluşturun.
     - API servislerini (`listCompanies`, `createCompany`, `getCompany`, `updateCompany`, `deleteCompany`) bu sayfalarında kullanın.
 
-3. **Proje Yönetimi İle İlgili İşlemler:**
++3. **Proje Yönetimi İle İlgili İşlemler:**
     - Projeler listesi için bir sayfa oluşturun.
     - Proje oluşturma, güncelleme ve silme işlemleri için formlar oluşturun.
     - API servislerini (`createProject`, `getProjects`, `updateProject`, `deleteProject`) bu sayfalarda kullanın.
     - Proje detayları sayfasında, o projeye ait görevleri ve yorumları görüntüleyin.
     - Proje ilerleme durumunu ve raporları görüntüleyebileceğiniz bölümler oluşturun.
 
-4. **Kanban Tahtası İle İlgili İşlemler:**
++4. **Kanban Tahtası İle İlgili İşlemler:**
     - Kanban tahtası için bir sayfa oluşturun.
     - Görevlerin durumlarını güncellemek için tahtayı kullanın.
     - API servislerini (`createKanban`, `getKanbans`, `updateKanban`, `deleteKanban`) bu sayfada kullanın.
 
-5. **Görevlerle İlgili İşlemler:**
++5. **Görevlerle İlgili İşlemler:**
     - Görevler listesi için bir sayfa oluşturun.
     - Görev oluşturma, güncelleme ve silme işlemleri için formlar oluşturun.
     - API servislerini (`createAssignment`, `getAssignments`, `updateAssignment`, `deleteAssignment`) bu sayfalarda kullanın.

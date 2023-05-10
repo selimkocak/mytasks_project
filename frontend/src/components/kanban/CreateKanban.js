@@ -1,14 +1,18 @@
-// frontend/src/components/project/CreateProject.js
+// frontend/src/components/kanban/CreateKanban.js
 import React, { useState } from 'react';
 import api from '../../services/api';
 
-function CreateProject() {
+function CreateKanban() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleCreate = async () => {
+  const handleCreate = async (e) => {
+    e.preventDefault();
+
+    const data = { name, description };
+
     try {
-      const response = await api.createProject({ name, description });
+      const response = await api.createKanban(data);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -17,7 +21,7 @@ function CreateProject() {
 
   return (
     <div>
-      <h2>Create Project</h2>
+      <h2>Create Kanban</h2>
       <form onSubmit={handleCreate}>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
@@ -27,4 +31,4 @@ function CreateProject() {
   );
 }
 
-export default CreateProject;
+export default CreateKanban;

@@ -1,14 +1,28 @@
-// frontend/src/components/project/EditProject.js
-import React, { useState } from 'react';
+// frontend/src/components/kanban/UpdateKanban.js
+import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
-function EditProject({ id }) {
+function UpdateKanban({ id }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleUpdate = async () => {
+  useEffect(() => {
+    const fetchKanban = async () => {
+      const response = await api.getKanbans(id);
+      setName(response.data.name);
+      setDescription(response.data.description);
+    };
+
+    fetchKanban();
+  }, [id]);
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    const data =     { name, description };
+
     try {
-      const response = await api.updateProject(id, { name, description });
+      const response = await api.updateKanban(id, data);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -17,7 +31,7 @@ function EditProject({ id }) {
 
   return (
     <div>
-      <h2>Edit Project</h2>
+      <h2>Update Kanban</h2>
       <form onSubmit={handleUpdate}>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
         <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
@@ -27,4 +41,5 @@ function EditProject({ id }) {
   );
 }
 
-export default EditProject;
+export default UpdateKanban;
+

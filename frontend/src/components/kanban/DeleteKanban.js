@@ -1,11 +1,13 @@
-// frontend/src/components/project/DeleteProject.js
+// frontend/src/components/kanban/DeleteKanban.js
 import React from 'react';
 import api from '../../services/api';
 
-function DeleteProject({ id }) {
-  const handleDelete = async () => {
+function DeleteKanban({ id }) {
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
     try {
-      const response = await api.deleteProject(id);
+      const response = await api.deleteKanban(id);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -14,10 +16,10 @@ function DeleteProject({ id }) {
 
   return (
     <div>
-      <h2>Delete Project</h2>
+      <h2>Delete Kanban</h2>
       <button onClick={handleDelete}>Delete</button>
     </div>
   );
 }
 
-export default DeleteProject;
+export default DeleteKanban;

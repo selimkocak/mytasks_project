@@ -58,6 +58,28 @@ const deleteCompany = (id) => {
   return axios.delete(API_URL + `company/${id}/`);
 };
 
+// Task
+export const createTask = async (data) => {
+  return axios.post(`${API_URL}tasks/`, data);
+};
+
+export const getTasks = async () => {
+  return axios.get(`${API_URL}tasks/`);
+};
+
+export const getTask = async (id) => {
+  return axios.get(`${API_URL}tasks/${id}/`);
+};
+
+export const updateTask = async (id, data) => {
+  return axios.put(`${API_URL}tasks/${id}/`, data);
+};
+
+export const deleteTask = async (id) => {
+  return axios.delete(`${API_URL}tasks/${id}/`);
+};
+
+
 // Notification
 export const createNotification = async (data) => {
   return axios.post(`${API_URL}notification/`, data);
@@ -188,6 +210,11 @@ const apiFunctions = {
   getCompany,
   updateCompany,
   deleteCompany,
+  createTask,
+  getTasks,
+  getTask,
+  updateTask,
+  deleteTask,
   createNotification,
   getNotifications,
   updateNotification,
