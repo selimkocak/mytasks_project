@@ -10,7 +10,7 @@ import CreateProject from './components/project/CreateProject';
 import UserProfile from './components/user/UserProfile';
 import UserSettings from './components/user/UserSettings';
 import ProjectDetails from './components/project/ProjectDetails';
-import TasksList from './components/tasks/TasksList';
+import TasksPage from './components/tasks/TasksPage';
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/user/profile" element={<UserProfile />} />
         <Route path="/user/settings" element={<UserSettings />} />
         <Route path="/projects/:projectId" element={<ProjectDetails />} />
-        <Route path="/tasks" element={<TasksList />} />
+        <Route path="/tasks" element={<TasksPage />} />
       </Routes>
     </Router>
   );

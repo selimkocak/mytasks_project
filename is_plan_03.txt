@@ -29,12 +29,12 @@ Projenizde çok sayıda bileşen ve işlevsellik olduğu için, iş planı oluş
     - API servislerini (`createAssignment`, `getAssignments`, `updateAssignment`, `deleteAssignment`) bu sayfalarda kullanın.
     - Görevlere yorum yap
 
-6. **Yorumlarla İlgili İşlemler:**
++6. **Yorumlarla İlgili İşlemler:**
     - Yorum oluşturma, güncelleme ve silme işlemleri için formlar oluşturun.
     - API servislerini (`createComment`, `getComments`, `updateComment`, `deleteComment`) bu sayfalarda kullanın.
     - Görevlerin veya projelerin altında yorumları görüntüleyin.
 
-7. **Puanlama İle İlgili İşlemler:**
++7. **Puanlama İle İlgili İşlemler:**
     - Proje veya görevlerde puanlama yapabileceğiniz bir yıldız derecelendirme sistemini uygulayın.
     - API servislerini (`createRating`, `getRatings`, `updateRating`, `deleteRating`) bu işlemlerde kullanın.
 
