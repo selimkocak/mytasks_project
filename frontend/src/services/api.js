@@ -1,9 +1,9 @@
 // frontend/src/services/api.js
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api/";
+export const API_URL = "http://localhost:8000/api/";
 
-const register = (data) => {
+export const register = (data) => {
   return axios.post(API_URL + "auth/register/", data)
     .then((response) => {
       if (response.data.tokens) {
@@ -13,7 +13,7 @@ const register = (data) => {
     });
 };
 
-const login = (data) => {
+export const login = (data) => {
   return axios.post(API_URL + "auth/token/", data)
     .then((response) => {
       if (response.data.user && response.data.tokens) {
@@ -24,7 +24,7 @@ const login = (data) => {
     });
 };
 
-const logout = () => {
+export const logout = () => {
   return axios.post(API_URL + "auth/logout/")
     .then((response) => {
       localStorage.removeItem('user');
@@ -33,20 +33,34 @@ const logout = () => {
     });
 };
 
-const refreshToken = (data) => {
+export const refreshToken = (data) => {
   return axios.post(API_URL + "auth/token/refresh/", data);
 };
 
+// user profile
+export const getUserProfile = () => {
+  return axios.get(API_URL + 'auth/user-profile/');
+  };
+  
+export const updateUserProfile = (data) => {
+  return axios.put(API_URL + 'auth/user-profile/', data);
+  };
+  
+export const changePassword = (data) => {
+  return axios.put(API_URL + 'auth/change-password/', data);
+  };
+
+ 
 // company
-const listCompanies = () => {
+export const listCompanies = () => {
   return axios.get(API_URL + "company/");
 };
 
-const createCompany = (data) => {
+export const createCompany = (data) => {
   return axios.post(API_URL + "company/", data);
 };
 
-const getCompany = (id) => {
+export const getCompany = (id) => {
   return axios.get(API_URL + `company/${id}/`);
 };
 
@@ -54,7 +68,7 @@ const updateCompany = (id, data) => {
   return axios.put(API_URL + `company/${id}/`, data);
 };
 
-const deleteCompany = (id) => {
+export const deleteCompany = (id) => {
   return axios.delete(API_URL + `company/${id}/`);
 };
 
@@ -184,7 +198,7 @@ export const deleteKanban = async (id) => {
 
 // kaban stage
 export const getKanbanStages = async () => {
-  return axios.get(`${API_URL}kanban_stages/`);
+  return axios.get(`${API_URL}kanban/stages/`);
 };
 
 
@@ -206,11 +220,14 @@ export const deleteRole = async (id) => {
 };
 
 
-const apiFunctions = {
+export const apiFunctions = {
   register,
   login,
   logout,
   refreshToken,
+  getUserProfile,
+  updateUserProfile,
+  changePassword,
   listCompanies,
   createCompany,
   getCompany,

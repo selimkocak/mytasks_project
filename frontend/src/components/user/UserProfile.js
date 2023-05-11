@@ -1,12 +1,77 @@
-// src/components/UserProfile.js
-import React from 'react';
+// frontend/src/components/user/UserProfile.js
+import React, { useState, useEffect } from 'react';
+import { getUserProfile, updateUserProfile}  from '../../services/api';
 
-function UserProfile({ user }) {
+function UserProfile() {
+  const [userProfile, setUserProfile] = useState({
+    email: '',
+    first_name: '',
+    last_name: '',
+  });
+
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
+
+  const fetchUserProfile = async () => {
+    try {
+      const response = await getUserProfile();
+      setUserProfile(response.data);
+    } catch (error) {
+      console.error('Error fetching user profile: ', error);
+    }
+  };
+
+  const handleChange = (event) => {
+    setUserProfile({
+      ...userProfile,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await updateUserProfile(userProfile);
+      alert('User profile updated successfully');
+    } catch (error) {
+      console.error('Error updating user profile: ', error);
+    }
+  };
+
   return (
     <div>
       <h2>User Profile</h2>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={userProfile.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          First Name:
+          <input
+            type="text"
+            name="first_name"
+            value={userProfile.first_name}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Last Name:
+          <input
+            type="text"
+            name="last_name"
+            value={userProfile.last_name}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Update Profile</button>
+      </form>
     </div>
   );
 }

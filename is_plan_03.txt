@@ -46,7 +46,7 @@ Projenizde çok sayıda bileşen ve işlevsellik olduğu için, iş planı oluş
     - Kullanıcıların bildirimlerini görüntülemek için bir panel oluşturun.
     - API servislerini (`createNotification`, `getNotifications`, `updateNotification`, `deleteNotification`) bu işlemlerde kullanın.
 
-10. **Kullanıcı Profili ve Ayarları İle İlgili İşlemler:**
++10. **Kullanıcı Profili ve Ayarları İle İlgili İşlemler:**
     - Kullanıcı profili ve ayarları için sayfalar oluşturun (`UserProfile.js`, `UserSettings.js`).
     - Kullanıcı profili bilgilerini güncellemek için API servislerini kullanın.
 

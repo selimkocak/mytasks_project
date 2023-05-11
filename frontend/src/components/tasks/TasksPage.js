@@ -1,21 +1,28 @@
 // frontend/src/pages/TasksPage.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getTasks, updateTask, deleteTask } from '../../services/api';
+import { createTask, getTasks, updateTask, deleteTask, getKanbanStages } from '../../services/api'; // getKanbanStages'i import ettik
 
 const TasksPage = () => {
   const [tasks, setTasks] = useState([]);
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');  // New state variable for task description
   const [selectedTask, setSelectedTask] = useState(null);
-
+  const [taskStage, setTaskStage] = useState(''); // yeni state variable for task stage
+  const [kanbanStages, setKanbanStages] = useState([]); // yeni state variable for kanban stages
   
   useEffect(() => {
     loadTasks();
+    loadKanbanStages(); // kanban stages'i yüklemek için
   }, []);
 
   const loadTasks = async () => {
     const response = await getTasks();
     setTasks(response.data);
+  };
+
+  const loadKanbanStages = async () => {
+    const response = await getKanbanStages();
+    setKanbanStages(response.data);
   };
 
   const handleSubmit = async (e) => {
@@ -48,6 +55,8 @@ const TasksPage = () => {
     loadTasks();
   };
 
+  
+
   return (
     <div>
       <h1>Tasks</h1>
@@ -64,6 +73,17 @@ const TasksPage = () => {
           value={taskDescription}
           onChange={(e) => setTaskDescription(e.target.value)}  // New input field for task description
         />
+            <select
+              value={taskStage}
+              onChange={(e) => setTaskStage(e.target.value)}
+            >
+              {kanbanStages.map((stage) => (
+                <option key={stage.id} value={stage.id}>
+                  {stage.name}
+                </option>
+              ))}
+        </select>
+
         <button type="submit">{selectedTask ? 'Update' : 'Create'} Task</button>
       </form>
       <ul>
@@ -71,11 +91,17 @@ const TasksPage = () => {
           <li key={task.id}>
             <h2>{task.title}</h2>
             <p>{task.description}</p> 
+
             <button onClick={() => handleEdit(task)}>Edit</button>
             <button onClick={() => handleDelete(task.id)}>Delete</button>
           </li>
+          
         ))}
+
+
       </ul>
+
+
     </div>
   );
 };

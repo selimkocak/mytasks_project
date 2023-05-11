@@ -1,26 +1,66 @@
-// src/components/UserSettings.js
+// frontend/src/components/user/UserSettings.js
 import React, { useState } from 'react';
+import changePassword  from '../../services/api';
 
-function UserSettings({ user }) {
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
+function UserSettings() {
+  const [passwords, setPasswords] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
 
-  const handleSave = (e) => {
-    e.preventDefault();
-    // Burada kullanıcının ayarlarının güncellenmesi gerçekleştirilir
-    console.log(name, email);
+  const handleChange = (event) => {
+    setPasswords({
+      ...passwords,
+      [event.target.name]: event.target.value,
+    });
   };
 
-  return (
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await changePassword(passwords);
+      alert('Password changed successfully');
+    } catch (error) {
+    console.error('Error changing password: ', error);
+    }
+    };
+    
+    return (
     <div>
-      <h2>User Settings</h2>
-      <form onSubmit={handleSave}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <button type="submit">Save Changes</button>
-      </form>
+    <h2>User Settings</h2>
+    <form onSubmit={handleSubmit}>
+    <label>
+    Current Password:
+    <input
+             type="password"
+             name="currentPassword"
+             value={passwords.currentPassword}
+             onChange={handleChange}
+           />
+    </label>
+    <label>
+    New Password:
+    <input
+             type="password"
+             name="newPassword"
+             value={passwords.newPassword}
+             onChange={handleChange}
+           />
+    </label>
+    <label>
+    Confirm Password:
+    <input
+             type="password"
+             name="confirmPassword"
+             value={passwords.confirmPassword}
+             onChange={handleChange}
+           />
+    </label>
+    <button type="submit">Change Password</button>
+    </form>
     </div>
-  );
-}
-
-export default UserSettings;
+    );
+    }
+    
+    export default UserSettings;

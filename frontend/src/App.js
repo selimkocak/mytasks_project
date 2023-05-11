@@ -1,6 +1,6 @@
 // frontend\src\App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
@@ -11,23 +11,33 @@ import UserProfile from './components/user/UserProfile';
 import UserSettings from './components/user/UserSettings';
 import ProjectDetails from './components/project/ProjectDetails';
 import TasksPage from './components/tasks/TasksPage';
+import UserContext from './context/UserContext';
+
+const PrivateRoute = ({children, ...props}) => {
+  const {user} = React.useContext(UserContext);
+  return user ? children : <Navigate to="/login" />;
+};
 
 const App = () => {
+  const [user, setUser] = useState(null); // user durumunu yönetmek için
+
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<KanbanBoard />} />
-        <Route path="/login" element={<SignIn />} />
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/notifications" element={<NotificationPanel />} />
-        <Route path="/projects/create" element={<CreateProject />} />
-        <Route path="/user/profile" element={<UserProfile />} />
-        <Route path="/user/settings" element={<UserSettings />} />
-        <Route path="/projects/:projectId" element={<ProjectDetails />} />
-        <Route path="/tasks" element={<TasksPage />} />
-      </Routes>
-    </Router>
+    <UserContext.Provider value={{user, setUser}}>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<PrivateRoute><KanbanBoard /></PrivateRoute>} /> 
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/notifications" element={<PrivateRoute><NotificationPanel /></PrivateRoute>} />
+          <Route path="/projects/create" element={<PrivateRoute><CreateProject /></PrivateRoute>} />
+          <Route path="/user/profile" element={<PrivateRoute><UserProfile /></PrivateRoute>} />
+          <Route path="/user/settings" element={<PrivateRoute><UserSettings /></PrivateRoute>} />
+          <Route path="/projects/:projectId" element={<PrivateRoute><ProjectDetails /></PrivateRoute>} />
+          <Route path="/tasks" element={<PrivateRoute><TasksPage /></PrivateRoute>} />
+        </Routes>
+      </Router>
+    </UserContext.Provider>
   );
 };
 

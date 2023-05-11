@@ -1,12 +1,15 @@
 // frontend/src/components/auth/SignIn.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate'ı import ettik
+import React, { useState, useContext } from 'react'; // useContext'u import ettik
+import { useNavigate } from 'react-router-dom'; 
 import api from '../../services/api'; 
+import UserContext from '../../context/UserContext'; // UserContext'i import ettik
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // useNavigate hook'unu çağırarak bir navigate fonksiyonu oluşturduk
+  const navigate = useNavigate(); 
+
+  const { setUser } = useContext(UserContext); // setUser fonksiyonunu aldık
 
   const handleSignIn = async (e) => { 
     e.preventDefault();
@@ -15,7 +18,8 @@ function SignIn() {
       const response = await api.login({email, password});
       console.log(response.data);
 
-      // Kullanıcının girişi başarılı olursa TasksList sayfasına yönlendir
+      setUser(response.data); // user durumunu güncelledik
+
       navigate('/tasks');
     } catch (error) {
       console.error(error);
