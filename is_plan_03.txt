@@ -38,7 +38,7 @@ Projenizde çok sayıda bileşen ve işlevsellik olduğu için, iş planı oluş
     - Proje veya görevlerde puanlama yapabileceğiniz bir yıldız derecelendirme sistemini uygulayın.
     - API servislerini (`createRating`, `getRatings`, `updateRating`, `deleteRating`) bu işlemlerde kullanın.
 
-8. **Rol Yönetimi İle İlgili İşlemler:**
++8. **Rol Yönetimi İle İlgili İşlemler:**
     - Kullanıcıların rollerini belirleme ve güncelleme işlemleri için formlar oluşturun.
     - API servislerini (`createRole`, `getRoles`, `updateRole`, `deleteRole`) bu işlemlerde kullanın.
 

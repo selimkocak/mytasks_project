@@ -1,146 +1,128 @@
 // frontend\src\components\kanban\KanbanBoard.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './KanbanBoard.css';
-
-const initialData = {
-    tasks: {
-        'task-1': { id: 'task-1', content: 'Task 1' },
-        'task-2': { id: 'task-2', content: 'Task 2' },
-        // more tasks...
-    },
-    columns: {
-        'column-1': {
-            id: 'column-1',
-            title: 'Planlanan',
-            taskIds: ['task-1', 'task-2'],
-        },
-        'column-2': {
-            id: 'column-2',
-            title: 'Devam Eden',
-            taskIds: [],
-        },
-        'column-3': {
-            id: 'column-3',
-            title: 'Geciken',
-            taskIds: [],
-        },
-        'column-4': {
-            id: 'column-4',
-            title: 'Tamamlanan',
-            taskIds: [],
-        },
-    },
-    columnOrder: ['column-1', 'column-2', 'column-3', 'column-4'],
-};
+import { getTasks, updateTask, getKanbanStages } from '../../services/api'; // API servislerini içeri aktar
 
 const KanbanBoard = () => {
-    const [data, setData] = useState(initialData);
+  const [data, setData] = useState(null);
+  const [stages, setStages] = useState([]);
+  
+  const adaptData = (apiData) => {
+    const tasks = {};
+    const columns = stages.reduce((acc, stage) => {
+      acc[stage.name] = { id: stage.name, title: stage.name, taskIds: [] };
+      return acc;
+    }, {});
+  
+    apiData.forEach(task => {
+      const newTask = { id: task.id, content: task.title };
+      tasks[task.id] = newTask;
+      columns[task.status].taskIds.push(task.id);
+    });
+  
+    const adaptedData = {
+      tasks,
+      columns,
+      columnOrder: stages.map(stage => stage.name)
+    };
+  
+    return adaptedData;
+  }
 
-    const onDragEnd = result => {
-        const { destination, source, draggableId } = result;
+  useEffect(() => {
+    getKanbanStages()
+      .then(response => {
+        setStages(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching kanban stages:", error);
+      });
+  }, []);
 
-        if (!destination) {
-            return;
-        }
+  useEffect(() => {
+    getTasks()
+      .then(response => {
+        const adaptedData = adaptData(response.data);
+        setData(adaptedData);
+      })
+      .catch(error => {
+        console.error("Error fetching tasks:", error);
+      });
+  }, [stages]);
 
-        if (source.droppableId === destination.droppableId && source.index === destination.index) {
-            return;
-        }
 
-        const start = data.columns[source.droppableId];
-        const finish = data.columns[destination.droppableId];
+  const onDragEnd = result => {
+    const { destination, source, draggableId } = result;
 
-        if (start === finish) {
-            const newTaskIds = Array.from(start.taskIds);
-            newTaskIds.splice(source.index, 1);
-            newTaskIds.splice(destination.index, 0, draggableId);
+    if (!destination || (destination.droppableId === source.droppableId && destination.index === source.index)) {
+      return;
+    }
 
-            const newColumn = {
-                ...start,
-                taskIds: newTaskIds,
-            };
+    if (!data) {
+      return;
+    }
 
-            const newData = {
-                ...data,
-                columns: {
-                    ...data.columns,
-                    [newColumn.id]: newColumn,
-                },
-            };
+    const start = data.columns[source.droppableId];
+    const finish = data.columns[destination.droppableId];
 
-            setData(newData);
-            return;
-        }
+    if (start === finish) {
+      // Aynı sütunda taşıma durumunu işle
+      // ...
+    } else {
+      // Farklı sütunlarda taşıma durumunu işle
+      // ...
+    }
 
-        // Moving from one list to another
-        const startTaskIds = Array.from(start.taskIds);
-        startTaskIds.splice(source.index, 1);
-        const newStart = {
-            ...start,
-            taskIds: startTaskIds,
-        };
-
-        const finishTaskIds = Array.from(finish.taskIds);
-        finishTaskIds.splice(destination.index, 0, draggableId);
-        const newFinish = {
-            ...finish,
-            taskIds: finishTaskIds,
-        };
-
-        const newData = {
-            ...data,
-            columns: {
-                ...data.columns,
-                [newStart.id]: newStart,
-                [newFinish.id]: newFinish,
-            },
-        };
-        
-        setData(newData);
+    const updatedTask = {
+      ...data.tasks[draggableId],
+      status: finish.title, // Yeni durum, hedef sütunun başlığıdır
     };
 
-    return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <div className="board">
-                {data.columnOrder.map(columnId => {
-                    const column = data.columns[columnId];
-                    const tasks = column.taskIds.map(taskId => data.tasks[taskId]);
+    updateTask(draggableId, updatedTask);
+  };
 
-                    return (
-                        <div className="column" key={column.id}>
-                            <h3>{column.title}</h3>
-                            <Droppable droppableId={column.id}>
-                                {(provided, snapshot) => (
-                                    <div
-                                        className="task-list"
-                                        ref={provided.innerRef}
-                                        {...provided.droppableProps}
-                                    >
-                                        {tasks.map((task, index) => (
-                                            <Draggable key={task.id} draggableId={task.id} index={index}>
-                                                {(provided, snapshot) => (
-                                                    <div
-                                                        className="task"
-                                                        ref={provided.innerRef}
-                                                        {...provided.draggableProps}
-                                                        {...provided.dragHandleProps}
-                                                    >
-                                                        {task.content}
-                                                    </div>
-                                                )}
-                                            </Draggable>
-                                        ))}
-                                        {provided.placeholder}
-                                    </div>
-                                )}
-                            </Droppable>
-                        </div>
-                    );
-                })}
+  return (
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div className="board">
+        {data && data.columnOrder.map(columnId => {
+          const column = data.columns[columnId];
+          const tasks = column.taskIds.map(taskId => data.tasks[taskId]);
+
+          return (
+            <div className="column" key={column.id}>
+              <h3>{column.title}</h3>
+              <Droppable droppableId={column.id}>
+                {(provided, snapshot) => (
+                  <div
+                    className="task-list"
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                  >
+                    {tasks.map((task, index) => (
+                      <Draggable key={task.id} draggableId={task.id} index={index}>
+                        {(provided, snapshot) => (
+                          <div
+                            className="task"
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            {task.content}
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
             </div>
-        </DragDropContext>
-    );
+          );
+        })}
+      </div>
+    </DragDropContext>
+  );
 };
 
 export default KanbanBoard;

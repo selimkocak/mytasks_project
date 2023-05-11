@@ -6,8 +6,8 @@ from kanban.models import KanbanStage
 
 class Task(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-    stage = models.ForeignKey(KanbanStage, on_delete=models.SET_NULL, null=True, related_name='tasks')
+    description = models.TextField()
+    stage = models.ForeignKey(KanbanStage, on_delete=models.CASCADE, related_name='tasks')
     assignee = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='tasks_assigned')
     created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='tasks_created')
 
@@ -26,3 +26,4 @@ def send_task_created_notification(sender, instance, created, **kwargs):
             description=f"You have been assigned a new task: {instance.title}",
         )
         notification.save()
+

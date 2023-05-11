@@ -182,6 +182,12 @@ export const deleteKanban = async (id) => {
   return axios.delete(`${API_URL}kanban/${id}/`);
 };
 
+// kaban stage
+export const getKanbanStages = async () => {
+  return axios.get(`${API_URL}kanban_stages/`);
+};
+
+
 // Role
 export const createRole = async (data) => {
   return axios.post(`${API_URL}role/`, data);
@@ -239,6 +245,7 @@ const apiFunctions = {
   getKanbans,
   updateKanban,
   deleteKanban,
+  getKanbanStages,
   createRole,
   getRoles,
   updateRole,
