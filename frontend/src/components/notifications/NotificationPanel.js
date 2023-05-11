@@ -1,25 +1,34 @@
-// frontend\src\components\notifications\NotificationPanel.js
-import React, { useState } from 'react';
-import NotificationList from './NotificationList';
+// frontend/src/components/notifications/NotificationPanel.js
+import React, { useState, useEffect } from 'react';
+import { getNotifications } from '../../services/api';
 
-const NotificationPanel = () => {
-  const [notifications, setNotifications] = useState([
-    { id: 1, message: 'New task assigned to you', time: '2 mins ago' },
-    { id: 2, message: 'Your task has been completed', time: '5 mins ago' },
-    // ...
-  ]);
+function NotificationPanel() {
+  const [notifications, setNotifications] = useState([]);
 
-  const onClear = () => {
-    setNotifications([]);
+  useEffect(() => {
+    fetchNotifications();
+  }, []);
+
+  const fetchNotifications = async () => {
+    try {
+      const response = await getNotifications();
+      setNotifications(response.data);
+    } catch (error) {
+      console.error("Error fetching notifications: ", error);
+    }
   };
 
   return (
-    <div className="notification-panel">
-      <h2>Notifications</h2>
-      <NotificationList notifications={notifications} />
-      <button onClick={onClear}>Clear all</button>
+    <div>
+      <h2>Notification Panel</h2>
+      {notifications.map(notification => (
+        <div key={notification.id}>
+          <h3>{notification.title}</h3>
+          <p>{notification.description}</p>
+        </div>
+      ))}
     </div>
   );
-};
+}
 
 export default NotificationPanel;

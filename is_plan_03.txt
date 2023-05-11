@@ -42,7 +42,7 @@ Projenizde çok sayıda bileşen ve işlevsellik olduğu için, iş planı oluş
     - Kullanıcıların rollerini belirleme ve güncelleme işlemleri için formlar oluşturun.
     - API servislerini (`createRole`, `getRoles`, `updateRole`, `deleteRole`) bu işlemlerde kullanın.
 
-9. **Bildirimler İle İlgili İşlemler:**
++9. **Bildirimler İle İlgili İşlemler:**
     - Kullanıcıların bildirimlerini görüntülemek için bir panel oluşturun.
     - API servislerini (`createNotification`, `getNotifications`, `updateNotification`, `deleteNotification`) bu işlemlerde kullanın.
 
