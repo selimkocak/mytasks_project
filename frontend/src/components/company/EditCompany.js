@@ -1,6 +1,7 @@
 // frontend/src/components/company/EditCompany.js
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import './EditCompany.css'; // EditCompany.css dosyasını içe aktardık
 
 function EditCompany({ id }) {
   const [name, setName] = useState('');
@@ -27,7 +28,7 @@ function EditCompany({ id }) {
   };
 
   return (
-    <div>
+    <div className="edit-company-container"> {/* className ile stil sınıfını ekledik */}
       <h3>Edit Company</h3>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />

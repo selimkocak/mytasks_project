@@ -1,6 +1,7 @@
 // frontend/src/components/user/UserProfile.js
 import React, { useState, useEffect } from 'react';
-import { getUserProfile, updateUserProfile}  from '../../services/api';
+import { getUserProfile, updateUserProfile } from '../../services/api';
+import './UserProfile.css'; // UserProfile.css dosyasını içe aktardık
 
 function UserProfile() {
   const [userProfile, setUserProfile] = useState({
@@ -40,38 +41,40 @@ function UserProfile() {
   };
 
   return (
-    <div>
-      <h2>User Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={userProfile.email}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          First Name:
-          <input
-            type="text"
-            name="first_name"
-            value={userProfile.first_name}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Last Name:
-          <input
-            type="text"
-            name="last_name"
-            value={userProfile.last_name}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Update Profile</button>
-      </form>
+    <div className="user-profile-container"> {/* className ile stil sınıfını ekledik */}
+      <div className="user-profile-card"> {/* className ile stil sınıfını ekledik */}
+        <h2>User Profile</h2>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={userProfile.email}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            First Name:
+            <input
+              type="text"
+              name="first_name"
+              value={userProfile.first_name}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Last Name:
+            <input
+              type="text"
+              name="last_name"
+              value={userProfile.last_name}
+              onChange={handleChange}
+            />
+          </label>
+          <button type="submit">Update Profile</button>
+        </form>
+      </div>
     </div>
   );
 }

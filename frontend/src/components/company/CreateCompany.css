@@ -1,0 +1,36 @@
+/* frontend/src/components/company/CreateCompany.css */
+
+.create-company-container {
+    margin-top: 20px;
+  }
+  
+  .create-company-container h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .create-company-container form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .create-company-container input {
+    width: 200px;
+    padding: 8px;
+    margin-right: 10px;
+  }
+  
+  .create-company-container button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-company-container button:hover {
+    background-color: #0069d9;
+  }
+  

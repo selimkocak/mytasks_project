@@ -1,25 +1,24 @@
 // frontend/src/components/auth/SignIn.js
-import React, { useState, useContext } from 'react'; // useContext'u import ettik
-import { useNavigate } from 'react-router-dom'; 
-import api from '../../services/api'; 
-import UserContext from '../../context/UserContext'; // UserContext'i import ettik
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../../services/api';
+import UserContext from '../../context/UserContext';
+import './SignIn.css'; // SignIn.css dosyasını import ettik
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
-  const { setUser } = useContext(UserContext); // setUser fonksiyonunu aldık
-
-  const handleSignIn = async (e) => { 
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await api.login({email, password});
+      const response = await api.login({ email, password });
       console.log(response.data);
 
-      setUser(response.data); // user durumunu güncelledik
-
+      setUser(response.data);
       navigate('/tasks');
     } catch (error) {
       console.error(error);
@@ -27,11 +26,21 @@ function SignIn() {
   };
 
   return (
-    <div>
+    <div className="signin-container"> {/* className özelliğini ekledik */}
       <h2>Sign In</h2>
-      <form onSubmit={handleSignIn}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <form onSubmit={handleSignIn} className="signin-form"> {/* className özelliğini ekledik */}
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Sign In</button>
       </form>
     </div>

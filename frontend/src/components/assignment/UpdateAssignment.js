@@ -1,6 +1,7 @@
 // frontend/src/components/assignment/UpdateAssignment.js
 import React, { useState } from 'react';
 import api from '../../services/api';
+import './UpdateAssignment.css'; // UpdateAssignment.css dosyasını içe aktardık
 
 function UpdateAssignment({ id }) {
   const [title, setTitle] = useState('');
@@ -19,11 +20,11 @@ function UpdateAssignment({ id }) {
   };
 
   return (
-    <div>
+    <div className="update-assignment-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Update Assignment</h2>
       <form onSubmit={handleUpdate}>
         <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="text" placeholder="Description"  value={description} onChange={(e) => setDescription(e.target.value)} />
+        <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
         <button type="submit">Update</button>
       </form>
     </div>
@@ -31,4 +32,3 @@ function UpdateAssignment({ id }) {
 }
 
 export default UpdateAssignment;
-

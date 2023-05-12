@@ -1,6 +1,7 @@
 // frontend/src/components/assignment/CreateAssignment.js
 import React, { useState } from 'react';
 import api from '../../services/api';
+import './CreateAssignment.css'; // CreateAssignment.css dosyasını içe aktardık
 
 function CreateAssignment() {
   const [title, setTitle] = useState('');
@@ -19,7 +20,7 @@ function CreateAssignment() {
   };
 
   return (
-    <div>
+    <div className="create-assignment-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Create Assignment</h2>
       <form onSubmit={handleCreate}>
         <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />

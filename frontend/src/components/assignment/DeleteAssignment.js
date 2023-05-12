@@ -1,6 +1,7 @@
 // frontend/src/components/assignment/DeleteAssignment.js
 import React from 'react';
 import api from '../../services/api';
+import './DeleteAssignment.css'; // DeleteAssignment.css dosyasını içe aktardık
 
 function DeleteAssignment({ id }) {
   const handleDelete = async () => {
@@ -13,7 +14,7 @@ function DeleteAssignment({ id }) {
   };
 
   return (
-    <div>
+    <div className="delete-assignment-container"> {/* className ile stil sınıfını ekledik */}
       <button onClick={handleDelete}>Delete</button>
     </div>
   );

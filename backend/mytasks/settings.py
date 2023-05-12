@@ -1,5 +1,7 @@
-# backend\mytasks\settings.py
 from pathlib import Path
+from django.utils.timezone import timedelta
+from corsheaders.defaults import default_headers
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,14 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o@8ffmt^4cfdx80@(0-uech-edt6=o*-ho=%i_!l*%o63yxg@d'
+SECRET_KEY = 'django-insecure-+3e1%a=eiyms)9@linjiz$ajpb36f50n#qoxr5!cw7&p9m-s92'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-AUTH_USER_MODEL = 'custom_user.CustomUser'
 
 # Application definition
 
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3.part api
+    'rest_framework_simplejwt',
     'rest_framework',
     'corsheaders',
     # my api
@@ -41,19 +43,12 @@ INSTALLED_APPS = [
     'project',
     'rating',
     'role',
-    
 ]
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', # corsheaders için
+    "corsheaders.middleware.CorsMiddleware", # corshearders block
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -62,10 +57,64 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    'http://localhost:3000', # React uygulamanızın çalıştığı adres
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://0.0.0.0',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  # canlı ortama geçişte false yap
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True  # Bu satırı ekleyin
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'access-control-allow-headers',
+    'access-control-allow-methods',
+    'access-control-allow-origin',
+    'Authorization',  # Bu satırları ekleyin
+] 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': True,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=60),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+AUTH_USER_MODEL = 'custom_user.CustomUser'#CustomUser modelimizin adı
+ACCOUNT_AUTHENTICATION_METHOD = 'email' #Oturum açmak için email adresi kullanmak için
+ACCOUNT_EMAIL_REQUIRED = True #kullanıcılardan email adresi istenmesi
+ACCOUNT_UNIQUE_EMAIL = True #her email adresi bir kez kaydedilebilir
+ACCOUNT_USERNAME_REQUIRED = False #kullanıcılardan username istenmemesi
+ACCOUNT_USER_EMAIL_FIELD = 'email' #email adresinin kullanıcı adı olarak kullanılması
 
 ROOT_URLCONF = 'mytasks.urls'
 
@@ -133,7 +182,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

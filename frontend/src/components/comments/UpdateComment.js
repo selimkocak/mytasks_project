@@ -1,6 +1,7 @@
 // frontend/src/components/comments/UpdateComment.js
 import React, { useState, useEffect } from 'react';
 import { updateComment } from '../../services/api';
+import './UpdateComment.css'; // UpdateComment.css dosyasını içe aktardık
 
 const UpdateComment = ({ commentId }) => {
   const [commentText, setCommentText] = useState('');
@@ -18,7 +19,7 @@ const UpdateComment = ({ commentId }) => {
   };
 
   return (
-    <div>
+    <div className="update-comment-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Update Comment</h2>
       <form onSubmit={handleSubmit}>
         <input

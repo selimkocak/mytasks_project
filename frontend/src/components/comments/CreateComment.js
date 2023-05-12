@@ -1,6 +1,7 @@
-// frontend\src\components\comments\CreateComment.js
+// frontend/src/components/comments/CreateComment.js
 import React, { useState } from 'react';
 import { createComment } from '../../services/api';
+import './CreateComment.css'; // CreateComment.css dosyasını içe aktardık
 
 const CreateComment = ({ taskId, onCommentCreated }) => {
   const [commentText, setCommentText] = useState('');
@@ -18,7 +19,7 @@ const CreateComment = ({ taskId, onCommentCreated }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="create-comment-form" onSubmit={handleSubmit}> {/* className ile stil sınıfını ekledik */}
       <textarea
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
