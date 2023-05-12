@@ -1,14 +1,15 @@
 from rest_framework import generics
 from .models import Task
 from .serializers import TaskSerializer
-from django.http import JsonResponse
-from django.views import View
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-class CheckLoggedInView(View):
+class CheckLoggedInView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, *args, **kwargs):
-        return JsonResponse({
-            'is_logged_in': request.user.is_authenticated
-        }, status=200)
+        return Response({'is_logged_in': True})
 
 
 class TaskListCreateAPIView(generics.ListCreateAPIView):
