@@ -1,7 +1,8 @@
 // frontend/src/components/user/UserProfile.js
 import React, { useState, useEffect } from 'react';
 import { getUserProfile, updateUserProfile } from '../../services/api';
-import './UserProfile.css'; // UserProfile.css dosyasını içe aktardık
+import { isAuthenticated } from '../../utils/auth';
+import './UserProfile.css';
 
 function UserProfile() {
   const [userProfile, setUserProfile] = useState({
@@ -15,6 +16,10 @@ function UserProfile() {
   }, []);
 
   const fetchUserProfile = async () => {
+    if (!isAuthenticated()) {
+      return;
+    }
+
     try {
       const response = await getUserProfile();
       setUserProfile(response.data);
@@ -32,6 +37,9 @@ function UserProfile() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!isAuthenticated()) {
+      return;
+    }
     try {
       await updateUserProfile(userProfile);
       alert('User profile updated successfully');
@@ -41,8 +49,8 @@ function UserProfile() {
   };
 
   return (
-    <div className="user-profile-container"> {/* className ile stil sınıfını ekledik */}
-      <div className="user-profile-card"> {/* className ile stil sınıfını ekledik */}
+    <div className="user-profile-container">
+      <div className="user-profile-card">
         <h2>User Profile</h2>
         <form onSubmit={handleSubmit}>
           <label>

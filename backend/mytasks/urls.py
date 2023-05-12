@@ -13,6 +13,5 @@ urlpatterns = [
     path('api/comment/', include('comment.urls')),  
     path('api/project/', include('project.urls')),  
     path('api/kanban/', include('kanban.urls')),
-
-    path('api/role/', include('role.urls')),  # 'role' uygulamasının URL'lerini ekleyin
+    path('api/role/', include('role.urls')),
 ]

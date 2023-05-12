@@ -1,7 +1,8 @@
 // frontend/src/components/project/CreateProject.js
 import React, { useState } from 'react';
 import api from '../../services/api';
-import './CreateProject.css'; // CreateProject.css dosyasını içe aktardık
+import { isAuthenticated } from '../../utils/auth';
+import './CreateProject.css';
 
 function CreateProject() {
   const [name, setName] = useState('');
@@ -9,6 +10,10 @@ function CreateProject() {
 
   const handleCreate = async (e) => {
     e.preventDefault();
+
+    if (!isAuthenticated()) {
+      return;
+    }
 
     try {
       const response = await api.createProject({ name, description });
@@ -19,7 +24,7 @@ function CreateProject() {
   };
 
   return (
-    <div className="create-project-container"> {/* className ile stil sınıfını ekledik */}
+    <div className="create-project-container">
       <h2>Create Project</h2>
       <form onSubmit={handleCreate}>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />

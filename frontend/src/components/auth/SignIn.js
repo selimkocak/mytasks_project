@@ -1,9 +1,8 @@
-// frontend/src/components/auth/SignIn.js
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import UserContext from '../../context/UserContext';
-import './SignIn.css'; // SignIn.css dosyasını import ettik
+import './SignIn.css';
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -26,9 +25,9 @@ function SignIn() {
   };
 
   return (
-    <div className="signin-container"> {/* className özelliğini ekledik */}
+    <div className="signin-container">
       <h2>Sign In</h2>
-      <form onSubmit={handleSignIn} className="signin-form"> {/* className özelliğini ekledik */}
+      <form onSubmit={handleSignIn} className="signin-form">
         <input
           type="email"
           placeholder="Email"

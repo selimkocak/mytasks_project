@@ -2,20 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css';
-import axios from 'axios';
+import { isAuthenticated }  from '../../utils/auth';
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // TODO: Replace with your own API endpoint
-    axios.get('http://localhost:8000/api/check_logged_in')
-      .then(response => {
-        setIsLoggedIn(response.data.is_logged_in);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    setIsLoggedIn(isAuthenticated());
   }, []);
 
   return (
@@ -67,4 +60,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

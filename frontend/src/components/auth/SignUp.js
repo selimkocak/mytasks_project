@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
-import './SignUp.css'; // SignUp.css dosyasını içe aktardık
+import './SignUp.css';
 
 function SignUp() {
   const [email, setEmail] = useState('');

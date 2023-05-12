@@ -1,0 +1,20 @@
+`frontend/src/utils/auth.js` dosyasındaki kimlik doğrulama işlemlerini kullanmak için aşağıdaki sayfalara import etmelisiniz:
+
++1. `frontend/src/components/auth/SignIn.js`: Giriş yapma işlemi için kimlik doğrulama kullanılır.
++2. `frontend/src/components/auth/SignUp.js`: Kayıt olma işlemi için kimlik doğrulama kullanılır.
++3. `frontend/src/components/navbar/Navbar.js`: Kullanıcı oturumu durumunu kontrol etmek için kimlik doğrulama kullanılır.
++4. `frontend/src/components/kanban/KanbanBoard.js`: Kanban tahtasını görüntülemek için kimlik doğrulama kullanılır.
++5. `frontend/src/components/notifications/NotificationPanel.js`: Bildirim panelini görüntülemek için kimlik doğrulama kullanılır.
++6. `frontend/src/components/project/CreateProject.js`: Proje oluşturma işlemi için kimlik doğrulama kullanılır.
++7. `frontend/src/components/user/UserProfile.js`: Kullanıcı profilini görüntülemek için kimlik doğrulama kullanılır.
++8. `frontend/src/components/user/UserSettings.js`: Kullanıcı ayarlarını güncellemek için kimlik doğrulama kullanılır.
++9. `frontend/src/components/project/ProjectDetails.js`: Proje ayrıntılarını görüntülemek için kimlik doğrulama kullanılır.
++10. `frontend/src/components/tasks/TasksPage.js`: Görevleri görüntülemek, oluşturmak, güncellemek ve silmek için kimlik doğrulama kullanılır.
+
+Bu sayfalarda kimlik doğrulama işlemlerini kullanabilmek için `frontend/src/utils/auth.js` dosyasını ilgili sayfalara aşağıdaki gibi import etmelisiniz:
+
+```javascript
+import { isAuthenticated }  from '../../utils/auth';
+```
+
+Umarım bu bilgi işinize yarar! Başka sorularınız varsa sormaktan çekinmeyin.

@@ -3,7 +3,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { getTasks, updateTask, getKanbanStages } from '../../services/api';
 import UserContext from '../../context/UserContext';
-import './KanbanBoard.css'; // KanbanBoard.css dosyasını içe aktardık
+import { isAuthenticated } from '../../utils/auth';
+import './KanbanBoard.css';
 
 const KanbanBoard = () => {
   const [data, setData] = useState(null);
@@ -11,7 +12,7 @@ const KanbanBoard = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user) {
+    if (!isAuthenticated()) {
       return;
     }
 
@@ -36,7 +37,7 @@ const KanbanBoard = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="board"> {/* KanbanBoard.css stil sınıfını ekledik */}
+      <div className="board">
         {data && data.columnOrder.map(columnId => {
           const column = data.columns[columnId];
           const tasks = column.taskIds.map(taskId => data.tasks[taskId]);
@@ -59,22 +60,22 @@ const KanbanBoard = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            >
+                          >
                             {task.content}
-                            </div>
-                            )}
-                            </Draggable>
-                            ))}
-                            {provided.placeholder}
-                            </div>
-                            )}
-                            </Droppable>
-                            </div>
-                            );
-                            })}
-                            </div>
-                            </DragDropContext>
-                            );
-                            };
-                            
-                            export default KanbanBoard;
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
+          );
+        })}
+      </div>
+    </DragDropContext>
+  );
+};
+
+export default KanbanBoard;

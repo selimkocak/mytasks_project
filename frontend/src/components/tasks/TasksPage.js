@@ -1,6 +1,7 @@
-// frontend/src/pages/TasksPage.js
+// frontend/src/components/tasks/TasksPage.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getTasks, updateTask, deleteTask, getKanbanStages } from '../../services/api'; // getKanbanStages'i import ettik
+import { isAuthenticated } from '../../utils/auth';
+import { createTask, getTasks, updateTask, deleteTask, getKanbanStages } from '../../services/api';
 import './TasksPage.css';
 
 const TasksPage = () => {
@@ -17,28 +18,50 @@ const TasksPage = () => {
   }, []);
 
   const loadTasks = async () => {
-    const response = await getTasks();
-    setTasks(response.data);
+    if (!isAuthenticated()) {
+      return;
+    }
+    try {
+      const response = await getTasks();
+      setTasks(response.data);
+    } catch (error) {
+      console.error('Error fetching tasks: ', error);
+    }
   };
 
   const loadKanbanStages = async () => {
-    const response = await getKanbanStages();
-    setKanbanStages(response.data);
+    if (!isAuthenticated()) {
+      return;
+    }
+    try {
+      const response = await getKanbanStages();
+      setKanbanStages(response.data);
+    } catch (error) {
+      console.error('Error fetching kanban stages: ', error);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (selectedTask) {
-      await updateTask(selectedTask.id, { title: taskName, description: taskDescription });
-      setSelectedTask(null);
+      try {
+        await updateTask(selectedTask.id, { title: taskName, description: taskDescription });
+        setSelectedTask(null);
+      } catch (error) {
+        console.error('Error updating task: ', error);
+      }
     } else {
-      await createTask({
-        title: taskName,
-        description: taskDescription,
-        stage: taskStage,
-        assignee: 1,
-        created_by: 1,
-      });
+      try {
+        await createTask({
+          title: taskName,
+          description: taskDescription,
+          stage: taskStage,
+          assignee: 1,
+          created_by: 1,
+        });
+      } catch (error) {
+        console.error('Error creating task: ', error);
+      }
     }
     setTaskName('');
     setTaskDescription('');
@@ -52,8 +75,12 @@ const TasksPage = () => {
   };
 
   const handleDelete = async (id) => {
-    await deleteTask(id);
-    loadTasks();
+    try {
+      await deleteTask(id);
+      loadTasks();
+    } catch (error) {
+      console.error('Error deleting task: ', error);
+    }
   };
 
   return (

@@ -1,7 +1,8 @@
 // frontend/src/components/user/UserSettings.js
 import React, { useState } from 'react';
-import changePassword from '../../services/api';
-import './UserSettings.css'; // UserSettings.css dosyasını içe aktardık
+import { isAuthenticated } from '../../utils/auth';
+import { changePassword } from '../../services/api';
+import './UserSettings.css';
 
 function UserSettings() {
   const [passwords, setPasswords] = useState({
@@ -19,6 +20,9 @@ function UserSettings() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!isAuthenticated()) {
+      return;
+    }
     try {
       await changePassword(passwords);
       alert('Password changed successfully');
@@ -28,8 +32,8 @@ function UserSettings() {
   };
 
   return (
-    <div className="user-settings-container"> {/* className ile stil sınıfını ekledik */}
-      <div className="user-settings-card"> {/* className ile stil sınıfını ekledik */}
+    <div className="user-settings-container">
+      <div className="user-settings-card">
         <h2>User Settings</h2>
         <form onSubmit={handleSubmit}>
           <label>
