@@ -1,6 +1,7 @@
 // frontend/src/components/project/ProjectList.js
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import './ProjectList.css'; // ProjectList.css dosyasını içe aktardık
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
@@ -15,7 +16,7 @@ function ProjectList() {
   }, []);
 
   return (
-    <div>
+    <div className="project-list-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Projects</h2>
       {projects.map(project => (
         <div key={project.id}>

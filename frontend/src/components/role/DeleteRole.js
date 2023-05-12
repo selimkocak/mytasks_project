@@ -1,6 +1,7 @@
 // frontend/src/components/role/DeleteRole.js
 import React from 'react';
 import { deleteRole } from '../../services/api';
+import './DeleteRole.css';
 
 function DeleteRole({ roleId, afterDelete }) {
     const handleDelete = async () => {
@@ -8,12 +9,12 @@ function DeleteRole({ roleId, afterDelete }) {
             await deleteRole(roleId);
             afterDelete(roleId);
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
     return (
-        <button onClick={handleDelete}>
+        <button className="delete-role-button" onClick={handleDelete}>
             Delete Role
         </button>
     );

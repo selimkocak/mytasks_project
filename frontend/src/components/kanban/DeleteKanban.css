@@ -1,0 +1,18 @@
+/* frontend/src/components/kanban/DeleteKanban.css */
+.delete-kanban {
+    margin-top: 20px;
+  }
+  
+  .delete-kanban h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .delete-kanban button {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  

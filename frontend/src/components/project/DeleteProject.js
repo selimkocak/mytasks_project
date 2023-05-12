@@ -1,6 +1,7 @@
 // frontend/src/components/project/DeleteProject.js
 import React from 'react';
 import api from '../../services/api';
+import './DeleteProject.css'; // DeleteProject.css dosyasını içe aktardık
 
 function DeleteProject({ id }) {
   const handleDelete = async () => {
@@ -13,7 +14,7 @@ function DeleteProject({ id }) {
   };
 
   return (
-    <div>
+    <div className="delete-project-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Delete Project</h2>
       <button onClick={handleDelete}>Delete</button>
     </div>

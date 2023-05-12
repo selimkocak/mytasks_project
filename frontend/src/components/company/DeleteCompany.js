@@ -1,6 +1,7 @@
 // frontend/src/components/company/DeleteCompany.js
 import React from 'react';
 import api from '../../services/api';
+import './DeleteCompany.css'; // DeleteCompany.css dosyasını içe aktardık
 
 function DeleteCompany({ id }) {
 
@@ -17,7 +18,7 @@ function DeleteCompany({ id }) {
   };
 
   return (
-    <div>
+    <div className="delete-company-container"> {/* className ile stil sınıfını ekledik */}
       <h3>Delete Company</h3>
       <button onClick={handleDelete}>Delete</button>
     </div>

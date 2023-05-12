@@ -1,6 +1,7 @@
 // frontend/src/components/role/UpdateRole.js
 import React, { useState, useEffect } from 'react';
 import { updateRole, getRoles } from '../../services/api';
+import './UpdateRole.css';
 
 function UpdateRole({ roleId }) {
     const [roleName, setRoleName] = useState('');
@@ -30,12 +31,12 @@ function UpdateRole({ roleId }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="update-role-form" onSubmit={handleSubmit}>
             <label>
                 Role Name:
                 <input type="text" value={roleName} onChange={e => setRoleName(e.target.value)} />
             </label>
-            <button type="submit">Update Role</button>
+            <button className="update-button" type="submit">Update Role</button>
         </form>
     );
 }

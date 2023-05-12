@@ -1,6 +1,7 @@
 // frontend/src/components/kanban/CreateKanban.js
 import React, { useState } from 'react';
 import api from '../../services/api';
+import './CreateKanban.css';
 
 function CreateKanban() {
   const [name, setName] = useState('');
@@ -20,12 +21,12 @@ function CreateKanban() {
   };
 
   return (
-    <div>
-      <h2>Create Kanban</h2>
+    <div className="create-kanban">
+      <h2>Kanban Oluştur</h2>
       <form onSubmit={handleCreate}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <button type="submit">Create</button>
+        <input type="text" placeholder="Ad" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" placeholder="Açıklama" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <button type="submit">Oluştur</button>
       </form>
     </div>
   );

@@ -1,6 +1,7 @@
 // frontend/src/components/notifications/UpdateNotification.js
 import React, { useState, useEffect } from 'react';
 import { updateNotification, getNotifications } from '../../services/api';
+import './UpdateNotification.css'; // UpdateNotification.css dosyasını içe aktardık
 
 function UpdateNotification({ notificationId }) {
   const [title, setTitle] = useState('');
@@ -32,7 +33,7 @@ function UpdateNotification({ notificationId }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="update-notification-form" onSubmit={handleSubmit}> {/* className ile stil sınıfını ekledik */}
       <label>
         Title:
         <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
@@ -40,12 +41,10 @@ function UpdateNotification({ notificationId }) {
       <label>
         Description:
         <textarea value={description} onChange={e => setDescription(e.target.value)} />
-  </label>
-  <button type="submit">Update Notification</button>
-</form>
-
-);
+      </label>
+      <button type="submit">Update Notification</button>
+    </form>
+  );
 }
 
 export default UpdateNotification;
-

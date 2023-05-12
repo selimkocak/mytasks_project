@@ -1,0 +1,23 @@
+/* frontend/src/components/role/CreateRole.css */
+.create-role-form {
+    margin-top: 20px;
+}
+
+.create-role-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.create-role-form input[type="text"] {
+    padding: 5px;
+    width: 200px;
+}
+
+.submit-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

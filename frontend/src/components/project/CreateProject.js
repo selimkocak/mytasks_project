@@ -1,12 +1,15 @@
 // frontend/src/components/project/CreateProject.js
 import React, { useState } from 'react';
 import api from '../../services/api';
+import './CreateProject.css'; // CreateProject.css dosyasını içe aktardık
 
 function CreateProject() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleCreate = async () => {
+  const handleCreate = async (e) => {
+    e.preventDefault();
+
     try {
       const response = await api.createProject({ name, description });
       console.log(response.data);
@@ -16,7 +19,7 @@ function CreateProject() {
   };
 
   return (
-    <div>
+    <div className="create-project-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Create Project</h2>
       <form onSubmit={handleCreate}>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />

@@ -1,0 +1,16 @@
+/* frontend\src\components\shared\StarRating.css */
+
+.star-rating {
+    display: flex;
+    align-items: center;
+  }
+  
+  .star-icon {
+    color: #FFD700;
+  }
+  
+  .star-label {
+    margin-left: 8px;
+    font-size: 16px;
+  }
+  

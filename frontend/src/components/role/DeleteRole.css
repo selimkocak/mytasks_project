@@ -1,0 +1,8 @@
+/* frontend/src/components/role/DeleteRole.css */
+.delete-role-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,32 @@
+/* frontend/src/components/notifications/UpdateNotification.css */
+
+.update-notification-form {
+    margin-top: 20px;
+  }
+  
+  .update-notification-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .update-notification-form input[type="text"],
+  .update-notification-form textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .update-notification-form button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .update-notification-form button:hover {
+    background-color: #0069d9;
+  }
+  

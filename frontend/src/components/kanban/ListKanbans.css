@@ -1,0 +1,26 @@
+/* frontend/src/components/kanban/ListKanbans.css */
+.kanban-list {
+    margin-top: 20px;
+  }
+  
+  .kanban-card {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .kanban-card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .kanban-card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .kanban-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  

@@ -1,6 +1,7 @@
 // frontend/src/components/ratings/CreateRating.js
 import React, { useState } from 'react';
 import { createRating } from '../../services/api';
+import './CreateRating.css'; // CreateRating.css dosyasını içe aktardık
 
 const CreateRating = ({ projectId, taskId }) => {
   const [rating, setRating] = useState(0);
@@ -12,7 +13,7 @@ const CreateRating = ({ projectId, taskId }) => {
   };
 
   return (
-    <div>
+    <div className="create-rating-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Create Rating</h2>
       <form onSubmit={handleSubmit}>
         <input

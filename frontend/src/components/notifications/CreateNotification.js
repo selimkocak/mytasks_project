@@ -1,6 +1,7 @@
 // frontend/src/components/notifications/CreateNotification.js
 import React, { useState } from 'react';
 import { createNotification } from '../../services/api';
+import './CreateNotification.css'; // CreateNotification.css dosyasını içe aktardık
 
 function CreateNotification() {
   const [title, setTitle] = useState('');
@@ -17,7 +18,7 @@ function CreateNotification() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="create-notification-form" onSubmit={handleSubmit}> {/* className ile stil sınıfını ekledik */}
       <label>
         Title:
         <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
