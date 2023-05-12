@@ -45,7 +45,7 @@ const TasksPage = () => {
     e.preventDefault();
     if (selectedTask) {
       try {
-        await updateTask(selectedTask.id, { title: taskName, description: taskDescription });
+        await updateTask(selectedTask.id, { title: taskName, description: taskDescription, stage: taskStage });
         setSelectedTask(null);
       } catch (error) {
         console.error('Error updating task: ', error);
@@ -65,12 +65,14 @@ const TasksPage = () => {
     }
     setTaskName('');
     setTaskDescription('');
+    setTaskStage('');
     loadTasks();
   };
 
   const handleEdit = (task) => {
     setTaskName(task.title);
     setTaskDescription(task.description);
+    setTaskStage(task.stage);
     setSelectedTask(task);
   };
 
@@ -99,8 +101,7 @@ const TasksPage = () => {
           value={taskDescription}
           onChange={(e) => setTaskDescription(e.target.value)}
         />
-        <select
-          value={taskStage}
+        <select          value={taskStage}
           onChange={(e) => setTaskStage(e.target.value)}
         >
           {kanbanStages.map((stage) => (
@@ -126,3 +127,4 @@ const TasksPage = () => {
 };
 
 export default TasksPage;
+

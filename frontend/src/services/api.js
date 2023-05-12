@@ -3,8 +3,59 @@ import axios from "axios";
 
 export const API_URL = "http://localhost:8000/api/";
 
+// Create axios instance
+const service = axios.create({
+  baseURL: API_URL,
+  timeout: 5000,
+});
+
+// Request interceptor
+service.interceptors.request.use(
+  config => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    Promise.reject(error);
+  }
+);
+
+// Response interceptor
+service.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    if (error.response.status === 401) {
+      const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+      if (refreshToken) {
+        return service.post("auth/token/refresh/", { refresh: refreshToken })
+          .then(response => {
+            localStorage.setItem('token', JSON.stringify(response.data.tokens));
+            const config = error.config;
+            config.headers['Authorization'] = `Bearer ${response.data.tokens}`;
+            return new Promise((resolve, reject) => {
+              service.request(config).then(response => {
+                resolve(response);
+              }).catch((err) => {
+                reject(err);
+              })
+            });
+          })
+          .catch(error => {
+            Promise.reject(error);
+          });
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const register = (data) => {
-  return axios.post(API_URL + "auth/register/", data)
+  return service.post("auth/register/", data)
     .then((response) => {
       if (response.data.tokens) {
         localStorage.setItem('token', JSON.stringify(response.data.tokens));
@@ -45,77 +96,38 @@ export const refreshToken = (data) => {
 
 // user profile
 export const getUserProfile = () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(API_URL + 'auth/user-profile/', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get('auth/user-profile/');
 };
 
 export const updateUserProfile = (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(API_URL + 'auth/user-profile/', data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put('auth/user-profile/', data);
 };
 
 export const changePassword = (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(API_URL + 'auth/change-password/', data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put('auth/change-password/', data);
 };
  
 // company
 export const listCompanies = () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(API_URL + "company/", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("company/");
 };
 
 export const createCompany = (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(API_URL + "company/", data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("company/", data);
 };
 
 export const getCompany = (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(API_URL + `company/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get(`company/${id}/`);
 };
 
 export const updateCompany = (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(API_URL + `company/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`company/${id}/`, data);
 };
 
 export const deleteCompany = (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(API_URL + `company/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`company/${id}/`);
 };
+
 
 // Task
 export const createTask = async (data) => {
@@ -387,7 +399,7 @@ export const deleteKanban = async (id) => {
 // kanban stages
 export const getKanbanStages = async () => {
   const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}kanban/stages/`, {
+  return axios.get(`${API_URL}/kanban/stages/`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
