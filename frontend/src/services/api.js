@@ -39,6 +39,7 @@ export const refreshToken = (data) => {
 
 // user profile
 export const getUserProfile = () => {
+<<<<<<< HEAD
   return axios.get(API_URL + 'auth/user-profile/');
   };
   
@@ -69,6 +70,78 @@ const updateCompany = (id, data) => {
 
 export const deleteCompany = (id) => {
   return axios.delete(API_URL + `company/${id}/`);
+=======
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.get(API_URL + 'auth/user-profile/', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateUserProfile = (data) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.put(API_URL + 'auth/user-profile/', data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const changePassword = (data) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.put(API_URL + 'auth/change-password/', data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+ 
+// company
+export const listCompanies = () => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.get(API_URL + "company/", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const createCompany = (data) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.post(API_URL + "company/", data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const getCompany = (id) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.get(API_URL + `company/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateCompany = (id, data) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.put(API_URL + `company/${id}/`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const deleteCompany = (id) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.delete(API_URL + `company/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+>>>>>>> parent of 0034424 (api.js services)
 };
 
 // Task
@@ -197,7 +270,16 @@ export const deleteKanban = async (id) => {
 
 // kaban stage
 export const getKanbanStages = async () => {
+<<<<<<< HEAD
   return axios.get(`${API_URL}kanban/stages/`);
+=======
+  const token = JSON.parse(localStorage.getItem('token'));
+  return axios.get(`${API_URL}kanban/stages/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+>>>>>>> parent of 0034424 (api.js services)
 };
 
 

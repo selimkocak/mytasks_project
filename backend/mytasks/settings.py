@@ -1,4 +1,3 @@
-# backend\mytasks\settings.py
 from pathlib import Path
 from django.utils.timezone import timedelta
 from corsheaders.defaults import default_headers
@@ -10,6 +9,7 @@ SECRET_KEY = 'django-insecure-+3e1%a=eiyms)9@linjiz$ajpb36f50n#qoxr5!cw7&p9m-s92
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
