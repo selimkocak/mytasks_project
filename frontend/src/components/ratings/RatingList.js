@@ -1,6 +1,7 @@
 // frontend/src/components/ratings/RatingList.js
 import React, { useState, useEffect } from 'react';
 import { getRatings } from '../../services/api';
+import './RatingList.css'; // RatingList.css dosyasını içe aktardık
 
 const RatingList = () => {
   const [ratings, setRatings] = useState([]);
@@ -15,7 +16,7 @@ const RatingList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="rating-list-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Ratings</h2>
       <ul>
         {ratings.map((rating) => (

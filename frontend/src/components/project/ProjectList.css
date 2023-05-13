@@ -1,0 +1,22 @@
+/* frontend/src/components/project/ProjectList.css */
+
+.project-list-container {
+    margin-top: 20px;
+  }
+  
+  .project-list-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .project-list-container h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .project-list-container p {
+    margin: 0;
+  }
+  

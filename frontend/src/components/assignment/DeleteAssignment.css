@@ -1,0 +1,19 @@
+/* frontend/src/components/assignment/DeleteAssignment.css */
+
+.delete-assignment-container {
+    margin-top: 20px;
+  }
+  
+  .delete-assignment-container button {
+    padding: 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-assignment-container button:hover {
+    background-color: #c82333;
+  }
+  

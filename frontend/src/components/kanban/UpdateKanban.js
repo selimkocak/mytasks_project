@@ -1,6 +1,7 @@
 // frontend/src/components/kanban/UpdateKanban.js
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import './UpdateKanban.css';
 
 function UpdateKanban({ id }) {
   const [name, setName] = useState('');
@@ -8,9 +9,13 @@ function UpdateKanban({ id }) {
 
   useEffect(() => {
     const fetchKanban = async () => {
-      const response = await api.getKanbans(id);
-      setName(response.data.name);
-      setDescription(response.data.description);
+      try {
+        const response = await api.getKanbans(id);
+        setName(response.data.name);
+        setDescription(response.data.description);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchKanban();
@@ -19,7 +24,7 @@ function UpdateKanban({ id }) {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const data =     { name, description };
+    const data = { name, description };
 
     try {
       const response = await api.updateKanban(id, data);
@@ -30,16 +35,15 @@ function UpdateKanban({ id }) {
   };
 
   return (
-    <div>
-      <h2>Update Kanban</h2>
+    <div className="update-kanban">
+      <h2>Kanban Güncelle</h2>
       <form onSubmit={handleUpdate}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <button type="submit">Update</button>
+        <input type="text" placeholder="Ad" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" placeholder="Açıklama" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <button type="submit">Güncelle</button>
       </form>
     </div>
   );
 }
 
 export default UpdateKanban;
-

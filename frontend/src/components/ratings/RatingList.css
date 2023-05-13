@@ -1,0 +1,21 @@
+/* frontend/src/components/ratings/RatingList.css */
+
+.rating-list-container {
+    margin-top: 20px;
+  }
+  
+  .rating-list-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .rating-list-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .rating-list-container li {
+    margin-bottom: 5px;
+  }
+  

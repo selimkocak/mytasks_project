@@ -1,12 +1,20 @@
 // frontend/src/components/project/CreateProject.js
 import React, { useState } from 'react';
 import api from '../../services/api';
+import { isAuthenticated } from '../../utils/auth';
+import './CreateProject.css';
 
 function CreateProject() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleCreate = async () => {
+  const handleCreate = async (e) => {
+    e.preventDefault();
+
+    if (!isAuthenticated()) {
+      return;
+    }
+
     try {
       const response = await api.createProject({ name, description });
       console.log(response.data);
@@ -16,7 +24,7 @@ function CreateProject() {
   };
 
   return (
-    <div>
+    <div className="create-project-container">
       <h2>Create Project</h2>
       <form onSubmit={handleCreate}>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />

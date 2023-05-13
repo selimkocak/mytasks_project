@@ -1,6 +1,7 @@
 // frontend/src/components/assignment/ListAssignments.js
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import './ListAssignments.css'; // ListAssignments.css dosyasını içe aktardık
 
 function ListAssignments() {
   const [assignments, setAssignments] = useState([]);
@@ -19,7 +20,7 @@ function ListAssignments() {
   }, []);
 
   return (
-    <div>
+    <div className="list-assignments-container"> {/* className ile stil sınıfını ekledik */}
       <h2>List Assignments</h2>
       {assignments.map((assignment) => (
         <div key={assignment.id}>

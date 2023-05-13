@@ -1,6 +1,7 @@
 // frontend/src/components/ratings/UpdateRating.js
 import React, { useState, useEffect } from 'react';
 import { updateRating } from '../../services/api';
+import './UpdateRating.css'; // UpdateRating.css dosyasını içe aktardık
 
 const UpdateRating = ({ ratingId }) => {
   const [rating, setRating] = useState(0);
@@ -18,7 +19,7 @@ const UpdateRating = ({ ratingId }) => {
   };
 
   return (
-    <div>
+    <div className="update-rating-container"> {/* className ile stil sınıfını ekledik */}
       <h2>Update Rating</h2>
       <form onSubmit={handleSubmit}>
         <input

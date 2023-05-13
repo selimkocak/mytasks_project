@@ -161,8 +161,3 @@ olarak, iş planınızı takım üyelerinizle paylaşarak herkesin projenin aşa
 9.5. Proje ilerlemesinin ve tamamlanma durumunun takibi
 9.6. Proje raporlarının ve istatistiklerinin görüntülenmesi
 
-Bu şekilde her ana başlık için daha fazla detaylı maddeler ekleyerek, 
-180 maddelik bir iş planı oluşturabilirsiniz. İş planınızı tamamladıktan sonra,
-projenizin her aşamasını daha iyi planlayabilir ve organize edebilirsiniz. Bu sayede, 
-projenizin başarılı bir şekilde tamamlanması için ihtiyaç duyulan etkili işbirliği ve
-takım çalışmasını sağlamış olursunuz.

@@ -1,0 +1,49 @@
+72 maddelik iş planını oluşturmak için tüm dosya ve bileşenlerin stil ve kullanılabilirlik düzenlemelerine odaklanacağım. İş planınızın her adımını takip etmek için dosya ve bileşenleri aşağıdaki sırayla ele alacağım:
+
++1. `frontend\src\components\navbar\Navbar.js` için CSS dosyası oluşturun: `frontend\src\components\navbar\Navbar.css`
++2. `frontend\src\components\auth\SignIn.js` için CSS dosyası oluşturun: `frontend\src\components\auth\SignIn.css`
++3. `frontend\src\components\auth\SignUp.js` için CSS dosyası oluşturun: `frontend\src\components\auth\SignUp.css`
++4. `frontend\src\components\user\UserProfile.js` için CSS dosyası oluşturun: `frontend\src\components\user\UserProfile.css`
++5. `frontend\src\components\user\UserSettings.js` için CSS dosyası oluşturun: `frontend\src\components\user\UserSettings.css`
++6. `frontend\src\components\comments\CommentsList.js` için CSS dosyası oluşturun: `frontend\src\components\comments\CommentsList.css`
++7. `frontend\src\components\comments\CreateComment.js` için CSS dosyası oluşturun: `frontend\src\components\comments\CreateComment.css`
++8. `frontend\src\components\comments\UpdateComment.js` için CSS dosyası oluşturun: `frontend\src\components\comments\UpdateComment.css`
++9. `frontend\src\components\comments\DeleteComment.js` için CSS dosyası oluşturun: `frontend\src\components\comments\DeleteComment.css`
++10. `frontend\src\components\assignment\ListAssignments.js` için CSS dosyası oluşturun: `frontend\src\components\assignment\ListAssignments.css`
++11. `frontend\src\components\assignment\CreateAssignment.js` için CSS dosyası oluşturun: `frontend\src\components\assignment\CreateAssignment.css`
++12. `frontend\src\components\assignment\UpdateAssignment.js` için CSS dosyası oluşturun: `frontend\src\components\assignment\UpdateAssignment.css`
++13. `frontend\src\components\assignment\DeleteAssignment.js` için CSS dosyası oluşturun: `frontend\src\components\assignment\DeleteAssignment.css`
++14. `frontend\src\components\company\CompanyList.js` için CSS dosyası oluşturun: `frontend\src\components\company\CompanyList.css`
++15. `frontend\src\components\company\CompanyPage.js` için CSS dosyası oluşturun: `frontend\src\components\company\CompanyPage.css`
++16. `frontend\src\components\company\CreateCompany.js` için CSS dosyası oluşturun: `frontend\src\components\company\CreateCompany.css`
++17. `frontend\src\components\company\EditCompany.js` için CSS dosyası oluşturun: `frontend\src\components\company\EditCompany.css`
++18. `frontend\src\components\company\DeleteCompany.js` için CSS dosyası oluşturun: `frontend\src\components\company\DeleteCompany.css
++19. `frontend\src\components\project\ProjectList.js` için CSS dosyası oluşturun: `frontend\src\components\project\ProjectList.css`
++20. `frontend\src\components\project\ProjectDetails.js` için CSS dosyası oluşturun: `frontend\src\components\project\ProjectDetails.css`
++21. `frontend\src\components\project\CreateProject.js` için CSS dosyası oluşturun: `frontend\src\components\project\CreateProject.css`
++22. `frontend\src\components\project\EditProject.js` için CSS dosyası oluşturun: `frontend\src\components\project\EditProject.css`
++23. `frontend\src\components\project\DeleteProject.js` için CSS dosyası oluşturun: `frontend\src\components\project\DeleteProject.css`
++24. `frontend\src\components\ratings\RatingList.js` için CSS dosyası oluşturun: `frontend\src\components\ratings\RatingList.css`
++25. `frontend\src\components\ratings\CreateRating.js` için CSS dosyası oluşturun: `frontend\src\components\ratings\CreateRating.css`
++26. `frontend\src\components\ratings\UpdateRating.js` için CSS dosyası oluşturun: `frontend\src\components\ratings\UpdateRating.css`
++27. `frontend\src\components\ratings\DeleteRating.js` için CSS dosyası oluşturun: `frontend\src\components\ratings\DeleteRating.css`
++28. `frontend\src\components\notifications\NotificationList.js` için CSS dosyası oluşturun: `frontend\src\components\notifications\NotificationList.css`
++29. `frontend\src\components\notifications\CreateNotification.js` için CSS dosyası oluşturun: `frontend\src\components\notifications\CreateNotification.css`
++30. `frontend\src\components\notifications\UpdateNotification.js` için CSS dosyası oluşturun: `frontend\src\components\notifications\UpdateNotification.css`
++31. `frontend\src\components\notifications\DeleteNotification.js` için CSS dosyası oluşturun: `frontend\src\components\notifications\DeleteNotification.css`
++32. `frontend\src\components\kanban\KanbanBoard.js` için CSS dosyası oluşturun: `frontend\src\components\kanban\KanbanBoard.css`
++33. `frontend\src\components\kanban\ListKanbans.js` için CSS dosyası oluşturun: `frontend\src\components\kanban\ListKanbans.css`
++34. `frontend\src\components\kanban\CreateKanban.js` için CSS dosyası oluşturun: `frontend\src\components\kanban\CreateKanban.css`
++35. `frontend\src\components\kanban\UpdateKanban.js` için CSS dosyası oluşturun: `frontend\src\components\kanban\UpdateKanban.css`
++36. `frontend\src\components\kanban\DeleteKanban.js` için CSS dosyası oluşturun: `frontend\src\components\kanban\DeleteKanban.css`
++37. `frontend\src\components\role\ListRoles.js` için CSS dosyası oluşturun: `frontend\src\components\role\ListRoles.css`
++38. `frontend\src\components\role\CreateRole.js` için CSS dosyası oluşturun: `frontend\src\components\role\CreateRole.css`
++39. `frontend\src\components\role\UpdateRole.js` için CSS dosyası oluşturun: `frontend\src\components\role\UpdateRole.css`
++40. `frontend\src\components\role\DeleteRole.js` için CSS dosyası oluşturun: `frontend\src\components\role\DeleteRole.css`
++41. `frontend\src\components\tasks\TasksPage.js` için CSS dosyası oluşturun: `frontend\src\components\tasks\TasksPage.css`
++42. `frontend\src\components\shared\StarRating.js` için CSS dosyası oluşturun: `frontend\src\components\shared\StarRating.css`
+
+Bu adımlar, dosya ve bileşenleriniz için ayrı ayrı CSS dosyalarını oluşturmanızı sağlar. Bu CSS dosyalarını kullanarak modern ve kullanıcı dostu bir arayüz tasarlayabilirsiniz.
+Ayrıca, mobil uyumluluğu sağlamak için responsive tasarım ilkelerine uymak önemlidir. CSS medya sorgularını kullanarak ekran boyutlarına göre düzenlemeler yapabilirsiniz. Bootstrap 5'i kullanarak mobil uyumlu bir tasarım elde etmek için Bootstrap bileşenlerini ve özelliklerini kullanabilirsiniz.
+Animasyonlar ve geçişler, kullanıcı deneyimini iyileştirmek için önemli bir rol oynar. CSS geçişlerini ve animasyonlarını kullanarak sayfalar arasında akıcı geçişler sağlayabilir ve kullanıcıların etkileşimli bir deneyim yaşamasını sağlayabilirsiniz.
+Bu iş planı, stil ve kullanılabilirlik açısından tüm dosya ve bileşenlerinizi ele almaktadır. Her bir bileşenin tasarımını geliştirmek için gerekli CSS düzenlemelerini yapabilirsiniz.

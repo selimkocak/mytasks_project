@@ -1,0 +1,36 @@
+/* frontend/src/components/ratings/UpdateRating.css */
+
+.update-rating-container {
+    margin-top: 20px;
+  }
+  
+  .update-rating-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .update-rating-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .update-rating-container input {
+    width: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .update-rating-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .update-rating-container button:hover {
+    background-color: #0069d9;
+  }
+  

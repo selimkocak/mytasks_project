@@ -1,0 +1,19 @@
+/* frontend/src/components/assignment/ListAssignments.css */
+
+.list-assignments-container {
+    margin-top: 20px;
+  }
+  
+  .list-assignments-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .list-assignments-container h3 {
+    margin-bottom: 10px;
+  }
+  
+  .list-assignments-container p {
+    margin-bottom: 20px;
+  }
+  

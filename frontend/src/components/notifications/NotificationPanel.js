@@ -1,11 +1,16 @@
 // frontend/src/components/notifications/NotificationPanel.js
 import React, { useState, useEffect } from 'react';
 import { getNotifications } from '../../services/api';
+import { isAuthenticated } from '../../utils/auth';
 
 function NotificationPanel() {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
+    if (!isAuthenticated()) {
+      return;
+    }
+
     fetchNotifications();
   }, []);
 

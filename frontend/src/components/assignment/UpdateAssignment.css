@@ -1,0 +1,36 @@
+/* frontend/src/components/assignment/UpdateAssignment.css */
+
+.update-assignment-container {
+    margin-top: 20px;
+  }
+  
+  .update-assignment-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .update-assignment-container form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .update-assignment-container input {
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .update-assignment-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .update-assignment-container button:hover {
+    background-color: #0069d9;
+  }
+  

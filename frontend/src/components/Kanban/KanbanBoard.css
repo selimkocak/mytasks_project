@@ -1,26 +1,43 @@
-/* frontend\src\components\kanban\KanbanBoard.css */
+/* frontend/src/components/kanban/KanbanBoard.css */
+
 .board {
     display: flex;
-    justify-content: space-around;
-    padding: 10px;
-}
-
-.column {
+    justify-content: space-between;
+  }
+  
+  .column {
     flex: 1;
-    margin: 0 10px;
     padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-}
-
-.task-list {
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    margin: 10px;
+  }
+  
+  .column h3 {
+    margin-top: 0;
+  }
+  
+  .task-list {
     min-height: 100px;
-    margin-top: 10px;
-}
-
-.task {
+    border: 1px solid #ccc;
+    border-radius: 4px;
     padding: 10px;
-    margin-bottom: 10px;
-    background-color: #ffffff;
-    border-radius: 5px;
-}
+    background-color: #fff;
+  }
+  
+  .task {
+    margin: 5px;
+    padding: 10px;
+    background-color: #ebebeb;
+    border-radius: 4px;
+    cursor: grab;
+  }
+  
+  .task:hover {
+    background-color: #d5d5d5;
+  }
+  
+  .task:active {
+    cursor: grabbing;
+  }
+  

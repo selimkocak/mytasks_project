@@ -1,0 +1,16 @@
+/* frontend/src/components/company/CompanyList.css */
+
+.company-list-container {
+    margin-top: 20px;
+  }
+  
+  .company-list-container h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .company-list-container p {
+    margin: 0;
+  }
+  

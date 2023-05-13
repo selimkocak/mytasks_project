@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getRoles } from '../../services/api';
 import DeleteRole from './DeleteRole';
+import './ListRoles.css';
 
 function ListRoles() {
     const [roles, setRoles] = useState([]);
@@ -24,10 +25,10 @@ function ListRoles() {
     };
 
     return (
-        <div>
+        <div className="role-list">
             <h2>Role List</h2>
             {roles.map(role => (
-                <div key={role.id}>
+                <div key={role.id} className="role-item">
                     <h3>{role.name}</h3>
                     <DeleteRole roleId={role.id} afterDelete={handleDelete} />
                 </div>

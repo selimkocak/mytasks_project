@@ -1,6 +1,7 @@
-// frontend\src\components\comments\CommentsList.js
+// frontend/src/components/comments/CommentsList.js
 import React, { useEffect, useState } from 'react';
 import { getComments } from '../../services/api';
+import './CommentsList.css'; // CommentsList.css dosyasını içe aktardık
 
 const CommentsList = ({ taskId }) => {
   const [comments, setComments] = useState([]);
@@ -15,9 +16,9 @@ const CommentsList = ({ taskId }) => {
   }, [taskId]);
 
   return (
-    <div>
+    <div className="comments-list"> {/* className ile stil sınıfını ekledik */}
       {comments.map((comment) => (
-        <div key={comment.id}>
+        <div className="comment" key={comment.id}> {/* className ile stil sınıfını ekledik */}
           <p>{comment.text}</p>
         </div>
       ))}

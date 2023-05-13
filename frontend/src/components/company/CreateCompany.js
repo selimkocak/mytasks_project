@@ -1,6 +1,7 @@
 // frontend/src/components/company/CreateCompany.js
 import React, { useState } from 'react';
 import api from '../../services/api';
+import './CreateCompany.css'; // CreateCompany.css dosyasını içe aktardık
 
 function CreateCompany() {
   const [name, setName] = useState('');
@@ -19,7 +20,7 @@ function CreateCompany() {
   };
 
   return (
-    <div>
+    <div className="create-company-container"> {/* className ile stil sınıfını ekledik */}
       <h3>Create Company</h3>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />

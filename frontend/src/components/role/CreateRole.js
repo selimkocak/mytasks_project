@@ -1,10 +1,11 @@
 // frontend/src/components/role/CreateRole.js
 import React, { useState } from 'react';
 import { createRole } from '../../services/api';
+import './CreateRole.css';
 
 function CreateRole() {
     const [name, setName] = useState('');
-  
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const roleData = { name: name };
@@ -15,14 +16,14 @@ function CreateRole() {
             console.log(error);
         }
     };
-  
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="create-role-form" onSubmit={handleSubmit}>
             <label>
                 Role Name:
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </label>
-            <input type="submit" value="Submit" />
+            <input className="submit-button" type="submit" value="Submit" />
         </form>
     );
 }

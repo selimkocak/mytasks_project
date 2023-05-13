@@ -1,61 +1,89 @@
-// frontend/src/pages/TasksPage.js
+// frontend/src/components/tasks/TasksPage.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getTasks, updateTask, deleteTask, getKanbanStages } from '../../services/api'; // getKanbanStages'i import ettik
+import { isAuthenticated } from '../../utils/auth';
+import { createTask, getTasks, updateTask, deleteTask, getKanbanStages } from '../../services/api';
+import './TasksPage.css';
 
 const TasksPage = () => {
   const [tasks, setTasks] = useState([]);
   const [taskName, setTaskName] = useState('');
-  const [taskDescription, setTaskDescription] = useState('');  // New state variable for task description
+  const [taskDescription, setTaskDescription] = useState('');
   const [selectedTask, setSelectedTask] = useState(null);
-  const [taskStage, setTaskStage] = useState(''); // yeni state variable for task stage
-  const [kanbanStages, setKanbanStages] = useState([]); // yeni state variable for kanban stages
-  
+  const [taskStage, setTaskStage] = useState('');
+  const [kanbanStages, setKanbanStages] = useState([]);
+
   useEffect(() => {
     loadTasks();
-    loadKanbanStages(); // kanban stages'i yüklemek için
+    loadKanbanStages();
   }, []);
 
   const loadTasks = async () => {
-    const response = await getTasks();
-    setTasks(response.data);
+    if (!isAuthenticated()) {
+      return;
+    }
+    try {
+      const response = await getTasks();
+      setTasks(response.data);
+    } catch (error) {
+      console.error('Error fetching tasks: ', error);
+    }
   };
 
   const loadKanbanStages = async () => {
-    const response = await getKanbanStages();
-    setKanbanStages(response.data);
+    if (!isAuthenticated()) {
+      return;
+    }
+    try {
+      const response = await getKanbanStages();
+      setKanbanStages(response.data);
+    } catch (error) {
+      console.error('Error fetching kanban stages: ', error);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (selectedTask) {
-      await updateTask(selectedTask.id, { title: taskName, description: taskDescription });  // Added description field
-      setSelectedTask(null);
+      try {
+        await updateTask(selectedTask.id, { title: taskName, description: taskDescription, stage: taskStage });
+        setSelectedTask(null);
+      } catch (error) {
+        console.error('Error updating task: ', error);
+      }
     } else {
-      await createTask({
-        title: taskName,
-        description: taskDescription,  // Use the value from state variable
-        stage: 1, 
-        assignee: 1,
-        created_by: 1,
-      });
+      try {
+        await createTask({
+          title: taskName,
+          description: taskDescription,
+          stage: taskStage,
+          assignee: 1,
+          created_by: 1,
+        });
+      } catch (error) {
+        console.error('Error creating task: ', error);
+      }
     }
     setTaskName('');
-    setTaskDescription('');  // Clear the description field after submitting
+    setTaskDescription('');
+    setTaskStage('');
     loadTasks();
   };
 
   const handleEdit = (task) => {
     setTaskName(task.title);
-    setTaskDescription(task.description);  // Set the task description when editing
+    setTaskDescription(task.description);
+    setTaskStage(task.stage);
     setSelectedTask(task);
   };
 
   const handleDelete = async (id) => {
-    await deleteTask(id);
-    loadTasks();
+    try {
+      await deleteTask(id);
+      loadTasks();
+    } catch (error) {
+      console.error('Error deleting task: ', error);
+    }
   };
-
-  
 
   return (
     <div>
@@ -71,39 +99,32 @@ const TasksPage = () => {
           type="text"
           placeholder="Task description"
           value={taskDescription}
-          onChange={(e) => setTaskDescription(e.target.value)}  // New input field for task description
+          onChange={(e) => setTaskDescription(e.target.value)}
         />
-            <select
-              value={taskStage}
-              onChange={(e) => setTaskStage(e.target.value)}
-            >
-              {kanbanStages.map((stage) => (
-                <option key={stage.id} value={stage.id}>
-                  {stage.name}
-                </option>
-              ))}
+        <select          value={taskStage}
+          onChange={(e) => setTaskStage(e.target.value)}
+        >
+          {kanbanStages.map((stage) => (
+            <option key={stage.id} value={stage.id}>
+              {stage.name}
+            </option>
+          ))}
         </select>
-
         <button type="submit">{selectedTask ? 'Update' : 'Create'} Task</button>
       </form>
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
             <h2>{task.title}</h2>
-            <p>{task.description}</p> 
-
+            <p>{task.description}</p>
             <button onClick={() => handleEdit(task)}>Edit</button>
             <button onClick={() => handleDelete(task.id)}>Delete</button>
           </li>
-          
         ))}
-
-
       </ul>
-
-
     </div>
   );
 };
 
 export default TasksPage;
+
