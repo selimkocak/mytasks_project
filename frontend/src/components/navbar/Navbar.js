@@ -1,15 +1,28 @@
 // frontend\src\components\navbar\Navbar.js
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import './Navbar.css';
-import { isAuthenticated }  from '../../utils/auth';
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Navbar.css";
+import { isAuthenticated, logout } from "../../services/api";
+import { UserContext } from "../../context/UserContext";
 
 const Navbar = () => {
+  const { user, setUser } = useContext(UserContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoggedIn(isAuthenticated());
-  }, []);
+  }, [user]);
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setUser(null);
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -35,9 +48,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/logout" className="nav-links">
+              <button onClick={handleLogout} className="nav-links">
                 Logout
-              </Link>
+              </button>
             </li>
           </ul>
         ) : (
@@ -58,5 +71,4 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;

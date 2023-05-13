@@ -11,41 +11,48 @@ const service = axios.create({
 
 // Request interceptor
 service.interceptors.request.use(
-  config => {
-    const token = JSON.parse(localStorage.getItem('token'));
+  (config) => {
+    const token = JSON.parse(localStorage.getItem("token"));
     if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
   },
-  error => {
+  (error) => {
     Promise.reject(error);
   }
 );
 
 // Response interceptor
 service.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  error => {
+  (error) => {
     if (error.response.status === 401) {
-      const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+      const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
       if (refreshToken) {
-        return service.post("auth/token/refresh/", { refresh: refreshToken })
-          .then(response => {
-            localStorage.setItem('token', JSON.stringify(response.data.tokens));
+        return service
+          .post("auth/token/refresh/", { refresh: refreshToken })
+          .then((response) => {
+            localStorage.setItem(
+              "token",
+              JSON.stringify(response.data.tokens)
+            );
             const config = error.config;
-            config.headers['Authorization'] = `Bearer ${response.data.tokens}`;
+            config.headers["Authorization"] = `Bearer ${response.data.tokens}`;
             return new Promise((resolve, reject) => {
-              service.request(config).then(response => {
-                resolve(response);
-              }).catch((err) => {
-                reject(err);
-              })
+              service
+                .request(config)
+                .then((response) => {
+                  resolve(response);
+                })
+                .catch((err) => {
+                  reject(err);
+                });
             });
           })
-          .catch(error => {
+          .catch((error) => {
             Promise.reject(error);
           });
       }
@@ -55,38 +62,66 @@ service.interceptors.response.use(
 );
 
 export const register = (data) => {
-  return service.post("auth/register/", data)
-    .then((response) => {
-      if (response.data.tokens) {
-        localStorage.setItem('token', JSON.stringify(response.data.tokens));
-      }
-      return response;
-    });
+  return service.post("auth/register/", data).then((response) => {
+    if (response.data.tokens) {
+      localStorage.setItem("token", JSON.stringify(response.data.tokens));
+    }
+    return response;
+  });
 };
 
 export const login = (data) => {
-  return axios.post(API_URL + "auth/token/", data)
-    .then((response) => {
-      if (response.data.user && response.data.tokens) {
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        localStorage.setItem('token', JSON.stringify(response.data.tokens));
+  return axios.post(API_URL + "auth/token/", data).then((response) => {
+    if (response.data.access) {
+      localStorage.setItem("token", JSON.stringify(response.data.access));
+      // Eğer refresh token dönüyorsa
+      if (response.data.refresh) {
+        localStorage.setItem(
+          "refreshToken",
+          JSON.stringify(response.data.refresh)
+        );
       }
-      return response;
-    });
+    }
+    if (response.data.user) {
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+    }
+    return response;
+  });
 };
 
-export const logout = () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(API_URL + "auth/logout/", null, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((response) => {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      return response;
-    });
+export const logout = async () => {
+  try {
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    if (token) {
+      // Sunucuya logout isteği gönder
+      await service.post("auth/logout/", null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    }
+
+    // Kullanıcı ve token verilerini yerel depodan temizle
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  } catch (error) {
+    throw new Error("Logout failed");
+  }
+};
+
+export const isAuthenticated = () => {
+  const user = localStorage.getItem("user");
+  return user !== null;
+};
+
+// Set auth token function
+export const setAuthToken = (token) => {
+  if (token) {
+    service.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete service.defaults.headers.common['Authorization'];
+  }
 };
 
 export const refreshToken = (data) => {
@@ -105,7 +140,7 @@ export const updateUserProfile = (data) => {
 export const changePassword = (data) => {
   return service.put('auth/change-password/', data);
 };
- 
+
 // company
 export const listCompanies = () => {
   return service.get("company/");

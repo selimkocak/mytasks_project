@@ -1,14 +1,13 @@
 // frontend/src/components/kanban/KanbanBoard.js
 import React, { useState, useEffect, useContext } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { getTasks, updateTask, getKanbanStages } from '../../services/api';
-import UserContext from '../../context/UserContext';
+import { getTasks } from '../../services/api';
+import { UserContext } from '../../context/UserContext';
 import { isAuthenticated } from '../../utils/auth';
 import './KanbanBoard.css';
 
 const KanbanBoard = () => {
   const [data, setData] = useState(null);
-  const [stages, setStages] = useState([]);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -16,18 +15,17 @@ const KanbanBoard = () => {
       return;
     }
 
-    const adaptData = (apiData, stages) => {
+    const adaptData = (apiData) => {
       // Adaptation logic...
     };
 
-    Promise.all([getKanbanStages(), getTasks()])
-      .then(([stageResponse, taskResponse]) => {
-        setStages(stageResponse.data);
-        const adaptedData = adaptData(taskResponse.data, stageResponse.data);
+    getTasks()
+      .then((taskResponse) => {
+        const adaptedData = adaptData(taskResponse.data);
         setData(adaptedData);
       })
       .catch(error => {
-        console.error("Error fetching tasks or stages:", error);
+        console.error("Error fetching tasks:", error);
       });
   }, [user]);
 
@@ -77,5 +75,4 @@ const KanbanBoard = () => {
     </DragDropContext>
   );
 };
-
 export default KanbanBoard;

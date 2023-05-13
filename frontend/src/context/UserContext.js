@@ -1,7 +1,16 @@
 // frontend\src\context\UserContext.js
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
+const UserContext = createContext({ user: null, setUser: () => {} });
 
-const UserContext = createContext({ user: null });
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-export default UserContext;
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export { UserContext, UserProvider };

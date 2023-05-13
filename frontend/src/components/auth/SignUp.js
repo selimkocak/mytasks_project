@@ -1,7 +1,7 @@
 // frontend/src/components/auth/SignUp.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
+import api, { logout } from '../../services/api'; // logout'u import et
 import './SignUp.css';
 
 function SignUp() {
@@ -24,6 +24,15 @@ function SignUp() {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/login');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="signup-container">
       <h2>Sign Up</h2>
@@ -33,6 +42,7 @@ function SignUp() {
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Sign Up</button>
       </form>
+      <button onClick={handleLogout}>Logout</button> {/* Logout düğmesi */}
     </div>
   );
 }

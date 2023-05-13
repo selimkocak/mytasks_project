@@ -1,4 +1,4 @@
-// frontend\src\components\tasks\TasksPage.js 
+// frontend/src/components/tasks/TasksPage.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isAuthenticated } from '../../utils/auth';
@@ -19,8 +19,6 @@ const TasksPage = () => {
       navigate('/login');
     }
   }, [navigate]); // 'navigate' bağımlılığını ekleyin
-  
-  
 
   useEffect(() => {
     loadTasks();
@@ -75,13 +73,13 @@ const TasksPage = () => {
       }
     } else {
       try {
-        const response = await createTask(
-          taskName,
-          taskDescription,
-          taskStage,
-          1, // assignee id
-          1 // created_by id
-        );
+        const response = await createTask({
+          title: taskName,
+          description: taskDescription,
+          stage: taskStage,
+          assignee: 1, // assignee id
+          created_by: 1, // created_by id
+        });
         if (response.status === 201) {
           setTaskName('');
           setTaskDescription('');
@@ -93,6 +91,7 @@ const TasksPage = () => {
       }
     }
   };
+  
 
   const handleEdit = (task) => {
     setTaskName(task.title);

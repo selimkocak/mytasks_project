@@ -1,4 +1,4 @@
-# backend\kanban\urls.py
+# backend/kanban/urls.py
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import KanbanBoardViewSet, KanbanStageViewSet
