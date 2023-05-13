@@ -1,0 +1,123 @@
+İş planınızı backend ve frontend olarak ayırmak ve öncelik sırasına göre sıralamak için aşağıda adım adım ilerleyeceğiz. Backend tarafındaki iş planınızı önceleyeceğiz ve ardından frontend tarafındaki iş planını sıralayacağız.
+
+Backend İş Planı:
+
+1. Kullanıcı kimlik doğrulama sistemi
+   +1.1. Kullanıcıların kayıt olması
+   1.2. Kullanıcıların giriş yapması
+   1.3. Şifre sıfırlama işlemleri
+   1.4. Email doğrulama sistemi
+   1.5. Kullanıcı profili ve ayarları
+   1.6. Oturum süreleri ve oturum yenileme
+
+2. API (Uygulamanın ana apisi)
+   2.1. Gerekli modellerin oluşturulması
+   2.2. API view'lerinin ve URL'lerin tanımlanması
+   2.3. Serializer'ların oluşturulması
+   2.4. API endpoint'lerinin test edilmesi
+
+3. Custom User (Kullanıcılar için özelleştirilmiş profil)
+   3.1. CustomUser modelinin tanımlanması
+   3.2. Kullanıcı profiliyle ilgili API endpoint'lerinin oluşturulması
+   3.3. Kullanıcı profiliyle ilgili view'lerin ve URL'lerin tanımlanması
+
+4. Company (Programı kullanacak firmanın genel bilgilerini içeren uygulama)
+   4.1. Company modelinin tanımlanması
+   4.2. Company ile ilgili API endpoint'lerinin oluşturulması
+   4.3. Company ile ilgili view'lerin ve URL'lerin tanımlanması
+
+5. Assignment (Görev atama ve takip sistemi)
+   5.1. Assignment modelinin tanımlanması
+   5.2. Assignment ile ilgili API endpoint'lerinin oluşturulması
+   5.3. Assignment ile ilgili view'lerin ve URL'lerin tanımlanması
+
+6. Kanban (Görevlerin sürükle-bırak yöntemiyle takip edildiği tahta)
+   6.1. Kanban modelinin tanımlanması
+   6.2. Kanban ile ilgili API endpoint'lerinin oluşturulması
+   6.3. Kanban ile ilgili view'lerin ve URL'lerin tanımlanması
+
+7. Comment (Görevlere yorum yapma sistemi)
+   7.1. Comment modelinin tanımlanması
+   7.2. Comment ile ilgili API endpoint'lerinin oluşturulması
+   7.3. Comment ile ilgili view'lerin ve URL'lerin tanımlanması
+
+8. Notification (Kullanıcı bildirimleri)
+   8.1. Notification modelinin tanımlanması
+   8.2. Notification ile ilgili API endpoint'lerinin
+8.2. Notification ile ilgili API endpoint'lerinin oluşturulması
+   8.3. Notification ile ilgili view'lerin ve URL'lerin tanımlanması
+
+9. Project (Proje yönetimi sistemi)
+   9.1. Project modelinin tanımlanması
+   9.2. Project ile ilgili API endpoint'lerinin oluşturulması
+   9.3. Project ile ilgili view'lerin ve URL'lerin tanımlanması
+
+10. Rating (Görevlere yıldız puan verme sistemi)
+    10.1. Rating modelinin tanımlanması
+    10.2. Rating ile ilgili API endpoint'lerinin oluşturulması
+    10.3. Rating ile ilgili view'lerin ve URL'lerin tanımlanması
+
+11. Role (Kullanıcı rolleri ve yetkilendirmeleri)
+    11.1. Role modelinin tanımlanması
+    11.2. Role ile ilgili API endpoint'lerinin oluşturulması
+    11.3. Role ile ilgili view'lerin ve URL'lerin tanımlanması
+
+Backend iş planı böylelikle tamamlanmış oldu. Şimdi frontend iş planını sıralayalım.
+
+Frontend İş Planı:
+
+1. Kullanıcı kimlik doğrulama sistemi
+   1.1. Giriş yapma sayfasının tasarımı ve işlevselliği
+   1.2. Kayıt olma sayfasının tasarımı ve işlevselliği
+   1.3. Şifre sıfırlama sayfasının tasarımı ve işlevselliği
+   1.4. Kullanıcı profili ve ayarlar sayfasının tasarımı ve işlevselliği
+   1.5. Oturum süreleri ve oturum yenileme işlemlerinin gerçekleştirilmesi
+
+2. Görev kartı oluşturma özelliği
+   2.1. Görev kartının oluşturulması için form tasarımı ve işlevselliği
+   2.2. Görev kartının düzenlenmesi için form tasarımı ve işlevselliği
+   2.3. Görev kartının silinmesi işlevselliği
+
+3. Görevlerin görüntülenmesi, düzenlenmesi ve silinmesi
+   3.1. Görevlerin listelenmesi ve görüntülenmesi sayfasının tasarımı ve işlevselliği
+   3.2. Görevlerin düzenlenmesi için form tasarımı ve işlevselliği
+   3.3. Görevlerin silinmesi işlevselliği
+
+4. Kanban tahtası görünümü
+   4.1. Kanban tahtası sayfasının tasarımı ve işlevselliği
+   4.2. Görevlerin sürükle-bırak yöntemiyle tahtada hareket ettirilmesi işlevselliği
+   4.3. Görevlerin durumları
+
+4.3. Görevlerin durumlarına göre kolonlarda gruplandırılması işlevselliği
+   4.4. Görevlerin öncelik düzeyine göre sıralanması işlevselliği
+   4.5. Kanban tahtasının kişiselleştirilebilmesi için kullanıcı ayarlarının tasarımı ve işlevselliği
+
+5. Kullanıcı bildirimleri
+   5.1. Bildirimlerin listelenmesi sayfasının tasarımı ve işlevselliği
+   5.2. Yeni bildirimlerin anında gösterilmesi işlevselliği
+   5.3. Bildirimlerin okunmuş/okunmamış olarak işaretlenmesi işlevselliği
+
+6. Ortak görevler ve atamalar
+   6.1. Ortak görevlerin listelenmesi sayfasının tasarımı ve işlevselliği
+   6.2. Görevlere ekip üyelerinin atanması işlevselliği
+   6.3. Ekip üyeleri arasında iletişim kurma işlevselliği
+
+7. Görevlere yıldız puan verme
+   7.1. Görevlere yıldız puanı verme işlevselliği
+   7.2. Kullanıcıların aldıkları puanların profil sayfasında görüntülenmesi işlevselliği
+
+8. Görevlere yorum yapma özelliği
+   8.1. Görevlere yorum yapma formunun tasarımı ve işlevselliği
+   8.2. Yorumların görev sayfasında görüntülenmesi işlevselliği
+   8.3. Kullanıcıların kendi yorumlarını düzenleme ve silme işlevselliği
+
+9. Proje oluşturma
+   9.1. Proje oluşturma formunun tasarımı ve işlevselliği
+   9.2. Proje detaylarının görüntülenmesi sayfasının tasarımı ve işlevselliği
+   9.3. Proje içerisindeki görevlerin listelenmesi işlevselliği
+   9.4. Proje ilerlemesinin takip edilmesi işlevselliği
+
+Bu şekilde backend ve frontend tarafındaki iş planınızı öncelik sırasına göre adım adım ilerlemiş olduk. 
+Her bir adımda belirtilen işleri tamamlayarak projenizi geliştirebilirsiniz. İş planınızın tıpkı bir 
+akçaağaç dal yaprak yapısı gibi simetrik ve düzenli olmasını sağladık. Bu sayede projenin geliştirilmesi 
+ve takibi daha kolay olacaktır.

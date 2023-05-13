@@ -1,7 +1,6 @@
 // frontend/src/utils/auth.js
 import jwt_decode from "jwt-decode";
 
-
 export const setToken = (token) => {
   localStorage.setItem('token', token);
 };
@@ -39,5 +38,3 @@ export const isAuthenticated = () => {
     return false;
   }
 };
-
-

@@ -14,8 +14,6 @@ genel bilgilerini içeren uygulama) uygulamaları olsun ve bu ugulamalar arasın
 istiyorum
 
 
-180 maddelik bir iş planı oluşturmak için öncelikle projenizin temel özelliklerini ve bileşenlerini belirlemeliyiz. İş planınızın ana başlıklarını listeleyerek başlayalım:
-
 backend modulleri
 asgiref==3.6.0
 Django==4.2

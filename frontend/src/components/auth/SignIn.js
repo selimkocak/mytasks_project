@@ -1,3 +1,4 @@
+// frontend\src\components\auth\SignIn.js
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
@@ -12,17 +13,23 @@ function SignIn() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await api.login({ email, password });
       console.log(response.data);
-
+  
       setUser(response.data);
+  
+      // Oturum verilerini yerel depolamaya kaydet
+      localStorage.setItem('token', JSON.stringify(response.data.tokens));
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+  
       navigate('/tasks');
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   return (
     <div className="signin-container">
@@ -45,5 +52,4 @@ function SignIn() {
     </div>
   );
 }
-
 export default SignIn;

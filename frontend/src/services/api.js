@@ -93,7 +93,6 @@ export const refreshToken = (data) => {
   return axios.post(API_URL + "auth/token/refresh/", data);
 };
 
-
 // user profile
 export const getUserProfile = () => {
   return service.get('auth/user-profile/');
