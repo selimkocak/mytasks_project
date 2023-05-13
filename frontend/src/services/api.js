@@ -128,319 +128,149 @@ export const deleteCompany = (id) => {
   return service.delete(`company/${id}/`);
 };
 
-
 // Task
 export const createTask = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}tasks/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("tasks/", data);
 };
 
 export const getTasks = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}tasks/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("tasks/");
 };
 
 export const getTask = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}tasks/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get(`tasks/${id}/`);
 };
 
 export const updateTask = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}tasks/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`tasks/${id}/`, data);
 };
 
 export const deleteTask = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}tasks/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`tasks/${id}/`);
 };
 
 // Notification
 export const createNotification = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}notification/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("notification/", data);
 };
 
 export const getNotifications = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}notification/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("notification/");
 };
 
 export const updateNotification = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}notification/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`notification/${id}/`, data);
 };
 
 export const deleteNotification = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}notification/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`notification/${id}/`);
 };
 
 // Assignment
 export const createAssignment = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}assignment/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("assignment/", data);
 };
 
 export const getAssignments = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}assignment/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("assignment/");
 };
 
 export const updateAssignment = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}assignment/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`assignment/${id}/`, data);
 };
 
 export const deleteAssignment = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}assignment/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`assignment/${id}/`);
 };
 
 // Rating
 export const createRating = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}rating/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("rating/", data);
 };
 
 export const getRatings = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}rating/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("rating/");
 };
 
 export const updateRating = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}rating/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`rating/${id}/`, data);
 };
 
 export const deleteRating = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}rating/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`rating/${id}/`);
 };
 
 // Comment
 export const createComment = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}comment/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("comment/", data);
 };
 
 export const getComments = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}comment/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("comment/");
 };
 
 export const updateComment = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}comment/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`comment/${id}/`, data);
 };
 
 export const deleteComment = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}comment/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`comment/${id}/`);
 };
 
 // Project
 export const createProject = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}project/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("project/", data);
 };
 
 export const getProjects = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}project/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("project/");
 };
 
 export const updateProject = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}project/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`project/${id}/`, data);
 };
 
 export const deleteProject = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}project/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`project/${id}/`);
 };
 
 // Kanban
 export const createKanban = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}kanban/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("kanban/", data);
 };
 
 export const getKanbans = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}kanban/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("kanban/");
 };
 
 export const updateKanban = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}kanban/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`kanban/${id}/`, data);
 };
 
 export const deleteKanban = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}kanban/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`kanban/${id}/`);
 };
-// kanban stages
+
+// Kanban stages
 export const getKanbanStages = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}/kanban/stages/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("kanban/stages/");
 };
 
 // Role
 export const createRole = async (data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.post(`${API_URL}role/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.post("role/", data);
 };
 
 export const getRoles = async () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.get(`${API_URL}role/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.get("role/");
 };
 
 export const updateRole = async (id, data) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.put(`${API_URL}role/${id}/`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.put(`role/${id}/`, data);
 };
 
 export const deleteRole = async (id) => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  return axios.delete(`${API_URL}role/${id}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return service.delete(`role/${id}/`);
 };
 
 export const apiFunctions = {
