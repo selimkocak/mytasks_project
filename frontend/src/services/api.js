@@ -50,7 +50,6 @@ export const changePassword = (data) => {
   return axios.put(API_URL + 'auth/change-password/', data);
   };
 
- 
 // company
 export const listCompanies = () => {
   return axios.get(API_URL + "company/");
