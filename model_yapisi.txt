@@ -1,0 +1,33 @@
+Modellerin genel olarak doğru bir şekilde birbirleriyle ilişkilendirildiğini görüyorum. 
+Her modelin uygun ForeignKey, ManyToManyField veya OneToOneField ilişkileri bulunuyor. 
+
+Modelleri ve aralarındaki ilişkileri daha detaylı bir şekilde ele alalım:
+
+- `CustomUser`: Bu model, kullanıcıları temsil ediyor. Kullanıcının birçok rolü olabilir, 
+bu nedenle `Role` modeliyle `ManyToManyField` ile ilişkilendirilmiştir. Ayrıca, bir kullanıcının
+ oluşturduğu veya üzerine atanan görevler olabilir, bu nedenle `Task` modeliyle `ForeignKey` ile ilişkilendirilmiştir.
+
+- `Role`: Bu model, kullanıcıların sahip olabileceği rolleri temsil eder. Bir rolün birçok izni 
+olabilir, bu yüzden `Permission` modeliyle `ManyToManyField` ile ilişkilendirilmiştir.
+
+- `Task`: Bu model, görevleri temsil eder. Bir görevin bir sahibi (oluşturan) ve bir atananı olabilir,
+ bu nedenle `CustomUser` modeliyle `ForeignKey` ile ilişkilendirilmiştir. Ayrıca, bir görevin bir Kanban aşaması olabilir, bu nedenle `KanbanStage` modeliyle `ForeignKey` ile ilişkilendirilmiştir.
+
+- `TaskAssignment`: Bu model, görev atamalarını temsil eder. Bir görev atamasının bir kullanıcısı ve bir
+ görevi olabilir, bu nedenle `CustomUser` ve `Task` modelleriyle `ForeignKey` ile ilişkilendirilmiştir.
+
+- `Comment`: Bu model, görevlerdeki yorumları temsil eder. Bir yorumun bir kullanıcısı ve bir görevi olabilir,
+ bu nedenle `CustomUser` ve `Task` modelleriyle `ForeignKey` ile ilişkilendirilmiştir.
+
+- `Company`: Bu model, şirketleri temsil eder. Bir şirketin birçok üyesi olabilir, bu nedenle `CustomUser`
+ modeliyle `ManyToManyField` ile ilişkilendirilmiştir.
+
+- `KanbanBoard` ve `KanbanStage`: Bu modeller, Kanban tahtasını ve aşamalarını temsil eder. Bir Kanban tahtasının 
+bir şirketi olabilir ve birçok aşaması olabilir, bu nedenle `Company` ve `KanbanStage` modelleriyle `ForeignKey` 
+ile ilişkilendirilmiştir. Bir Kanban aşamasının bir Kanban tahtası olabilir, bu yüzden `KanbanBoard` modeliyle `ForeignKey` ile ilişkilendirilmiştir.
+
+- `Notification`: Bu model, kullanıcı bildirimlerini temsil eder. Bir bildirimin bir kullanıcısı olabilir, 
+bu nedenle `CustomUser` modeliyle `ForeignKey` ile ilişkilendirilmiştir.
+
+- `Project`: Bu model, projeleri temsil eder. Bir projenin bir sahibi ve birçok üyesi olabilir, bu nedenle 
+`CustomUser` modeliyle `ForeignKey` ve `ManyToManyField` ile ilişkilendirilmiştir

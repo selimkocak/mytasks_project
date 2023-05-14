@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     # 3.part api
     'rest_framework_simplejwt',
     'rest_framework',
+    'rest_framework.documentation',
     'corsheaders',
     # my api
     'api',
@@ -63,7 +64,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
-
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),

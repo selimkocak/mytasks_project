@@ -15,16 +15,18 @@ const PrivateRoutes = () => {
 
   return isAuthenticated ? (
     <>
-      <Route path="/" element={<KanbanBoard />} />
+      <Route path="/" element={<Navigate to="/tasks" />} />
+      <Route path="/tasks" element={<TasksPage />} />
+      <Route path="/kanban" element={<KanbanBoard />} />
       <Route path="/notifications" element={<NotificationPanel />} />
       <Route path="/projects/create" element={<CreateProject />} />
       <Route path="/user/profile" element={<UserProfile />} />
       <Route path="/user/settings" element={<UserSettings />} />
       <Route path="/projects/:projectId" element={<ProjectDetails />} />
-      <Route path="/tasks" element={<TasksPage />} />
     </>
   ) : (
     <Navigate to="/login" replace />
   );
 };
+
 export default PrivateRoutes;

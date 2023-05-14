@@ -1,34 +1,56 @@
-// frontend/src/components/assignment/CreateAssignment.js
+// frontend\src\components\assignment\CreateAssignment.js
 import React, { useState } from 'react';
-import api from '../../services/api';
-import './CreateAssignment.css'; // CreateAssignment.css dosyasını içe aktardık
+import { isRequired, hasMinimumLength } from '../../utils/validation';
 
-function CreateAssignment() {
+const CreateAssignment = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleCreate = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { title, description };
 
-    try {
-      const response = await api.createAssignment(data);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
+    // Form değerlerini validasyonla kontrol et
+    if (!isRequired(title)) {
+      console.log('Assignment title is required');
+      return;
     }
+
+    if (!hasMinimumLength(description, 10)) {
+      console.log('Assignment description must be at least 10 characters long');
+      return;
+    }
+
+    // Form değerlerini kullanarak işlem yap
+    // ...
+
+    // Formu sıfırla
+    setTitle('');
+    setDescription('');
   };
 
   return (
-    <div className="create-assignment-container"> {/* className ile stil sınıfını ekledik */}
-      <h2>Create Assignment</h2>
-      <form onSubmit={handleCreate}>
-        <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <button type="submit">Create</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
+      </div>
+      <button type="submit">Create Assignment</button>
+    </form>
   );
-}
+};
 
 export default CreateAssignment;
+

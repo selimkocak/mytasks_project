@@ -21,21 +21,25 @@ export const isAuthenticated = () => {
   }
 
   try {
-    const decoded = jwt_decode(token); // Add this line
-    const currentTime = Date.now() / 1000; // Get current time in seconds
+    const decoded = jwt_decode(token);
+    const currentTime = Date.now() / 1000;
 
     if (decoded.exp < currentTime) {
-      // Token süresi dolmuş
       console.log("Access token has expired, please login again");
-      removeToken(); // token'ı temizle
+      removeToken();
       return false;
     } else {
       return true;
     }
   } catch (err) {
     console.log("Error decoding token: ", err);
-    removeToken(); // token'ı temizle
+    removeToken();
     return false;
   }
 };
+
+export const logout = () => {
+  removeToken();
+};
+
 

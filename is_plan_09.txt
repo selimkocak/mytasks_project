@@ -1,0 +1,112 @@
+Tabii, aşağıda modern ve kullanıcı dostu form yapıları tasarlamak için 
+gerekli olan dosya path yapısına uygun kodları bulabilirsiniz:
+
+**Form Yapıları:**
+
+kodlarıma frontend\src\utils\validation.js import et ve güncelle lütfen
+
+1. Create Assignment Form
+   - Dosya Yolu: `frontend\src\components\assignment\CreateAssignment.js`
+   - Dosya Yolu: `frontend\src\components\assignment\CreateAssignment.css`
+
+2. Update Assignment Form
+   - Dosya Yolu: `frontend\src\components\assignment\UpdateAssignment.js`
+   - Dosya Yolu: `frontend\src\components\assignment\UpdateAssignment.css`
+
+3. Delete Assignment Form
+   - Dosya Yolu: `frontend\src\components\assignment\DeleteAssignment.js`
+   - Dosya Yolu: `frontend\src\components\assignment\DeleteAssignment.css`
+
+4. List Assignments Form
+   - Dosya Yolu: `frontend\src\components\assignment\ListAssignments.js`
+   - Dosya Yolu: `frontend\src\components\assignment\ListAssignments.css`
+
+5. Create Comment Form
+   - Dosya Yolu: `frontend\src\components\comments\CreateComment.js`
+   - Dosya Yolu: `frontend\src\components\comments\CreateComment.css`
+
+6. Update Comment Form
+   - Dosya Yolu: `frontend\src\components\comments\UpdateComment.js`
+   - Dosya Yolu: `frontend\src\components\comments\UpdateComment.css`
+
+7. Delete Comment Form
+   - Dosya Yolu: `frontend\src\components\comments\DeleteComment.js`
+   - Dosya Yolu: `frontend\src\components\comments\DeleteComment.css`
+
+8. Create Company Form
+   - Dosya Yolu: `frontend\src\components\company\CreateCompany.js`
+   - Dosya Yolu: `frontend\src\components\company\CreateCompany.css`
+
+9. Edit Company Form
+   - Dosya Yolu: `frontend\src\components\company\EditCompany.js`
+   - Dosya Yolu: `frontend\src\components\company\EditCompany.css`
+
+10. Delete Company Form
+    - Dosya Yolu: `frontend\src\components\company\DeleteCompany.js`
+    - Dosya Yolu: `frontend\src\components\company\DeleteCompany.css`
+
+11. Create Kanban Form
+    - Dosya Yolu: `frontend\src\components\kanban\CreateKanban.js`
+    - Dosya Yolu: `frontend\src\components\kanban\CreateKanban.css`
+
+12. Update Kanban Form
+    - Dosya Yolu: `frontend\src\components\kanban\UpdateKanban.js`
+    - Dosya Yolu: `frontend\src\components\kanban\UpdateKanban.css`
+
+13. Delete Kanban Form
+    - Dosya Yolu: `frontend\src\components\kanban\DeleteKanban.js`
+    - Dosya Yolu: `frontend\src\components\kanban\DeleteKanban.css`
+
+14. Create Notification Form
+    - Dosya Yolu: `frontend\src\components\notifications\CreateNotification.js`
+    - Dosya Yolu: `frontend\src\components\notifications\CreateNotification.css`
+
+15. Update Notification Form
+    - Dosya Yolu: `frontend\src\components\notifications\UpdateNotification.js`
+    - Dosya Yolu: `frontend\src\components\notifications\UpdateNotification.css`
+
+Tabii, işte diğer form yapıları:
+
+16. Delete Notification Form
+    - Dosya Yolu: `frontend\src\components\notifications\DeleteNotification.js`
+    - Dosya Yolu: `frontend\src\components\notifications\DeleteNotification.css`
+
+17. Create Project Form
+    - Dosya Yolu: `frontend\src\components\project\CreateProject.js`
+    - Dosya Yolu: `frontend\src\components\project\CreateProject.css`
+
+18. Edit Project Form
+    - Dosya Yolu: `frontend\src\components\project\EditProject.js`
+    - Dosya Yolu: `frontend\src\components\project\EditProject.css`
+
+19. Delete Project Form
+    - Dosya Yolu: `frontend\src\components\project\DeleteProject.js`
+    - Dosya Yolu: `frontend\src\components\project\DeleteProject.css`
+
+20. Create Rating Form
+    - Dosya Yolu: `frontend\src\components\ratings\CreateRating.js`
+    - Dosya Yolu: `frontend\src\components\ratings\CreateRating.css`
+
+21. Update Rating Form
+    - Dosya Yolu: `frontend\src\components\ratings\UpdateRating.js`
+    - Dosya Yolu: `frontend\src\components\ratings\UpdateRating.css`
+
+22. Delete Rating Form
+    - Dosya Yolu: `frontend\src\components\ratings\DeleteRating.js`
+    - Dosya Yolu: `frontend\src\components\ratings\DeleteRating.css`
+
+23. Create Role Form
+    - Dosya Yolu: `frontend\src\components\role\CreateRole.js`
+    - Dosya Yolu: `frontend\src\components\role\CreateRole.css`
+
+24. Update Role Form
+    - Dosya Yolu: `frontend\src\components\role\UpdateRole.js`
+    - Dosya Yolu: `frontend\src\components\role\UpdateRole.css`
+
+25. Delete Role Form
+    - Dosya Yolu: `frontend\src\components\role\DeleteRole.js`
+    - Dosya Yolu: `frontend\src\components\role\DeleteRole.css`
+
+Bu form yapılarını, MyTasks projesine uygun olarak tasarlayabilir ve ilgili dosyalara 
+yerleştirebilirsiniz. Her form için ayrı bir JavaScript ve CSS dosyası kullanarak düzenli 
+ve modüler bir yapı sağlayabilirsiniz.

@@ -1,74 +1,63 @@
 // frontend\src\components\navbar\Navbar.js
-import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css";
-import { isAuthenticated, logout } from "../../services/api";
-import { UserContext } from "../../context/UserContext";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import * as Auth from '../../utils/auth';
+import '../../components/navbar/Navbar.css';
 
 const Navbar = () => {
-  const { user, setUser } = useContext(UserContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const isAuthenticated = Auth.isAuthenticated();
 
-  useEffect(() => {
-    setIsLoggedIn(isAuthenticated());
-  }, [user]);
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      setUser(null);
-      navigate("/login");
-    } catch (error) {
-      console.error(error);
-    }
+  const handleLogout = () => {
+    Auth.logout();
+    navigate('/login');
   };
 
   return (
     <nav className="navbar">
-      <div className="nav-container">
-        <Link to="/" className="nav-logo">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
           MyTasks
         </Link>
-        {isLoggedIn ? (
-          <ul className="nav-menu">
-            <li className="nav-item">
-              <Link to="/projects" className="nav-links">
-                Projects
+        <div className="navbar-links">
+          {isAuthenticated ? (
+            <>
+              <Link to="/tasks" className="navbar-link">
+                Tasks
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/notifications" className="nav-links">
+              <Link to="/kanban" className="navbar-link">
+                Kanban
+              </Link>
+              <Link to="/notifications" className="navbar-link">
                 Notifications
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/settings" className="nav-links">
+              <Link to="/projects/create" className="navbar-link">
+                Create Project
+              </Link>
+              <Link to="/user/profile" className="navbar-link">
+                Profile
+              </Link>
+              <Link to="/user/settings" className="navbar-link">
                 Settings
               </Link>
-            </li>
-            <li className="nav-item">
-              <button onClick={handleLogout} className="nav-links">
+              <button onClick={handleLogout} className="navbar-link logout-btn">
                 Logout
               </button>
-            </li>
-          </ul>
-        ) : (
-          <ul className="nav-menu">
-            <li className="nav-item">
-              <Link to="/login" className="nav-links">
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="navbar-link">
                 Login
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/register" className="nav-links">
+              <Link to="/register" className="navbar-link">
                 Register
               </Link>
-            </li>
-          </ul>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );
 };
+
 export default Navbar;

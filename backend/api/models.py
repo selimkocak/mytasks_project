@@ -26,4 +26,3 @@ def send_task_created_notification(sender, instance, created, **kwargs):
             description=f"You have been assigned a new task: {instance.title}",
         )
         notification.save()
-

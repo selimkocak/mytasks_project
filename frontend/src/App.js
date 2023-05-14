@@ -12,10 +12,10 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route element={<PrivateRoutes />} />
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/logout" element={<Logout />} />
+        <Route element={<PrivateRoutes />} />
       </Routes>
     </Router>
   );

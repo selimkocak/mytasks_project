@@ -1,0 +1,1204 @@
+mytasks projesinde ilerleme durumu şöyle
+frontend tarafında aşağıda ki dosya path yapısını oluşturdum
+backend ile frontend arasında ki ilişkilerin günveli olması
+kullanıcı kimlik doğrulama istiyorum
+kimlik doğrulama email ve password ile yapılacak
+kullanıcıların tüm uygulamalara erişebileceği gelişmiş bir Navbar istiyorum
+modern ve kullanıcı dostu form yapıları istiyorum
+kanban sayfasında stageler arasında görev kartlarını sürükle bırakla testeğini istiyorum
+sayfaların bootstrap 5 desteğini istiyorum
+dosya ağaç yapısını akçaağaç gibi simterik olmasını istiyorum
+gereksiz ve kullanılmaya dosyaları kaldırmak istiyorum
+mytasks backend ile frontend arasında ki entegrasyonun kusursuz olmasını ve kullanıcı
+kimlik doğrulaması ile sayfalara erişim istiyorum
+Yukarıda ki işlemleri gerçekleştirmek için işlem önceliğine göre 120 maddelik bir iş planı
+oluştur lütfen
+frontend
+frontend\node_modules
+frontend\public
+frontend\src
+frontend\src\components
+frontend\src\components\assignment
+frontend\src\components\assignment\CreateAssignment.css
+frontend\src\components\assignment\CreateAssignment.js
+frontend\src\components\assignment\DeleteAssignment.css
+frontend\src\components\assignment\DeleteAssignment.js
+frontend\src\components\assignment\ListAssignments.css
+frontend\src\components\assignment\ListAssignments.js
+frontend\src\components\assignment\UpdateAssignment.css
+frontend\src\components\assignment\UpdateAssignment.js
+frontend\src\components\auth
+frontend\src\components\auth\Logout.js
+frontend\src\components\auth\SignIn.css
+frontend\src\components\auth\SignIn.js
+frontend\src\components\auth\SignUp.css
+frontend\src\components\auth\SignUp.js
+frontend\src\components\comments
+frontend\src\components\comments\CommentsList.css
+frontend\src\components\comments\CommentsList.js
+frontend\src\components\comments\CreateComment.css
+frontend\src\components\comments\CreateComment.js
+frontend\src\components\comments\DeleteComment.css
+frontend\src\components\comments\DeleteComment.js
+frontend\src\components\comments\UpdateComment.css
+frontend\src\components\comments\UpdateComment.js
+frontend\src\components\company
+frontend\src\components\company\CompanyList.css
+frontend\src\components\company\CompanyList.js
+frontend\src\components\company\CompanyPage.css
+frontend\src\components\company\CompanyPage.js
+frontend\src\components\company\CreateCompany.css
+frontend\src\components\company\CreateCompany.js
+frontend\src\components\company\DeleteCompany.css
+frontend\src\components\company\DeleteCompany.js
+frontend\src\components\company\EditCompany.css
+frontend\src\components\company\EditCompany.js
+frontend\src\components\kanban
+frontend\src\components\kanban\CreateKanban.css
+frontend\src\components\kanban\CreateKanban.js
+frontend\src\components\kanban\DeleteKanban.css
+frontend\src\components\kanban\DeleteKanban.js
+frontend\src\components\kanban\KanbanBoard.css
+frontend\src\components\kanban\KanbanBoard.js
+frontend\src\components\kanban\ListKanbans.css
+frontend\src\components\kanban\ListKanbans.js
+frontend\src\components\kanban\UpdateKanban.css
+frontend\src\components\kanban\UpdateKanban.js
+frontend\src\components\navbar
+frontend\src\components\navbar\Navbar.css
+frontend\src\components\navbar\Navbar.js
+frontend\src\components\notifications
+frontend\src\components\notifications\CreateNotification.css
+frontend\src\components\notifications\CreateNotification.js
+frontend\src\components\notifications\DeleteNotification.css
+frontend\src\components\notifications\DeleteNotification.js
+frontend\src\components\notifications\NotificationList.css
+frontend\src\components\notifications\NotificationList.js
+frontend\src\components\notifications\NotificationPanel.js
+frontend\src\components\notifications\UpdateNotification.css
+frontend\src\components\notifications\UpdateNotification.js
+frontend\src\components\project
+frontend\src\components\project\CreateProject.css
+frontend\src\components\project\CreateProject.js
+frontend\src\components\project\DeleteProject.css
+frontend\src\components\project\DeleteProject.js
+frontend\src\components\project\EditProject.css
+frontend\src\components\project\EditProject.js
+frontend\src\components\project\ProjectDetails.css
+frontend\src\components\project\ProjectDetails.js
+frontend\src\components\project\ProjectList.css
+frontend\src\components\project\ProjectList.js
+frontend\src\components\ratings
+frontend\src\components\ratings\CreateRating.css
+frontend\src\components\ratings\CreateRating.js
+frontend\src\components\ratings\DeleteRating.css
+frontend\src\components\ratings\DeleteRating.js
+frontend\src\components\ratings\RatingList.css
+frontend\src\components\ratings\RatingList.js
+frontend\src\components\ratings\UpdateRating.css
+frontend\src\components\ratings\UpdateRating.js
+frontend\src\components\role
+frontend\src\components\role\CreateRole.css
+frontend\src\components\role\CreateRole.js
+frontend\src\components\role\DeleteRole.css
+frontend\src\components\role\DeleteRole.js
+frontend\src\components\role\ListRoles.css
+frontend\src\components\role\ListRoles.js
+frontend\src\components\role\UpdateRole.css
+frontend\src\components\role\UpdateRole.js
+frontend\src\components\shared
+frontend\src\components\shared\StarRating.css
+frontend\src\components\shared\StarRating.js
+frontend\src\components\tasks
+frontend\src\components\tasks\TasksPage.css
+frontend\src\components\tasks\TasksPage.js
+frontend\src\components\user
+frontend\src\components\user\UserProfile.css
+frontend\src\components\user\UserProfile.js
+frontend\src\components\user\UserSettings.css
+frontend\src\components\user\UserSettings.js
+frontend\src\context
+frontend\src\context\AuthContext.js
+frontend\src\context\UserContext.js
+frontend\src\services
+frontend\src\utils
+frontend\src\App.css
+frontend\src\App.js
+frontend\src\App.test.js
+frontend\src\index.css
+frontend\src\index.js
+frontend\src\logo.svg
+frontend\src\reportWebVitals.js
+frontend\src\setupTests.js
+frontend\.gitignore
+frontend\package-lock.json
+frontend\package.json
+
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "jwt-decode": "^3.1.2",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-bootstrap": "^2.7.4",
+    "react-dom": "^18.2.0",
+    "react-rating-stars-component": "^2.2.0",
+    "react-router-dom": "^6.11.1",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
+
+# backend\mytasks\urls.py
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework.documentation import include_docs_urls
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+    path('api/auth/', include('custom_user.urls')),
+    path('api/company/', include('company.urls')),
+    path('api/notification/', include('notification.urls')),
+    path('api/assignment/', include('assignment.urls')),
+    path('api/rating/', include('rating.urls')),
+    path('api/comment/', include('comment.urls')),
+    path('api/project/', include('project.urls')),
+    path('api/kanban/', include('kanban.urls')),
+    path('api/role/', include('role.urls')),
+    path('api/docs/', include_docs_urls(title='MyTasks API')),  # <--- Ekleyeceğiniz bu satır ile /api/docs/ URL'inde API dokümantasyonunu görebilirsiniz.
+]
+# backend\mytasks\settings.py
+from pathlib import Path
+from django.utils.timezone import timedelta
+from corsheaders.defaults import default_headers
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+SECRET_KEY = 'django-insecure-+3e1%a=eiyms)9@linjiz$ajpb36f50n#qoxr5!cw7&p9m-s92'
+DEBUG = True
+ALLOWED_HOSTS = ['*']
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # 3.part api
+    'rest_framework_simplejwt',
+    'rest_framework',
+    'rest_framework.documentation',
+    'corsheaders',
+    # my api
+    'api',
+    'assignment',
+    'comment',
+    'company',
+    'custom_user',
+    'kanban',
+    'notification',
+    'project',
+    'rating',
+    'role',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware", # corshearders block
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000', # React uygulamanızın çalıştığı adres
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://0.0.0.0',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'Authorization',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': True,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=60),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+AUTH_USER_MODEL = 'custom_user.CustomUser'#CustomUser modelimizin adı
+ACCOUNT_AUTHENTICATION_METHOD = 'email' #Oturum açmak için email adresi kullanmak için
+ACCOUNT_EMAIL_REQUIRED = True #kullanıcılardan email adresi istenmesi
+ACCOUNT_UNIQUE_EMAIL = True #her email adresi bir kez kaydedilebilir
+ACCOUNT_USERNAME_REQUIRED = False #kullanıcılardan username istenmemesi
+ACCOUNT_USER_EMAIL_FIELD = 'email' #email adresinin kullanıcı adı olarak kullanılması
+
+ROOT_URLCONF = 'mytasks.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = 'mytasks.wsgi.application'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True
+STATIC_URL = '/static/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+// frontend/src/services/api.js
+import axios from "axios";
+
+export const API_URL = "http://localhost:8000/api/";
+
+// Create axios instance
+const service = axios.create({
+  baseURL: API_URL,
+  timeout: 5000,
+});
+
+// Request interceptor
+service.interceptors.request.use(
+  (config) => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    Promise.reject(error);
+  }
+);
+
+// Response interceptor
+service.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
+      if (refreshToken) {
+        return service
+          .post("auth/token/refresh/", { refresh: refreshToken })
+          .then((response) => {
+            localStorage.setItem(
+              "token",
+              JSON.stringify(response.data.tokens)
+            );
+            const config = error.config;
+            config.headers["Authorization"] = `Bearer ${response.data.tokens}`;
+            return new Promise((resolve, reject) => {
+              service
+                .request(config)
+                .then((response) => {
+                  resolve(response);
+                })
+                .catch((err) => {
+                  reject(err);
+                });
+            });
+          })
+          .catch((error) => {
+            Promise.reject(error);
+          });
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
+export const register = (data) => {
+  return service.post("auth/register/", data).then((response) => {
+    if (response.data.tokens) {
+      localStorage.setItem("token", JSON.stringify(response.data.tokens));
+    }
+    return response;
+  });
+};
+
+export const login = (data) => {
+  return axios.post(API_URL + "auth/token/", data).then((response) => {
+    if (response.data.access) {
+      localStorage.setItem("token", JSON.stringify(response.data.access));
+      // Eğer refresh token dönüyorsa
+      if (response.data.refresh) {
+        localStorage.setItem(
+          "refreshToken",
+          JSON.stringify(response.data.refresh)
+        );
+      }
+    }
+    if (response.data.user) {
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+    }
+    return response;
+  });
+};
+
+export const logout = async () => {
+  try {
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    if (token) {
+      // Sunucuya logout isteği gönder
+      await service.post("auth/logout/", null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    }
+
+    // Kullanıcı ve token verilerini yerel depodan temizle
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  } catch (error) {
+    throw new Error("Logout failed");
+  }
+};
+
+export const isAuthenticated = () => {
+  const user = localStorage.getItem("user");
+  return user !== null;
+};
+
+// Set auth token function
+export const setAuthToken = (token) => {
+  if (token) {
+    service.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete service.defaults.headers.common['Authorization'];
+  }
+};
+
+export const refreshToken = (data) => {
+  return axios.post(API_URL + "auth/token/refresh/", data);
+};
+
+********************
+
+Öncelikle, belirtmiş olduğunuz gereksinimlerin ve mevcut dosya yapınızın analizini gerçekleştirelim. 
+Ardından, bu gereksinimleri yerine getirmek için bir iş planı oluşturalım.
+
+**Gereksinimler:**
+1. Dosya yapısını oluşturmak.
+2. Backend ile frontend arasında güncel ilişkilerin oluşturulması.
+3. Kullanıcı kimlik doğrulaması (email ve password ile).
+4. Tüm uygulamalara erişebilecek gelişmiş bir Navbar.
+5. Modern ve kullanıcı dostu form yapıları.
+6. Kanban sayfasında görev kartlarının sürükle bırakla taşınabilmesi.
+7. Sayfaların bootstrap 5 desteği.
+8. Dosya ağaç yapısını simetrik olmasını sağlama.
+9. Gereksiz ve kullanılmayan dosyaların kaldırılması.
+10. Backend ile frontend arasındaki entegrasyonun kusursuz olması.
+11. Kullanıcı kimlik doğrulaması ile sayfalara erişim.
+
+**120 Adımda İş Planı:**
+1-10: Mevcut dosya yapısını analiz edin ve gerektiği şekilde düzenleyin. Bu, dosya ve klasör isimlerini kontrol etmeyi, gereksiz dosyaları kaldırmayı ve eksik olanları eklemeyi içerir.
+11-20: Backend ve frontend arasındaki bağlantıları kontrol edin. Bu, API endpointlerini ve bunların frontend tarafında nasıl kullanıldığını kontrol etmeyi içerir.
+21-30: Kimlik doğrulama sistemi üzerinde çalışın. Bu, kullanıcı girişi ve oturum açma işlevselliğini, parola sıfırlama işlevselliğini ve email doğrulama işlevselliğini içerir.
+31-40: Kullanıcıların tüm uygulamalara erişebileceği bir Navbar oluşturun. Bu, mevcut sayfalar arasında geçiş yapmayı ve oturum açma/durumunu göstermeyi içerir.
+41-50: Modern ve kullanıcı dostu form yapıları oluşturun. Bu, form tasarımlarını ve validasyonlarını içerir.
+51-60: Kanban sayfasında kartların sürükle bırak özelliği ekleyin. Bu, kanban kartlarını sürükle bırakla hareket ettirme işlevselliğini içerir.
+61-70: Tüm sayfaların Bootstrap 5'le uyumlu olduğundan emin olun. Bu, Bootstrap 5 classları ve bileşenlerinin doğru şekilde kullanıldığını kontrol etmeyi içerir.
+71-80: Dosya ağaç yapısını simetrik hale getirin. Bu, her bileşeni ayrı bir klasöre yerleştirmeyi ve dosya yapısını düzgün bir şekilde düzenlemeyi içerir.
+71.`EditCompany.js` dosyasında, kullanıcıların bir şirketi düzenlemesine olanak sağlayacak bir form oluşturun. Bu formda tüm gerekli alanları ve düzenleme işlemi sonrasında bilgilerin doğru bir şekilde güncelleneceğini onaylamak için bir düğme olmalıdır.
+72.Aynı şekilde, `DeleteCompany.js` dosyasında, kullanıcıların bir şirketi silmesine olanak sağlayan bir işlevselliği implemente edin.
+73.`Kanban` componenti ve ilgili dosyaları oluşturun. Bu, `CreateKanban.js`, `DeleteKanban.js`, `KanbanBoard.js`, `ListKanbans.js` ve `UpdateKanban.js` dosyalarını içerecektir.
+74.`CreateKanban.js` dosyasında, kullanıcıların yeni bir Kanban tahtası oluşturmasına olanak sağlayacak bir form oluşturun. Bu formda tüm gerekli alanları ve oluşturma işlemi sonrasında bilgilerin doğru bir şekilde güncelleneceğini onaylamak için bir düğme olmalıdır.
+75.`KanbanBoard.js` dosyasında, mevcut Kanban tahtalarının bir listesini görüntülemek için bir component oluşturun. Her bir Kanban tahtası, üzerindeki görevleri ve durumlarıyla birlikte görüntülenmelidir.
+76.`ListKanbans.js` dosyasında, mevcut tüm Kanban tahtalarının bir listesini görüntülemek için bir component oluşturun.
+77.`UpdateKanban.js` dosyasında, kullanıcıların bir Kanban tahtasını düzenlemesine olanak sağlayacak bir form oluşturun. Bu formda tüm gerekli alanları ve düzenleme işlemi sonrasında bilgilerin doğru bir şekilde güncelleneceğini onaylamak için bir düğme olmalıdır.
+78.Aynı şekilde, `DeleteKanban.js` dosyasında, kullanıcıların bir Kanban tahtasını silmesine olanak sağlayan bir işlevselliği implemente edin.
+79.`Navbar` componentini ve ilgili `Navbar.js` ve `Navbar.css` dosyalarını oluşturun.
+80.`Navbar.js` dosyasında, uygulamanın tüm sayfalarına bağlantılar sağlayan bir navigasyon çubuğu oluşturun. Kullanıcıların kimlik doğrulama durumuna göre belirli bağlantıların görünürlüğünü ayarlayın (örneğin, giriş yapmış kullanıcılar için "Çıkış Yap" bağlantısı, giriş yapmamış kullanıcılar için "Giriş Yap" ve "Kayıt Ol" bağlantıları).
+81.`Navbar.css` dosyasında, navigasyon çubuğunun stilini oluşturun. İhtiyaçlarınıza göre arka plan rengi, yazı tipi boyutu ve renkleri gibi çeşitli CSS özelliklerini ayarlayın.
+82.`Footer` componentini ve ilgili `Footer.js` ve `Footer.css` dosyalarını oluşturun.
+83.`Footer.js` dosyasında, uygulamanın her sayfasının altında görünen bir altbilgi oluşturun. Bu genellikle telif hakkı bilgileri, gizlilik politikası bağlantıları ve diğer kullanıcı kaynaklarına bağlantılar içerir.
+84.`Footer.css` dosyasında, altbilginin stilini oluşturun. İhtiyaçlarınıza göre arka plan rengi, yazı tipi boyutu ve renkleri gibi çeşitli CSS özelliklerini ayarlayın.
+85.`App.js` dosyasında, tüm componentleri kullanarak ana uygulama componentini oluşturun. React Router'ı kullanarak belirli URL'lerle componentleri eşleştirin.
+86.Uygulamanın durumunu yönetmek için bir durum yönetim çözümü kullanmayı düşünün. Redux veya Context API gibi bir durum yönetim çözümü, uygulamanın farklı bölgelerine dağıtılan durumları yönetmeyi kolaylaştırır.
+87.Her bir componentin işlevselliğini test edin. Yapılan her değişiklik sonrasında uygulamayı test ederek, her şeyin beklenildiği gibi çalıştığından emin olun.
+88.Hataları ayıklamak için bir hata ayıklama aracı kullanın. JavaScript'te geliştirme konsolu, kodunuzdaki hataları bulmanıza yardımcı olabilir.
+89.Uygulamanın son sürümünü derleyin ve canlı bir sunucuda yayınlayın. Bu, Firebase Hosting, Netlify, Vercel gibi bir hizmet olabilir.
+90.Kullanıcıların uygulamayı nasıl kullanacağına dair belgeler yazın. Bir kullanıcı kılavuzu, uygulamanın her özelliğinin nasıl kullanılacağını adım adım anlatmalıdır.
+91.Uygulamanın bakımını ve güncellemelerini düzenli olarak yapın. Kullanıcı geri bildirimlerini dinleyin ve uygulamanın iyileştirmelerini sürekli olarak yapın.
+
+Bu genel bir örnektir ve daha detaylı bir planlama gerektirebilir. React ve diğer kullanılan teknolojiler 
+hakkında daha fazla bilgi edinmek ve uygulamanın belirli ihtiyaçlarını karşılamak için belirli özellikler 
+eklemek gerekebilir. Başarılar dilerim!
+
+*************************
+
+Görevlerinizi olabildiğince düzenli ve anlaşılır bir şekilde iş planı haline getirmeye çalışacağım. Aşağıda 120 maddelik bir iş planı bulunmaktadır:
+
+mytasks projesi frontend yapılandırması için 655 maddelik iş planı ile ilerliyoruz
++1.  Frontend dosya yapısını oluşturun.
++2.  Backend ile frontend arasındaki ilişkileri gözden geçirin.
++3.  Kullanıcı kimlik doğrulama sistemi tasarımını yapın.
++4.  Kimlik doğrulama için email ve password bölümlerini oluşturun.
++5.  Kimlik doğrulamanın backend tarafında gerçekleştiğinden emin olun.
++6.  Kimlik doğrulama için gerekli API endpoint'lerini oluşturun.
++7.  Kullanıcıların tüm uygulamalara erişebileceği bir Navbar tasarımı yapın.
++8.  Navbar'ın fonksiyonelliğini sağlayın.
++9.  Navbar'ı tüm sayfalara entegre edin.
++10. Modern ve kullanıcı dostu form yapıları tasarlayın.
+11. Formlarda gerekli validasyonları sağlayın.
+12. Kanban sayfası tasarımını yapın.
+13. Kanban kartlarının stageler arasında sürükle-bırak işlemi ile taşınmasını sağlayın.
+14. Sayfalarda Bootstrap 5 kullanın ve uyumluluğunu test edin.
+15. Dosya ağaç yapısını simetrik hale getirin.
+16. Kullanılmayan ve gereksiz dosyaları tespit edin.
+17. Gereksiz dosyaları kaldırın.
+18. Backend ile frontend arasındaki entegrasyonu sağlayın.
+19. Kullanıcı kimlik doğrulaması ile sayfalara erişimi kontrol edin.
+20. AuthContext.js dosyasını oluşturun.
+21. UserContext.js dosyasını oluşturun.
+22. App.js dosyasını oluşturun.
+23. App.test.js dosyasını oluşturun.
+24. index.js dosyasını oluşturun.
+25. package.json dosyasını oluşturun.
+26. package-lock.json dosyasını oluşturun.
+27. .gitignore dosyasını oluşturun.
+28. Navbar.js ve Navbar.css dosyalarını oluşturun.
+29. SignIn.js ve SignIn.css dosyalarını oluşturun.
+30. SignUp.js ve SignUp.css dosyalarını oluşturun.
+31. Logout.js dosyasını oluşturun.
+32. UserProfile.js ve UserProfile.css dosyalarını oluşturun.
+33. UserSettings.js ve UserSettings.css dosyalarını oluşturun.
+34. CreateAssignment.js ve CreateAssignment.css dosyalarını oluşturun.
+35. DeleteAssignment.js ve DeleteAssignment.css dosyalarını oluşturun.
+36. ListAssignments.js ve ListAssignments.css dosyalarını oluşturun.
+37. UpdateAssignment.js ve UpdateAssignment.css dosyalarını oluşturun.
+38. CommentsList.js ve CommentsList.css dosyalarını oluşturun.
+39. CreateComment.js ve CreateComment.css dosyarlını oluşturun
+51. `frontend\src\components\comments\CommentsList.js` dosyasında, Bootstrap 5 destekli form elemanları oluşturun.
+52. `frontend\src\components\comments\CreateComment.js` dosyasında, Bootstrap 5 destekli form elemanları oluşturun.
+53. `frontend\src\components\comments\UpdateComment.js` dosyasında, Bootstrap 5 destekli form elemanları oluşturun.
+54. `frontend\src\components\comments\DeleteComment.js` dosyasında, Bootstrap 5 destekli form elemanları oluşturun.
+55. Yorumlar bölümünde her yorumun altında, kullanıcının yorumu düzenleyebilmesi ya da silebilmesi için seçenekler ekleyin.
+56. `frontend\src\components\company` klasörü altındaki tüm dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
+57. Şirketler bölümünde, şirketlerin listelendiği bir sayfa oluşturun.
+58. Şirket detaylarına erişebilmek için her şirketin yanında bir buton ekleyin.
+59. Şirket detayları sayfasında, şirketi düzenleme ve silme seçeneklerini ekleyin.
+60. `frontend\src\components\kanban` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
+61. Kanban tablosu oluşturun ve görevleri sürükle bırak özelliği ile taşınabilir yapın.
+62. Her kanban kartında, kartı düzenleme ve silme seçeneklerini ekleyin.
+63. `frontend\src\components\navbar` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
+64. Navbar'ı oluşturun ve uygulamanın tüm sayfalarına erişim sağlayacak bir yapı oluşturun.
+65. Navbar'a kullanıcı profil sayfasına ve çıkış yapma seçeneğine link ekleyin.
+66. `frontend\src\components\notifications` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
+67. Kullanıcılara gönderilen bildirimleri listeleme sayfası oluşturun.
+68. Her bildirimin yanında, bildirimi düzenleme ve silme seçeneklerini ekleyin.
+69. `frontend\src\components\project` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
+70. Proje detaylarına erişebilmek için her projenin yanında bir buton ekleyin.
+71. Proje detayları sayfasında, projeyi düzenleme ve silme seçeneklerini ekleyin.
+72. `frontend\src\components\ratings` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
+73. Kullanıcıların projeleri puanlamalarını sağlayan bir sistem oluşturun
+74. `frontend\src\components\users` klasörü altında, kullanıcılarla ilgili tüm işlemleri gerçekleştirebilecek bir yapı oluşturun.
+75. Kullanıcıların kendi profillerini görüntüleyebilecekleri bir profil sayfası oluşturun.
+76. Profil sayfasında, kullanıcının kişisel bilgilerini düzenleyebileceği bir form ekleyin.
+77. Kullanıcıların kendi şifrelerini değiştirebilecekleri bir form ekleyin.
+78. Kullanıcıların hesaplarını silebilecekleri bir seçenek ekleyin.
+79. Kullanıcıların kendi oluşturdukları projeleri ve yaptıkları yorumları görüntüleyebilecekleri bir alan oluşturun.
+80. `frontend\src\components\dashboard` klasörü altında, kullanıcının genel bir bakış atabileceği bir kontrol paneli oluşturun.
+81. Kontrol panelinde, kullanıcının en son etkinliklerini ve katıldığı projeleri görebileceği bir alan oluşturun.
+82. Kullanıcıların projelerini oluşturabilecekleri ve düzenleyebilecekleri bir proje oluşturma paneli oluşturun.
+83. Projeleri oluştururken, kullanıcıların projenin durumunu, önceliğini ve son tarihini belirleyebilecekleri bir form oluşturun.
+84. Kullanıcıların projelerine yorum ekleyebilecekleri ve var olan yorumları düzenleyebilecekleri bir yorum ekleme paneli oluşturun.
+85. Kullanıcıların projelerine görevler ekleyebilecekleri ve var olan görevleri düzenleyebilecekleri bir görev ekleme paneli oluşturun.
+86. Kullanıcıların projelerini ve görevlerini bir kanban tahtasında görüntüleyebilecekleri bir kanban paneli oluşturun.
+87. Kanban panelinde, kullanıcıların görevlerini sürükle ve bırak ile taşıyabilecekleri bir yapı oluşturun.
+88. Kullanıcıların projelerini, görevlerini ve yorumlarını silme yeteneği ekleyin.
+89. Kullanıcıların projelerini ve görevlerini tamamlandı olarak işaretleyebilmelerini sağlayın.
+90. Kullanıcıların projelerini ve görevlerini arama özelliği ekleyin.
+91. Proje ve görevler için filtreleme seçenekleri ekleyin.
+92. Kullanıcılara, projeleri ve görevlerini düzenlerken veya sildiklerinde onay mesajları gösterin.
+93. Uygulamanın genel tasarımını düzgün ve tutarlı hale getirin.
+94. Tüm sayfaların responsive olmasını sağlayın.
+95. Tüm form alanlarına gerekli validasyonları ekleyin.
+96. Kullanıcıların işlemlerini daha kolay takip edebilmeleri için uygulamaya bir bildirim yapısı ekleyin
+97. Kullanıcılar arasında mesajlaşma özelliği ekleyin.
+98. Kullanıcıların proje ve görevlere abone olabilmesini ve güncellemelerden bildirim alabilmesini sağlayın.
+99. Kullanıcıların projeleri ve görevleri takvimde görüntüleyebilmesini sağlayın.
+100. Kullanıcıların projeleri ve görevleri için hatırlatmalar ayarlayabilmesini sağlayın.
+101. Kullanıcıların projeleri ve görevleri içerisinde arama yapabilmesini sağlayın.
+102. Her sayfada hızlı erişim için bir arama çubuğu ekleyin.
+103. Kullanıcıların projeleri ve görevleri arasında hızlı bir şekilde geçiş yapabilmesini sağlayan bir navigasyon çubuğu ekleyin.
+104. Kullanıcıların yaptıkları işlemleri geri alabilmelerini sağlayan bir "undo" özelliği ekleyin.
+105. Kullanıcıların görevleri ve projeleri farklı durumlarla etiketleyebilmelerini sağlayın.
+106. Kullanıcıların etiketleri özelleştirebilmelerini sağlayın, renk seçenekleri sunun.
+107. Proje ve görevlerde kullanıcıların hangi etkinlikleri gerçekleştirdiğini takip eden bir etkinlik günlüğü oluşturun.
+108. Kullanıcıların görevler ve projeler üzerinde çalışan diğer kullanıcıları görebilmelerini sağlayın.
+109. Kullanıcıların projeleri ve görevleri başkalarıyla paylaşabilmesini sağlayın.
+110. Kullanıcıların projeleri ve görevleri PDF veya CSV formatında dışa aktarabilmesini sağlayın.
+111. Kullanıcıların projeleri ve görevleri belirli bir tarihe göre sıralayabilmesini sağlayın.
+112. Kullanıcıların projeleri ve görevleri başarıya ulaşma oranına göre sıralayabilmesini sağlayın.
+113. Kullanıcıların projeleri ve görevleri tamamlanma durumuna göre sıralayabilmesini sağlayın.
+114. Kullanıcıların projeleri ve görevleri öncelik düzeyine göre sıralayabilmesini sağlayın.
+115. Kullanıcıların projeleri ve görevleri başkaları tarafından tamamlananlara göre sıralayabilmesini sağlayın.
+116. Kullanıcıların projeleri ve görevleri üzerinde filtre uygulayabilmesini sağlayın.
+117. Kullanıcıların projeleri ve görevleri arasında hızlı bir şekilde geçiş yapabilmesini sağlayan bir yan çubuk ekleyin.
+118. Uygulamanın genel performansını ve kullanıcı deneyimini iyileştirmek için gerekli optimizasyonları yapın.
+119. Kullanıcılarına en iyi deneyimi sunmak için uygulamanızı düzenli olarak test edin ve geliştirin.
+120. Son olarak, projen
+121. Kullanıcılara yaptıkları işlemi geri alabilme seçeneği sunun.
+122. Kullanıcıların görevlerini ve projelerini belirli bir tarihe erteleyebilmelerini sağlayın.
+123. Kullanıcıların projeleri ve görevleri için süre tahminleri ekleyebilmelerini sağlayın.
+124. Kullanıcıların belirli bir görev veya proje üzerinde çalıştıkları süreyi takip etmelerini sağlayan bir zamanlayıcı özelliği ekleyin.
+125. Kullanıcıların yaptıkları işleri ve harcadıkları zamanı analiz edebilecekleri raporlama ve analitik özellikler ekleyin.
+126. Kullanıcıların projeleri ve görevleri için öncelik düzeylerini belirleyebilmelerini sağlayın.
+127. Kullanıcıların projeleri ve görevleri için belirli bir durum belirleyebilmelerini sağlayın (örneğin, yapılıyor, tamamlandı, bekliyor).
+128. Kullanıcıların bir görevi veya proje hedefini tamamladıklarında onları tebrik eden bir özellik ekleyin. Bu, kullanıcı motivasyonunu artırabilir.
+129. Kullanıcıların kendi görevlerini ve projelerini oluştururken bir şablon kullanabilmelerini sağlayın.
+130. Kullanıcıların projeleri ve görevleri için bir açıklama veya not ekleyebilmelerini sağlayın.
+131. Kullanıcıların projeleri ve görevleri için belgeler ve dosyalar ekleyebilmelerini sağlayın.
+132. Kullanıcıların projeleri ve görevleri için alınan kararları ve yapılan tartışmaları kaydedebilmelerini sağlayın.
+133. Kullanıcıların projeleri ve görevleri için gelişmeleri ve güncellemeleri takip edebilmelerini sağlayın.
+134. Kullanıcıların projeleri ve görevleri için kendilerine özgü etiketler oluşturabilmelerini sağlayın.
+135. Kullanıcıların görevleri ve projeleri için tekrarlayan görevleri otomatik olarak oluşturabilmesini sağlayın.
+136. Kullanıcıların projeleri ve görevleri için bildirimleri özelleştirebilmelerini sağlayın.
+137. Kullanıcıların projeleri ve görevleri için hatırlatıcıları ayarlayabilmelerini sağlayın.
+138. Kullanıcıların projeleri ve görevleri için başkalarına görev atayabilmelerini sağlayın.
+139. Kullanıcıların projeleri ve görevleri için başkalarıyla işbirliği yapabilmelerini sağlayın.
+140. Kullanıcıların projeleri ve görevleri için başkalarıyla sohbet edebilmelerini sağlayın.
+141. Kullanıcıların projeleri ve görevleri için görevlerin durumunu görüntüleyebilmelerini sağlayın.
+142. Kullanıcıların projeleri ve görevleri için görevlerin ilerlemesini izleyebilmeler
+143. Kullanıcıların projeleri ve görevleri için gelişmeleri ve güncellemeleri takip edebilmelerini sağlayın.
+144. Kullanıcıların projeleri ve görevleri için kendilerine özgü etiketler oluşturabilmelerini sağlayın.
+145. Kullanıcıların görevleri ve projeleri için tekrarlayan görevleri otomatik olarak oluşturabilmesini sağlayın.
+146. Kullanıcıların projeleri ve görevleri için bildirimleri özelleştirebilmelerini sağlayın.
+147. Kullanıcıların projeleri ve görevleri için hatırlatıcıları ayarlayabilmelerini sağlayın.
+148. Kullanıcıların projeleri ve görevleri için başkalarına görev atayabilmelerini sağlayın.
+149. Kullanıcıların projeleri ve görevleri için başkalarıyla işbirliği yapabilmelerini sağlayın.
+150. Kullanıcıların projeleri ve görevleri için başkalarıyla sohbet edebilmelerini sağlayın.
+151. Kullanıcıların projeleri ve görevleri için görevlerin durumunu görüntüleyebilmelerini sağlayın.
+152. Kullanıcıların projeleri ve görevleri için görevlerin ilerlemesini izleyebilmelerini sağlayın.
+153. Kullanıcıların projeleri ve görevleri için görevler arasındaki bağımlılıkları belirleyebilmelerini sağlayın.
+154. Kullanıcıların projeleri ve görevleri için görevleri sıralayabilmesini sağlayın. 
+155. Kullanıcıların projeleri ve görevleri için bir görev listesi oluşturabilmesini sağlayın.
+156. Kullanıcıların projeleri ve görevleri için bir proje planı oluşturabilmesini sağlayın.
+157. Kullanıcıların projeleri ve görevleri için görevler arasında hızlı bir şekilde geçiş yapabilmesini sağlayın.
+158. Kullanıcıların projeleri ve görevleri için görevlerin durumunu hızlı bir şekilde güncelleyebilmelerini sağlayın.
+159. Kullanıcıların projeleri ve görevleri için önemli tarihleri ve son tarihleri takip edebilmelerini sağlayın.
+160. Kullanıcıların projeleri ve görevleri için görevlerin tamamlanma oranını görüntüleyebilmelerini sağlayın.
+161. Kullanıcıların projeleri ve görevleri için görevleri ve projeleri arama ve filtreleme yetenekleri ekleyin.
+162. Kullanıcıların projeleri ve görevleri için görevleri çeşitli kriterlere göre sıralayabilmesini sağlayın. 
+163. Kullanıcıların projeleri ve görevleri için görevlerin ve projelerin geçmişini görüntüleyebilmelerini sağlayın.
+164. Kullanıcıların projeleri ve görevleri için görevlerin ve projelerin versiyonlarını takip edebilmelerini sağlayın.
+165. Kullanıcıların projeleri ve görevleri için çeşitli izin seviyeleri belirleyebilmelerini sağlayın.
+166. Kullanıcıların projeleri ve görevleri için belirli bir görev veya proje üzerinde çalışan kişileri görüntüleyebilmelerini sağlayın.
+167. Kullanıcıların projeleri ve görevleri için projelerin ve görevlerin ilerlemesini belirleyen ölçütlere ulaşabilmelerini sağlayın.
+168. Kullanıcıların projeleri ve görevleri için görevleri ve projeleri başkalarına aktarabilmelerini sağlayın.
+169. Kullanıcıların projeleri ve görevleri için görevlerin ve projelerin durumunu başkalarıyla paylaşabilmelerini sağlayın.
+170. Kullanıcıların projeleri ve görevleri için çeşitli dosya türlerini ekleyebilmelerini ve yönetebilmelerini sağlayın.
+171. Kullanıcıların projeleri ve görevleri için görevler ve projeler üzerinde yorum yapabilmelerini sağlayın.
+172. Kullanıcıların projeleri ve görevleri için görevler ve projeler üzerinde not alabilmelerini sağlayın.
+173. Kullanıcıların projeleri ve görevleri için görevler ve projeler üzerinde çizim yapabilmelerini sağlayın.
+174. Kullanıcıların projeleri ve görevleri için görevler ve projeler üzerinde sesli not alabilmelerini sağlayın.
+175. Kullanıcıların projeleri ve görevleri için görevleri ve projeleri çeşitli platformlarda paylaşabilmelerini sağlayın.
+176. Kullanıcıların projeleri ve görevleri için görevleri ve projeleri çeşitli platformlardan içe aktarabilmelerini sağlayın.
+177. Kullanıcıların projeleri ve görevleri için görevlerin ve projelerin geçmişini dışa aktarabilmelerini sağlayın.
+178. Kullanıcıların projeleri ve görevleri için özel ve kişiselleştirilebilir bir kullanıcı arayüzü sunun.
+179. Kullanıcıların projeleri ve görevleri için genel bir bakış sunun, böylece kullanıcılar projelerin ve görevlerin genel durumunu hızlı bir şekilde görebilirler.
+180. Kullanıcıların projeleri ve görevleri için görevleri ve projeleri hızlı bir şekilde oluşturabilmelerini sağlayın.
+181. Kullanıcıların projeleri ve görevleri için görevlerin ve projelerin önceliklerini belirleyebilmelerini sağlayın.
+182. Kullanıcıların projeleri ve görevleri için görevlerin ve projelerin süresini tahmin edebilmelerini sağlayın.
+183. Kullanıcıların projeleri ve görevleri için görevler ve projeler üzerinde anketler ve oylamalar yapabilmelerini sağlayın.
+184. Kullanıcıların projeleri ve görevleri için görevleri ve projeleri çeşitli dil seçen
+201. Kullanıcıların belirli zaman aralıklarında otomatik olarak projelerin ve görevlerin durumunu paylaşmalarını sağlayın.
+202. Kullanıcıların belirli zaman aralıklarında otomatik olarak projelerin ve görevlerin durumunu arşivlemelerini sağlayın.
+203. Kullanıcıların belirli zaman aralıklarında otomatik olarak projelerin ve görevlerin durumunu silmelerini sağlayın.
+204. Kullanıcıların belirli bir süre sonunda görevler ve projeler üzerinde hatırlatmalar alabilmelerini sağlayın.
+205. Kullanıcıların projelerin ve görevlerin ilerlemesini belirleyen ölçütleri belirleyebilmelerini sağlayın.
+206. Kullanıcıların belirli bir süre sonunda görevler ve projeler üzerinde uyarılar alabilmelerini sağlayın.
+207. Kullanıcıların belirli zaman aralıklarında otomatik olarak projelerin ve görevlerin durumunu dışa aktarabilmelerini sağlayın.
+208. Kullanıcıların belirli zaman aralıklarında otomatik olarak projelerin ve görevlerin durumunu içe aktarabilmelerini sağlayın.
+209. Kullanıcıların belirli bir süre sonunda görevler ve projeler üzerinde bildirimler alabilmelerini sağlayın.
+210. Kullanıcıların projelerin ve görevlerin ilerlemesini belirleyen ölçütleri izleyebilmelerini sağlayın.
+211. Kullanıcıların belirli bir süre sonunda görevler ve projeler üzerinde öneriler alabilmelerini sağlayın.
+212. Kullanıcıların belirli zaman aralıklarında otomatik olarak projelerin ve görevlerin durumunu güncelleme seçeneği sunun.
+213. Kullanıcıların projeler ve görevler üzerinde yorum yapabilmelerini sağlayın.
+214. Kullanıcıların projeler ve görevler üzerinde notlar ekleyebilmelerini sağlayın.
+215. Kullanıcıların projeler ve görevler üzerinde belgeler ekleyebilmelerini sağlayın.
+216. Kullanıcıların projeler ve görevler üzerinde görev listeleri oluşturabilmelerini sağlayın.
+217. Kullanıcıların projeler ve görevler üzerinde görev listelerini yönetebilmelerini sağlayın.
+218. Kullanıcıların projeler ve görevler üzerinde görev listelerini paylaşabilmelerini sağlayın.
+219. Kullanıcıların projeler ve görevler üzerinde görev listelerini arşivleyebilmelerini sağlayın.
+220. Kullanıcıların projeler ve görevler üzerinde görev listelerini silebilmelerini sağlayın.
+221. Kullanıcıların projeler ve görevler üzerinde etiketler ekleyebilmelerini sağlayın.
+222. Kullanıcıların projeler ve görevler üzerinde etiketleri düzenleyebilmelerini sağlayın.
+223. Kullanıcıların projeler ve görevler üzerinde etiketleri kaldırabilmelerini sağlayın.
+224. Kullanıcıların projeler ve görevler üzerinde etiketlere göre arama yapabilmelerini sağlayın.
+225. Kullanıcıların projeler ve görevler üzerinde etiketlere göre filtreleme yapabilmelerini sağlayın.
+226. Kullanıcıların projeler ve görevler üzerinde dosya ekleyebilmelerini sağlayın.
+227. Kullanıcıların projeler ve görevler üzerinde dosyaları indirebilmelerini sağlayın.
+228. Kullanıcıların projeler ve görevler üzerinde dosyaları düzenleyebilmelerini sağlayın.
+229. Kullanıcıların projeler ve görevler üzerinde dosyaları silebilmelerini sağlayın.
+230. Kullanıcıların projeler ve görevler üzerinde dosyalara göre arama yapabilmelerini sağlayın.
+231. Kullanıcıların projeler ve görevler üzerinde dosyalara göre filtreleme yapabilmelerini sağlayın.
+232. Kullanıcıların projeler ve görevler üzerinde atama yapabilmelerini sağlayın.
+233. Kullanıcıların projeler ve görevler üzerinde atamaları düzenleyebilmelerini sağlayın.
+234. Kullanıcıların projeler ve görevler üzerinde atamaları kaldırabilmelerini sağlayın.
+235. Kullanıcıların projeler ve görevler üzerinde atamalara göre arama yapabilmelerini sağlayın.
+236. Kullanıcıların projeler ve görevler üzerinde atamalara göre filtreleme yapabilmelerini sağlayın.
+237. Kullanıcıların projeler ve görevler üzerinde zaman çizelgesi oluşturabilmelerini sağlayın.
+238. Kullanıcıların projeler ve görevler üzerinde zaman çizelgesini düzenleyebilmelerini sağlayın.
+239. Kullanıcıların projeler ve görevler üzerinde zaman çizelgesini kaldırabilmelerini sağlayın.
+240. Kullanıcıların projeler ve görevler üzerinde zaman çizelgesine göre arama yapabilmelerini sağlayın.
+241. Kullanıcıların projeler ve görevler üzerinde zaman çizelgesine göre filtreleme yapabilmelerini sağlayın.
+242. Kullanıcıların projeler ve görevler üzerinde öncelik atayabilmelerini sağlayın.
+243. Kullanıcıların projeler ve görevler üzerinde önceliği düzenleyebilmelerini sağlayın.
+244. Kullanıcıların projeler ve görevler üzerinde önceliği kaldırabilmelerini sağlayın.
+245. Kullanıcıların projeler ve görevler üzerinde önceliklere göre arama yapabilmelerini sağlayın.
+246. Kullanıcıların projeler ve görevler üzerinde önceliklere göre filtreleme yapabilmelerini sağlayın.
+247. Kullanıcıların projeler ve görevler üzerinde notlar ekleyebilmelerini sağlayın.
+248. Kullanıcıların projeler ve görevler üzerinde notları düzenleyebilmelerini sağlayın.
+249. Kullanıcıların projeler ve görevler üzerinde notları kaldırabilmelerini sağlayın.
+250. Kullanıcıların projeler ve görevler üzerinde notlara göre arama yapabilmelerini sağlayın.
+251. Kullanıcıların projeler ve görevler üzerinde notlara göre filtreleme yapabilmelerini sağlayın.
+252. Kullanıcıların projeler ve görevler üzerinde etiketlere göre sıralama yapabilmelerini sağlayın.
+253. Kullanıcıların projeler ve görevler üzerinde dosyalara göre sıralama yapabilmelerini sağlayın.
+254. Kullanıcıların projeler ve görevler üzerinde atamalara göre sıralama yapabilmelerini sağlayın.
+255. Kullanıcıların projeler ve görevler üzerinde zaman çizelgesine göre sıralama yapabilmelerini sağlayın.
+256. Kullanıcıların projeler ve görevler üzerinde önceliklere göre sıralama yapabilmelerini sağlayın.
+257. Kullanıcıların projeler ve görevler üzerinde notlara göre sıralama yapabilmelerini sağlayın.
+258. Kullanıcıların profil fotoğrafını yükleyebilmelerini sağlayın.
+259. Kullanıcıların profil fotoğrafını düzenleyebilmelerini sağlayın.
+260. Kullanıcıların profil fotoğrafını kaldırabilmelerini sağlayın.
+261. Kullanıcıların profil fotoğrafını görüntüleyebilmelerini sağlayın.
+262. Kullanıcıların projeler ve görevler üzerinde yorum yapabilmelerini sağlayın.
+263. Kullanıcıların projeler ve görevler üzerinde yorumları düzenleyebilmelerini sağlayın.
+264. Kullanıcıların projeler ve görevler üzerinde yorumları kaldırabilmelerini sağlayın.
+265. Kullanıcıların projeler ve görevler üzerinde yorumlara göre arama yapabilmelerini sağlayın.
+266. Kullanıcıların projeler ve görevler üzerinde yorumlara göre filtreleme yapabilmelerini sağlayın.
+267. Kullanıcılara projeleri ve görevleri paylaşma özelliği ekleyin.
+268. Kullanıcıların projeler ve görevler üzerindeki paylaşımları düzenleyebilmelerini sağlayın.
+269. Kullanıcıların projeleri ve görevleri paylaşan kişileri görüntüleyebilmelerini sağlayın.
+270. Kullanıcıların projeleri ve görevleri paylaşan kişileri yönetebilmelerini sağlayın (ekleme, düzenleme, kaldırma).
+271. Kullanıcıların projeler ve görevler üzerindeki paylaşımları kaldırabilmelerini sağlayın.
+272. Kullanıcıların projeler ve görevler üzerindeki paylaşımları geri alabilmelerini sağlayın.
+273. Kullanıcılara projeleri ve görevleri takip etme özelliği ekleyin.
+274. Kullanıcıların takip ettikleri projeleri ve görevleri görüntüleyebilmelerini sağlayın.
+275. Kullanıcıların takip ettikleri projeleri ve görevleri yönetebilmelerini sağlayın (ekleme, düzenleme, kaldırma).
+276. Kullanıcıların takip ettikleri projeleri ve görevleri takipten çıkarabilmelerini sağlayın.
+277. Kullanıcıların projeleri ve görevleri favorilere ekleme özelliği ekleyin.
+278. Kullanıcıların favori projeleri ve görevleri görüntüleyebilmelerini sağlayın.
+279. Kullanıcıların favori projeleri ve görevleri yönetebilmelerini sağlayın (ekleme, düzenleme, kaldırma).
+280. Kullanıcıların favori projeleri ve görevleri favorilerden çıkarabilmelerini sağlayın.
+281. Kullanıcıların projeleri ve görevleri raporlama özelliği ekleyin.
+282. Kullanıcıların projeleri ve görevleri raporlamalarını düzenleyebilmelerini sağlayın.
+283. Kullanıcıların projeleri ve görevleri raporlama dosyalarını indirebilmelerini sağlayın.
+284. Kullanıcılara projeleri ve görevleri takvim görünümünde gösterme özelliği ekleyin.
+285. Kullanıcılara projeleri ve görevleri liste görünümünde gösterme özelliği ekleyin.
+286. Kullanıcılara projeleri ve görevleri kart görünümünde gösterme özelliği ekleyin.
+287. Kullanıcılara projeleri ve görevleri ağaç görünümünde gösterme özelliği ekleyin.
+288. Kullanıcıların projeleri ve görevleri arşivleme özelliği ekleyin.
+289. Kullanıcıların arşivlenen projeleri ve görevleri görüntüleyebilmelerini sağlayın.
+290. Kullanıcıların arşivlenen projeleri ve görevleri geri yükleyebilmelerini sağlayın.
+291. Kullanıcıların arşivlenen projeleri ve görevleri tamamen
+291. Kullanıcıların arşivlenen projeleri ve görevleri tamamen silme özelliği ekleyin.
+292. Kullanıcılara projeleri ve görevleri paylaşılanlarla paylaşma özelliği ekleyin.
+293. Kullanıcılara projeleri ve görevleri belirli kullanıcılarla paylaşma özelliği ekleyin.
+294. Kullanıcılara projeleri ve görevleri paylaşım düzeylerini belirleme özelliği ekleyin (okuma, düzenleme, kaldırma).
+295. Kullanıcıların projeleri ve görevleri paylaşılanlardan kaldırabilme özelliği ekleyin.
+296. Kullanıcılara projeleri ve görevleri geri bildirim alma özelliği ekleyin.
+297. Kullanıcılara projeleri ve görevleri geri bildirim verme özelliği ekleyin.
+298. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimleri düzenleme özelliği ekleyin.
+299. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimleri kaldırma özelliği ekleyin.
+300. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimlere göre arama yapabilme özelliği ekleyin.
+301. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimlere göre filtreleme yapabilme özelliği ekleyin.
+302. Kullanıcıların projeleri ve görevleri üzerindeki ilerlemeyi takip etme özelliği ekleyin.
+303. Kullanıcıların projeleri ve görevleri üzerindeki ilerlemeyi güncelleme özelliği ekleyin.
+304. Kullanıcıların projeleri ve görevleri üzerindeki ilerlemeyi görüntüleme özelliği ekleyin.
+305. Kullanıcıların projeleri ve görevleri üzerindeki ilerlemeye göre arama yapabilme özelliği ekleyin.
+306. Kullanıcıların projeleri ve görevleri üzerindeki ilerlemeye göre filtreleme yapabilme özelliği ekleyin.
+307. Kullanıcılara projeleri ve görevleri takvim etkinlikleri ekleyin.
+308. Kullanıcılara projeleri ve görevleri takvim etkinliklerini düzenleme özelliği ekleyin.
+309. Kullanıcılara projeleri ve görevleri takvim etkinliklerini kaldırma özelliği ekleyin.
+310. Kullanıcıların projeleri ve görevleri üzerinde takvim etkinliklerine göre arama yapabilme özelliği ekleyin.
+311. Kullanıcıların projeleri ve görevleri üzerinde takvim etkinliklerine göre filtreleme yapabilme özelliği ekleyin.
+312. Kullanıcılara projeleri ve görevleri favorilere ekleme özelliğini genişletin (etiket, not, dosya, atama vb.).
+313. Kullanıcılara projeleri ve görevleri favor
+313. Kullanıcılara projeleri ve görevleri favorilere ekleme özelliğini genişletin (etiket, not, dosya, atama vb.).
+314. Kullanıcılara projeleri ve görevleri favorilerden kaldırma özelliğini genişletin (etiket, not, dosya, atama vb.).
+315. Kullanıcılara projeleri ve görevleri favorilere göre arama yapabilme özelliği ekleyin.
+316. Kullanıcılara projeleri ve görevleri favorilere göre filtreleme yapabilme özelliği ekleyin.
+317. Kullanıcıların projeleri ve görevleri üzerinde takvim etkinliklerini görüntüleme özelliğini genişletin.
+318. Kullanıcıların projeleri ve görevleri üzerinde takvim etkinliklerini düzenleme özelliğini genişletin.
+319. Kullanıcıların projeleri ve görevleri üzerinde takvim etkinliklerini kaldırma özelliğini genişletin.
+320. Kullanıcıların projeleri ve görevleri üzerinde takvim etkinliklerine göre arama yapabilme özelliğini genişletin.
+321. Kullanıcıların projeleri ve görevleri üzerinde takvim etkinliklerine göre filtreleme yapabilme özelliğini genişletin.
+322. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimleri görüntüleme özelliğini genişletin.
+323. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimleri düzenleme özelliğini genişletin.
+324. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimleri kaldırma özelliğini genişletin.
+325. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimlere göre arama yapabilme özelliğini genişletin.
+326. Kullanıcıların projeleri ve görevleri üzerinde geri bildirimlere göre filtreleme yapabilme özelliğini genişletin.
+327. Kullanıcılara projeleri ve görevleri üzerinde şablon kullanma özelliği ekleyin.
+328. Kullanıcılara projeleri ve görevleri üzerinde şablon oluşturma özelliği ekleyin.
+329. Kullanıcılara projeleri ve görevleri üzerinde şablon düzenleme özelliği ekleyin.
+330. Kullanıcılara projeleri ve görevleri üzerinde şablon kullanarak yeni projeler veya görevler oluşturma özelliği ekleyin.
+331. Kullanıcıların projeleri ve görevleri üzerinde şablonlara göre arama yapabilme özelliği ekleyin.
+332. Kullanıcıların projeleri ve görevleri üzerinde şablonlara göre filtreleme yapabilme özelliği ekleyin.
+333. Kullanıcılara projeleri ve görevleri üzerinde tekrarlanan öğeler ekleyin (tekrarlanan görevler,
+333. Kullanıcılara projeleri ve görevleri üzerinde tekrarlanan öğeler ekleyin (tekrarlanan görevler, rutin projeler vb.).
+334. Kullanıcıların projeleri ve görevleri üzerinde tekrarlanan öğeleri düzenleme özelliği ekleyin.
+335. Kullanıcıların projeleri ve görevleri üzerinde tekrarlanan öğeleri kaldırma özelliği ekleyin.
+336. Kullanıcıların projeleri ve görevleri üzerinde tekrarlanan öğelere göre arama yapabilme özelliği ekleyin.
+337. Kullanıcıların projeleri ve görevleri üzerinde tekrarlanan öğelere göre filtreleme yapabilme özelliği ekleyin.
+338. Kullanıcılara projeleri ve görevleri üzerinde dosya paylaşma özelliği ekleyin.
+339. Kullanıcılara projeleri ve görevleri üzerinde dosya indirme özelliği ekleyin.
+340. Kullanıcılara projeleri ve görevleri üzerinde dosya yükleme özelliği ekleyin.
+341. Kullanıcılara projeleri ve görevleri üzerinde dosya düzenleme özelliği ekleyin.
+342. Kullanıcılara projeleri ve görevleri üzerinde dosya silme özelliği ekleyin.
+343. Kullanıcılara projeleri ve görevleri üzerinde dosyalara göre arama yapabilme özelliği ekleyin.
+344. Kullanıcılara projeleri ve görevleri üzerinde dosyalara göre filtreleme yapabilme özelliği ekleyin.
+345. Kullanıcılara projeleri ve görevleri üzerinde etiketleme özelliği ekleyin.
+346. Kullanıcılara projeleri ve görevleri üzerinde etiketleri düzenleme özelliği ekleyin.
+347. Kullanıcılara projeleri ve görevleri üzerinde etiketleri kaldırma özelliği ekleyin.
+348. Kullanıcılara projeleri ve görevleri üzerinde etiketlere göre arama yapabilme özelliği ekleyin.
+349. Kullanıcılara projeleri ve görevleri üzerinde etiketlere göre filtreleme yapabilme özelliği ekleyin.
+350. Kullanıcılara projeleri ve görevleri üzerinde atama özelliği ekleyin.
+351. Kullanıcılara projeleri ve görevleri üzerinde atamaları düzenleme özelliği ekleyin.
+352. Kullanıcılara projeleri ve görevleri üzerinde atamaları kaldırma özelliği ekleyin.
+353. Kullanıcılara projeleri ve görevleri üzerinde atamalara göre arama yapabilme özelliği ekleyin.
+354. Kullanıcılara projeleri ve görevleri üzerinde atamalara göre filtreleme yapabilme özelliği ekleyin.
+355. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre fil
+355. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre filtreleme yapabilme özelliği ekleyin.
+356. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre sıralama yapabilme özelliği ekleyin.
+357. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre arama yapabilme özelliği ekleyin.
+358. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre hatırlatıcılar ekleyin.
+359. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre hatırlatıcıları düzenleme özelliği ekleyin.
+360. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre hatırlatıcıları kaldırma özelliği ekleyin.
+361. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre hatırlatıcılara göre arama yapabilme özelliği ekleyin.
+362. Kullanıcılara projeleri ve görevleri üzerinde zaman çizelgesine göre hatırlatıcılara göre filtreleme yapabilme özelliği ekleyin.
+363. Kullanıcılara projeleri ve görevleri üzerinde zaman takibi yapma özelliği ekleyin.
+364. Kullanıcılara projeleri ve görevleri üzerinde zaman takibini düzenleme özelliği ekleyin.
+365. Kullanıcılara projeleri ve görevleri üzerinde zaman takibini kaldırma özelliği ekleyin.
+366. Kullanıcılara projeleri ve görevleri üzerinde zaman takibine göre arama yapabilme özelliği ekleyin.
+367. Kullanıcılara projeleri ve görevleri üzerinde zaman takibine göre filtreleme yapabilme özelliği ekleyin.
+368. Kullanıcılara projeleri ve görevleri üzerinde tamamlanma durumunu işaretleme özelliği ekleyin.
+369. Kullanıcılara projeleri ve görevleri üzerinde tamamlanmış öğeleri gizleme veya görüntüleme seçeneği ekleyin.
+370. Kullanıcılara projeleri ve görevleri üzerinde tamamlanma durumuna göre arama yapabilme özelliği ekleyin.
+371. Kullanıcılara projeleri ve görevleri üzerinde tamamlanma durumuna göre filtreleme yapabilme özelliği ekleyin.
+372. Kullanıcılara projeleri ve görevleri üzerinde dosya versiyonlama özelliği ekleyin.
+373. Kullanıcılara projeleri ve görevleri üzerinde dosya geçmişini görüntüleme özelliği ekleyin.
+374. Kullanıcılara projeleri ve görevleri üzerinde dosya geri yükleme özelliği ekleyin.
+375. Kullanıcılara projeleri ve görevleri üzerinde dosya geri
+375. Kullanıcılara projeleri ve görevleri üzerinde dosya geri yükleme özelliği ekleyin.
+376. Kullanıcılara projeleri ve görevleri üzerinde dosya değişikliklerini karşılaştırma özelliği ekleyin.
+377. Kullanıcılara projeleri ve görevleri üzerinde dosya geçmişinden eski sürümleri geri alma özelliği ekleyin.
+378. Kullanıcılara projeleri ve görevleri üzerinde dosya paylaşım izinlerini belirleme özelliği ekleyin.
+379. Kullanıcılara projeleri ve görevleri üzerinde dosya güvenlik ayarlarını düzenleme özelliği ekleyin.
+380. Kullanıcılara projeleri ve görevleri üzerinde dosya sıkıştırma ve arşivleme özelliği ekleyin.
+381. Kullanıcılara projeleri ve görevleri üzerinde dosya şifreleme özelliği ekleyin.
+382. Kullanıcılara projeleri ve görevleri üzerinde dosya paylaşımı için bağlantı oluşturma özelliği ekleyin.
+383. Kullanıcılara projeleri ve görevleri üzerinde dosya indirme sınırları belirleme özelliği ekleyin.
+384. Kullanıcılara projeleri ve görevleri üzerinde dosya sürükle ve bırak özelliği ekleyin.
+385. Kullanıcılara projeleri ve görevleri üzerinde takvim entegrasyonu özelliği ekleyin.
+386. Kullanıcılara projeleri ve görevleri üzerinde e-posta bildirimleri özelliği ekleyin.
+387. Kullanıcılara projeleri ve görevleri üzerinde mobil uygulama entegrasyonu özelliği ekleyin.
+388. Kullanıcılara projeleri ve görevleri üzerinde masaüstü bildirimleri özelliği ekleyin.
+389. Kullanıcılara projeleri ve görevleri üzerinde anlık sohbet veya iletişim özelliği ekleyin.
+390. Kullanıcılara projeleri ve görevleri üzerinde belge düzenleme ve işbirliği özelliği ekleyin.
+391. Kullanıcılara projeleri ve görevleri üzerinde zamanlayıcı veya kronometre özelliği ekleyin.
+392. Kullanıcılara projeleri ve görevleri üzerinde gerçek zamanlı güncelleme özelliği ekleyin.
+393. Kullanıcılara projeleri ve görevleri üzerinde veri yedekleme ve geri yükleme özelliği ekleyin.
+394. Kullanıcılara projeleri ve görevleri üzerinde genişletilebilir görev listeleri özelliği ekleyin.
+395. Kullanıcılara projeleri ve görevleri üzerinde ilgili kişileri etiketleme ve bildirim gönderme özelliği ekleyin.
+396. Kullanıcılara projeleri ve görevleri üzerinde iş akışı yönetimi özelli
+396. Kullanıcılara projeleri ve görevleri üzerinde iş akışı yönetimi özelliği ekleyin.
+397. Kullanıcılara projeleri ve görevleri üzerinde süreç otomasyonu özelliği ekleyin.
+398. Kullanıcılara projeleri ve görevleri üzerinde ilerleme raporlama özelliği ekleyin.
+399. Kullanıcılara projeleri ve görevleri üzerinde bütçe yönetimi özelliği ekleyin.
+400. Kullanıcılara projeleri ve görevleri üzerinde kaynak yönetimi özelliği ekleyin.
+401. Kullanıcılara projeleri ve görevleri üzerinde risk ve sorun yönetimi özelliği ekleyin.
+402. Kullanıcılara projeleri ve görevleri üzerinde takım yönetimi özelliği ekleyin.
+403. Kullanıcılara projeleri ve görevleri üzerinde proje dökümantasyonu özelliği ekleyin.
+404. Kullanıcılara projeleri ve görevleri üzerinde toplantı yönetimi özelliği ekleyin.
+405. Kullanıcılara projeleri ve görevleri üzerinde izin yönetimi özelliği ekleyin.
+406. Kullanıcılara projeleri ve görevleri üzerinde verimlilik analizi özelliği ekleyin.
+407. Kullanıcılara projeleri ve görevleri üzerinde gerçekleşen olayları ve değişiklikleri kaydetme özelliği ekleyin.
+408. Kullanıcılara projeleri ve görevleri üzerinde ekipman ve kaynak takibi özelliği ekleyin.
+409. Kullanıcılara projeleri ve görevleri üzerinde proje planlama ve zaman yönetimi özelliği ekleyin.
+410. Kullanıcılara projeleri ve görevleri üzerinde veri analizi ve raporlama özelliği ekleyin.
+411. Kullanıcılara projeleri ve görevleri üzerinde dosya senkronizasyonu özelliği ekleyin.
+412. Kullanıcılara projeleri ve görevleri üzerinde kişiselleştirilebilir kullanıcı arayüzü özelliği ekleyin.
+413. Kullanıcılara projeleri ve görevleri üzerinde proje maliyet analizi özelliği ekleyin.
+414. Kullanıcılara projeleri ve görevleri üzerinde görsel gösterimler ve raporlar özelliği ekleyin.
+415. Kullanıcılara projeleri ve görevleri üzerinde paydaş yönetimi özelliği ekleyin.
+416. Kullanıcılara projeleri ve görevleri üzerinde proje aşamaları ve hedeflerini takip etme özelliği ekleyin.
+417. Kullanıcılara projeleri ve görevleri üzerinde süreç iyileştirme ve optimize etme özelliği ekleyin.
+418. Kullanıcılara projeleri ve görevleri üzerinde proje değerlendirme ve performans ölçümü özelliği ekleyin.
+419. Kullanıcılara projeleri
+419. Kullanıcılara projeleri ve görevleri üzerinde proje şablonları kullanma özelliği ekleyin.
+420. Kullanıcılara projeleri ve görevleri üzerinde anket ve geri bildirim toplama özelliği ekleyin.
+421. Kullanıcılara projeleri ve görevleri üzerinde taşınabilirlik ve entegrasyon özelliği ekleyin.
+422. Kullanıcılara projeleri ve görevleri üzerinde takvim senkronizasyonu özelliği ekleyin.
+423. Kullanıcılara projeleri ve görevleri üzerinde denetim izleri ve geçmişi görüntüleme özelliği ekleyin.
+424. Kullanıcılara projeleri ve görevleri üzerinde projeler arasında bağımlılık ve ilişki yönetimi özelliği ekleyin.
+425. Kullanıcılara projeleri ve görevleri üzerinde çoklu dil desteği özelliği ekleyin.
+426. Kullanıcılara projeleri ve görevleri üzerinde kullanıcı rolleri ve yetkilendirme özelliği ekleyin.
+427. Kullanıcılara projeleri ve görevleri üzerinde proje portföy yönetimi özelliği ekleyin.
+428. Kullanıcılara projeleri ve görevleri üzerinde hızlı erişim kısayolları özelliği ekleyin.
+429. Kullanıcılara projeleri ve görevleri üzerinde veri güvenliği ve gizlilik önlemleri özelliği ekleyin.
+430. Kullanıcılara projeleri ve görevleri üzerinde proje maliyet tahmini ve bütçe yönetimi özelliği ekleyin.
+431. Kullanıcılara projeleri ve görevleri üzerinde iletişim araçları entegrasyonu özelliği ekleyin (Slack, Microsoft Teams vb.).
+432. Kullanıcılara projeleri ve görevleri üzerinde ilerleme panosu ve görsel gösterimler özelliği ekleyin.
+433. Kullanıcılara projeleri ve görevleri üzerinde proje belgeleri ve dokümantasyon yönetimi özelliği ekleyin.
+434. Kullanıcılara projeleri ve görevleri üzerinde geri dönüşüm özelliği ekleyin.
+435. Kullanıcılara projeleri ve görevleri üzerinde gruplama ve kategorizasyon özelliği ekleyin.
+436. Kullanıcılara projeleri ve görevleri üzerinde ilerleme ve performans grafikleri özelliği ekleyin.
+437. Kullanıcılara projeleri ve görevleri üzerinde kullanıcı aktivitelerini takip etme özelliği ekleyin.
+438. Kullanıcılara projeleri ve görevleri üzerinde süreç otomasyonunu destekleyen iş kuralı yönetimi özelliği ekleyin.
+439. Kullanıcılara projeleri ve görevleri üzerinde işbirliği ve eşzamanlı çalışma özelliği ekleyin.
+440. Kullanıcılara projeleri ve görev
+440. Kullanıcılara projeleri ve görevleri üzerinde gerçek zamanlı etkileşimli tahta özelliği ekleyin.
+441. Kullanıcılara projeleri ve görevleri üzerinde hedef ve başarı metrikleri takibi özelliği ekleyin.
+442. Kullanıcılara projeleri ve görevleri üzerinde anlık bildirimler ve uyarılar özelliği ekleyin.
+443. Kullanıcılara projeleri ve görevleri üzerinde veri analizi ve trendler özelliği ekleyin.
+444. Kullanıcılara projeleri ve görevleri üzerinde zaman takibi ve saatlerin kaydedilmesi özelliği ekleyin.
+445. Kullanıcılara projeleri ve görevleri üzerinde analitik raporlama ve görselleştirme özelliği ekleyin.
+446. Kullanıcılara projeleri ve görevleri üzerinde iş süreçleri ve iş akışı yönetimi özelliği ekleyin.
+447. Kullanıcılara projeleri ve görevleri üzerinde duyuru ve iletişim panosu özelliği ekleyin.
+448. Kullanıcılara projeleri ve görevleri üzerinde geri bildirim alışverişi ve inceleme özelliği ekleyin.
+449. Kullanıcılara projeleri ve görevleri üzerinde kullanıcılar arasında etiketleme ve bahsetme özelliği ekleyin.
+450. Kullanıcılara projeleri ve görevleri üzerinde anketler, anket sonuçları ve anket analizi özelliği ekleyin.
+451. Kullanıcılara projeleri ve görevleri üzerinde zaman ve kaynak tahmini özelliği ekleyin.
+452. Kullanıcılara projeleri ve görevleri üzerinde doküman paylaşımı ve işbirliği özelliği ekleyin.
+453. Kullanıcılara projeleri ve görevleri üzerinde kullanıcılar arasında anlık sohbet ve mesajlaşma özelliği ekleyin.
+454. Kullanıcılara projeleri ve görevleri üzerinde dosya ve doküman paylaşımı için sürükle ve bırak özelliği ekleyin.
+455. Kullanıcılara projeleri ve görevleri üzerinde görevleri takip etme ve hatırlatıcılar özelliği ekleyin.
+456. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların işbirliği yapabilmesi için takım çalışması özelliği ekleyin.
+457. Kullanıcılara projeleri ve görevleri üzerinde proje görevlerinin süreçlerini belirleyebilme özelliği ekleyin.
+458. Kullanıcılara projeleri ve görevleri üzerinde kullanıcılara özelleştirilebilir raporlama özelliği ekleyin.
+459. Kullanıcılara projeleri ve görevleri üzerinde iş takibi ve performans değerlendirme özelliği ekleyin.
+460. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların iş süreçlerini optimize etmes
+460. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların iş süreçlerini optimize etmesine yardımcı olacak veri analizi ve öneri özelliği ekleyin.
+461. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların zaman yönetimini destekleyen zaman planlama ve hatırlatma özelliği ekleyin.
+462. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların işbirliğini artırmak için anketler, oylamalar ve geri bildirimlerle etkileşim özelliği ekleyin.
+463. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların proje kaynaklarını etkili bir şekilde yönetmelerini sağlayacak kaynak tahsis özelliği ekleyin.
+464. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri ve görevleri için öncelik düzeyleri ve aciliyet seviyeleri belirleme özelliği ekleyin.
+465. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların proje maliyetlerini izleyebileceği maliyet yönetimi özelliği ekleyin.
+466. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların proje dokümantasyonunu yönetebileceği doküman depolama ve paylaşım özelliği ekleyin.
+467. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman takibi ve zaman yönetimi özelliği ekleyin.
+468. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için görsel ilerleme panosu ve gantt şeması özelliği ekleyin.
+469. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için bütçe ve maliyet kontrolü özelliği ekleyin.
+470. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için risk yönetimi ve risk analizi özelliği ekleyin.
+471. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iletişim ve işbirliği araçları entegrasyonu özelliği ekleyin.
+472. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların proje aşamalarını ve ilerlemeyi görsel olarak takip edebileceği ilerleme panosu özelliği ekleyin.
+473. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların proje kaynaklarını optimize etmesine yardımcı olacak kaynak yönetimi özelliği ekleyin.
+474. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için performans ölçümü ve analizi özelliği ekleyin.
+475. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman çizelgesi ve takvim entegrasyonu özelliği ekleyin.
+476. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için önemli kilometre taşları ve olaylar yönetimi özelliği ekleyin.
+477. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ekip üyelerinin rollerini ve sorumluluklarını yönetebileceği rol yönetimi özelliği ekleyin.
+478. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje maliyetlerini takip edebileceği maliyet analizi özelliği ekleyin.
+479. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iş süreçlerini otomatikleştirmek için iş akışı yönetimi özelliği ekleyin.
+480. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için veri güvenliği ve erişim kontrolü sağlamak için kullanıcı yetkilendirme özelliği ekleyin.
+481. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme raporları ve performans değerlendirmeleri oluşturabilme özelliği ekleyin.
+482. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için takım üyeleri arasında etkileşimi teşvik etmek için tartışma forumları veya yorum özelliği ekleyin.
+483. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iş akışını iyileştirmek ve tekrarlanan görevleri otomatikleştirmek için iş süreçleri oluşturma özelliği ekleyin.
+484. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje dökümantasyonunu oluşturmak ve paylaşmak için belge yönetimi özelliği ekleyin.
+485. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için hedeflerini belirlemek ve ilerlemeyi takip etmek için KPI (Anahtar Performans Göstergesi) yönetimi özelliği ekleyin.
+486. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için toplantıları planlamak ve yönetmek için toplantı yönetimi özelliği ekleyin.
+487. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosyaları organize etmek ve paylaşmak için dosya yönetimi özelliği ekleyin.
+488. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için riskleri ve sorunları yönetmek için risk yönetimi özelliği ekleyin.
+489. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje planlarını oluşturmak ve takip etmek için proje yönetimi özelliği ekleyin.
+490. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iletişimi artırmak ve işbirliğini kolaylaştırmak için anlık mesajlaşma ve video konferans özelliği ekleyin.
+491. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için talepleri ve değişiklikleri yönetmek için talep yönetimi özelliği ekleyin.
+492. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için kaynak tahsisi ve takibi için kaynak yönetimi özelliği ekleyin.
+493. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dokümantasyon ve bilgi paylaşımı için wiki veya bilgi tabanı özelliği ekleyin.
+494. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iş takibi ve ilerlemeyi izlemek için panolar ve grafikler özelliği ekleyin.
+495. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje bütçesini yönetmek ve maliyetleri izlemek için mali yönetim özelliği ekleyin.
+496. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje dokümantasyonunu paylaşmak ve işbirliği yapmak için belge paylaşımı özelliği ekleyin.
+497. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman çizelgesini yönetmek ve görevleri zamanlamak için zaman yönetimi özelliği ekleyin.
+498. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için talepleri ve önerileri toplamak için geri bildirim yönetimi özelliği ekleyin.
+499. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için performans değerlendirmesi yapmak ve geri bildirim vermek için performans yönetimi özelliği ekleyin.
+500. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iş süreçlerini ve görevleri planlamak ve takip etmek için görev yönetimi özelliği ekleyin.
+501. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iletişimi ve işbirliğini kolaylaştırmak için notlar ve yorumlar özelliği ekleyin.
+502. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için belge ve dosyaları paylaşmak ve düzenlemek için entegre bir belge yönetimi özelliği ekleyin.
+503. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için etkinlik ve toplantıları takip etmek için takvim yönetimi özelliği ekleyin.
+504. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların
+504. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerlemeyi ve performansı izlemek için anlık ve detaylı raporlama özelliği ekleyin.
+505. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ekip üyeleri arasında işbirliğini teşvik etmek için yorum ve geri bildirim özelliği ekleyin.
+506. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iş akışını ve süreçleri görselleştirmek için akış diyagramı özelliği ekleyin.
+507. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için verimliliği artırmak için otomatik görev atama ve dağıtım özelliği ekleyin.
+508. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman yönetimini kolaylaştırmak için zaman takibi ve hatırlatma özelliği ekleyin.
+509. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iş önceliklendirme ve öncelik sıralaması özelliği ekleyin.
+510. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için veri güvenliğini ve gizliliğini sağlamak için güvenlik önlemleri ve erişim kontrolü özelliği ekleyin.
+511. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje maliyetlerini ve bütçesini izlemek için mali analiz ve raporlama özelliği ekleyin.
+512. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje paydaşlarını yönetmek için paydaş ilişkileri yönetimi özelliği ekleyin.
+513. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için etkili iletişimi sağlamak için anlık bildirimler ve uyarılar özelliği ekleyin.
+514. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için kaynakları ve malzemeleri yönetmek için kaynak envanteri özelliği ekleyin.
+515. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje hedeflerini belirlemek ve ilerlemeyi takip etmek için hedef yönetimi özelliği ekleyin.
+516. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosyaları ve dokümanları yönetmek için belge yönetimi özelliği ekleyin.
+517. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ekip üyelerini yönetmek ve takım performansını optimize etmek için takım yönetimi özelliği ekleyin.
+518. Kullanıcılara projeleri ve görevleri üzerinde kullan
+518. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilgili dış paydaşlarla iletişimi kolaylaştırmak için paydaş portalı veya paydaş yönetimi özelliği ekleyin.
+519. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje planını oluşturmak ve takip etmek için planlama ve zaman çizelgesi özelliği ekleyin.
+520. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje kalitesini yönetmek ve kontrol etmek için kalite yönetimi özelliği ekleyin.
+521. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için kaynakları tahsis etmek ve takip etmek için kaynak yönetimi özelliği ekleyin.
+522. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iş süreçlerini belirlemek ve optimize etmek için süreç yönetimi özelliği ekleyin.
+523. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için performans ölçütlerini belirlemek ve izlemek için KPI (Anahtar Performans Göstergesi) yönetimi özelliği ekleyin.
+524. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için bütçe tahmini ve maliyet kontrolü yapmak için mali yönetim özelliği ekleyin.
+525. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için risklerini belirlemek, analiz etmek ve yönetmek için risk yönetimi özelliği ekleyin.
+526. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için iletişim ve işbirliği için entegre mesajlaşma ve e-posta özelliği ekleyin.
+527. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dokümantasyonu paylaşmak ve işbirliği yapmak için entegre bir belge paylaşımı özelliği ekleyin.
+528. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için görevleri ve alt görevleri takip etmek için hiyerarşik görev yönetimi özelliği ekleyin.
+529. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için verimlilik analizi ve performans ölçümü yapmak için veri analitiği özelliği ekleyin.
+530. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje dokümantasyonu ve bilgi yönetimi için entegre bir wiki veya bilgi tabanı özelliği ekleyin.
+531. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje değişikliklerini yönetmek ve denetlemek için değişiklik yönetimi özelliği ekleyin.
+532. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için takım üyeleriyle iletişimi kolaylaştırmak ve işbirliğini artırmak için anlık mesajlaşma veya sohbet özelliği ekleyin.
+533. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için gerçek zamanlı güncellemeler almak ve bildirimler almak için bildirim ve uyarı sistemi özelliği ekleyin.
+534. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje performansını takip etmek ve raporlamak için proje analitiği ve raporlama özelliği ekleyin.
+535. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için toplu işlemleri gerçekleştirmek için veri tabanı yönetimi ve işlem özelliği ekleyin.
+536. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için veri güvenliği ve gizliliğini sağlamak için güvenlik ve erişim kontrolü özelliği ekleyin.
+537. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje şablonları veya tekrar kullanılabilir bileşenler oluşturmak ve kullanmak için şablon yönetimi özelliği ekleyin.
+538. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje etkinliklerini ve ilerlemeyi izlemek için bir panoyu veya kontrol panelini ekleyin.
+539. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje maliyetlerini takip etmek ve bütçeyi yönetmek için maliyet yönetimi özelliği ekleyin.
+540. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için performansı ve verimliliği artırmak için sürekli iyileştirme ve geri bildirim döngüsünü destekleyen özellikler ekleyin.
+541. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje dokümantasyonunu oluşturmak ve paylaşmak için dokümantasyon yönetimi özelliği ekleyin.
+542. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman takibini yapmak ve çalışma sürelerini izlemek için zaman yönetimi özelliği ekleyin.
+543. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için riskleri tanımlamak, değerlendirmek ve yönetmek için risk yönetimi özelliği ekleyin.
+544. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için öncelikleri belirlemek ve işleri sıralamak için öncelik yönetimi özelliği ekleyin.
+545. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje kaynaklarını planlamak, tahsis etmek ve izlemek için kaynak yönetimi özelliği ekleyin.
+546. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje takvimini oluşturmak ve proje süreçlerini planlamak için takvim ve zaman çizelgesi özelliği ekleyin.
+547. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için projeleri etiketlemek ve gruplamak için etiketleme ve kategorizasyon özelliği ekleyin.
+548. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dökümanları, resimleri, videoları ve diğer medya dosyalarını yüklemek ve depolamak için medya yönetimi özelliği ekleyin.
+549. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje planlamasını ve zaman çizelgesini görselleştirmek için Gantt şeması veya zaman çizelgesi özelliği ekleyin.
+550. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için veri analizi ve görselleştirmeleri yapmak için raporlama ve analiz özelliği ekleyin.
+551. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya paylaşımı yapmak için dosya paylaşımı özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili belge, sunum, tablo gibi dosyaları paylaşabilir ve erişebilirler.
+552. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için notlar almak ve paylaşmak için not alma ve paylaşma özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili önemli notları tutabilir ve diğer kullanıcılarla paylaşabilirler.
+553. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için olaylar ve takvim etkinlikleri oluşturmak ve yönetmek için takvim ve etkinlik yönetimi özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili önemli tarihleri takip edebilir ve etkinlikleri planlayabilirler.
+554. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya sürüm kontrolü sağlamak için sürüm kontrolü özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili dosyalarda yapılan değişiklikleri izleyebilir ve eski sürümlere erişebilirler.
+555. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için e-posta bildirimleri ve hatırlatıcılar göndermek için bildirim özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili önemli güncellemeleri ve hatırlatıcıları e-posta yoluyla alabilirler.
+556. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için etiket tabanlı arama yapmak için arama özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili belirli etiketlere sahip projeleri veya görevleri kolayca bulabilirler.
+557. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için işbirliği yapmak ve ekip üyeleriyle iletişim kurmak için mesajlaşma ve sohbet özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili konularda ekip üyeleriyle iletişim halinde olabilirler.
+558. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya şifreleme ve güvenlik önlemleri sağlamak için güvenlik özelliği ekleyin. Bu özellikle kullanıcılar, projeleriyle ilgili hassas dosyaları şifreleyebilir ve güvenli bir şekilde saklayabilirler.
+559. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için gerçek zamanlı işbirliği yapmak için
+gerçek zamanlı işbirliği özelliği ekleyin. Bu özellikle kullanıcılar aynı projeler üzerinde eş zamanlı olarak çalışabilir, değişiklikleri anlık olarak görebilir ve paylaşabilirler.
+560. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme izleme özelliği ekleyin. Bu özellikle kullanıcılar projelerin ilerlemesini takip edebilir, tamamlanan görevleri işaretleyebilir ve projelerin durumunu güncel olarak görebilirler.
+561. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için önceliklendirme ve zamanlama özelliği ekleyin. Bu özellikle kullanıcılar görevlere öncelik seviyeleri atayabilir, sürelerini belirleyebilir ve proje planlamasını yapabilirler.
+562. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için geri bildirim ve yorumlama özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili geri bildirimleri paylaşabilir, yorumlarda bulunabilir ve iletişim halinde olabilirler.
+563. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için raporlama özelliği ekleyin. Bu özellikle kullanıcılar projelerin ilerlemesini, performansı ve istatistikleri raporlayabilir ve analiz edebilirler.
+564. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya ve veri senkronizasyonu özelliği ekleyin. Bu özellikle kullanıcılar projeleriyle ilişkili dosyaları ve verileri senkronize edebilir, güncel tutabilir ve paylaşabilirler.
+565. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için özel alanlar ve özelleştirilebilir form öğeleri ekleyin. Bu özellikle kullanıcılar projelerin ihtiyaçlarına uygun olarak özel alanlar oluşturabilir ve projeleri özelleştirebilirler.
+566. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya ve veritabanı yedekleme özelliği ekleyin. Bu özellikle kullanıcılar projeleriyle ilişkili dosyaları ve veritabanını yedekleyebilir ve koruyabilirler.
+567. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için arşivleme ve geri yükleme özelliği ekleyin. Bu özellikle kullanıcılar tamamlanan projeleri veya görevleri arşivleyebilir, gerektiğinde geri yükleyebilir ve arşivlenen öğeleri yönetebilirler.
+568. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için
+ekip üyelerinin rollerini ve izinlerini yönetmek için rol ve izin yönetimi özelliği ekleyin. Bu özellikle kullanıcılar farklı roller ve izinler atayarak ekip üyelerinin proje ve görevlere erişimini kontrol edebilirler.
+569. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman takibi ve saat hesaplama özelliği ekleyin. Bu özellikle kullanıcılar görevlere harcanan süreyi takip edebilir, proje ve görevlerin toplam zamanını hesaplayabilir ve performans analizi yapabilirler.
+570. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için maliyet hesaplama ve bütçe yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerin maliyetini hesaplayabilir, bütçe yönetimi yapabilir ve maliyet takibini gerçekleştirebilirler.
+571. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için anket ve geri bildirim toplama özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili anketler oluşturabilir, geri bildirimleri toplayabilir ve veri analizi yapabilirler.
+572. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için özel raporlama ve veri analizi özelliği ekleyin. Bu özellikle kullanıcılar projelerin ve görevlerin özel raporlarını oluşturabilir, veri analizi yapabilir ve görsel grafiklerle sunabilirler.
+573. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için otomatik planlama ve zaman yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerin otomatik olarak planlanmasını sağlayabilir, kaynak yönetimi yapabilir ve zaman takibini otomatikleştirebilirler.
+574. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için uyarı ve hatırlatma özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki önemli tarihleri ve süreleri belirleyerek uyarı ve hatırlatmalar alabilirler.
+575. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için gerçek zamanlı raporlama ve proje analizi özelliği ekleyin. Bu özellikle kullanıcılar projelerin gerçek zamanlı raporlarını görüntüleyebilir, proje performansını analiz edebilir ve iyileştirme stratejileri geliştirebilirler.
+576. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ileri düzey arama ve filtreleme özelliği ekleyin. Bu özellikle kullanıcılar projeleri ve görevleri detaylı bir şekilde arayabilir, filtreleyebilir ve ö
+nceliklere göre sıralayabilirler.
+577. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya ve veritabanı geri alma özelliği ekleyin. Bu özellikle kullanıcılar projelerin önceki sürümlerine veya geri alınabilir durumlarına geri dönebilirler.
+578. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için çevrimiçi görüşme ve toplantı özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili çevrimiçi toplantılar düzenleyebilir, görüşmeleri kaydedebilir ve işbirliği yapabilirler.
+579. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için risk yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerin potansiyel risklerini tanımlayabilir, analiz edebilir ve risk yönetimi stratejileri geliştirebilirler.
+580. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya ve veri arşivleme özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili dosyaları ve verileri arşivleyebilir, düzenli bir şekilde saklayabilir ve arşivlenen öğelere erişebilirler.
+581. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme izleme ve performans ölçümü özelliği ekleyin. Bu özellikle kullanıcılar projelerin ilerlemesini gerçek zamanlı olarak takip edebilir, performans metriklerini ölçebilir ve iyileştirme stratejileri geliştirebilirler.
+582. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için gerçek zamanlı etkileşimli panolar ve gösterge tabloları özelliği ekleyin. Bu özellikle kullanıcılar projeleri ve görevleri panolar ve gösterge tabloları aracılığıyla görselleştirebilir, analiz edebilir ve yönetebilirler.
+583. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için otomatik rapor oluşturma özelliği ekleyin. Bu özellikle kullanıcılar projelerin otomatik olarak raporlarını oluşturabilir, belirli kriterlere göre filtreleyebilir ve raporları paylaşabilirler.
+584. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için özel iş akışı ve iş süreçleri yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerin iş akışını ve iş süreçlerini tanımlayabilir, izleyebilir ve optimize edebilirler.
+585. Kullanıcılara projeleri ve
+görevleri üzerinde kullanıcıların projeleri için resmi belge yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili resmi belgeleri yönetebilir, belge onay süreçlerini izleyebilir ve belge sürümlerini takip edebilirler.
+586. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için entegrasyon ve veri paylaşımı özelliği ekleyin. Bu özellikle kullanıcılar projeleri diğer uygulamalarla entegre edebilir, verileri paylaşabilir ve senkronize edebilirler.
+587. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ileri düzey proje planlama ve kaynak yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerin karmaşık planlamasını yapabilir, kaynakları etkin bir şekilde yönetebilir ve projelerin başarıyla tamamlanmasını sağlayabilirler.
+588. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için toplu işlem ve veri güncelleme özelliği ekleyin. Bu özellikle kullanıcılar birden çok proje veya görev üzerinde aynı anda işlem yapabilir, veri güncellemelerini toplu olarak gerçekleştirebilirler.
+589. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için görsel raporlama ve veri görselleştirme özelliği ekleyin. Bu özellikle kullanıcılar projelerin verilerini grafikler, grafikler ve görsel öğeler aracılığıyla görselleştirebilir ve analiz edebilirler.
+590. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için özel eklentiler ve genişletilebilirlik özelliği ekleyin. Bu özellikle kullanıcılar projeleri için özel eklentiler geliştirebilir, mevcut işlevselliği genişletebilir ve özelleştirilebilir bir çalışma ortamı oluşturabilirler.
+591. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için çoklu dil desteği özelliği ekleyin. Bu özellikle kullanıcılar projeleri farklı dillerde oluşturabilir, çeviri desteği sağlayabilir ve çoklu dilde çalışma imkanı sunabilirler.
+592. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için test ve hata yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki hataları yönetebilir, hata takibini yapabilir ve hata düzeltme süreçlerini yönetebilirler.
+593. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için otomatik görev atama ve dağıtım özelliği ekley
+in. Bu özellikle kullanıcılar projelerdeki görevleri otomatik olarak atayabilir, görevleri ekip üyeleri arasında dağıtabilir ve görevlerin ilerlemesini izleyebilirler.
+594. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ileri düzey zaman yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki görevlerin sürelerini tahmin edebilir, zaman takibini yapabilir ve projelerin zaman çizelgelerini optimize edebilirler.
+595. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için değişiklik geçmişi ve günlük tutma özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki yapılan değişiklikleri takip edebilir, geçmiş verileri geri getirebilir ve projelerin gelişimini kaydedebilirler.
+596. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için maliyet analizi ve bütçe takibi özelliği ekleyin. Bu özellikle kullanıcılar projelerin maliyetlerini analiz edebilir, bütçelerini takip edebilir ve maliyet aşımlarını kontrol edebilirler.
+597. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için özel etiketler ve kategoriler özelliği ekleyin. Bu özellikle kullanıcılar projeleri ve görevleri özelleştirmek için etiketler ve kategoriler oluşturabilir, sınıflandırabilir ve gruplandırabilirler.
+598. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için paylaşılan kaynaklar ve materyaller kütüphanesi özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili paylaşılan kaynakları ve materyalleri merkezi bir kütüphane aracılığıyla erişebilir, paylaşabilir ve yönetebilirler.
+599. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için anlık bildirimler ve güncellemeler özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki önemli olaylar ve güncellemeler hakkında anlık bildirimler alabilir, takip edebilir ve hızlı tepki verebilirler.
+600. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ileri düzey iş akışı yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki iş akışlarını otomatik olarak yönetebilir, iş süreçlerini tanımlayabilir ve iş akışlarını optimize edebilirler.
+601. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için paylaşılan takvim ve programlama özelliği ekleyin. Bu özellikle kullanıcılar projelerin takvimini oluşturabilir, etkinlikleri planlayabilir, programlama yapabilir ve takvimi diğer ekip üyeleriyle paylaşabilirler.
+602. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili dosyaları yükleyebilir, paylaşabilir, indirebilir ve yönetebilirler.
+603. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için işbirliği ve iletişim özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki diğer ekip üyeleriyle etkileşime geçebilir, mesajlaşabilir, yorum yapabilir ve tartışmaları yönetebilirler.
+604. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ileri düzey raporlama ve analiz özelliği ekleyin. Bu özellikle kullanıcılar projelerin ilerlemesini, performansını ve başarı kriterlerini analiz edebilir, raporlar oluşturabilir ve projelerin sağlığını değerlendirebilirler.
+605. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için entegrasyon özelliği ekleyin. Bu özellikle kullanıcılar projeleri diğer araçlar ve hizmetlerle entegre edebilir, veri aktarımı yapabilir ve iş süreçlerini daha verimli hale getirebilirler.
+606. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje şablonları özelliği ekleyin. Bu özellikle kullanıcılar projeleri için önceden tanımlanmış şablonları kullanabilir, tekrarlayan görevleri ve süreçleri hızlı bir şekilde oluşturabilir ve verimliliği artırabilirler.
+607. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için gerçek zamanlı işbirliği ve çoklu kullanıcı düzenleme özelliği ekleyin. Bu özellikle kullanıcılar aynı projede çalışan diğer ekip üyeleriyle aynı anda işbirliği yapabilir, aynı görevleri düzenleyebilir ve değişiklikleri anında senkronize edebilirler.
+608. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için takım yönetimi özelliği ekleyin. Bu özellikle kullanıcılar ekip üyelerini projelere atayabilir, roller ve yetkiler tanımlayabilir, takım performansını yönetebilir ve iletişimi kolaylaştırabilirler.
+609. Kullan
+ıcıların projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman takibi ve saatlerin kaydedilmesi özelliği ekleyin. Bu özellikle kullanıcılar görevlere ait harcanan zamanı kaydedebilir, projelerin toplam zamanını analiz edebilir ve zaman yönetimini geliştirebilirler.
+610. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için öncelik ve aciliyet yönetimi özelliği ekleyin. Bu özellikle kullanıcılar görevlere öncelik ve aciliyet düzeyleri atayabilir, zamanında tamamlanması gereken görevleri takip edebilir ve önceliklendirme yaparak çalışmalarını yönlendirebilirler.
+611. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için bildirim ve hatırlatma özelliği ekleyin. Bu özellikle kullanıcılar önemli tarihleri, süreleri veya görevleri hatırlatmak için bildirimler alabilir ve takvimlerine ekleyebilirler.
+612. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme göstergeleri ve tamamlanma durumu özelliği ekleyin. Bu özellikle kullanıcılar görevlerin tamamlanma durumunu görsel olarak takip edebilir, ilerleme göstergeleriyle projelerin durumunu değerlendirebilir ve gecikmeleri önleyebilirler.
+613. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ayrıntılı notlar ve dosya eki özelliği ekleyin. Bu özellikle kullanıcılar görevlerle ilgili notlar ekleyebilir, dosya ekleyebilir ve gerektiğinde notları ve dosyaları paylaşabilirler.
+614. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için geri bildirim ve inceleme özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki görevleri inceleyebilir, geri bildirimlerde bulunabilir, değişiklik talepleri yapabilir ve işbirliği yaparak projeleri geliştirebilirler.
+615. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için tarih ve saat seçimi özelliği ekleyin. Bu özellikle kullanıcılar görevlerin başlangıç ve bitiş tarihlerini belirleyebilir, toplantılar ve etkinlikler için zaman aralıklarını planlayabilir ve takvimlerini yönetebilirler.
+616. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için etiketleme ve kategorilendirme özelliği ekleyin. Bu özellikle kullanıcılar görevlere etiketler ve kategoriler atayarak görevleri gruplandırabilir, arama ve filtrele
+me işlemlerini kolaylaştırabilir ve görevleri daha iyi organize edebilirler.
+617. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme ve performans metriklerini takip etme özelliği ekleyin. Bu özellikle kullanıcılar projelerin ilerlemesini, süreleri, bütçeleri ve kaynakları izleyebilir, performans metriklerini analiz edebilir ve projelerin başarısını değerlendirebilirler.
+618. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için otomatik görev atama ve dağıtım özelliği ekleyin. Bu özellikle kullanıcılar belirli kurallara göre görevleri otomatik olarak atayabilir, görevleri takip edebilir ve ekip üyeleri arasında iş yükünü dengeleyebilirler.
+619. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman çizelgeleri ve Gantt şeması özelliği ekleyin. Bu özellikle kullanıcılar projelerin zaman çizelgelerini oluşturabilir, görevlerin sıralamasını ve bağımlılıklarını belirleyebilir, kaynakları planlayabilir ve projelerin ilerlemesini görsel olarak takip edebilirler.
+620. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için hedef ve kilometre taşları özelliği ekleyin. Bu özellikle kullanıcılar projeler için hedefler ve kilometre taşları belirleyebilir, ilerlemeyi bu hedeflere göre takip edebilir ve projelerin zamanında tamamlanmasını sağlayabilirler.
+621. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için risk yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki riskleri tanımlayabilir, değerlendirebilir, önlemler alabilir ve risklerin etkisini azaltabilirler.
+622. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için otomatik rapor oluşturma özelliği ekleyin. Bu özellikle kullanıcılar projelerin ilerlemesi, harcanan zaman, bütçe ve diğer verileri otomatik olarak raporlayabilir, raporları düzenli olarak oluşturabilir ve paylaşabilirler.
+623. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için e-posta entegrasyonu özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili e-postaları doğrudan sistem üzerinden yönetebilir, e-posta bildirimleri alabilir ve iletişimi daha etkili hale getirebilirler.
+624. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için mobil uygulama desteği özelliği
+ekleyin. Bu özellikle kullanıcılar projeleri ve görevleri mobil cihazlarından kolayca yönetebilir, bilgilere erişebilir, güncellemeleri takip edebilir ve iletişimde kalabilirler.
+625. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için senkronizasyon özelliği ekleyin. Bu özellikle kullanıcılar projeleri ve görevleri farklı cihazlar arasında senkronize edebilir, güncel verilere her zaman erişebilir ve çalışmalarını kesintisiz bir şekilde sürdürebilirler.
+626. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilgili belgelere erişim özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili belgeleri saklayabilir, belgelere kolayca erişebilir ve belgeleri güncel tutabilirler.
+627. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için süreç otomasyonu özelliği ekleyin. Bu özellikle kullanıcılar belirli iş süreçlerini otomatikleştirebilir, tekrarlayan görevleri ve adımları otomatik olarak gerçekleştirebilir ve verimliliği artırabilirler.
+628. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için anket ve geri bildirim özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili anketler oluşturabilir, geri bildirim toplayabilir ve kullanıcıların görüşlerini değerlendirebilirler.
+629. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya şifreleme ve güvenlik özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili dosyaları şifreleyebilir, güvenli bir şekilde depolayabilir ve yetkisiz erişime karşı koruyabilirler.
+630. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için çoklu dil desteği özelliği ekleyin. Bu özellikle kullanıcılar projeleri farklı dillerde yönetebilir, kullanıcı arabirimini tercih ettikleri dile çevirebilir ve küresel işbirliklerini kolaylaştırabilirler.
+631. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için etiketleme özelliği ekleyin. Bu özellikle kullanıcılar projeleri ve görevleri etiketlerle kategorize edebilir, hızlı bir şekilde arama yapabilir ve ilişkili öğeleri gruplandırabilirler.
+632. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zamanlayıcı özelliği ekleyin. Bu özellikle kullanıcılar görevlere zaman sınırları belirleyebilir, zamanlayıcıyı kullanarak süreleri izleyebilir ve zaman yönetimini geliştirebilirler.
+633. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje şablonları özelliği ekleyin. Bu özellikle kullanıcılar önceden tanımlanmış şablonlardan projeler oluşturabilir, tekrarlayan işleri hızlı bir şekilde başlatabilir ve proje oluşturma sürecini kolaylaştırabilirler.
+634. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için anlık bildirimler özelliği ekleyin. Bu özellikle kullanıcılar projelerle ilgili önemli güncellemeleri anında alabilir, bildirimler aracılığıyla bilgilendirilebilir ve takip etmeleri gereken olayları kaçırmazlar.
+635. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme raporları özelliği ekleyin. Bu özellikle kullanıcılar projelerin ilerlemesini izleyebilir, raporları oluşturabilir ve projelerin tamamlanma durumunu görsel olarak takip edebilirler.
+636. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için işbirliği özelliği ekleyin. Bu özellikle kullanıcılar projeleri diğer kullanıcılarla paylaşabilir, ortak çalışma alanları oluşturabilir ve işbirliği yapabilirler.
+637. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için önceliklendirme özelliği ekleyin. Bu özellikle kullanıcılar görevlere öncelik seviyeleri atayabilir, önemli işleri vurgulayabilir ve zaman yönetimini daha etkili bir şekilde yapabilirler.
+638. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için geri alma ve yeniden yapma özelliği ekleyin. Bu özellikle kullanıcılar hataları geri alabilir, değişiklikleri geri alabilir ve projeleri üzerinde esneklik sağlar.
+639. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya sürüm kontrolü özelliği ekleyin. Bu özellikle kullanıcılar dosyaların farklı sür
+640. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman damgaları özelliği ekleyin. Bu özellikle kullanıcılar projelerin ve görevlerin ne zaman oluşturulduğunu, güncellendiğini veya tamamlandığını takip edebilirler.
+641. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için etkinlik günlüğü özelliği ekleyin. Bu özellikle kullanıcılar projelerdeki veya görevlerdeki değişiklikleri izleyebilir, kimin hangi değişiklikleri yaptığını görebilir ve proje geçmişini takip edebilirler.
+642. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için geri bildirim özelliği ekleyin. Bu özellikle kullanıcılar projeler veya görevler hakkında geri bildirimlerde bulunabilir, yorumlar yapabilir ve tartışmaları projelerin içinde sürdürebilirler.
+643. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya paylaşımı özelliği ekleyin. Bu özellikle kullanıcılar dosyaları projelerle ilişkilendirebilir, diğer kullanıcılarla paylaşabilir ve işbirliği yaparken kolay bir şekilde dosya paylaşımı yapabilirler.
+644. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme çubukları özelliği ekleyin. Bu özellikle kullanıcılar projelerin veya görevlerin tamamlanma durumunu görsel olarak izleyebilir, ilerleme çubukları aracılığıyla ilerlemeyi takip edebilirler.
+645. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için filtreleme ve sıralama özelliği ekleyin. Bu özellikle kullanıcılar projeleri veya görevleri belirli kriterlere göre filtreleyebilir ve sıralayabilir, istedikleri şekilde görüntüleyebilirler.
+646. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için hatırlatıcılar özelliği ekleyin. Bu özellikle kullanıcılar projeler veya görevler için hatırlatıcılar oluşturabilir, önemli tarihleri veya zamanları kaçırmadan takip edebilirler.
+647. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için notlar özelliği ekleyin. Bu özellikle kullanıcılar projeler veya görevlerle ilgili notlar alabilir, bilgileri kaydedebilir ve ilgili notlara kolayca erişebilirler.
+648. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için dosya yedekleme özelliği ekleyin. Bu özell
+eki kullanıcılar projeleri veya görevleri için düzenli olarak dosya yedeklemeleri yapabilir, veri kaybı durumunda geri dönüş yapabilir ve projelerin güvenliğini sağlayabilirler.
+649. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ileri düzey arama özelliği ekleyin. Bu özellikle kullanıcılar projeler ve görevler arasında detaylı aramalar yapabilir, belirli kriterlere göre filtreleme yapabilir ve istedikleri bilgilere hızlıca ulaşabilirler.
+650. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için zaman takibi özelliği ekleyin. Bu özellikle kullanıcılar görevler üzerinde çalıştıkları zamanı takip edebilir, zaman harcamalarını analiz edebilir ve verimliliklerini artırabilirler.
+651. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için özelleştirilebilir raporlama özelliği ekleyin. Bu özellikle kullanıcılar projelerin veya görevlerin raporlarını istedikleri formatta oluşturabilir, özelleştirilebilir grafikler ve tablolar kullanabilir ve proje performansını analiz edebilirler.
+652. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için ilerleme takibi özelliği ekleyin. Bu özellikle kullanıcılar projelerin ve görevlerin ilerlemesini gerçek zamanlı olarak takip edebilir, tamamlanan işleri işaretleyebilir ve proje ilerlemesini izleyebilirler.
+653. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için önceden tanımlanmış şablonlar özelliği ekleyin. Bu özellikle kullanıcılar tekrar eden projeleri veya görevleri hızlı bir şekilde başlatabilir, şablonları kullanarak zaman kazanabilir ve proje oluşturma sürecini kolaylaştırabilirler.
+654. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için özelleştirilebilir izin yönetimi özelliği ekleyin. Bu özellikle kullanıcılar projelerin ve görevlerin erişim düzeyini kontrol edebilir, kullanıcı rolleri atayabilir ve güvenli bir çalışma ortamı sağlayabilirler.
+655. Kullanıcılara projeleri ve görevleri üzerinde kullanıcıların projeleri için proje analitiği özelliği ekleyin. Bu özellikle kullanıcılar projelerin performansını ölçebilir, analitik verilerle projeleri değerlendirebilir ve iyileştirme fırsatlarını belirleyebilirler.
+
+Bu şekilde, kullanıcıların projeleri ve görevleri üzerinde gelişmiş özelliklerle donatılmış bir uygulama geliştire
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
