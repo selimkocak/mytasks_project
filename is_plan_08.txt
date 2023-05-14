@@ -545,10 +545,10 @@ mytasks projesi frontend yapılandırması için 655 maddelik iş planı ile ile
 +8.  Navbar'ın fonksiyonelliğini sağlayın.
 +9.  Navbar'ı tüm sayfalara entegre edin.
 +10. Modern ve kullanıcı dostu form yapıları tasarlayın.
-11. Formlarda gerekli validasyonları sağlayın.
-12. Kanban sayfası tasarımını yapın.
-13. Kanban kartlarının stageler arasında sürükle-bırak işlemi ile taşınmasını sağlayın.
-14. Sayfalarda Bootstrap 5 kullanın ve uyumluluğunu test edin.
++11. Formlarda gerekli validasyonları sağlayın.
++12. Kanban sayfası tasarımını yapın.
++13. Kanban kartlarının stageler arasında sürükle-bırak işlemi ile taşınmasını sağlayın.
++14. Sayfalarda Bootstrap 5 kullanın ve uyumluluğunu test edin.
 15. Dosya ağaç yapısını simetrik hale getirin.
 16. Kullanılmayan ve gereksiz dosyaları tespit edin.
 17. Gereksiz dosyaları kaldırın.

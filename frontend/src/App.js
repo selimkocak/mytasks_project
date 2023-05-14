@@ -15,9 +15,10 @@ const App = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
         <Route path="/logout" element={<Logout />} />
-        <Route element={<PrivateRoutes />} />
+        <Route path="/*" element={<PrivateRoutes />} />
       </Routes>
     </Router>
   );
 };
+
 export default App;

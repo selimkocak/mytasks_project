@@ -1,6 +1,6 @@
 // frontend\src\utils\PrivateRoutes.js
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Route, Navigate, Routes } from 'react-router-dom';
 import KanbanBoard from '../components/kanban/KanbanBoard';
 import NotificationPanel from '../components/notifications/NotificationPanel';
 import CreateProject from '../components/project/CreateProject';
@@ -14,16 +14,16 @@ const PrivateRoutes = () => {
   const isAuthenticated = Auth.isAuthenticated();
 
   return isAuthenticated ? (
-    <>
+    <Routes>
       <Route path="/" element={<Navigate to="/tasks" />} />
-      <Route path="/tasks" element={<TasksPage />} />
+      <Route path="/tasks/*" element={<TasksPage />} />
       <Route path="/kanban" element={<KanbanBoard />} />
       <Route path="/notifications" element={<NotificationPanel />} />
       <Route path="/projects/create" element={<CreateProject />} />
       <Route path="/user/profile" element={<UserProfile />} />
       <Route path="/user/settings" element={<UserSettings />} />
       <Route path="/projects/:projectId" element={<ProjectDetails />} />
-    </>
+    </Routes>
   ) : (
     <Navigate to="/login" replace />
   );

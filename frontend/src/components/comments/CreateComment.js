@@ -1,13 +1,20 @@
 // frontend/src/components/comments/CreateComment.js
 import React, { useState } from 'react';
 import { createComment } from '../../services/api';
-import './CreateComment.css'; // CreateComment.css dosyasını içe aktardık
+import { isRequired } from '../../utils/validation'; // validation.js dosyasını içe aktardık
+import './CreateComment.css';
 
 const CreateComment = ({ taskId, onCommentCreated }) => {
   const [commentText, setCommentText] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Gerekli validasyonları kontrol et
+    if (!isRequired(commentText)) {
+      console.log('Comment text is required');
+      return;
+    }
 
     const response = await createComment({
       taskId,
@@ -19,7 +26,7 @@ const CreateComment = ({ taskId, onCommentCreated }) => {
   };
 
   return (
-    <form className="create-comment-form" onSubmit={handleSubmit}> {/* className ile stil sınıfını ekledik */}
+    <form className="create-comment-form" onSubmit={handleSubmit}>
       <textarea
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
@@ -30,3 +37,4 @@ const CreateComment = ({ taskId, onCommentCreated }) => {
 };
 
 export default CreateComment;
+

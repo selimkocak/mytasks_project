@@ -5,15 +5,15 @@ gerekli olan dosya path yapısına uygun kodları bulabilirsiniz:
 
 kodlarıma frontend\src\utils\validation.js import et ve güncelle lütfen
 
-1. Create Assignment Form
++1. Create Assignment Form
    - Dosya Yolu: `frontend\src\components\assignment\CreateAssignment.js`
    - Dosya Yolu: `frontend\src\components\assignment\CreateAssignment.css`
 
-2. Update Assignment Form
++2. Update Assignment Form
    - Dosya Yolu: `frontend\src\components\assignment\UpdateAssignment.js`
    - Dosya Yolu: `frontend\src\components\assignment\UpdateAssignment.css`
 
-3. Delete Assignment Form
++3. Delete Assignment Form
    - Dosya Yolu: `frontend\src\components\assignment\DeleteAssignment.js`
    - Dosya Yolu: `frontend\src\components\assignment\DeleteAssignment.css`
 
@@ -21,7 +21,7 @@ kodlarıma frontend\src\utils\validation.js import et ve güncelle lütfen
    - Dosya Yolu: `frontend\src\components\assignment\ListAssignments.js`
    - Dosya Yolu: `frontend\src\components\assignment\ListAssignments.css`
 
-5. Create Comment Form
++5. Create Comment Form
    - Dosya Yolu: `frontend\src\components\comments\CreateComment.js`
    - Dosya Yolu: `frontend\src\components\comments\CreateComment.css`
 

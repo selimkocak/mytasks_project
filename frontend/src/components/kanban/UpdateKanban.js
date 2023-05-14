@@ -45,5 +45,4 @@ function UpdateKanban({ id }) {
     </div>
   );
 }
-
 export default UpdateKanban;

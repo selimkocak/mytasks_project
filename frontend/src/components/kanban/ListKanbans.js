@@ -34,5 +34,4 @@ function ListKanbans() {
     </div>
   );
 }
-
 export default ListKanbans;
