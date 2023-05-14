@@ -12,10 +12,13 @@ class CheckLoggedInView(APIView):
     def get(self, request, *args, **kwargs):
         return Response({'is_logged_in': True})
 
-
 class TaskListCreateAPIView(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user, assignee=self.request.user)
 
 class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()

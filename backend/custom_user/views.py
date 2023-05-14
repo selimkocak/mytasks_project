@@ -8,6 +8,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import generics
+from .models import CustomUser
+from .serializers import CustomUserSerializer
 
 class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
@@ -33,3 +36,7 @@ class LogoutView(APIView):
                 return Response({"detail": "No refresh token found"}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+class UserListView(generics.ListAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer

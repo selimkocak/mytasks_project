@@ -1,0 +1,29 @@
+/* frontend\src\components\tasks\CreateTask.css */
+.create-task-form {
+    margin: 2em 0;
+  }
+  
+  .create-task-form label {
+    display: block;
+    margin: 0.5em 0;
+  }
+  
+  .create-task-form input,
+  .create-task-form select {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.5em 0;
+  }
+  
+  .create-task-form button {
+    padding: 0.5em 1em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .create-task-form button:hover {
+    background-color: #0056b3;
+  }
+  

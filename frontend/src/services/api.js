@@ -128,6 +128,19 @@ export const refreshToken = (data) => {
   return axios.post(API_URL + "auth/token/refresh/", data);
 };
 
+export const getLoggedInUser = () => {
+  // Bu fonksiyon genellikle oturum açan kullanıcının bilgilerini döndürür.
+  // Kullanıcı bilgilerini nereden aldığınıza bağlı olarak bu fonksiyonu uyarlayabilirsiniz.
+  const user = localStorage.getItem('user');
+  return user ? JSON.parse(user) : null;
+};
+
+export const getUserList = async () => {
+  // Bu fonksiyon genellikle sunucudan bir kullanıcı listesi alır.
+  // Kullanıcı listesini nasıl aldığınıza bağlı olarak bu fonksiyonu uyarlayabilirsiniz.
+  return service.get("auth/users/");
+};
+
 // user profile
 export const getUserProfile = () => {
   return service.get('auth/user-profile/');
