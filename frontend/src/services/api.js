@@ -136,9 +136,9 @@ export const getLoggedInUser = () => {
 };
 
 export const getUserList = async () => {
-  // Bu fonksiyon genellikle sunucudan bir kullanıcı listesi alır.
-  // Kullanıcı listesini nasıl aldığınıza bağlı olarak bu fonksiyonu uyarlayabilirsiniz.
-  return service.get("auth/users/");
+  const response = await service.get("auth/users/");
+  console.log(response.config.headers);
+  return response;
 };
 
 // user profile
@@ -300,7 +300,9 @@ export const deleteKanban = async (id) => {
 
 // Kanban stages
 export const getKanbanStages = async () => {
-  return service.get("kanban/stages/");
+  const response = await service.get("kanban/stages/");
+  console.log(response.config.headers);
+  return response;
 };
 
 // Role
