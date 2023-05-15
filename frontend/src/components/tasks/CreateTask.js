@@ -1,6 +1,6 @@
 // frontend\src\components\tasks\CreateTask.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getKanbanStages, getUserList } from '../../services/api';
+import { createTask, getKanbanStages, getUserList, getLoggedInUser } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 import './CreateTask.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,6 +19,7 @@ const CreateTask = ({ loadTasks }) => {
         return;
       }
       try {
+        const loggedInUser = await getLoggedInUser();
         const loadedStages = await getKanbanStages();
         const loadedUsers = await getUserList();
         if (Array.isArray(loadedStages)) {
@@ -30,6 +31,9 @@ const CreateTask = ({ loadTasks }) => {
           setUsers(loadedUsers);
         } else {
           console.error('getUserList did not return an array', loadedUsers);
+        }
+        if (loggedInUser) {
+          setTaskAssignee(loggedInUser.email);
         }
       } catch (error) {
         console.error('Error loading stages and users:', error);
@@ -106,18 +110,20 @@ const CreateTask = ({ loadTasks }) => {
         <select
           name="taskAssignee"
           value={taskAssignee}
-          onChange={(e) => handleInputChange(e, setTaskAssignee)}
-        >
+          onChange 
+          ={(e) => handleInputChange(e, setTaskAssignee)}
+          >
           <option value="">--Select Assignee--</option>
           {users.map((user, index) => (
-            <option key={index} value={user.id}>
-              {user.name}
-            </option>
+          <option key={index} value={user.email}>
+          {user.email}
+          </option>
           ))}
-        </select>
-      </label>
-      <button type="submit">Create Task</button>
-    </form>
-  );
-};
-export default CreateTask;
+          </select>
+          </label>
+          <button type="submit">Create Task</button>
+          </form>
+          );
+          };
+          
+          export default CreateTask;
