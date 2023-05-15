@@ -1,4 +1,4 @@
-// frontend\src\components\kanban\KanbanBoard.js
+// frontend/src/components/kanban/KanbanBoard.js
 import React, { useState, useEffect, useContext } from 'react';
 import { getTasks, getKanbanStages } from '../../services/api';
 import { UserContext } from '../../context/UserContext';
@@ -31,8 +31,7 @@ const KanbanBoard = () => {
         console.log('Tasks:', tasks);
         console.log('Stages:', stages);
 
-        // Verilerin işlenmesi devam ediyor
-        // ...
+        // Data processing continues...
 
         setData({ tasks, stages });
       } catch (error) {
@@ -55,4 +54,3 @@ const KanbanBoard = () => {
 };
 
 export default KanbanBoard;
-

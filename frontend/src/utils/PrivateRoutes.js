@@ -1,4 +1,4 @@
-// frontend\src\utils\PrivateRoutes.js
+// frontend/src/utils/PrivateRoutes.js
 import React from 'react';
 import { Route, Navigate, Routes } from 'react-router-dom';
 import KanbanBoard from '../components/kanban/KanbanBoard';
@@ -9,6 +9,8 @@ import UserSettings from '../components/user/UserSettings';
 import ProjectDetails from '../components/project/ProjectDetails';
 import TasksPage from '../components/tasks/TasksPage';
 import * as Auth from './auth';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const PrivateRoutes = () => {
   const isAuthenticated = Auth.isAuthenticated();
@@ -17,7 +19,14 @@ const PrivateRoutes = () => {
     <Routes>
       <Route path="/" element={<Navigate to="/tasks" />} />
       <Route path="/tasks/*" element={<TasksPage />} />
-      <Route path="/kanban" element={<KanbanBoard />} />
+      <Route
+        path="/kanban"
+        element={
+          <DndProvider backend={HTML5Backend}>
+            <KanbanBoard />
+          </DndProvider>
+        }
+      />
       <Route path="/notifications" element={<NotificationPanel />} />
       <Route path="/projects/create" element={<CreateProject />} />
       <Route path="/user/profile" element={<UserProfile />} />
