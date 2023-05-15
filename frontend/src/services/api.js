@@ -16,12 +16,14 @@ service.interceptors.request.use(
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
+    config.headers["Content-Type"] = "application/json"; // Content-Type başlığını ayarla
     return config;
   },
   (error) => {
     Promise.reject(error);
   }
 );
+
 
 // Response interceptor
 service.interceptors.response.use(
@@ -136,9 +138,18 @@ export const getLoggedInUser = () => {
 };
 
 export const getUserList = async () => {
-  const response = await service.get("auth/users/");
-  console.log(response.config.headers);
-  return response;
+  try {
+    const response = await service.get("auth/users/");
+    if (Array.isArray(response.data)) {
+      return response.data;
+    } else {
+      console.error("getUserList did not return an array", response.data);
+      return []; // Boş bir dizi döndür
+    }
+  } catch (error) {
+    console.error("Error loading user list:", error);
+    return []; // Boş bir dizi döndür
+  }
 };
 
 // user profile
@@ -300,9 +311,18 @@ export const deleteKanban = async (id) => {
 
 // Kanban stages
 export const getKanbanStages = async () => {
-  const response = await service.get("kanban/stages/");
-  console.log(response.config.headers);
-  return response;
+  try {
+    const response = await service.get("kanban/stages/");
+    if (Array.isArray(response.data)) {
+      return response.data;
+    } else {
+      console.error("getKanbanStages did not return an array", response.data);
+      return []; // Boş bir dizi döndür
+    }
+  } catch (error) {
+    console.error("Error loading kanban stages:", error);
+    return []; // Boş bir dizi döndür
+  }
 };
 
 // Role
