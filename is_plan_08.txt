@@ -552,10 +552,10 @@ mytasks projesi frontend yapılandırması için 655 maddelik iş planı ile ile
 15. Dosya ağaç yapısını simetrik hale getirin.
 16. Kullanılmayan ve gereksiz dosyaları tespit edin.
 17. Gereksiz dosyaları kaldırın.
-18. Backend ile frontend arasındaki entegrasyonu sağlayın.
++18. Backend ile frontend arasındaki entegrasyonu sağlayın.
 19. Kullanıcı kimlik doğrulaması ile sayfalara erişimi kontrol edin.
-20. AuthContext.js dosyasını oluşturun.
-21. UserContext.js dosyasını oluşturun.
++20. AuthContext.js dosyasını oluşturun.
++21. UserContext.js dosyasını oluşturun.
 22. App.js dosyasını oluşturun.
 23. App.test.js dosyasını oluşturun.
 24. index.js dosyasını oluşturun.
@@ -583,8 +583,8 @@ mytasks projesi frontend yapılandırması için 655 maddelik iş planı ile ile
 57. Şirketler bölümünde, şirketlerin listelendiği bir sayfa oluşturun.
 58. Şirket detaylarına erişebilmek için her şirketin yanında bir buton ekleyin.
 59. Şirket detayları sayfasında, şirketi düzenleme ve silme seçeneklerini ekleyin.
-60. `frontend\src\components\kanban` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
-61. Kanban tablosu oluşturun ve görevleri sürükle bırak özelliği ile taşınabilir yapın.
++60. `frontend\src\components\kanban` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
++61. Kanban tablosu oluşturun ve görevleri sürükle bırak özelliği ile taşınabilir yapın.
 62. Her kanban kartında, kartı düzenleme ve silme seçeneklerini ekleyin.
 63. `frontend\src\components\navbar` klasörü altındaki dosyalarda, Bootstrap 5 destekli form elemanları oluşturun.
 64. Navbar'ı oluşturun ve uygulamanın tüm sayfalarına erişim sağlayacak bir yapı oluşturun.

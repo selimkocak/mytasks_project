@@ -15,5 +15,5 @@ urlpatterns = [
     path('api/project/', include('project.urls')),
     path('api/kanban/', include('kanban.urls')),
     path('api/role/', include('role.urls')),
-    path('api/docs/', include_docs_urls(title='MyTasks API')),  # <--- Ekleyeceğiniz bu satır ile /api/docs/ URL'inde API dokümantasyonunu görebilirsiniz.
+    path('api/docs/', include_docs_urls(title='MyTasks API')),
 ]
