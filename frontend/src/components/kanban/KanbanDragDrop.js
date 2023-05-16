@@ -1,5 +1,5 @@
 // frontend/src/components/kanban/KanbanDragDrop.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { useDrag } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -9,7 +9,7 @@ const ItemTypes = {
   CARD: 'card',
 };
 
-const Card = ({ id, title, moveCard }) => {
+const Card = ({ id, text, moveCard }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.CARD,
     item: { id },
@@ -34,41 +34,36 @@ const Card = ({ id, title, moveCard }) => {
 
   return (
     <div ref={dragDropRef} style={{ opacity: isDragging ? 0.5 : 1 }}>
-      <h2>{title}</h2>
+      {text}
     </div>
   );
 };
 
-const KanbanDragDrop = ({ tasks, stages }) => {
-  const [kanbanTasks, setKanbanTasks] = useState([]);
 
-  useEffect(() => {
-    setKanbanTasks(tasks);
-  }, [tasks]);
+const KanbanDragDrop = () => {
+  const [cards, setCards] = useState([
+    { id: 1, text: 'Card 1' },
+    { id: 2, text: 'Card 2' },
+    { id: 3, text: 'Card 3' },
+    // Add as many cards as you want
+  ]);
 
   const moveCard = (draggedId, hoverId) => {
-    const draggedIndex = kanbanTasks.findIndex((task) => task.id === draggedId);
-    const hoverIndex = kanbanTasks.findIndex((task) => task.id === hoverId);
+    const draggedIndex = cards.findIndex((card) => card.id === draggedId);
+    const hoverIndex = cards.findIndex((card) => card.id === hoverId);
 
-    const newTasks = [...kanbanTasks];
-    newTasks[draggedIndex] = kanbanTasks[hoverIndex];
-    newTasks[hoverIndex] = kanbanTasks[draggedIndex];
+    const newCards = [...cards];
+    newCards[draggedIndex] = cards[hoverIndex];
+    newCards[hoverIndex] = cards[draggedIndex];
 
-    setKanbanTasks(newTasks);
+    setCards(newCards);
   };
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div>
-        {stages.map((stage) => (
-          <div key={stage.id}>
-            <h2>{stage.name}</h2>
-            {tasks
-              .filter((task) => task.stage === stage.id)
-              .map((task) => (
-                <Card key={task.id} {...task} moveCard={moveCard} />
-              ))}
-          </div>
+        {cards.map((card) => (
+          <Card key={card.id} {...card} moveCard={moveCard} />
         ))}
       </div>
     </DndProvider>
@@ -76,5 +71,4 @@ const KanbanDragDrop = ({ tasks, stages }) => {
 };
 
 export default KanbanDragDrop;
-
 
