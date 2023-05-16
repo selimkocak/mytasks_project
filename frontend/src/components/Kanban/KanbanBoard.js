@@ -7,7 +7,8 @@ import './KanbanBoard.css';
 import KanbanDragDrop from './KanbanDragDrop';
 
 const KanbanBoard = () => {
-  const [data, setData] = useState(null);
+  const [tasks, setTasks] = useState([]);
+  const [stages, setStages] = useState([]);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -17,10 +18,8 @@ const KanbanBoard = () => {
 
     const fetchData = async () => {
       try {
-        const [tasksResponse, stagesResponse] = await Promise.all([
-          getTasks(),
-          getKanbanStages(),
-        ]);
+        const tasksResponse = await getTasks();
+        const stagesResponse = await getKanbanStages();
 
         console.log('Tasks Response:', tasksResponse);
         console.log('Stages Response:', stagesResponse);
@@ -31,9 +30,8 @@ const KanbanBoard = () => {
         console.log('Tasks:', tasks);
         console.log('Stages:', stages);
 
-        // Data processing continues...
-
-        setData({ tasks, stages });
+        setTasks(tasks);
+        setStages(stages);
       } catch (error) {
         console.error('Error fetching tasks and stages:', error);
       }
@@ -42,15 +40,17 @@ const KanbanBoard = () => {
     fetchData();
   }, [user]);
 
-  if (!data) {
+  if (tasks.length === 0 || stages.length === 0) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <KanbanDragDrop data={data} setData={setData} />
+      <KanbanDragDrop tasks={tasks} stages={stages} />
     </div>
   );
 };
 
 export default KanbanBoard;
+
+
