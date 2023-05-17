@@ -186,7 +186,7 @@ export const deleteCompany = (id) => {
   return service.delete(`company/${id}/`);
 };
 
-// Task
+// Task frontend\src\services\api.js
 export const createTask = async (data) => {
   return service.post("tasks/", data);
 };
@@ -309,7 +309,7 @@ export const deleteKanban = async (id) => {
   return service.delete(`kanban/${id}/`);
 };
 
-// Kanban stages
+// Kanban stages frontend\src\services\api.js
 export const getKanbanStages = async () => {
   try {
     const response = await service.get("kanban/stages/");
@@ -322,6 +322,17 @@ export const getKanbanStages = async () => {
   } catch (error) {
     console.error("Error loading kanban stages:", error);
     return []; // Boş bir dizi döndür
+  }
+};
+
+export const moveCard = async (cardId, stageId) => {
+  try {
+    // Burada API isteğinizi yapın ve görev kartının aşama alanını güncelleyin
+    await service.put(`tasks/${cardId}/move`, { new_stage_id: stageId });
+    console.log('Card moved successfully');
+  } catch (error) {
+    console.error('Error moving card:', error);
+    throw new Error('Failed to move card');
   }
 };
 
@@ -385,6 +396,7 @@ export const apiFunctions = {
   updateKanban,
   deleteKanban,
   getKanbanStages,
+  moveCard,
   createRole,
   getRoles,
   updateRole,

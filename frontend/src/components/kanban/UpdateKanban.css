@@ -1,28 +1,26 @@
-/* frontend/src/components/kanban/UpdateKanban.css */
 .update-kanban {
-    margin-top: 20px;
-  }
-  
-  .update-kanban h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .update-kanban form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .update-kanban input {
-    margin-bottom: 10px;
-    padding: 5px;
-  }
-  
-  .update-kanban button {
-    padding: 5px 10px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
+  margin-top: 20px;
+}
+
+.update-kanban h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.update-kanban form {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-kanban input {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.update-kanban button {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

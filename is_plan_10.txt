@@ -1,0 +1,45 @@
+Yukarıdaki dosya yapısına ve gerekliliklere dayanarak, iş planını aşağıdaki 
+gibi oluşturabiliriz. Bu, her bir görevin bağımsız bir iş olarak kabul edildiği
+ve bir sonraki işe geçmeden önce tamamlanması gerektiği bir süreci temsil eder.
+
+1. Projenin mevcut durumunu değerlendirin.
+2. Gerekli tüm dosyaları ve klasörleri kontrol edin.
+3. Backend ve frontend'de hataları kontrol edin.
+4. Backend veri modelini kontrol edin ve gerektiği şekilde güncelleyin.
+5. Veri modelindeki değişikliklere dayanarak serializerları güncelleyin.
+6. Yeni veri modeli ve serializerlara uygun olarak views.py dosyasını güncelleyin.
+7. Yeni endpointlerin düzgün çalıştığını test edin.
+8. Frontend'de kanban sisteminin ana componentini oluşturun.
+9. Görevler için ayrı bir component oluşturun.
+10. Görevlerin eklenebilmesi için bir "+ plus" buton componenti oluşturun.
+11. Görevlerin silinebilmesi için bir "Delete" buton componenti oluşturun.
+12. Görevlerin güncellenebilmesi için bir "Update" buton componenti oluşturun.
+13. Görevlerin detaylarını gösteren bir "Details" buton componenti oluşturun.
+14. Görevlerin draggable olduğunu kontrol eden bir component oluşturun.
+15. Görevlerin sürüklenebileceği ve bırakılabileceği dropzone'ları temsil eden bir component oluşturun.
+16. Kanban panosunun durumunu yönetmek için bir state management sistemi (ör. Redux veya React Context API) kullanın.
+17. API ile iletişim kurmak için axios veya fetch kullanarak servis fonksiyonları oluşturun.
+18. API'den gelen verileri kanban panosunda gösterin.
+19. Görevleri ekleme, silme ve güncelleme işlevlerini test edin.
+20. Görevlerin drag-and-drop işlevini test edin.
+21. Görev detayları görüntüleme işlevini test edin.
+22. Tüm işlevlerin doğru şekilde çalıştığından emin olun.
+23. Kullanıcı yetkilerini kontrol edin ve gerektiği gibi düzenleyin.
+24. Kullanıcı yetkilerine dayalı olarak UI'ı güncelleyin.
+25. Kullanıcı yetkilerini test edin.
+26. Backend ve frontend hatalarını kontrol edin ve düzeltin.
+27. Uygulamanın genel performansını değerlendirin ve gerekli optimizasyonları yapın.
+28. Frontend ve backend'i son testten geçirin.
+29. Veri tabanı hatalarını kontrol edin ve düzeltin.
+30. Veri tabanı performansını değerlendirin ve gerekli optimizasyonları yapın.
+31. Veri tabanını son testten geçirin.
+32. Test sonuçlarına göre gerektiği gibi düzeltmeler yapın.
+33. Uygulamanın son kullanıcı testleri için hazır olduğunu doğrulayın.
+34. Uygulamayı bir grup son kullanıcıya sunun ve geri bildirim alın.
+35. Geri bildirimlere göre gerekli düzeltmeleri ve iyileştirmeleri yapın.
+36. Son kullanıcı testini tekrar yapın ve sonuçları değerlendirin.
+37. Son kullanıcı testlerini geçen uygulama, canlı ortama taşınabilir.
+38. Canlı ortama taşıma işlemi tamamlandıktan sonra, uygulamanın düzgün çalıştığından emin olun.
+39. Uygulamanın canlı ortamda düzgün çalışmasını sağlamak için sürekli izleme ve bakım yapın.
+
+Bu iş planı, genel bir anlayış sağlamak için tasarlanmıştır. Her projenin kendine özgü gereksinimleri vardır ve bu plan, projenin belirli gereksinimlerine göre uyarlanabilir.

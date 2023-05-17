@@ -1,4 +1,3 @@
-// frontend\src\components\tasks\CreateTask.js
 import React, { useState, useEffect } from 'react';
 import { createTask, getKanbanStages, getUserList, getLoggedInUser } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
@@ -39,7 +38,7 @@ const CreateTask = ({ loadTasks }) => {
         console.error('Error loading stages and users:', error);
       }
     };
-    
+
     loadStagesAndUsers();
   }, []);
 
@@ -51,7 +50,7 @@ const CreateTask = ({ loadTasks }) => {
         description: taskDescription,
         stage: taskStage,
         assignee: taskAssignee,
-        created_by: 1,
+        // created_by: 1, // Kullanıcı kimliğini doğru değerle değiştirin veya gerekirse kaldırın
       });
       if (response.status === 201) {
         setTaskName('');
@@ -64,6 +63,8 @@ const CreateTask = ({ loadTasks }) => {
       console.error('Error creating task: ', error);
     }
   };
+  
+  
 
   const handleInputChange = (e, setStateFunc) => {
     setStateFunc(e.target.value);
@@ -97,25 +98,23 @@ const CreateTask = ({ loadTasks }) => {
           onChange={(e) => handleInputChange(e, setTaskStage)}
         >
           <option value="">--Select Stage--</option>
-          {stages.map((stage, index) => (
-            <option key={index} value={stage.id}>
+          {stages.map((stage) => (
+            <option key={stage.id} value={stage.id}>
               {stage.name}
             </option>
           ))}
         </select>
       </label>
-      
       <label>
         Assignee:
         <select
           name="taskAssignee"
           value={taskAssignee}
-          onChange 
-          ={(e) => handleInputChange(e, setTaskAssignee)}
+          onChange={(e) => handleInputChange(e, setTaskAssignee)}
           >
           <option value="">--Select Assignee--</option>
-          {users.map((user, index) => (
-          <option key={index} value={user.email}>
+          {users.map((user) => (
+          <option key={user.email} value={user.email}>
           {user.email}
           </option>
           ))}

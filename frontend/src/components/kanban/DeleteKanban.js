@@ -10,7 +10,8 @@ function DeleteKanban({ id }) {
     try {
       const response = await api.deleteKanban(id);
       console.log(response.data);
-    } catch (error) {       console.error(error);
+    } catch (error) {
+      console.error(error);
     }
   };
 

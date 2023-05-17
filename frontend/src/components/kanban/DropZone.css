@@ -1,0 +1,12 @@
+/* frontend/src/components/kanban/DropZone.css */
+.drop-zone {
+  background-color: #d71e1e;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  min-height: 500px; 
+}
+
+.drop-zone.active {
+  background-color: #dcd20f;
+}

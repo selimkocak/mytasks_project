@@ -6,6 +6,7 @@ from .serializers import KanbanBoardSerializer, KanbanStageSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
+
 class KanbanBoardViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]  # Require authentication for kanban board endpoints
     queryset = KanbanBoard.objects.all()
@@ -26,3 +27,6 @@ def update_task_ids(request):
     stage.save()
 
     return Response({"message": "Task IDs updated successfully"})
+
+
+
