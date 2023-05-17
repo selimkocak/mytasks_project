@@ -15,6 +15,7 @@ function CreateKanban() {
     try {
       const response = await api.createKanban(data);
       console.log(response.data);
+      // Kanban oluşturulduktan sonra yapılacak işlemleri buraya ekleyebilirsiniz
     } catch (error) {
       console.error(error);
     }

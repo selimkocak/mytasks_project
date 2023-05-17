@@ -1,3 +1,16 @@
+Anladığım kadarıyla aşağıdaki maddeleri içeren bir kanban sistemi oluşturmak istiyorsunuz:
+
+    Aşamaların yatay eksende sıralanabilmesi ve hareket ettirilebilmesi.
+    Görev kartlarının aşamalar arasında sürüklenip bırakılarak taşınabilmesi.
+    Aşama adının hemen altında bir artı butonuyla görev kartı oluşturulabilmesi.
+    Görev kartlarının kolayca silinebilmesi için bir X butonu.
+    Görev kartlarının kolayca güncellenebilmesi için bir kalem butonu.
+    Dinamik ve modern bir arayüz, kullanıcı dostu ve kimlik doğrulamasıyla uyumlu bir kullanıcı deneyimi.
+
+Aşağıda, istediğiniz özelliklere sahip bir kanban sistemi için yapmanız
+gereken güncellemeleri içeren kodları bulabilirsiniz. Kodları, mytasks adlı
+Django-React projesinin frontend klasörüne eklemeniz gerekmektedir.
+
 Yukarıdaki dosya yapısına ve gerekliliklere dayanarak, iş planını aşağıdaki 
 gibi oluşturabiliriz. Bu, her bir görevin bağımsız bir iş olarak kabul edildiği
 ve bir sonraki işe geçmeden önce tamamlanması gerektiği bir süreci temsil eder.

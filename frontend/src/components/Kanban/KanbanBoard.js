@@ -49,14 +49,19 @@ const KanbanBoard = () => {
 
   const handleCreateTask = async (stageId, title) => {
     try {
-      const response = await createTask(stageId, title);
+      const response = await createTask({
+        stage: stageId,
+        title: title,
+        description: '', // Açıklama verisini de ekleyin
+        assignee: '', // Atanan kişiyi belirtin
+      });
       console.log('Task created successfully:', response.data);
       await fetchTasks();
     } catch (error) {
       console.error('Error creating task:', error);
     }
   };
-
+    
   const handleDeleteTask = async (taskId) => {
     try {
       await deleteTask(taskId);

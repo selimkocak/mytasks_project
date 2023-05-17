@@ -6,21 +6,21 @@ import './DeleteKanban.css';
 function DeleteKanban({ id }) {
   const handleDelete = async (e) => {
     e.preventDefault();
+      try {
+    const response = await api.deleteKanban(id);
+    console.log(response.data);
+    // Kanban silindikten sonra yapılacak işlemleri buraya ekleyebilirsiniz
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-    try {
-      const response = await api.deleteKanban(id);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    <div className="delete-kanban">
-      <h2>Kanban Sil</h2>
-      <button onClick={handleDelete}>Sil</button>
-    </div>
-  );
+return (
+  <div className="delete-kanban">
+    <h2>Kanban Sil</h2>
+    <button onClick={handleDelete}>Sil</button>
+  </div>
+);
 }
 
 export default DeleteKanban;
