@@ -28,10 +28,15 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
         const loadedStages = await getKanbanStages();
         const loadedUsers = await getUserList();
         const loggedInUser = await getLoggedInUser();
+        if (loggedInUser) {
+          setTaskAssignee(loggedInUser.email);
+        } else {
+          console.error('Unable to get the logged in user');
+        }
 
         setStages(loadedStages);
         setUsers(loadedUsers);
-        setTaskAssignee(loggedInUser.id);
+        setTaskAssignee(loggedInUser.email);
       } catch (err) {
         console.error(err);
         // Hatayı burada ele alabilirsiniz
@@ -125,8 +130,8 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
                             onChange={e => setTaskAssignee(e.target.value)}>
                 <option value="">--Select Assignee--</option>
                 {users && users.map(user => 
-                  <option key={user.id} value={user.id}>{user?.name}</option>
-                )}
+  <option key={user.email} value={user.email}>{user?.email}</option>
+)}
               </Form.Control>
             </Form.Group>
           </Form>
