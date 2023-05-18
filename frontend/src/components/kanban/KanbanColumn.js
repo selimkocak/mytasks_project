@@ -16,6 +16,8 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
   const [show, setShow] = useState(false);
   const [stages, setStages] = useState([]);
   const [users, setUsers] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
 
   useEffect(() => {
     const loadStagesAndUsers = async () => {
@@ -23,28 +25,30 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
         console.error('No logged in user or user has no id');
         return;
       }
-
+    
       try {
         const loadedStages = await getKanbanStages();
         const loadedUsers = await getUserList();
-        const loggedInUser = await getLoggedInUser();
-        if (loggedInUser) {
-          setTaskAssignee(loggedInUser.email);
+        const user = await getLoggedInUser();
+        if (user && user.email) {
+          setTaskAssignee(user.email);
         } else {
-          console.error('Unable to get the logged in user');
+          console.error('Unable to get the logged in user or user has no email');
         }
-
+    
         setStages(loadedStages);
         setUsers(loadedUsers);
-        setTaskAssignee(loggedInUser.email);
+        setLoggedInUser(user);  // Bu satırı ekleyin
       } catch (err) {
         console.error(err);
         // Hatayı burada ele alabilirsiniz
       }
     };
+    
 
     loadStagesAndUsers();
 }, []);
+
   
 
   const handleClose = () => setShow(false);
@@ -123,17 +127,20 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
                 )}
               </Form.Control>
             </Form.Group>
-
             <Form.Group controlId="formTaskAssignee">
-              <Form.Label>Assignee</Form.Label>
-              <Form.Control as="select" value={taskAssignee} 
-                            onChange={e => setTaskAssignee(e.target.value)}>
-                <option value="">--Select Assignee--</option>
-                {users && users.map(user => 
-  <option key={user.email} value={user.email}>{user?.email}</option>
-)}
-              </Form.Control>
-            </Form.Group>
+  <Form.Label>Assignee</Form.Label>
+  <Form.Control as="select" value={taskAssignee} 
+                onChange={e => setTaskAssignee(e.target.value)}
+                disabled>
+    <option value="">--Select Assignee--</option>
+    {users && loggedInUser && users
+      .filter(user => user.id === loggedInUser.id)
+      .map(user => 
+        <option key={user.email} value={user.email}>{user?.email}</option>
+    )}
+  </Form.Control>
+</Form.Group>
+
           </Form>
         </Modal.Body>
 
