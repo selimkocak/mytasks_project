@@ -91,15 +91,16 @@ const KanbanBoard = () => {
     <div className="kanban-board">
     {stages.map((stage) => (
       <KanbanColumn
-        key={stage.id}
-        stage={stage}
-        tasks={tasks.filter((task) => task.stage === stage.id)}
-        moveCard={handleMoveCard}
-        createTask={handleCreateTask}
-        deleteTask={handleDeleteTask}
-        updateTask={handleUpdateTask}
-        canMoveTo={canMoveTo}
-      />
+    key={stage.id}
+    stage={stage}
+    tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
+    moveCard={handleMoveCard}
+    createTask={handleCreateTask}
+    deleteTask={handleDeleteTask}
+    updateTask={handleUpdateTask}
+    canMoveTo={canMoveTo}
+/>
+
     ))}
   </div>
   );
