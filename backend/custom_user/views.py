@@ -12,6 +12,15 @@ from rest_framework import generics
 from .models import CustomUser
 from .serializers import CustomUserSerializer
 
+
+class LoggedInUserEmailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        email = user.email
+        return Response({"email": email})
+
 class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = CustomUserSerializer
@@ -40,3 +49,10 @@ class LogoutView(APIView):
 class UserListView(generics.ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+
+    def get(self, request, *args, **kwargs):
+        email = request.user.email
+        if email:
+            return Response({'email': email})
+        else:
+            return Response({'detail': 'No email found'}, status=status.HTTP_400_BAD_REQUEST)

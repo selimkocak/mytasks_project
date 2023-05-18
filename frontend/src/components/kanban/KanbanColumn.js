@@ -1,6 +1,6 @@
-// frontend\src\components\kanban\KanbanColumn.js
+// frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getKanbanStages, getUserList, getLoggedInUser } from '../../services/api';
+import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
 import DraggableCard from './DraggableCard';
 import './KanbanColumn.css';
 import Modal from 'react-bootstrap/Modal';
@@ -15,9 +15,8 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
   const [taskAssignee, setTaskAssignee] = useState(''); 
   const [show, setShow] = useState(false);
   const [stages, setStages] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [loggedInUser, setLoggedInUser] = useState(null);
-
+  const [, setUsers] = useState([]);
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
 
   useEffect(() => {
     const loadStagesAndUsers = async () => {
@@ -29,27 +28,24 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       try {
         const loadedStages = await getKanbanStages();
         const loadedUsers = await getUserList();
-        const user = await getLoggedInUser();
-        if (user && user.email) {
-          setTaskAssignee(user.email);
+        const userEmail = await getLoggedInUserEmail();
+        if (userEmail) {
+          setTaskAssignee(userEmail);
         } else {
-          console.error('Unable to get the logged in user or user has no email');
+          console.error('Unable to get the logged in user email');
         }
     
         setStages(loadedStages);
         setUsers(loadedUsers);
-        setLoggedInUser(user);  // Bu satırı ekleyin
+        setLoggedInUserEmail(userEmail);
       } catch (err) {
         console.error(err);
-        // Hatayı burada ele alabilirsiniz
+        // Handle the error here
       }
     };
-    
 
     loadStagesAndUsers();
-}, []);
-
-  
+  }, []);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -71,7 +67,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       stage: taskStage,
       assignee: taskAssignee,
     });
-    setTaskName(''); // Görev oluşturulduktan sonra alanları sıfırla
+    setTaskName('');
     setTaskDescription('');
     setTaskStage('');
     setTaskAssignee('');
@@ -126,21 +122,16 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
                   <option key={stage.id} value={stage.id}>{stage?.name}</option>
                 )}
               </Form.Control>
+            
             </Form.Group>
-            <Form.Group controlId="formTaskAssignee">
-  <Form.Label>Assignee</Form.Label>
-  <Form.Control as="select" value={taskAssignee} 
-                onChange={e => setTaskAssignee(e.target.value)}
-                disabled>
-    <option value="">--Select Assignee--</option>
-    {users && loggedInUser && users
-      .filter(user => user.id === loggedInUser.id)
-      .map(user => 
-        <option key={user.email} value={user.email}>{user?.email}</option>
-    )}
-  </Form.Control>
-</Form.Group>
-
+            <Form.Group controlId="formTaskName">
+              <Form.Label>Assignee</Form.Label>
+              <Form.Control type="email" defaultValue={loggedInUserEmail} 
+                            value={loggedInUserEmail} 
+                            onChange={e => getLoggedInUserEmail(e.target.value)} />
+            </Form.Group>
+        
+          
           </Form>
         </Modal.Body>
 
@@ -155,6 +146,6 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       </Modal>
     </div>
   );
-};  
+};
 
 export default KanbanColumn;

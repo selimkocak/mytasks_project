@@ -140,6 +140,18 @@ export const getLoggedInUser = () => {
   }
 };
 
+// frontend/src/services/api.js
+export const getLoggedInUserEmail = async () => {
+  try {
+    const response = await service.get("auth/user/email/");
+    return response.data.email;
+  } catch (error) {
+    console.error('Error loading logged-in user email:', error);
+    return null;
+  }
+};
+
+
 
 export const getUserList = async () => {
   try {
