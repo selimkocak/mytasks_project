@@ -2,13 +2,11 @@
 import React from 'react';
 import { deleteTask } from '../../services/api';
 
-const DeleteTask = ({ id, loadTasks }) => {
+const DeleteTask = ({ id, onDelete }) => {
   const handleDelete = async () => {
     try {
-      const response = await deleteTask(id);
-      if (response.status === 200) {
-        loadTasks();
-      }
+      await deleteTask(id, onDelete);
+      console.log('Task deleted successfully');
     } catch (error) {
       console.error('Error deleting task: ', error);
     }
@@ -22,4 +20,3 @@ const DeleteTask = ({ id, loadTasks }) => {
 };
 
 export default DeleteTask;
-

@@ -61,21 +61,22 @@ const KanbanBoard = () => {
       console.error('Error creating task:', error);
     }
   };
-    
+
   const handleDeleteTask = async (taskId) => {
     try {
       await deleteTask(taskId);
       console.log('Task deleted successfully');
-      await fetchTasks();
+      fetchTasks();
     } catch (error) {
       console.error('Error deleting task:', error);
     }
   };
+  
 
   const handleUpdateTask = async (taskId, data) => {
     try {
-      const response = await updateTask(taskId, data);
-      console.log('Task updated successfully:', response.data);
+      await updateTask(taskId, data);
+      console.log('Task updated successfully');
       await fetchTasks();
     } catch (error) {
       console.error('Error updating task:', error);
@@ -88,19 +89,19 @@ const KanbanBoard = () => {
 
   return (
     <div className="kanban-board">
-      {stages.map((stage) => (
-        <KanbanColumn
-          key={stage.id}
-          stage={stage}
-          tasks={tasks.filter((task) => task.stage === stage.id)}
-          moveCard={handleMoveCard}
-          createTask={handleCreateTask}
-          deleteTask={handleDeleteTask}
-          updateTask={handleUpdateTask}
-          canMoveTo={canMoveTo}
-        />
-      ))}
-    </div>
+    {stages.map((stage) => (
+      <KanbanColumn
+        key={stage.id}
+        stage={stage}
+        tasks={tasks.filter((task) => task.stage === stage.id)}
+        moveCard={handleMoveCard}
+        createTask={handleCreateTask}
+        deleteTask={handleDeleteTask}
+        updateTask={handleUpdateTask}
+        canMoveTo={canMoveTo}
+      />
+    ))}
+  </div>
   );
 };
 

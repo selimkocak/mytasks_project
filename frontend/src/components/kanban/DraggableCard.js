@@ -1,8 +1,10 @@
-// frontend/src/components/kanban/DraggableCard.js
-import React from 'react';
-import api from '../../services/api';
+// frontend\src\components\kanban\DraggableCard.js
+import React, { useState, useEffect } from 'react';
+import apiFunctions from '../../services/api';
 
-const DraggableCard = ({ task, moveCard }) => {
+const DraggableCard = ({ task, moveCard, deleteTask }) => {
+  const [tasks, setTasks] = useState([]);
+
   const handleDragStart = (e) => {
     e.dataTransfer.setData('text/plain', task.id);
   };
@@ -19,17 +21,18 @@ const DraggableCard = ({ task, moveCard }) => {
 
   const handleDelete = async (taskId) => {
     try {
-      await api.deleteTask(taskId);
+      await deleteTask(taskId);
       console.log('Task deleted successfully');
     } catch (error) {
       console.error('Error deleting task:', error);
     }
   };
-
+  
   const handleUpdate = async (taskId, updatedTask) => {
     try {
-      await api.updateTask(taskId, updatedTask);
+      await apiFunctions.updateTask(taskId, updatedTask);
       console.log('Task updated successfully');
+      setTasks(tasks.map((t) => (t.id === taskId ? { ...t, ...updatedTask } : t)));
     } catch (error) {
       console.error('Error updating task:', error);
     }
@@ -38,6 +41,19 @@ const DraggableCard = ({ task, moveCard }) => {
   const handleShowDetails = (taskId) => {
     // Görev detaylarını göstermek için gerekli işlemleri buraya ekleyebilirsiniz
   };
+
+  const loadTasks = async () => {
+    try {
+      const response = await apiFunctions.getTasks();
+      setTasks(response.data);
+    } catch (error) {
+      console.error('Error loading tasks:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
 
   return (
     <div

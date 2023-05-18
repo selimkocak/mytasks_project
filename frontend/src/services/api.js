@@ -204,8 +204,14 @@ export const updateTask = async (id, data) => {
 };
 
 export const deleteTask = async (id) => {
-  return service.delete(`tasks/${id}/`);
+  try {
+    await service.delete(`tasks/${id}/`);
+    console.log('Task deleted successfully');
+  } catch (error) {
+    console.error('Error deleting task: ', error);
+  }
 };
+
 
 // Notification
 export const createNotification = async (data) => {
