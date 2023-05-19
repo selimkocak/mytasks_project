@@ -1,5 +1,4 @@
 # backend\custom_user\views.py
-from django.contrib.auth import get_user_model
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import CustomUserSerializer, CustomTokenObtainPairSerializer
@@ -8,7 +7,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import generics
 from .models import CustomUser
 from .serializers import CustomUserSerializer, ResetPasswordSerializer
 from django.contrib.auth import get_user_model
@@ -20,6 +18,7 @@ from rest_framework.views import APIView
 from .serializers import ResetPasswordSerializer
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
+from rest_framework.permissions import AllowAny
 
 User = get_user_model()
 
@@ -66,22 +65,20 @@ class UserListView(generics.ListAPIView):
             return Response({'email': email})
         else:
             return Response({'detail': 'No email found'}, status=status.HTTP_400_BAD_REQUEST)
-        
-
-
-
 
 class ResetPasswordView(APIView):
+    permission_classes = [AllowAny]
+
     def post(self, request):
         serializer = ResetPasswordSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.validated_data['email']
 
-        user = get_object_or_404(User, email=email)
+        user = get_object_or_404(CustomUser, email=email)
         user_id = urlsafe_base64_encode(force_bytes(user.pk))
         token = default_token_generator.make_token(user)
         reset_link = render_to_string(
-            'email/reset_password.html',
+            'custom_user/reset_password.html',
             {
                 'user_id': user_id,
                 'token': token,
@@ -96,9 +93,3 @@ class ResetPasswordView(APIView):
         )
 
         return Response(status=status.HTTP_200_OK)
-
-
-
-
-        
-

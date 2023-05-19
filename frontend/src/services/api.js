@@ -92,7 +92,7 @@ export const login = (data) => {
 };
 // frontend\src\services\api.js
 export const resetPassword = (email) => {
-  return service.post('auth/reset-password/', { email });
+  return service.post('auth/reset-password/', { email }, { withCredentials: true });
 };
 
 
