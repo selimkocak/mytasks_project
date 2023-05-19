@@ -22,9 +22,7 @@ const Navbar = () => {
         <div className="navbar-links">
           {isAuthenticated ? (
             <>
-              <Link to="/tasks" className="navbar-link">
-                Tasks
-              </Link>
+         
               <Link to="/kanban" className="navbar-link">
                 Kanban
               </Link>

@@ -23,7 +23,7 @@ function SignIn() {
       localStorage.setItem('token', JSON.stringify(response.data.access));
       setAuthToken(response.data.access);
 
-      navigate('/tasks');
+      navigate('/kanban');
     } catch (error) {
       console.error(error);
     }

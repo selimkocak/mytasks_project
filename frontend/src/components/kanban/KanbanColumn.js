@@ -1,6 +1,6 @@
 // frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
+import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail, apiFunctions } from '../../services/api';
 import DraggableCard from './DraggableCard';
 import './KanbanColumn.css';
 import Modal from 'react-bootstrap/Modal';
@@ -8,11 +8,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
 
-const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => {
-  const [taskName, setTaskName] = useState(''); 
-  const [taskDescription, setTaskDescription] = useState(''); 
-  const [taskStage, setTaskStage] = useState(''); 
-  const [taskAssignee, setTaskAssignee] = useState(''); 
+const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => { 
+  
+  const [taskName, setTaskName] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
+  const [taskStage, setTaskStage] = useState('');
+  const [taskAssignee, setTaskAssignee] = useState('');
   const [show, setShow] = useState(false);
   const [stages, setStages] = useState([]);
   const [, setUsers] = useState([]);
@@ -24,7 +25,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
         console.error('No logged in user or user has no id');
         return;
       }
-    
+
       try {
         const loadedStages = await getKanbanStages();
         const loadedUsers = await getUserList();
@@ -34,7 +35,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
         } else {
           console.error('Unable to get the logged in user email');
         }
-    
+
         setStages(loadedStages);
         setUsers(loadedUsers);
         setLoggedInUserEmail(userEmail);
@@ -60,6 +61,18 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     e.preventDefault();
   };
 
+  const loadTasks = async () => {
+    try {
+      await apiFunctions.getTasks();
+    } catch (error) {
+      console.error('Error loading tasks:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
   const handleCreateTask = async () => {
     await createTask({
       title: taskName,
@@ -72,6 +85,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     setTaskStage('');
     setTaskAssignee('');
     handleClose();
+    loadTasks(); // Yeni görevin hemen yüklenmesi için loadTasks() işlevini çağırın
   };
 
   return (
@@ -89,6 +103,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
             deleteTask={deleteTask}
             updateTask={updateTask}
             canMoveTo={canMoveTo}
+            loadTasks={loadTasks} // DraggableCard bileşenine loadTasks() işlevini iletiyoruz
           />
         ))}
       </div>
@@ -101,37 +116,49 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
           <Form>
             <Form.Group controlId="formTaskName">
               <Form.Label>Task Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter task name" 
-                            value={taskName} 
-                            onChange={e => setTaskName(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Enter task name"
+                value={taskName}
+                onChange={(e) => setTaskName(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId="formTaskDescription">
               <Form.Label>Task Description</Form.Label>
-              <Form.Control type="text" placeholder="Enter task description"
-                            value={taskDescription} 
-                            onChange={e => setTaskDescription(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Enter task description"
+                value={taskDescription}
+                onChange={(e) => setTaskDescription(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group controlId="formTaskStage">
               <Form.Label>Stage</Form.Label>
-              <Form.Control as="select" value={taskStage} 
-                            onChange={e => setTaskStage(e.target.value)}>
+              <Form.Control
+                as="select"
+                value={taskStage}
+                onChange={(e) => setTaskStage(e.target.value)}
+              >
                 <option value="">--Select Stage--</option>
-                {stages && stages.map(stage => 
-                  <option key={stage.id} value={stage.id}>{stage?.name}</option>
-                )}
+                {stages && stages.map((stage) => (
+                  <option key={stage.id} value={stage.id}>
+                    {stage?.name}
+                  </option>
+                ))}
               </Form.Control>
-            
             </Form.Group>
-            <Form.Group controlId="formTaskName">
+
+            <Form.Group controlId="formTaskAssignee">
               <Form.Label>Assignee</Form.Label>
-              <Form.Control type="email" defaultValue={loggedInUserEmail} 
-                            value={loggedInUserEmail} 
-                            onChange={e => getLoggedInUserEmail(e.target.value)} />
+              <Form.Control
+                type="email"
+                defaultValue={loggedInUserEmail}
+                value={loggedInUserEmail}
+                onChange={(e) => setTaskAssignee(e.target.value)}
+              />
             </Form.Group>
-        
-          
           </Form>
         </Modal.Body>
 

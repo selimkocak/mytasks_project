@@ -6,6 +6,19 @@ import UpdateTask from '../tasks/UpdateTask';
 const DraggableCard = ({ task, moveCard, deleteTask }) => {
   const [showModal, setShowModal] = useState(false);
 
+
+  const loadTasks = async () => {
+    try {
+      await apiFunctions.getTasks();
+    } catch (error) {
+      console.error('Error loading tasks:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
   const handleDragStart = (e) => {
     e.dataTransfer.setData('text/plain', task.id);
   };
@@ -24,30 +37,22 @@ const DraggableCard = ({ task, moveCard, deleteTask }) => {
     try {
       await deleteTask(taskId);
       console.log('Task deleted successfully');
+      loadTasks(); // Görevi sildikten sonra loadTasks() işlevini çağırın
     } catch (error) {
       console.error('Error deleting task:', error);
     }
   };
 
-  const handleShowDetails = () => {
+  const handleShowDetails = (taskId) => {
     setShowModal(true);
+    loadTasks(); // Görevleri yeniden yüklemek için loadTasks() işlevini çağırın
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
+    loadTasks(); // Modal kapatıldığında görevleri yeniden yüklemek için loadTasks() işlevini çağırın
   };
 
-  const loadTasks = async () => {
-    try {
-      await apiFunctions.getTasks();
-    } catch (error) {
-      console.error('Error loading tasks:', error);
-    }
-  };
-
-  useEffect(() => {
-    loadTasks();
-  }, []);
 
   return (
     <div
@@ -63,6 +68,7 @@ const DraggableCard = ({ task, moveCard, deleteTask }) => {
       {task.title.length > 20 && <button onClick={() => handleShowDetails(task.id)}>👁️</button>}
       {showModal && (
         <UpdateTask task={task} loadTasks={loadTasks} handleCloseModal={handleCloseModal} />
+        
       )}
     </div>
   );

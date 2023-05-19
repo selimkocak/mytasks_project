@@ -41,10 +41,10 @@ const UpdateTask = ({ task, loadTasks, handleCloseModal }) => {
         description: taskDescription,
         stage: taskStage,
         assignee: taskAssignee,
-        created_by: 1, // Burada gerçek veri kullanmanız gerekmektedir.
+        created_by: 1, // Kullanıcı kimliğini doğru değerle değiştirin veya gerekirse kaldırın
       });
       if (response.status === 200) {
-        loadTasks();
+        loadTasks(); // Görevleri güncelledikten sonra loadTasks() işlevini çağırın
         handleCloseModal();
       }
     } catch (error) {
