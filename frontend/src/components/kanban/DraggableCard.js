@@ -40,7 +40,6 @@ const DraggableCard = ({ task, moveCard, deleteTask }) => {
   const loadTasks = async () => {
     try {
       await apiFunctions.getTasks();
-      // response değişkeni kullanılmadığı için bu kısmı kaldırabilirsiniz
     } catch (error) {
       console.error('Error loading tasks:', error);
     }

@@ -26,7 +26,7 @@ const UpdateTask = ({ task, loadTasks, handleCloseModal }) => {
         setLoggedInUserEmail(userEmail);
       } catch (err) {
         console.error(err);
-        // Handle the error here
+        // Hata durumunu burada ele alabilirsiniz
       }
     };
 
@@ -89,24 +89,27 @@ const UpdateTask = ({ task, loadTasks, handleCloseModal }) => {
                 </option>
               ))}
             </Form.Control>
-            </Form.Group>
-             <Form.Group controlId="formTaskAssignee">
+          </Form.Group>
+
+        
+            <Form.Group controlId="formTaskName">
               <Form.Label>Assignee</Form.Label>
               <Form.Control type="email" defaultValue={loggedInUserEmail} 
                             value={loggedInUserEmail} 
                             onChange={e => getLoggedInUserEmail(e.target.value)} />
             </Form.Group>
+        
 
-      <Button variant="secondary" onClick={handleCloseModal}>
-        Cancel
-      </Button>
-      <Button variant="primary" type="submit">
-        Update Task
-      </Button>
-    </Form>
-  </Modal.Body>
-</Modal>
-);
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Cancel
+          </Button>
+          <Button variant="primary" type="submit">
+            Update Task
+          </Button>
+        </Form>
+      </Modal.Body>
+    </Modal>
+  );
 };
 
 export default UpdateTask;
