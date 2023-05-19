@@ -90,6 +90,11 @@ export const login = (data) => {
     return response;
   });
 };
+// frontend\src\services\api.js
+export const resetPassword = (email) => {
+  return service.post('auth/reset-password/', { email });
+};
+
 
 export const logout = async () => {
   try {

@@ -1,10 +1,9 @@
 // frontend/src/components/auth/SignIn.js
+
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-
-import api, { setAuthToken } from '../../services/api';
-
+import { login } from '../../services/api';
 import './SignIn.css';
 
 function SignIn() {
@@ -17,11 +16,10 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await api.login({ email, password });
+      const response = await login({ email, password });
 
       setUser(response.data.user);
       localStorage.setItem('token', JSON.stringify(response.data.access));
-      setAuthToken(response.data.access);
 
       navigate('/kanban');
     } catch (error) {
@@ -31,21 +29,21 @@ function SignIn() {
 
   return (
     <div className="signin-container">
-      <h2>Sign In</h2>
+      <h2>Giriş Yap</h2>
       <form onSubmit={handleSignIn} className="signin-form">
         <input
           type="email"
-          placeholder="Email"
+          placeholder="E-posta"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Şifre"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Sign In</button>
+        <button type="submit">Giriş Yap</button>
       </form>
     </div>
   );

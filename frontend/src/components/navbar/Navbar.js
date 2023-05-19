@@ -1,4 +1,5 @@
-// frontend\src\components\navbar\Navbar.js
+// frontend/src/components/navbar/Navbar.js
+
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Auth from '../../utils/auth';
@@ -22,7 +23,6 @@ const Navbar = () => {
         <div className="navbar-links">
           {isAuthenticated ? (
             <>
-         
               <Link to="/kanban" className="navbar-link">
                 Kanban
               </Link>
@@ -49,6 +49,9 @@ const Navbar = () => {
               </Link>
               <Link to="/register" className="navbar-link">
                 Register
+              </Link>
+              <Link to="/reset-password" className="navbar-link">
+                Reset Password
               </Link>
             </>
           )}

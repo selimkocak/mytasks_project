@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar';
 import SignIn from './components/auth/SignIn';
 import Logout from './components/auth/Logout';
 import SignUp from './components/auth/SignUp';
+import ResetPassword from './components/auth/ResetPassword';
 import PrivateRoutes from './utils/PrivateRoutes';
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<SignIn />} />
         <Route path="/register" element={<SignUp />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/*" element={<PrivateRoutes />} />
       </Routes>
