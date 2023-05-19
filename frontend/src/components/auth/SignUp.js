@@ -1,50 +1,64 @@
 // frontend/src/components/auth/SignUp.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api, { logout } from '../../services/api'; // logout'u import et
+
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../../services/api";
 import './SignUp.css';
 
-function SignUp() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const SignUp = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await api.register({ email, password });
-      console.log(response.data);
-
-      navigate('/tasks');
+      await register({ username, email, password });
+      navigate("/login");
     } catch (error) {
-      console.error(error);
-      setError('Kayıt olurken bir hata oluştu. Lütfen bilgilerinizi kontrol edin ve tekrar deneyin.');
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/login');
-    } catch (error) {
-      console.error(error);
+      setError("Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyin.");
     }
   };
 
   return (
     <div className="signup-container">
-      <h2>Sign Up</h2>
+      <h2>Kayıt Ol</h2>
       {error && <p>{error}</p>}
       <form className="signup-form" onSubmit={handleSignUp}>
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Sign Up</button>
+        <div>
+          <label>Kullanıcı Adı:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>E-posta:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Şifre:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Kayıt Ol</button>
       </form>
-      <button onClick={handleLogout}>Logout</button> {/* Logout düğmesi */}
+      <p>Zaten bir hesabınız var mı? <Link to="/login">Giriş yapın</Link>.</p>
     </div>
   );
-}
+};
 
 export default SignUp;
