@@ -1,9 +1,10 @@
-// frontend\src\components\kanban\DraggableCard.js
+// frontend/src/components/kanban/DraggableCard.js
 import React, { useState, useEffect } from 'react';
 import apiFunctions from '../../services/api';
+import UpdateTask from '../tasks/UpdateTask';
 
 const DraggableCard = ({ task, moveCard, deleteTask }) => {
-  const [tasks, setTasks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const handleDragStart = (e) => {
     e.dataTransfer.setData('text/plain', task.id);
@@ -27,25 +28,19 @@ const DraggableCard = ({ task, moveCard, deleteTask }) => {
       console.error('Error deleting task:', error);
     }
   };
-  
-  const handleUpdate = async (taskId, updatedTask) => {
-    try {
-      await apiFunctions.updateTask(taskId, updatedTask);
-      console.log('Task updated successfully');
-      setTasks(tasks.map((t) => (t.id === taskId ? { ...t, ...updatedTask } : t)));
-    } catch (error) {
-      console.error('Error updating task:', error);
-    }
+
+  const handleShowDetails = () => {
+    setShowModal(true);
   };
 
-  const handleShowDetails = (taskId) => {
-    // Görev detaylarını göstermek için gerekli işlemleri buraya ekleyebilirsiniz
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   const loadTasks = async () => {
     try {
-      const response = await apiFunctions.getTasks();
-      setTasks(response.data);
+      await apiFunctions.getTasks();
+      // response değişkeni kullanılmadığı için bu kısmı kaldırabilirsiniz
     } catch (error) {
       console.error('Error loading tasks:', error);
     }
@@ -65,8 +60,11 @@ const DraggableCard = ({ task, moveCard, deleteTask }) => {
     >
       <span>{task.title}</span>
       <button onClick={() => handleDelete(task.id)}>X</button>
-      <button onClick={() => handleUpdate(task.id, { title: 'Updated Title' })}>✏️</button>
+      <button onClick={() => handleShowDetails(task.id)}>✏️</button>
       {task.title.length > 20 && <button onClick={() => handleShowDetails(task.id)}>👁️</button>}
+      {showModal && (
+        <UpdateTask task={task} loadTasks={loadTasks} handleCloseModal={handleCloseModal} />
+      )}
     </div>
   );
 };
