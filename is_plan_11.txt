@@ -205,7 +205,7 @@ Frontend 2. Kullanıcı Kimlik Doğrulama Sistemi
 +2.2. Kullanıcı Giriş Komponenti Oluşturma: Kullanıcıların giriş yapabileceği bir React komponenti oluşturun. Bu komponent, kullanıcı adı ve şifre gibi bilgileri toplamalıdır.
 +2.3. Şifre Sıfırlama Komponenti Oluşturma: Kullanıcıların şifrelerini sıfırlayabileceği bir React komponenti oluşturun. Bu komponent, kullanıcının e-posta adresini toplamalı ve bir şifre sıfırlama bağlantısı göndermelidir.
 +2.4. Email Doğrulama Sistemi: Kullanıcıların e-posta adreslerini doğrulayabilecekleri bir sistem oluşturun. Bu, genellikle bir doğrulama e-postası gönderilmesini ve kullanıcının bu e-postadaki bir bağlantıyı tıklamasını gerektirir.
-2.5. Kullanıcı Profili ve Ayarları Komponenti Oluşturma: Kullanıcıların profillerini görüntüleyebileceği ve ayarlarını düzenleyebileceği bir React komponenti oluşturun.
++2.5. Kullanıcı Profili ve Ayarları Komponenti Oluşturma: Kullanıcıların profillerini görüntüleyebileceği ve ayarlarını düzenleyebileceği bir React komponenti oluşturun.
 2.6. Kimlik Doğrulama Durumunun Yönetimi: Kullanıcıların kimlik doğrulama durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, kullanıcının giriş yapma durumunu ve kullanıcı bilgilerini tutmalıdır.
 2.7. Kimlik Doğrulama API İstekleri: Kullanıcı kayıt, giriş, şifre sıfırlama ve e-posta doğrulama işlemleri için gerekli API isteklerini oluşturun.
 2.8. Kimlik Doğrulama Hatalarının Yönetimi: Kullanıcıların kimlik doğrulama işlemleri sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.

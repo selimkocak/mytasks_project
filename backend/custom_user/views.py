@@ -93,3 +93,19 @@ class ResetPasswordView(APIView):
         )
 
         return Response(status=status.HTTP_200_OK)
+
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = CustomUserSerializer(request.user, context={'request': request})
+        return Response(serializer.data)
+
+class UpdateUserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
+        serializer = CustomUserSerializer(request.user, data=request.data)
+        serializer.is_valid(raise_exception=True)  # Geçerlilik denetimleri
+        serializer.save()
+        return Response(serializer.data)

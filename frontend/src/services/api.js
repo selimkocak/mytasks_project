@@ -156,8 +156,6 @@ export const getLoggedInUserEmail = async () => {
   }
 };
 
-
-
 export const getUserList = async () => {
   try {
     const response = await service.get("auth/users/");
@@ -173,13 +171,13 @@ export const getUserList = async () => {
   }
 };
 
-// user profile
+// user profile frontend\src\services\api.js
 export const getUserProfile = () => {
   return service.get('auth/user-profile/');
 };
 
 export const updateUserProfile = (data) => {
-  return service.put('auth/user-profile/', data);
+  return service.put('auth/update-user-profile/', data);
 };
 
 export const changePassword = (data) => {
