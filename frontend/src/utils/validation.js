@@ -1,5 +1,4 @@
 // frontend\src\utils\validation.js
-
 // Boşluk kontrolü
 export const isRequired = (value) => {
   return value.trim() !== '';

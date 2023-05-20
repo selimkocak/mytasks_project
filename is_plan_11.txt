@@ -206,9 +206,9 @@ Frontend 2. Kullanıcı Kimlik Doğrulama Sistemi
 +2.3. Şifre Sıfırlama Komponenti Oluşturma: Kullanıcıların şifrelerini sıfırlayabileceği bir React komponenti oluşturun. Bu komponent, kullanıcının e-posta adresini toplamalı ve bir şifre sıfırlama bağlantısı göndermelidir.
 +2.4. Email Doğrulama Sistemi: Kullanıcıların e-posta adreslerini doğrulayabilecekleri bir sistem oluşturun. Bu, genellikle bir doğrulama e-postası gönderilmesini ve kullanıcının bu e-postadaki bir bağlantıyı tıklamasını gerektirir.
 +2.5. Kullanıcı Profili ve Ayarları Komponenti Oluşturma: Kullanıcıların profillerini görüntüleyebileceği ve ayarlarını düzenleyebileceği bir React komponenti oluşturun.
-2.6. Kimlik Doğrulama Durumunun Yönetimi: Kullanıcıların kimlik doğrulama durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, kullanıcının giriş yapma durumunu ve kullanıcı bilgilerini tutmalıdır.
-2.7. Kimlik Doğrulama API İstekleri: Kullanıcı kayıt, giriş, şifre sıfırlama ve e-posta doğrulama işlemleri için gerekli API isteklerini oluşturun.
-2.8. Kimlik Doğrulama Hatalarının Yönetimi: Kullanıcıların kimlik doğrulama işlemleri sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
++2.6. Kimlik Doğrulama Durumunun Yönetimi: Kullanıcıların kimlik doğrulama durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, kullanıcının giriş yapma durumunu ve kullanıcı bilgilerini tutmalıdır.
++2.7. Kimlik Doğrulama API İstekleri: Kullanıcı kayıt, giriş, şifre sıfırlama ve e-posta doğrulama işlemleri için gerekli API isteklerini oluşturun.
++2.8. Kimlik Doğrulama Hatalarının Yönetimi: Kullanıcıların kimlik doğrulama işlemleri sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
 Bu adımlar, kullanıcı kimlik doğrulama sisteminin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcı kimlik doğrulama sisteminin başarılı bir şekilde oluşturulmasını sağlar.
 
 Frontend 3. Görev Kartı Oluşturma Özelliği
@@ -305,6 +305,57 @@ Kullanıcı arayüzünün tasarlanması ve uygulanması için aşağıdaki iş p
 12.6. Testlerin Uygulanması: Oluşturulan kullanıcı arayüzünün test edilmesi için gerekli testleri uygulayın. Bileşen testleri, işlevsel testler ve kullanılabilirlik testleri gibi farklı test türlerini kullanabilirsiniz.
 12.7. Kullanıcı Geri Bildirimlerini İyileştirme: Kullanıcı testleri ve geri bildirimleri kullanarak kullanıcı arayüzünü iyileştirin. Kullanıcıların deneyimini geliştirmek için kullanıcı geri bildirimlerini dikkate alın ve gerekli değişiklikleri yapın.
 Bu iş parçacıkları, kullanıcı arayüzünün tasarlanması, oluşturulması ve test edilmesini sistematik bir şekilde yönetmenizi sağlar. Kullanıcı dostu, işlevsel ve çekici bir kullanıcı arayüzü oluşturmak için tasarım prensiplerini ve en iyi uygulamaları kullanın.
+
+
+
+Kod tekrarlarını önlemek için şu adımları izleyebilirsiniz:
+1. **Komponentleri kategorize edin**: Var olan komponentlerinizi gözden geçirin ve benzer işlevlere sahip olanları gruplandırın.
+Örneğin, görev oluşturma, güncelleme ve silme işlemleriyle ilgili komponentleri bir kategori altında toplayabilirsiniz.
+Bu sayede ortak işlevlere sahip komponentler arasında kod tekrarı azaltılabilir.
+2. **Ortak fonksiyonları ve stil dosyalarını paylaşın**: İlgili komponentler arasında kullanılan ortak fonksiyonları ve 
+stil dosyalarını ayrı bir dosyada toplayabilirsiniz. Bu sayede her bir komponentin kendi dosyasında tekrar tekrar aynı 
+fonksiyonları veya stil kodlarını tanımlamak zorunda kalmazsınız.
+3. **Parametreleri ve geri çağırma fonksiyonlarını kullanın**: Komponentler arasında paylaşılan verileri veya geri çağırma 
+fonksiyonlarını parametreler aracılığıyla iletebilirsiniz. Örneğin, bir görevi silmek için kullanılan komponente, silinecek 
+görevin kimliğini ve görevleri yeniden yükleme işlevini parametre olarak iletebilirsiniz. Bu sayede aynı işlevi farklı 
+komponentlerde kullanabilirsiniz.
+4. **Yüksek düzeydeki komponentleri oluşturun**: Ortak işlevleri veya verileri paylaşan komponentleri yüksek düzeydeki 
+komponentler olarak oluşturabilirsiniz. Bu yüksek düzeydeki komponentler, alt komponentlere gerekli verileri veya fonksiyonları 
+iletebilir ve kod tekrarını azaltabilir.
+5. **İş planı**: Aşağıdaki iş planını izleyebilirsiniz:
+   - `CreateTask`, `UpdateTask` ve `DeleteTask` komponentleri aynı işleve hizmet ettiği için bu komponentleri bir kategori 
+   altında toplayın. Örneğin, `TaskActions` adında bir klasör oluşturun.
+   - `TaskActions` klasöründe `TaskActions.js` ve `TaskActions.css` dosyaları oluşturun. Bu dosyalar, komponentin işlevini ve stilini içerecektir.
+   - `ListTasks` komponenti ayrı bir klasör içinde tutulabilir. Bu klasöre `ListTasks.js` ve `ListTasks.css` dosyaları ekleyin.
+   - `TaskForm` komponentini de ayrı bir klasör içinde tutun. Bu klasöre `TaskForm.js` ve `TaskForm.css` dosyalarını ekleyin.
+   - `TaskItem` komponenti ayrı bir klasör içinde tutulabilir. Bu klasöre `TaskItem.js` ve `TaskItem.css` dosyalarını ekleyin.
+   - `TasksPage` komponenti ayrı bir klasör içinde tutulabilir. Bu klasöre `TasksPage.js` ve `TasksPage.css` dosyalarını ekleyin.
+   - Her bir klasördeki komponentler arasında paylaşılan kod parçacıklarını ortak bir dosyada (`api.js`) veya bir kütüphane içinde toplayabilirsiniz. Bu dosya veya kütüphane, veri işleme, API çağrıları vb. için kullanılabilir.
+   - Her bir komponenti ilgili dosyalarında düzenleyin ve ilgili komponentler arasında paylaşılan kod parçacıklarını ortak dosyalara yönlendirin.
+
+Bu adımları izleyerek, kod tekrarlarını azaltabilir ve kod tabanınızı daha düzenli hale getirebilirsiniz.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

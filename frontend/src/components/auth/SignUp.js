@@ -1,5 +1,4 @@
 // frontend/src/components/auth/SignUp.js
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../services/api";
@@ -60,5 +59,4 @@ const SignUp = () => {
     </div>
   );
 };
-
 export default SignUp;

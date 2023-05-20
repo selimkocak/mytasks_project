@@ -1,5 +1,4 @@
 // frontend/src/components/auth/SignIn.js
-
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
@@ -11,6 +10,7 @@ function SignIn() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
+  const [error, setError] = useState("");
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -23,13 +23,14 @@ function SignIn() {
 
       navigate('/kanban');
     } catch (error) {
-      console.error(error);
+      setError("Giriş yaparken bir hata oluştu. Lütfen tekrar deneyin.");
     }
   };
 
   return (
     <div className="signin-container">
       <h2>Giriş Yap</h2>
+      {error && <p>{error}</p>}
       <form onSubmit={handleSignIn} className="signin-form">
         <input
           type="email"
