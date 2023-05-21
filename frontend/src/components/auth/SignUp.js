@@ -5,8 +5,9 @@ import { register } from "../../services/api";
 import './SignUp.css';
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await register({ username, email, password });
+      await register({ email, first_name: firstName, last_name: lastName, password });
       navigate("/login");
     } catch (error) {
       setError("Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyin.");
@@ -27,20 +28,29 @@ const SignUp = () => {
       {error && <p>{error}</p>}
       <form className="signup-form" onSubmit={handleSignUp}>
         <div>
-          <label>Kullanıcı Adı:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
           <label>E-posta:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Ad:</label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Soyad:</label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
         </div>
@@ -59,4 +69,5 @@ const SignUp = () => {
     </div>
   );
 };
+
 export default SignUp;

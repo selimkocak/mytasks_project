@@ -25,15 +25,6 @@ const KanbanBoard = () => {
     fetchData();
   }, []);
 
-  const fetchTasks = async () => {
-    try {
-      const tasksResponse = await getTasks();
-      setTasks(tasksResponse.data);
-    } catch (error) {
-      console.error('Error fetching tasks:', error);
-    }
-  };
-
   const handleMoveCard = async (cardId, stageId) => {
     setMovingCard(true);
     try {
@@ -52,8 +43,8 @@ const KanbanBoard = () => {
       const response = await createTask({
         stage: stageId,
         title: title,
-        description: '', // Açıklama verisini de ekleyin
-        assignee: '', // Atanan kişiyi belirtin
+        description: '', // Add the description data
+        assignee: '', // Specify the assignee
       });
       console.log('Task created successfully:', response.data);
       await fetchTasks();
@@ -66,12 +57,11 @@ const KanbanBoard = () => {
     try {
       await deleteTask(taskId);
       console.log('Task deleted successfully');
-      fetchTasks();
+      await fetchTasks();
     } catch (error) {
       console.error('Error deleting task:', error);
     }
   };
-  
 
   const handleUpdateTask = async (taskId, data) => {
     try {
@@ -83,27 +73,36 @@ const KanbanBoard = () => {
     }
   };
 
+  const fetchTasks = async () => {
+    try {
+      const tasksResponse = await getTasks();
+      setTasks(tasksResponse.data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
+
   const canMoveTo = () => {
     return !movingCard;
   };
 
   return (
     <div className="kanban-board">
-    {stages.map((stage) => (
-      <KanbanColumn
-    key={stage.id}
-    stage={stage}
-    tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
-    moveCard={handleMoveCard}
-    createTask={handleCreateTask}
-    deleteTask={handleDeleteTask}
-    updateTask={handleUpdateTask}
-    canMoveTo={canMoveTo}
-/>
-
-    ))}
-  </div>
+      {stages.map((stage) => (
+        <KanbanColumn
+          key={stage.id}
+          stage={stage}
+          tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
+          moveCard={handleMoveCard}
+          createTask={handleCreateTask}
+          deleteTask={handleDeleteTask}
+          updateTask={handleUpdateTask}
+          canMoveTo={canMoveTo}
+        />
+      ))}
+    </div>
   );
 };
 
 export default KanbanBoard;
+

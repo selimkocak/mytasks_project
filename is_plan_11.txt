@@ -212,31 +212,30 @@ Frontend 2. Kullanıcı Kimlik Doğrulama Sistemi
 Bu adımlar, kullanıcı kimlik doğrulama sisteminin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcı kimlik doğrulama sisteminin başarılı bir şekilde oluşturulmasını sağlar.
 
 Frontend 3. Görev Kartı Oluşturma Özelliği
-3.1. Görev Kartı Komponenti Oluşturma: Görev kartını temsil eden bir React komponenti oluşturun. Bu komponent, görevin adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
-3.2. Görev Kartı Formu Komponenti Oluşturma: Kullanıcıların yeni bir görev kartı oluşturabileceği bir form komponenti oluşturun. Bu form, görevin adı, açıklaması ve diğer ilgili bilgileri toplamalıdır.
-3.3. Görev Kartı Oluşturma API İsteği: Yeni bir görev kartı oluşturmak için gerekli API isteğini oluşturun. Bu istek, formdan toplanan bilgileri kullanarak bir POST isteği yapmalıdır.
-3.4. Görev Kartı Durum Yönetimi: Görev kartlarının durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, mevcut görev kartlarının listesini ve her bir görev kartının durumunu tutmalıdır.
-3.5. Görev Kartı Oluşturma Hatalarının Yönetimi: Kullanıcıların görev kartı oluşturma işlemi sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
++3.1. Görev Kartı Komponenti Oluşturma: Görev kartını temsil eden bir React komponenti oluşturun. Bu komponent, görevin adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
++3.2. Görev Kartı Formu Komponenti Oluşturma: Kullanıcıların yeni bir görev kartı oluşturabileceği bir form komponenti oluşturun. Bu form, görevin adı, açıklaması ve diğer ilgili bilgileri toplamalıdır.
++3.3. Görev Kartı Oluşturma API İsteği: Yeni bir görev kartı oluşturmak için gerekli API isteğini oluşturun. Bu istek, formdan toplanan bilgileri kullanarak bir POST isteği yapmalıdır.
++3.4. Görev Kartı Durum Yönetimi: Görev kartlarının durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, mevcut görev kartlarının listesini ve her bir görev kartının durumunu tutmalıdır.
++3.5. Görev Kartı Oluşturma Hatalarının Yönetimi: Kullanıcıların görev kartı oluşturma işlemi sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
 Bu adımlar, görev kartı oluşturma özelliğinin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görev kartı oluşturma özelliğinin başarılı bir şekilde oluşturulmasını sağlar.
 
 Frontend 4. Görevlerin Görüntülenmesi, Düzenlenmesi ve Silinmesi
-4.1. Görev Kartı Görüntüleme: Görev kartlarını görüntülemek için bir React komponenti oluşturun. Bu komponent, görev kartının adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
-4.2. Görev Kartı Düzenleme: Görev kartlarını düzenlemek için bir form komponenti oluşturun. Bu form, görevin adı, açıklaması ve diğer ilgili bilgileri toplamalı ve güncellemeli.
-4.3. Görev Kartı Silme: Görev kartlarını silmek için bir buton veya başka bir kullanıcı arayüzü öğesi oluşturun. Bu öğe, kullanıcının bir görev kartını silmesine izin vermelidir.
-4.4. Görev Kartı Görüntüleme, Düzenleme ve Silme API İstekleri: Görev kartlarını görüntülemek, düzenlemek ve silmek için gerekli API isteklerini oluşturun. Bu istekler, görev kartının durumunu güncellemek ve silmek için kullanılmalıdır.
-4.5. Görev Kartı Durum Yönetimi: Görev kartlarının durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, mevcut görev kartlarının listesini ve her bir görev kartının durumunu tutmalıdır.
-4.6. Görev Kartı Görüntüleme, Düzenleme ve Silme Hatalarının Yönetimi: Kullanıcıların görev kartı görüntüleme, düzenleme ve silme işlemleri sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
++4.1. Görev Kartı Görüntüleme: Görev kartlarını görüntülemek için bir React komponenti oluşturun. Bu komponent, görev kartının adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
++4.2. Görev Kartı Düzenleme: Görev kartlarını düzenlemek için bir form komponenti oluşturun. Bu form, görevin adı, açıklaması ve diğer ilgili bilgileri toplamalı ve güncellemeli.
++4.3. Görev Kartı Silme: Görev kartlarını silmek için bir buton veya başka bir kullanıcı arayüzü öğesi oluşturun. Bu öğe, kullanıcının bir görev kartını silmesine izin vermelidir.
++4.4. Görev Kartı Görüntüleme, Düzenleme ve Silme API İstekleri: Görev kartlarını görüntülemek, düzenlemek ve silmek için gerekli API isteklerini oluşturun. Bu istekler, görev kartının durumunu güncellemek ve silmek için kullanılmalıdır.
++4.5. Görev Kartı Durum Yönetimi: Görev kartlarının durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, mevcut görev kartlarının listesini ve her bir görev kartının durumunu tutmalıdır.
++4.6. Görev Kartı Görüntüleme, Düzenleme ve Silme Hatalarının Yönetimi: Kullanıcıların görev kartı görüntüleme, düzenleme ve silme işlemleri sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
 Bu adımlar, görev kartı görüntüleme, düzenleme ve silme özelliklerinin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görev kartı görüntüleme, düzenleme ve silme özelliklerinin başarılı bir şekilde oluşturulmasını sağlar.
 
 
 Frontend 5. Kanban Tahtası Görünümü
-
-5.1. Kanban Tahtası Komponenti Oluşturma: Kanban tahtasını görüntülemek için bir React komponenti oluşturun. Bu komponent, kanban tahtasını oluşturan sütunları ve sütunlarda yer alan görev kartlarını görüntülemelidir.
-5.2. Kanban Tahtası Sütunları: Kanban tahtasında yer alan sütunları temsil eden bir komponent oluşturun. Bu komponent, sütun başlığını ve içerisinde yer alan görev kartlarını görüntülemelidir.
-5.3. Görev Kartları: Kanban tahtasında yer alan görev kartlarını temsil eden bir komponent oluşturun. Bu komponent, görev kartının adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
-5.4. Drag and Drop İşlevselliği: Kanban tahtasında görev kartlarını sürükleyip bırakma işlevselliğini ekleyin. Bu işlevsellik, görev kartlarını farklı sütunlara taşıyabilmeyi sağlamalıdır.
-5.5. Kanban Tahtası Görünümü İçin API İstekleri: Kanban tahtasını görüntülemek için gerekli API isteklerini oluşturun. Bu istekler, sütunları ve görev kartlarını almak için kullanılmalıdır.
-5.6. Kanban Tahtası Görünümü Yönetimi: Kanban tahtası görünümünü yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu çözüm, mevcut sütunları ve görev kartlarını tutmalıdır.
++5.1. Kanban Tahtası Komponenti Oluşturma: Kanban tahtasını görüntülemek için bir React komponenti oluşturun. Bu komponent, kanban tahtasını oluşturan sütunları ve sütunlarda yer alan görev kartlarını görüntülemelidir.
++5.2. Kanban Tahtası Sütunları: Kanban tahtasında yer alan sütunları temsil eden bir komponent oluşturun. Bu komponent, sütun başlığını ve içerisinde yer alan görev kartlarını görüntülemelidir.
++5.3. Görev Kartları: Kanban tahtasında yer alan görev kartlarını temsil eden bir komponent oluşturun. Bu komponent, görev kartının adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
++5.4. Drag and Drop İşlevselliği: Kanban tahtasında görev kartlarını sürükleyip bırakma işlevselliğini ekleyin. Bu işlevsellik, görev kartlarını farklı sütunlara taşıyabilmeyi sağlamalıdır.
++5.5. Kanban Tahtası Görünümü İçin API İstekleri: Kanban tahtasını görüntülemek için gerekli API isteklerini oluşturun. Bu istekler, sütunları ve görev kartlarını almak için kullanılmalıdır.
++5.6. Kanban Tahtası Görünümü Yönetimi: Kanban tahtası görünümünü yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu çözüm, mevcut sütunları ve görev kartlarını tutmalıdır.
 Bu adımlar, kanban tahtası görünümünü oluşturmayı içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kanban tahtası görünümünün başarılı bir şekilde oluşturulmasını sağlar.
 
 

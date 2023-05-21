@@ -1,0 +1,27 @@
+/* frontend\src\components\tasks\ViewTask.css  */
+.view-task {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .view-task h2 {
+    margin-bottom: 10px;
+  }
+  
+  .view-task p {
+    margin-bottom: 5px;
+  }
+  
+  .view-task button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .view-task button:hover {
+    background-color: #c82333;
+  }
+  

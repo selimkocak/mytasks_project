@@ -1,36 +1,52 @@
 // frontend\src\components\tasks\TaskItem.js
-import React, { useState, useEffect } from 'react';
-import { getTask } from '../../services/api';
+import React, { useState } from 'react';
+import { deleteTask } from '../../services/api';
 import './TaskItem.css';
+import UpdateTask from './UpdateTask';
+import DeleteTask from './DeleteTask';
 
-const TaskItem = ({ taskId }) => {
-  const [task, setTask] = useState(null);
+const TaskItem = ({ task, onDeleteTask }) => {
+  const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    const fetchTask = async () => {
-      try {
-        const response = await getTask(taskId);
-        if (response.status === 200) {
-          setTask(response.data);
-        }
-      } catch (error) {
-        console.error('Error fetching task: ', error);
-      }
-    };
+  const handleDelete = async () => {
+    try {
+      await deleteTask(task.id);
+      console.log('Task deleted successfully');
+      onDeleteTask();
+    } catch (error) {
+      console.error('Error deleting task:', error);
+    }
+  };
 
-    fetchTask();
-  }, [taskId]);
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
 
-  if (!task) {
-    return <div>Loading...</div>;
-  }
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const getDescriptionPreview = (description) => {
+    if (description.length > 115) {
+      return description.substring(0, 112) + '...';
+    }
+    return description;
+  };
 
   return (
     <div className="task-item">
       <h2>{task.title}</h2>
-      <p>{task.description}</p>
+      <p>{getDescriptionPreview(task.description)}</p>
       <p>Stage: {task.stage}</p>
       <p>Assignee: {task.assignee}</p>
+      <DeleteTask id={task.id} onDelete={handleDelete} />
+      <button onClick={handleShowModal}>✏️</button>
+      {task.description.length > 20 && (
+        <button onClick={handleShowModal}>👁️</button>
+      )}
+      {showModal && (
+        <UpdateTask task={task} handleCloseModal={handleCloseModal} />
+      )}
     </div>
   );
 };

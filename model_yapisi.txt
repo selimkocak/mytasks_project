@@ -31,3 +31,5 @@ bu nedenle `CustomUser` modeliyle `ForeignKey` ile ilişkilendirilmiştir.
 
 - `Project`: Bu model, projeleri temsil eder. Bir projenin bir sahibi ve birçok üyesi olabilir, bu nedenle 
 `CustomUser` modeliyle `ForeignKey` ve `ManyToManyField` ile ilişkilendirilmiştir
+
+

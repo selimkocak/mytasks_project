@@ -1,14 +1,15 @@
-// frontend\src\components\tasks\DeleteTask.js
+// frontend/src/components/tasks/DeleteTask.js
 import React from 'react';
 import { deleteTask } from '../../services/api';
 
 const DeleteTask = ({ id, onDelete }) => {
   const handleDelete = async () => {
     try {
-      await deleteTask(id, onDelete);
+      await deleteTask(id);
+      onDelete(id); // Görev kartını yeniden yüklemek için bir fonksiyonu tetikleyin
       console.log('Task deleted successfully');
     } catch (error) {
-      console.error('Error deleting task: ', error);
+      console.error('Error deleting task:', error);
     }
   };
 

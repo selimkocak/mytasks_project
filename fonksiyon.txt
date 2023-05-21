@@ -1,0 +1,15 @@
+Gelişmiş bir Kanban görev panosu uygulaması, kullanıcıların görevleri öğeye, duruma, önceliğe ve son tarihe göre sıralamasına izin vermelidir. Ayrıca, kullanıcıların özel alanlar oluşturmasına ve görevleri bu alanlara göre sıralamasına izin vermelidir. Uygulama ayrıca, görevlere yorum ekleme, ekip üyelerine görev atama ve görevler için son tarihler belirleme gibi bir dizi başka özelliğe de sahip olmalıdır.
+
+Gelişmiş bir Kanban görev panosu uygulamasının yapabilmesi gereken işlevlerden bazıları şunlardır:
+
+* **Görevleri öğeye göre sırala:** Bu, kullanıcıların görevleri "hata", "özellik" veya "angarya" gibi türlerine göre gruplandırmasına olanak tanır.
+* **Görevleri duruma göre sırala:** Bu, kullanıcıların hangi görevlerin devam ettiğini, hangi görevlerin onaylanmayı beklediğini ve hangi görevlerin tamamlandığını görmelerine olanak tanır.
+* **Görevleri önceliğe göre sırala:** Bu, kullanıcıların görevleri önemlerine göre önceliklendirmesine olanak tanır.
+* **Görevleri teslim tarihine göre sırala:** Bu, kullanıcıların hangi görevlerin teslim süresinin yakında biteceğini ve hangi görevlerin daha uzun teslim tarihi olduğunu görmelerine olanak tanır.
+* **Özel alanlar oluşturun:** Bu, kullanıcıların görevlere, bir görevi tamamlamak için tahmini süre veya görevi isteyen müşteri gibi ek bilgiler eklemesine olanak tanır.
+* **Görevleri özel alanlara göre sırala:** Bu, kullanıcıların görevleri oluşturdukları herhangi bir özel alana göre sıralamasına olanak tanır.
+* **Görevlere yorum ekleyin:** Bu, kullanıcıların görevler üzerinde yorum ekleyerek işbirliği yapmasına olanak tanır.
+* **Ekip üyelerine görev atayın:** Bu, kullanıcıların diğer ekip üyelerine görev atamasına olanak tanır.
+* **Görevler için son tarihler belirleyin:** Bu, kullanıcıların görevler için son tarihler belirlemesine olanak tanır.
+
+Bunlar, gelişmiş bir Kanban görev panosu uygulamasının yapabilmesi gereken işlevlerden yalnızca birkaçıdır. Gelişmiş bir Kanban görev panosu uygulaması, bu özellikleri sağlayarak ekiplerin daha üretken ve verimli olmasına yardımcı olabilir.

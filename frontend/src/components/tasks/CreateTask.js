@@ -4,7 +4,6 @@ import TaskForm from './TaskForm';
 import { createTask } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 import './CreateTask.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CreateTask = ({ loadTasks }) => {
   const handleSubmit = async (taskData) => {
@@ -31,4 +30,3 @@ const CreateTask = ({ loadTasks }) => {
 };
 
 export default CreateTask;
-

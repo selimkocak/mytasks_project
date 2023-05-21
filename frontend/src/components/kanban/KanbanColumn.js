@@ -1,26 +1,21 @@
 // frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail, apiFunctions } from '../../services/api';
+import { getKanbanStages, apiFunctions } from '../../services/api';
 import DraggableCard from './DraggableCard';
 import './KanbanColumn.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
 
-const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => { 
-  
-  const [taskName, setTaskName] = useState('');
-  const [taskDescription, setTaskDescription] = useState('');
-  const [taskStage, setTaskStage] = useState('');
-  const [taskAssignee, setTaskAssignee] = useState('');
+import TaskForm from '../tasks/TaskForm';
+
+const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => {
   const [show, setShow] = useState(false);
   const [stages, setStages] = useState([]);
-  const [, setUsers] = useState([]);
   const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
 
   useEffect(() => {
-    const loadStagesAndUsers = async () => {
+    const loadStagesAndUserEmail = async () => {
       if (!isAuthenticated()) {
         console.error('No logged in user or user has no id');
         return;
@@ -28,16 +23,9 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
 
       try {
         const loadedStages = await getKanbanStages();
-        const loadedUsers = await getUserList();
-        const userEmail = await getLoggedInUserEmail();
-        if (userEmail) {
-          setTaskAssignee(userEmail);
-        } else {
-          console.error('Unable to get the logged in user email');
-        }
+        const userEmail = await apiFunctions.getLoggedInUserEmail();
 
         setStages(loadedStages);
-        setUsers(loadedUsers);
         setLoggedInUserEmail(userEmail);
       } catch (err) {
         console.error(err);
@@ -45,21 +33,11 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       }
     };
 
-    loadStagesAndUsers();
+    loadStagesAndUserEmail();
   }, []);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const cardId = e.dataTransfer.getData('text/plain');
-    moveCard(cardId, stage.id);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
 
   const loadTasks = async () => {
     try {
@@ -73,19 +51,14 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     loadTasks();
   }, []);
 
-  const handleCreateTask = async () => {
-    await createTask({
-      title: taskName,
-      description: taskDescription,
-      stage: taskStage,
-      assignee: taskAssignee,
-    });
-    setTaskName('');
-    setTaskDescription('');
-    setTaskStage('');
-    setTaskAssignee('');
-    handleClose();
-    loadTasks(); // Yeni görevin hemen yüklenmesi için loadTasks() işlevini çağırın
+  const handleCreateTask = async (taskData) => {
+    try {
+      await apiFunctions.createTask(taskData);
+      handleClose();
+      loadTasks();
+    } catch (error) {
+      console.error('Error creating task:', error);
+    }
   };
 
   return (
@@ -94,7 +67,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       <Button variant="primary" onClick={handleShow}>
         +
       </Button>
-      <div className="card-container" onDrop={handleDrop} onDragOver={handleDragOver}>
+      <div className="card-container">
         {tasks.map((task) => (
           <DraggableCard
             key={task.id}
@@ -103,7 +76,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
             deleteTask={deleteTask}
             updateTask={updateTask}
             canMoveTo={canMoveTo}
-            loadTasks={loadTasks} // DraggableCard bileşenine loadTasks() işlevini iletiyoruz
+            loadTasks={loadTasks}
           />
         ))}
       </div>
@@ -113,61 +86,15 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
           <Modal.Title>Create New Task</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group controlId="formTaskName">
-              <Form.Label>Task Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter task name"
-                value={taskName}
-                onChange={(e) => setTaskName(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formTaskDescription">
-              <Form.Label>Task Description</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter task description"
-                value={taskDescription}
-                onChange={(e) => setTaskDescription(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formTaskStage">
-              <Form.Label>Stage</Form.Label>
-              <Form.Control
-                as="select"
-                value={taskStage}
-                onChange={(e) => setTaskStage(e.target.value)}
-              >
-                <option value="">--Select Stage--</option>
-                {stages && stages.map((stage) => (
-                  <option key={stage.id} value={stage.id}>
-                    {stage?.name}
-                  </option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="formTaskAssignee">
-              <Form.Label>Assignee</Form.Label>
-              <Form.Control
-                type="email"
-                defaultValue={loggedInUserEmail}
-                value={loggedInUserEmail}
-                onChange={(e) => setTaskAssignee(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
+          <TaskForm
+            stages={stages}
+            loggedInUserEmail={loggedInUserEmail}
+            createTask={handleCreateTask}
+          />
         </Modal.Body>
-
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleCreateTask}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

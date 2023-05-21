@@ -124,4 +124,3 @@ const TaskForm = ({ loadTasks }) => {
 };
 
 export default TaskForm;
-
