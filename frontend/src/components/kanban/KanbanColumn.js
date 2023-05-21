@@ -9,7 +9,7 @@ import { isAuthenticated } from '../../utils/auth';
 
 import TaskForm from '../tasks/TaskForm';
 
-const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => {
+const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => {
   const [show, setShow] = useState(false);
   const [stages, setStages] = useState([]);
   const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
@@ -23,9 +23,10 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
 
       try {
         const loadedStages = await getKanbanStages();
+        const sortedStages = loadedStages.sort((a, b) => a.order - b.order);
         const userEmail = await apiFunctions.getLoggedInUserEmail();
 
-        setStages(loadedStages);
+        setStages(sortedStages);
         setLoggedInUserEmail(userEmail);
       } catch (err) {
         console.error(err);
@@ -38,18 +39,6 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const loadTasks = async () => {
-    try {
-      await apiFunctions.getTasks();
-    } catch (error) {
-      console.error('Error loading tasks:', error);
-    }
-  };
-
-  useEffect(() => {
-    loadTasks();
-  }, []);
 
   const handleCreateTask = async (taskData) => {
     try {

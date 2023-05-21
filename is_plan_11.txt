@@ -335,17 +335,147 @@ iletebilir ve kod tekrarını azaltabilir.
 Bu adımları izleyerek, kod tekrarlarını azaltabilir ve kod tabanınızı daha düzenli hale getirebilirsiniz.
 
 
+İş planı aşağıdaki adımları içermektedir:
+
+1. `LoadTasks` bileşenini güncelleyerek görevleri yeniden yükleyin:
+   - `frontend/src/components/tasks/LoadTasks.js` dosyasını açın.
+   - `useEffect` kancasının içindeki `loadTasks` fonksiyonunu güncelleyin:
+     ```javascript
+     const loadTasks = async () => {
+       try {
+         await getTasks();
+         fetchTasks();
+       } catch (error) {
+         console.error('Error loading tasks:', error);
+       }
+     };
+     ```
+   - `loadTasks` fonksiyonunda `await getTasks();` satırını kaldırın.
+   - Dosyayı kaydedin ve kapatın.
+
+2. `TaskItem` bileşenine `LoadTasks` bileşenini ekleyin:
+   - `frontend/src/components/tasks/TaskItem.js` dosyasını açın.
+   - Dosyanın en üst kısmında `LoadTasks` bileşenini içe aktarın:
+     ```javascript
+     import LoadTasks from './LoadTasks';
+     ```
+   - `TaskItem` bileşeninin içinde `<LoadTasks fetchTasks={onDeleteTask} />` satırını ekleyin:
+     ```javascript
+     const TaskItem = ({ task, onDeleteTask }) => {
+       // ...
+
+       return (
+         <div className="task-item">
+           {/* ... */}
+           <LoadTasks fetchTasks={onDeleteTask} />
+         </div>
+       );
+     };
+     ```
+   - Dosyayı kaydedin ve kapatın.
+
+3. `KanbanBoard` bileşeninde görevleri yeniden yükleyin:
+   - `KanbanBoard` bileşenini içe aktardığınız dosyayı (`frontend/src/components/kanban/KanbanBoard.js`) açın.
+   - `import { getTasks, getKanbanStages, moveCard, createTask, deleteTask, updateTask } from '../../services/api';` satırının üzerine aşağıdaki import satırını ekleyin:
+     ```javascript
+     import LoadTasks from '../tasks/LoadTasks';
+     ```
+   - `KanbanBoard` bileşeni içinde `loadTasks` adında yeni bir asenkron fonksiyon tanımlayın:
+     ```javascript
+     const loadTasks = async () => {
+       try {
+         await getTasks();
+       } catch (error) {
+         console.error('Error loading tasks:', error);
+       }
+     };
+     ```
+   - `useEffect` kancasının içinde `loadTasks` fonksiyonunu çağırın:
+     ```javascript
+     useEffect(() => {
+       const fetchData = async () => {
+         try {
+           const tasksResponse = await getTasks();
+           const stagesResponse = await getKanbanStages();
+           const sortedStages = stagesResponse.sort((a, b) => b.order - a.order);
+
+           setTasks(tasksResponse.data);
+           setStages(sortedStages);
+         } catch (error) {
+           console.error('Görevler ve aşamalar alınırken hata oluştu:', error);
+         }
+       };
+
+       fetchData();
+       loadTasks(); // Burada loadTasks'ı çağırın
+
+     }, []);
+     ```
+   - Dosyanın sonuna `<LoadTasks fetchTasks={loadTasks} />` satırını ekleyin:
+     ```javascript
+     return (
+       <div className
+
+="kanban-board">
+         {/* ... */}
+         <LoadTasks fetchTasks={loadTasks} />
+       </div>
+     );
+     ```
+   - Dosyayı kaydedin ve kapatın.
+
+Bu adımları takip ederek, görevlerin create, delete ve update işlemleri sonrasında kanban tahtasının otomatik olarak güncellenmesini sağlayabilirsiniz.
 
 
 
+İş planı aşağıdaki adımları içerecektir:
+frontend\src\components\kanban\KanbanBoard.js sayfasında görevlerin create, delete ve update işlemleri 
+sonrası kanban tahtasına görevleri yeniden yüklenmesini sağlamak istiyorum bunun için ne yapmalıyız 
+bir iş planı çıkar lütfen
++1. `TaskForm` bileşenine `loadTasks` prop'unu ekleyin. Bu, görev oluşturulduktan sonra görevleri yeniden yüklemek için kullanılacaktır.
++2. `TaskForm` bileşenindeki `handleSubmit` fonksiyonunu güncelleyin. Görev başarıyla oluşturulduktan sonra `loadTasks` fonksiyonunu çağırmalıdır.
++3. `DeleteTask` bileşenine `onDelete` prop'unu ekleyin. Bu, görev başarıyla silindiğinde görevleri yeniden yüklemek için kullanılacaktır.
++4. `DeleteTask` bileşenindeki `handleDelete` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `onDelete` fonksiyonunu çağırarak görevleri yeniden yüklemelidir.
++5. `KanbanBoard` bileşeninde `fetchTasks` adında bir fonksiyon oluşturun. Bu fonksiyon, görevleri yeniden yüklemek için `getTasks` API çağrısını yapacaktır.
++6. `KanbanBoard` bileşenindeki `handleCreateTask` fonksiyonunu güncelleyin. Görev başarıyla oluşturulduktan sonra `fetchTasks` fonksiyonunu çağırmalıdır.
++7. `KanbanBoard` bileşenindeki `handleDeleteTask` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `fetchTasks` fonksiyonunu çağırmalıdır.
++8. `KanbanBoard` bileşenindeki `handleUpdateTask` fonksiyonunu güncelleyin. Görev başarıyla güncellendikten sonra `fetchTasks` fonksiyonunu çağırmalıdır.
++9. `KanbanColumn` bileşenine `loadTasks` prop'unu ekleyin. Bu, görev oluşturulduğunda veya silindiğinde görevleri yeniden yüklemek için kullanılacaktır.
+10. `KanbanColumn` bileşenindeki `handleCreateTask` fonksiyonunu güncelleyin. Görev başarıyla oluşturulduktan sonra `loadTasks` fonksiyonunu çağırmalıdır.
+11. `KanbanColumn` bileşenindeki `handleDeleteTask` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `loadTasks` fonksiyonunu çağırmalıdır.
+12. `KanbanColumn` bileşenindeki `handleUpdateTask` fonksiyonunu güncelleyin. Görev başarıyla güncellendikten sonra `loadTasks` fonksiyonunu çağırmalıdır.
+
+Bu adımları takip ederek görevlerin oluşturulması, silinmesi ve güncellenmesi sonrasında görev kartlarının yeniden yüklenmesini sağlayabilirsiniz.
 
 
+Sorununuzdaki hataların birkaç farklı kaynaktan kaynaklandığını görebiliyorum. 
+İlk olarak, `react-dom.development.js` uyarısı, React 18 ile birlikte `ReactDOM.render` yerine `createRoot` kullanılması gerektiğini belirtiyor. Bu nedenle, `ReactDOM.render` yerine `createRoot` kullanmanız gerekmektedir.
+İkinci hata, oturum açma sayfasında otomatik tamamlama özniteliklerinin eksik olduğunu belirtmektedir. Otomatik tamamlama özniteliklerini (`autocomplete`) `login` ve `register` sayfalarındaki şifre alanlarına eklemelisiniz.
+Üçüncü hata, `ListKanbans` bileşeninde bir hata oluştuğunu ve `TypeError: Cannot read properties of undefined (reading 'sort')` hatası alındığını belirtmektedir. Bu hata, `loadedStages` değişkeninin tanımsız olduğunu ve `sort` işlemi gerçekleştirilemediğini göstermektedir. `getKanbanStages` işlevinin doğru şekilde çalıştığından ve uygun bir değer döndürdüğünden emin olmalısınız.
+Dördüncü hata, `apiFunctions.getLoggedInUserEmail` işlevinin tanımlanmadığını belirtmektedir. `apiFunctions` içinde `getLoggedInUserEmail` işlevinin yer aldığından emin olun.
+Beşinci hata, `LoadTasks` bileşeninde `fetchTasks` işlevinin tanımlanmadığını belirtmektedir. Bu hatayı gidermek için `fetchTasks` işlevini `LoadTasks` bileşenine iletmelisiniz.
+Son olarak, altıncı hatada, görev kartının silinmesi sırasında bir hata oluştuğunu belirtmektedir. Bu hatayı gidermek için `KanbanColumn` bileşeninde `loadTasks` prop'unu `DraggableCard` bileşenine iletebilirsiniz.
+Yukarıdaki düzeltmeleri yaparak hataları gidermeye çalışabilirsiniz.
 
 
+Hataları çözmek için aşağıdaki adımları izleyebilirsiniz:
 
+1. [DOM] Input elements should have autocomplete attributes (suggested: "username") hatası:
+   - Hatanın gösterdiği gibi, otomatik tamamlama özniteliği (`autocomplete`) eksik olan `input` elementine `autocomplete="username"` özniteliğini ekleyin. Örneğin:
+     ```jsx
+     <input type="email" placeholder="E-posta" value="selimkocak@gmail.com" autocomplete="username" />
+     ```
 
+2. Kanban panoları alınırken bir hata oluştu: TypeError: Cannot read properties of undefined (reading 'sort') hatası:
+   - Bu hata, `ListKanbans.js` dosyasında bir `undefined` değerini sıralama işlemine tabi tutmaya çalıştığınızı gösterir. Hatanın nedenini tespit etmek için `ListKanbans.js` dosyasının ilgili kısmını kontrol edin ve `sort` fonksiyonunun hangi nesne veya dizi üzerinde çalıştığını doğrulayın.
 
+3. TypeError: _services_api__WEBPACK_IMPORTED_MODULE_1__.apiFunctions.getLoggedInUserEmail is not a function hatası:
+   - Bu hata, `KanbanColumn.js` dosyasında `_services_api__WEBPACK_IMPORTED_MODULE_1__.apiFunctions.getLoggedInUserEmail` işlevinin bulunamadığını gösterir. `apiFunctions` modülünde `getLoggedInUserEmail` işlevinin olup olmadığını ve doğru şekilde içe aktarıldığını kontrol edin.
 
+4. Error loading tasks: TypeError: fetchTasks is not a function hatası:
+   - Bu hata, `LoadTasks.js` ve `KanbanColumn.js` dosyalarında `fetchTasks` işlevinin tanımlanmadığını gösterir. `fetchTasks` işlevinin doğru bir şekilde tanımlandığından ve uygun bir şekilde `LoadTasks.js` dosyasında içe aktarıldığından emin olun.
+
+Bu adımları takip ederek hataları gidermeye çalışın. Hala sorun yaşıyorsanız, ilgili kod parçacıklarını ve hata mesajlarını paylaşmaya devam edin, size daha fazla yardımcı olabilirim.
 
 
 

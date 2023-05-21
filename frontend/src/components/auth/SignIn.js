@@ -10,7 +10,7 @@ function SignIn() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function SignIn() {
 
       navigate('/kanban');
     } catch (error) {
-      setError("Giriş yaparken bir hata oluştu. Lütfen tekrar deneyin.");
+      setError('Giriş yaparken bir hata oluştu. Lütfen tekrar deneyin.');
     }
   };
 
@@ -37,12 +37,14 @@ function SignIn() {
           placeholder="E-posta"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="username" // Otomatik tamamlama özniteliği eklendi
         />
         <input
           type="password"
           placeholder="Şifre"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password" // Otomatik tamamlama özniteliği eklendi
         />
         <button type="submit">Giriş Yap</button>
       </form>

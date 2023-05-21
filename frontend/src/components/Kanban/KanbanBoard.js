@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getTasks, getKanbanStages, moveCard, createTask, deleteTask, updateTask } from '../../services/api';
 import KanbanColumn from './KanbanColumn';
 import './KanbanBoard.css';
+import ListKanbans from './ListKanbans';
 
 const KanbanBoard = () => {
   const [tasks, setTasks] = useState([]);
@@ -14,11 +15,12 @@ const KanbanBoard = () => {
       try {
         const tasksResponse = await getTasks();
         const stagesResponse = await getKanbanStages();
+        const sortedStages = stagesResponse.sort((a, b) => b.order - a.order);
 
         setTasks(tasksResponse.data);
-        setStages(stagesResponse);
+        setStages(sortedStages);
       } catch (error) {
-        console.error('Error fetching tasks and stages:', error);
+        console.error('Görevler ve aşamalar alınırken hata oluştu:', error);
       }
     };
 
@@ -29,10 +31,10 @@ const KanbanBoard = () => {
     setMovingCard(true);
     try {
       await moveCard(cardId, stageId);
-      console.log('Card moved successfully');
+      console.log('Kart başarıyla taşındı');
       await fetchTasks();
     } catch (error) {
-      console.error('Error moving card:', error);
+      console.error('Kart taşınırken hata oluştu:', error);
     } finally {
       setMovingCard(false);
     }
@@ -43,33 +45,33 @@ const KanbanBoard = () => {
       const response = await createTask({
         stage: stageId,
         title: title,
-        description: '', // Add the description data
-        assignee: '', // Specify the assignee
+        description: '', // Açıklama verisini ekleyin
+        assignee: '', // Atanan kişiyi belirtin
       });
-      console.log('Task created successfully:', response.data);
+      console.log('Görev başarıyla oluşturuldu:', response.data);
       await fetchTasks();
     } catch (error) {
-      console.error('Error creating task:', error);
+      console.error('Görev oluşturulurken hata oluştu:', error);
     }
   };
 
   const handleDeleteTask = async (taskId) => {
     try {
       await deleteTask(taskId);
-      console.log('Task deleted successfully');
+      console.log('Görev başarıyla silindi');
       await fetchTasks();
     } catch (error) {
-      console.error('Error deleting task:', error);
+      console.error('Görev silinirken hata oluştu:', error);
     }
   };
 
   const handleUpdateTask = async (taskId, data) => {
     try {
       await updateTask(taskId, data);
-      console.log('Task updated successfully');
+      console.log('Görev başarıyla güncellendi');
       await fetchTasks();
     } catch (error) {
-      console.error('Error updating task:', error);
+      console.error('Görev güncellenirken hata oluştu:', error);
     }
   };
 
@@ -78,7 +80,7 @@ const KanbanBoard = () => {
       const tasksResponse = await getTasks();
       setTasks(tasksResponse.data);
     } catch (error) {
-      console.error('Error fetching tasks:', error);
+      console.error('Görevler alınırken hata oluştu:', error);
     }
   };
 
@@ -88,6 +90,7 @@ const KanbanBoard = () => {
 
   return (
     <div className="kanban-board">
+      <ListKanbans />
       {stages.map((stage) => (
         <KanbanColumn
           key={stage.id}
@@ -105,4 +108,3 @@ const KanbanBoard = () => {
 };
 
 export default KanbanBoard;
-

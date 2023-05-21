@@ -57,7 +57,7 @@ const TaskForm = ({ loadTasks }) => {
         setTaskDescription('');
         setTaskStage('');
         setTaskAssignee('');
-        loadTasks();
+        loadTasks(); // Görevlerin yeniden yüklenmesi için loadTasks fonksiyonunu çağırın
       }
     } catch (error) {
       console.error('Error creating task: ', error);

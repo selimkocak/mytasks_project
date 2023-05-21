@@ -1,9 +1,10 @@
-// frontend\src\components\tasks\TaskItem.js
+// frontend/src/components/tasks/TaskItem.js
 import React, { useState } from 'react';
 import { deleteTask } from '../../services/api';
 import './TaskItem.css';
 import UpdateTask from './UpdateTask';
 import DeleteTask from './DeleteTask';
+import LoadTasks from './LoadTasks';
 
 const TaskItem = ({ task, onDeleteTask }) => {
   const [showModal, setShowModal] = useState(false);
@@ -11,10 +12,10 @@ const TaskItem = ({ task, onDeleteTask }) => {
   const handleDelete = async () => {
     try {
       await deleteTask(task.id);
-      console.log('Task deleted successfully');
+      console.log('Görev başarıyla silindi');
       onDeleteTask();
     } catch (error) {
-      console.error('Error deleting task:', error);
+      console.error('Görev silinirken hata oluştu:', error);
     }
   };
 
@@ -37,8 +38,8 @@ const TaskItem = ({ task, onDeleteTask }) => {
     <div className="task-item">
       <h2>{task.title}</h2>
       <p>{getDescriptionPreview(task.description)}</p>
-      <p>Stage: {task.stage}</p>
-      <p>Assignee: {task.assignee}</p>
+      <p>Aşama: {task.stage}</p>
+      <p>Atanan Kişi: {task.assignee}</p>
       <DeleteTask id={task.id} onDelete={handleDelete} />
       <button onClick={handleShowModal}>✏️</button>
       {task.description.length > 20 && (
@@ -47,6 +48,7 @@ const TaskItem = ({ task, onDeleteTask }) => {
       {showModal && (
         <UpdateTask task={task} handleCloseModal={handleCloseModal} />
       )}
+      <LoadTasks fetchTasks={onDeleteTask} />
     </div>
   );
 };

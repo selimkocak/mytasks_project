@@ -1,4 +1,4 @@
-// src/index.js
+// frontend\src\index.js  
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -14,3 +14,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
