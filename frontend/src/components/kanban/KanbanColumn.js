@@ -1,12 +1,11 @@
 // frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
-import { getKanbanStages, apiFunctions } from '../../services/api';
+import { getKanbanStages, apiFunctions, getLoggedInUserEmail } from '../../services/api';
 import DraggableCard from './DraggableCard';
 import './KanbanColumn.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { isAuthenticated } from '../../utils/auth';
-
 import TaskForm from '../tasks/TaskForm';
 
 const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => {
@@ -24,7 +23,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       try {
         const loadedStages = await getKanbanStages();
         const sortedStages = loadedStages.sort((a, b) => a.order - b.order);
-        const userEmail = await apiFunctions.getLoggedInUserEmail();
+        const userEmail = await getLoggedInUserEmail();
 
         setStages(sortedStages);
         setLoggedInUserEmail(userEmail);
@@ -44,11 +43,12 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     try {
       await apiFunctions.createTask(taskData);
       handleClose();
-      loadTasks();
+      await loadTasks(); // loadTasks fonksiyonunu await ile çağırın
     } catch (error) {
       console.error('Error creating task:', error);
     }
   };
+  
 
   return (
     <div className="kanban-column">

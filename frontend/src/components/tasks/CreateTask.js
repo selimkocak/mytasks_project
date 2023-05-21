@@ -10,7 +10,7 @@ const CreateTask = ({ loadTasks }) => {
     try {
       const response = await createTask(taskData);
       if (response.status === 201) {
-        loadTasks();
+        await loadTasks(); // loadTasks fonksiyonunu await ile çağırın
       }
     } catch (error) {
       console.error('Error creating task:', error);

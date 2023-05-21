@@ -57,7 +57,10 @@ const TaskForm = ({ loadTasks }) => {
         setTaskDescription('');
         setTaskStage('');
         setTaskAssignee('');
-        loadTasks(); // Görevlerin yeniden yüklenmesi için loadTasks fonksiyonunu çağırın
+
+      }
+      if (response.status === 201) {
+        await loadTasks(); // Görevlerin yeniden yüklenmesi için loadTasks fonksiyonunu çağırın
       }
     } catch (error) {
       console.error('Error creating task: ', error);

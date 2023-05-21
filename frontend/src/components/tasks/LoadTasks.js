@@ -1,22 +1,41 @@
 // frontend/src/components/tasks/LoadTasks.js
-import { useEffect } from 'react';
-import { getTasks } from '../../services/api';
+import React, { useState, useEffect } from 'react';
+import { getTask } from '../../services/api';
 
-const LoadTasks = ({ fetchTasks }) => {
-  useEffect(() => {
-    const loadTasks = async () => {
-      try {
-        await getTasks();
-        fetchTasks();
-      } catch (error) {
-        console.error('Error loading tasks:', error);
+const LoadTasks = () => {
+  const [tasks, setTask] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchTasks = async () => {
+    try {
+      const response = await getTask();
+      if (response.status === 200) {
+        setTask(response.data);
+        setLoading(false); // görevler yüklendi, yükleniyor durumunu false yap
       }
-    };
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+      setLoading(false); // hata oluştu, yükleniyor durumunu false yap
+    }
+  };
 
-    loadTasks();
-  }, [fetchTasks]);
+  useEffect(() => {
+    fetchTasks();
+  }, []);
 
-  return null;
+  if (loading) {
+    return <div>Yükleniyor...</div>; // Yükleniyor olduğunu belirt
+  }
+
+  return (
+    <div className="tasks-list">
+      {tasks.map((task) => (
+        <div key={task.id}>
+          {task.id} 
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default LoadTasks;

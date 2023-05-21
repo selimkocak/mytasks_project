@@ -1,5 +1,5 @@
 // frontend/src/utils/auth.js
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
 export const setToken = (token) => {
   localStorage.setItem('token', token);
@@ -25,14 +25,14 @@ export const isAuthenticated = () => {
     const currentTime = Date.now() / 1000;
 
     if (decoded.exp < currentTime) {
-      console.log("Access token has expired, please login again");
+      console.log('Access token has expired, please login again');
       removeToken();
       return false;
     } else {
       return true;
     }
   } catch (err) {
-    console.log("Error decoding token: ", err);
+    console.log('Error decoding token: ', err);
     removeToken();
     return false;
   }
@@ -41,5 +41,3 @@ export const isAuthenticated = () => {
 export const logout = () => {
   removeToken();
 };
-
-

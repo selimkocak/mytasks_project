@@ -478,7 +478,12 @@ Hataları çözmek için aşağıdaki adımları izleyebilirsiniz:
 Bu adımları takip ederek hataları gidermeye çalışın. Hala sorun yaşıyorsanız, ilgili kod parçacıklarını ve hata mesajlarını paylaşmaya devam edin, size daha fazla yardımcı olabilirim.
 
 
-
+Yazılımınızda sonsuz döngü oluşturabilecek birkaç sorun var. Bu sorunlar, genellikle görevleri her işlem sonrası yeniden yüklemenizle alakalıdır. Bu sürekli yeniden yüklemeler, gereksiz API çağrılarına ve performans sorunlarına yol açabilir.
+`CreateTask` bileşeninde, bir görev oluşturulduğunda `loadTasks` fonksiyonunu çağırıyorsunuz. Benzer şekilde, `TaskForm` bileşeninde de aynı işlemi yapıyorsunuz. Ayrıca `KanbanBoard` bileşeninde `fetchTasks` fonksiyonu oluşturmuşsunuz ve bu fonksiyonu `handleMoveCard`, `handleCreateTask`, `handleDeleteTask` ve `handleUpdateTask` işlemlerinde çağırıyorsunuz. 
+Bu durum, her işlem sonrasında tüm görevlerin yeniden yüklenmesine ve dolayısıyla da sonsuz döngüye yol açıyor olabilir. Örneğin, bir görev oluşturduğunuzda, önce `CreateTask` bileşenindeki `loadTasks` fonksiyonu, ardından `TaskForm` bileşenindeki `loadTasks` fonksiyonu ve en sonunda `KanbanBoard` bileşenindeki `fetchTasks` fonksiyonu çağrılıyor olabilir. Bu süreç, her bir işlem sonrasında tekrarlanıyor ve bu da sonsuz bir döngüye yol açıyor olabilir.
+Bu sorunu çözmek için, bir görevin durumunu değiştirdiğinizde veya yeni bir görev oluşturduğunuzda sadece o görevi güncellemeyi düşünebilirsiniz. Bu şekilde, tüm görevlerin yeniden yüklenmesi yerine sadece belirli bir görevin yeniden yüklenmesi sağlanır. Bu durum, hem performansı artırır hem de gereksiz API çağrılarını önler.
+Ayrıca, `useEffect` hook'unuzdaki bağımlılıkları kontrol etmekte fayda vardır. Yanlışlıkla bir bağımlılık eklemiş olabilirsiniz ve bu da useEffect hook'unun beklenenden daha sık çalışmasına neden olabilir.
+Son olarak, Redux veya React Context gibi bir durum yönetim çözümü kullanmayı düşünebilirsiniz. Bu çözümler, özellikle birden fazla bileşenin aynı durumu paylaşması gerektiğinde çok yardımcı olur. Bu sayede, her bir bileşenin durumu bağımsız olarak yönetmesi yerine durumu merkezi bir yerde yönetebilirsiniz. Bu durum, hem kodun okunabilirliğini artırır hem de hataların önüne geçer.
 
 
 

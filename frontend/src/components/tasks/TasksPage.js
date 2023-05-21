@@ -35,8 +35,8 @@ const TasksPage = () => {
   return (
     <div className="container">
       <h1>Tasks</h1>
-      <CreateTask loadTasks={loadTasks} />
-      <ListTasks tasks={tasks} loadTasks={loadTasks} />
+      <CreateTask loadTasks={loadTasks} /> 
+      <ListTasks tasks={tasks} loadTasks={loadTasks} /> 
     </div>
   );
 };
