@@ -442,8 +442,8 @@ bir iş planı çıkar lütfen
 +8. `KanbanBoard` bileşenindeki `handleUpdateTask` fonksiyonunu güncelleyin. Görev başarıyla güncellendikten sonra `fetchTasks` fonksiyonunu çağırmalıdır.
 +9. `KanbanColumn` bileşenine `loadTasks` prop'unu ekleyin. Bu, görev oluşturulduğunda veya silindiğinde görevleri yeniden yüklemek için kullanılacaktır.
 +10. `KanbanColumn` bileşenindeki `handleCreateTask` fonksiyonunu güncelleyin. Görev başarıyla oluşturulduktan sonra `loadTasks` fonksiyonunu çağırmalıdır.
-11. `KanbanColumn` bileşenindeki `handleDeleteTask` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `loadTasks` fonksiyonunu çağırmalıdır.
-12. `KanbanColumn` bileşenindeki `handleUpdateTask` fonksiyonunu güncelleyin. Görev başarıyla güncellendikten sonra `loadTasks` fonksiyonunu çağırmalıdır.
++11. `KanbanColumn` bileşenindeki `handleDeleteTask` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `loadTasks` fonksiyonunu çağırmalıdır.
++12. `KanbanColumn` bileşenindeki `handleUpdateTask` fonksiyonunu güncelleyin. Görev başarıyla güncellendikten sonra `loadTasks` fonksiyonunu çağırmalıdır.
 
 Bu adımları takip ederek görevlerin oluşturulması, silinmesi ve güncellenmesi sonrasında görev kartlarının yeniden yüklenmesini sağlayabilirsiniz.
 

@@ -27,6 +27,15 @@ const KanbanBoard = () => {
     fetchData();
   }, []);
 
+  const fetchTasks = async () => {
+    try {
+      const tasksResponse = await getTasks();
+      setTasks(tasksResponse.data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
+
   const handleMoveCard = async (cardId, stageId) => {
     setMovingCard(true);
     try {
@@ -75,14 +84,8 @@ const KanbanBoard = () => {
     }
   };
 
-  const fetchTasks = async () => {
-    try {
-      const tasksResponse = await getTasks();
-      setTasks(tasksResponse.data);
-    } catch (error) {
-      console.error('Görevler alınırken hata oluştu:', error);
-    }
-  };
+
+ 
 
   const canMoveTo = () => {
     return !movingCard;
@@ -93,15 +96,16 @@ const KanbanBoard = () => {
       <ListKanbans />
       {stages.map((stage) => (
         <KanbanColumn
-          key={stage.id}
-          stage={stage}
-          tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
-          moveCard={handleMoveCard}
-          createTask={handleCreateTask}
-          deleteTask={handleDeleteTask}
-          updateTask={handleUpdateTask}
-          canMoveTo={canMoveTo}
-        />
+        key={stage.id}
+        stage={stage}
+        tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
+        moveCard={handleMoveCard}
+        createTask={handleCreateTask}
+        deleteTask={handleDeleteTask}
+        updateTask={handleUpdateTask}
+        canMoveTo={canMoveTo}
+        fetchTasks={fetchTasks}
+      />
       ))}
     </div>
   );

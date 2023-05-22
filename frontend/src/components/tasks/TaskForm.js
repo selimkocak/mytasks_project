@@ -60,8 +60,9 @@ const TaskForm = ({ loadTasks }) => {
 
       }
       if (response.status === 201) {
-        await loadTasks(); // Görevlerin yeniden yüklenmesi için loadTasks fonksiyonunu çağırın
+        await loadTasks; // Görevlerin yeniden yüklenmesi için loadTasks fonksiyonunu çağırın
       }
+  
     } catch (error) {
       console.error('Error creating task: ', error);
     }

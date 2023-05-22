@@ -36,6 +36,8 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     loadStagesAndUserEmail();
   }, []);
 
+  
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -43,12 +45,21 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     try {
       await apiFunctions.createTask(taskData);
       handleClose();
-      await loadTasks(); // loadTasks fonksiyonunu await ile çağırın
+      await loadTasks; // loadTasks fonksiyonunu await ile çağırın
     } catch (error) {
       console.error('Error creating task:', error);
     }
   };
-  
+
+  const handleDelete = async (taskId) => {
+    try {
+      await deleteTask(taskId);
+      await loadTasks; // loadTasks fonksiyonunu çağırın
+      console.log('Görev başarıyla silindi');
+    } catch (error) {
+      console.error('Görev silinirken hata oluştu:', error);
+    }
+  };
 
   return (
     <div className="kanban-column">
@@ -62,10 +73,10 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
             key={task.id}
             task={task}
             moveCard={moveCard}
-            deleteTask={deleteTask}
+            deleteTask={handleDelete} // updated to handleDelete
             updateTask={updateTask}
             canMoveTo={canMoveTo}
-            loadTasks={loadTasks}
+            loadTasks={loadTasks} // loadTasks prop'ını ekleyin
           />
         ))}
       </div>
@@ -75,11 +86,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
           <Modal.Title>Create New Task</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TaskForm
-            stages={stages}
-            loggedInUserEmail={loggedInUserEmail}
-            createTask={handleCreateTask}
-          />
+          <TaskForm stages={stages} loggedInUserEmail={loggedInUserEmail} createTask={handleCreateTask} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
