@@ -1,20 +1,36 @@
-// frontend\src\components\tasks\ListTasks.js
-import React from 'react';
-import UpdateTask from './UpdateTask';
-import DeleteTask from './DeleteTask';
+// frontend/src/components/tasks/ListTasks.js
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTasks } from '../../services/api';
+import { setTasks } from '../../actions/taskActions';
 
-const ListTasks = ({ tasks, loadTasks }) => {
+const ListTasks = () => {
+  const tasks = useSelector((state) => state.tasks);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await getTasks();
+        dispatch(setTasks(response.data));
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    };
+
+    fetchTasks();
+  }, [dispatch]);
+
   return (
-    <ul>
+    <div>
+      <h2>Tasks</h2>
       {tasks.map((task) => (
-        <li key={task.id}>
-          <h2>{task.title}</h2>
+        <div key={task.id}>
+          <h3>{task.title}</h3>
           <p>{task.description}</p>
-          <UpdateTask task={task} loadTasks={loadTasks} />
-          <DeleteTask id={task.id} loadTasks={loadTasks} />
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 

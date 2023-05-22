@@ -90,6 +90,11 @@ export const login = (data) => {
     return response;
   });
 };
+// frontend\src\services\api.js
+export const resetPassword = (email) => {
+  return service.post('auth/reset-password/', { email }, { withCredentials: true });
+};
+
 
 export const logout = async () => {
   try {
@@ -140,6 +145,17 @@ export const getLoggedInUser = () => {
   }
 };
 
+// frontend/src/services/api.js
+export const getLoggedInUserEmail = async () => {
+  try {
+    const response = await service.get("auth/user/email/");
+    return response.data.email;
+  } catch (error) {
+    console.error('Error loading logged-in user email:', error);
+    return null;
+  }
+};
+
 
 export const getUserList = async () => {
   try {
@@ -156,13 +172,13 @@ export const getUserList = async () => {
   }
 };
 
-// user profile
+// user profile frontend\src\services\api.js
 export const getUserProfile = () => {
   return service.get('auth/user-profile/');
 };
 
 export const updateUserProfile = (data) => {
-  return service.put('auth/user-profile/', data);
+  return service.put('auth/update-user-profile/', data);
 };
 
 export const changePassword = (data) => {
@@ -190,13 +206,19 @@ export const deleteCompany = (id) => {
   return service.delete(`company/${id}/`);
 };
 
-// Task frontend\src\services\api.js
+// Task frontend/src/services/api.js
 export const createTask = async (data) => {
-  return service.post("tasks/", data);
+  try {
+    const response = await service.post('tasks/', data);
+    return response;
+  } catch (error) {
+    console.error('Error creating task:', error);
+    throw error;
+  }
 };
 
 export const getTasks = async () => {
-  return service.get("tasks/");
+  return service.get('tasks/');
 };
 
 export const getTask = async (id) => {
@@ -204,7 +226,14 @@ export const getTask = async (id) => {
 };
 
 export const updateTask = async (id, data) => {
-  return service.put(`tasks/${id}/`, data);
+  try {
+    const response = await service.put(`tasks/${id}/`, data);
+    console.log('Task updated successfully');
+    return response.data;
+  } catch (error) {
+    console.error('Error updating task:', error);
+    throw error;
+  }
 };
 
 export const deleteTask = async (id) => {
@@ -212,10 +241,10 @@ export const deleteTask = async (id) => {
     await service.delete(`tasks/${id}/`);
     console.log('Task deleted successfully');
   } catch (error) {
-    console.error('Error deleting task: ', error);
+    console.error('Error deleting task:', error);
+    throw error;
   }
 };
-
 
 // Notification
 export const createNotification = async (data) => {
@@ -302,49 +331,79 @@ export const deleteProject = async (id) => {
   return service.delete(`project/${id}/`);
 };
 
-// Kanban
+// Kanban frontend\src\services\api.js
 export const createKanban = async (data) => {
-  return service.post("kanban/", data);
-};
-
-export const getKanbans = async () => {
-  return service.get("kanban/");
-};
-
-export const updateKanban = async (id, data) => {
-  return service.put(`kanban/${id}/`, data);
-};
-
-export const deleteKanban = async (id) => {
-  return service.delete(`kanban/${id}/`);
-};
-
-// Kanban stages frontend\src\services\api.js
-export const getKanbanStages = async () => {
   try {
-    const response = await service.get("kanban/stages/");
-    if (Array.isArray(response.data)) {
-      return response.data;
-    } else {
-      console.error("getKanbanStages did not return an array", response.data);
-      return []; // Boş bir dizi döndür
-    }
+    const response = await service.post("kanban/", data);
+    return response;
   } catch (error) {
-    console.error("Error loading kanban stages:", error);
-    return []; // Boş bir dizi döndür
+    console.error('Error creating kanban:', error);
+    throw error;
   }
 };
 
+export const getKanbans = async () => {
+  try {
+    const response = await service.get("kanban/");
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching kanbans:', error);
+    throw error;
+  }
+};
+
+export const updateKanban = async (id, data) => {
+  try {
+    const response = await service.put(`kanban/${id}/`, data);
+    console.log('Kanban updated successfully');
+    return response.data;
+  } catch (error) {
+    console.error('Error updating kanban:', error);
+    throw error;
+  }
+};
+
+export const deleteKanban = async (id) => {
+  try {
+    await service.delete(`kanban/${id}/`);
+    console.log('Kanban deleted successfully');
+  } catch (error) {
+    console.error('Error deleting kanban:', error);
+    throw error;
+  }
+};
+
+// Kanban stages
+export const getKanbanStages = async () => {
+  try {
+    const response = await service.get("kanban/stages/");
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching kanban stages:', error);
+    throw error;
+  }
+};
+
+// Move card
 export const moveCard = async (cardId, stageId) => {
   try {
-    // Burada API isteğinizi yapın ve görev kartının aşama alanını güncelleyin
     await service.put(`tasks/${cardId}/move`, { new_stage_id: stageId });
     console.log('Card moved successfully');
   } catch (error) {
     console.error('Error moving card:', error);
-    throw new Error('Failed to move card');
+    throw error;
   }
 };
+
+
+
+
+
+
+
+
+
+
 
 // Role
 export const createRole = async (data) => {

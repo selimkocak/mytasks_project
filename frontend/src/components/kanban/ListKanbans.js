@@ -10,9 +10,12 @@ function ListKanbans() {
     const fetchKanbans = async () => {
       try {
         const response = await api.getKanbans();
-        setKanbans(response.data);
+        if (response.data && Array.isArray(response.data)) { // response.data'nın bir dizi olduğunu doğrula
+          const sortedKanbans = response.data.sort((a, b) => a.order - b.order);
+          setKanbans(sortedKanbans);
+        }
       } catch (error) {
-        console.error("Error fetching kanbans: ", error);
+        console.error("Kanban panoları alınırken bir hata oluştu: ", error);
       }
     };
 
@@ -21,17 +24,18 @@ function ListKanbans() {
 
   return (
     <div className="kanban-list">
-      <h2>Kanban Panoları</h2>
+      <h2>stage</h2>
       {kanbans.map((kanban) => (
         <div key={kanban.id} className="kanban-card">
           <h3>{kanban.name}</h3>
           <p>{kanban.description}</p>
           <div className="kanban-actions">
-            {/* Buraya kanban panosuna gitmek, düzenlemek ve silmek için düğmeler ekleyebilirsin */}
+            {/* Kanban panosuna gitmek, düzenlemek ve silmek için düğmeler ekleyebilirsin */}
           </div>
         </div>
       ))}
     </div>
   );
 }
+
 export default ListKanbans;

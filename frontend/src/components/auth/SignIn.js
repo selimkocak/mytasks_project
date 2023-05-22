@@ -2,9 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-
-import api, { setAuthToken } from '../../services/api';
-
+import { login } from '../../services/api';
 import './SignIn.css';
 
 function SignIn() {
@@ -12,40 +10,43 @@ function SignIn() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
+  const [error, setError] = useState('');
 
   const handleSignIn = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await api.login({ email, password });
+      const response = await login({ email, password });
 
       setUser(response.data.user);
       localStorage.setItem('token', JSON.stringify(response.data.access));
-      setAuthToken(response.data.access);
 
-      navigate('/tasks');
+      navigate('/kanban');
     } catch (error) {
-      console.error(error);
+      setError('Giriş yaparken bir hata oluştu. Lütfen tekrar deneyin.');
     }
   };
 
   return (
     <div className="signin-container">
-      <h2>Sign In</h2>
+      <h2>Giriş Yap</h2>
+      {error && <p>{error}</p>}
       <form onSubmit={handleSignIn} className="signin-form">
         <input
           type="email"
-          placeholder="Email"
+          placeholder="E-posta"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="username" // Otomatik tamamlama özniteliği eklendi
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Şifre"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password" // Otomatik tamamlama özniteliği eklendi
         />
-        <button type="submit">Sign In</button>
+        <button type="submit">Giriş Yap</button>
       </form>
     </div>
   );

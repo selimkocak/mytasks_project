@@ -100,6 +100,17 @@ ACCOUNT_UNIQUE_EMAIL = True #her email adresi bir kez kaydedilebilir
 ACCOUNT_USERNAME_REQUIRED = False #kullanıcılardan username istenmemesi
 ACCOUNT_USER_EMAIL_FIELD = 'email' #email adresinin kullanıcı adı olarak kullanılması
 
+''' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'your-smtp-host'
+EMAIL_PORT = your-smtp-port
+EMAIL_HOST_USER = 'your-email-address'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+EMAIL_USE_TLS = True  # veya False
+DEFAULT_FROM_EMAIL = 'your-email-address'
+'''
+
+
 ROOT_URLCONF = 'mytasks.urls'
 
 TEMPLATES = [

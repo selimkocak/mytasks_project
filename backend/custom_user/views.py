@@ -1,5 +1,4 @@
 # backend\custom_user\views.py
-from django.contrib.auth import get_user_model
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import CustomUserSerializer, CustomTokenObtainPairSerializer
@@ -8,9 +7,28 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import generics
 from .models import CustomUser
-from .serializers import CustomUserSerializer
+from .serializers import CustomUserSerializer, ResetPasswordSerializer
+from django.contrib.auth import get_user_model
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
+from django.template.loader import render_to_string
+from rest_framework.views import APIView
+from .serializers import ResetPasswordSerializer
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from rest_framework.permissions import AllowAny
+
+User = get_user_model()
+
+class LoggedInUserEmailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        email = user.email
+        return Response({"email": email})
 
 class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
@@ -40,3 +58,54 @@ class LogoutView(APIView):
 class UserListView(generics.ListAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+
+    def get(self, request, *args, **kwargs):
+        email = request.user.email
+        if email:
+            return Response({'email': email})
+        else:
+            return Response({'detail': 'No email found'}, status=status.HTTP_400_BAD_REQUEST)
+
+class ResetPasswordView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = ResetPasswordSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.validated_data['email']
+
+        user = get_object_or_404(CustomUser, email=email)
+        user_id = urlsafe_base64_encode(force_bytes(user.pk))
+        token = default_token_generator.make_token(user)
+        reset_link = render_to_string(
+            'custom_user/reset_password.html',
+            {
+                'user_id': user_id,
+                'token': token,
+            }
+        )
+        send_mail(
+            'Password Reset',
+            '',
+            'noreply@example.com',
+            [email],
+            html_message=reset_link
+        )
+
+        return Response(status=status.HTTP_200_OK)
+
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = CustomUserSerializer(request.user, context={'request': request})
+        return Response(serializer.data)
+
+class UpdateUserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
+        serializer = CustomUserSerializer(request.user, data=request.data)
+        serializer.is_valid(raise_exception=True)  # Geçerlilik denetimleri
+        serializer.save()
+        return Response(serializer.data)

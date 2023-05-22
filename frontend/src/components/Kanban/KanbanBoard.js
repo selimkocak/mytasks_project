@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getTasks, getKanbanStages, moveCard, createTask, deleteTask, updateTask } from '../../services/api';
 import KanbanColumn from './KanbanColumn';
 import './KanbanBoard.css';
+import ListKanbans from './ListKanbans';
 
 const KanbanBoard = () => {
   const [tasks, setTasks] = useState([]);
@@ -14,34 +15,26 @@ const KanbanBoard = () => {
       try {
         const tasksResponse = await getTasks();
         const stagesResponse = await getKanbanStages();
+        const sortedStages = stagesResponse.sort((a, b) => a.order - b.order);
 
         setTasks(tasksResponse.data);
-        setStages(stagesResponse);
+        setStages(sortedStages);
       } catch (error) {
-        console.error('Error fetching tasks and stages:', error);
+        console.error('Görevler ve aşamalar alınırken hata oluştu:', error);
       }
     };
 
     fetchData();
   }, []);
 
-  const fetchTasks = async () => {
-    try {
-      const tasksResponse = await getTasks();
-      setTasks(tasksResponse.data);
-    } catch (error) {
-      console.error('Error fetching tasks:', error);
-    }
-  };
-
   const handleMoveCard = async (cardId, stageId) => {
     setMovingCard(true);
     try {
       await moveCard(cardId, stageId);
-      console.log('Card moved successfully');
+      console.log('Kart başarıyla taşındı');
       await fetchTasks();
     } catch (error) {
-      console.error('Error moving card:', error);
+      console.error('Kart taşınırken hata oluştu:', error);
     } finally {
       setMovingCard(false);
     }
@@ -52,34 +45,42 @@ const KanbanBoard = () => {
       const response = await createTask({
         stage: stageId,
         title: title,
-        description: '', // Açıklama verisini de ekleyin
+        description: '', // Açıklama verisini ekleyin
         assignee: '', // Atanan kişiyi belirtin
       });
-      console.log('Task created successfully:', response.data);
+      console.log('Görev başarıyla oluşturuldu:', response.data);
       await fetchTasks();
     } catch (error) {
-      console.error('Error creating task:', error);
+      console.error('Görev oluşturulurken hata oluştu:', error);
     }
   };
 
   const handleDeleteTask = async (taskId) => {
     try {
       await deleteTask(taskId);
-      console.log('Task deleted successfully');
-      fetchTasks();
+      console.log('Görev başarıyla silindi');
+      await fetchTasks();
     } catch (error) {
-      console.error('Error deleting task:', error);
+      console.error('Görev silinirken hata oluştu:', error);
     }
   };
-  
 
   const handleUpdateTask = async (taskId, data) => {
     try {
       await updateTask(taskId, data);
-      console.log('Task updated successfully');
+      console.log('Görev başarıyla güncellendi');
       await fetchTasks();
     } catch (error) {
-      console.error('Error updating task:', error);
+      console.error('Görev güncellenirken hata oluştu:', error);
+    }
+  };
+
+  const fetchTasks = async () => {
+    try {
+      const tasksResponse = await getTasks();
+      setTasks(tasksResponse.data);
+    } catch (error) {
+      console.error('Görevler alınırken hata oluştu:', error);
     }
   };
 
@@ -89,20 +90,20 @@ const KanbanBoard = () => {
 
   return (
     <div className="kanban-board">
-    {stages.map((stage) => (
-      <KanbanColumn
-    key={stage.id}
-    stage={stage}
-    tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
-    moveCard={handleMoveCard}
-    createTask={handleCreateTask}
-    deleteTask={handleDeleteTask}
-    updateTask={handleUpdateTask}
-    canMoveTo={canMoveTo}
-/>
-
-    ))}
-  </div>
+      <ListKanbans />
+      {stages.map((stage) => (
+        <KanbanColumn
+          key={stage.id}
+          stage={stage}
+          tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
+          moveCard={handleMoveCard}
+          createTask={handleCreateTask}
+          deleteTask={handleDeleteTask}
+          updateTask={handleUpdateTask}
+          canMoveTo={canMoveTo}
+        />
+      ))}
+    </div>
   );
 };
 

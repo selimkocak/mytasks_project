@@ -1,12 +1,37 @@
-// frontend\src\components\tasks\UpdateTask.js
-import React, { useState } from 'react';
-import { updateTask } from '../../services/api';
+// frontend/src/components/tasks/UpdateTask.js
+import React, { useState, useEffect } from 'react';
+import { updateTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
-const UpdateTask = ({ task, loadTasks }) => {
+const UpdateTask = ({ task, loadTasks, handleCloseModal }) => {
   const [taskName, setTaskName] = useState(task.title);
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [taskStage, setTaskStage] = useState(task.stage);
-  const [taskAssignee, setTaskAssignee] = useState(task.assignee);
+  const [taskAssignee, ] = useState(task.assignee);
+  const [stages, setStages] = useState([]);
+  const [, setUsers] = useState([]);
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
+
+  useEffect(() => {
+    const loadStagesAndUsers = async () => {
+      try {
+        const loadedStages = await getKanbanStages();
+        const loadedUsers = await getUserList();
+        const userEmail = await getLoggedInUserEmail();
+
+        setStages(loadedStages);
+        setUsers(loadedUsers);
+        setLoggedInUserEmail(userEmail);
+      } catch (err) {
+        console.error(err);
+        // Hata durumunu burada ele alabilirsiniz
+      }
+    };
+
+    loadStagesAndUsers();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,70 +41,75 @@ const UpdateTask = ({ task, loadTasks }) => {
         description: taskDescription,
         stage: taskStage,
         assignee: taskAssignee,
-        created_by: 1, // Burada gerçek veri kullanmanız gerekmektedir.
+        created_by: 1, // Kullanıcı kimliğini doğru değerle değiştirin veya gerekirse kaldırın
       });
       if (response.status === 200) {
-        loadTasks();
+        loadTasks(); // Görevleri güncelledikten sonra loadTasks() işlevini çağırın
+        handleCloseModal();
       }
     } catch (error) {
       console.error('Error updating task: ', error);
     }
   };
 
-  const handleInputChange = (e, setStateFunc) => {
-    setStateFunc(e.target.value);
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input
-          type="text"
-          name="taskName"
-          value={taskName}
-          onChange={(e) => handleInputChange(e, setTaskName)}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          type="text"
-          name="taskDescription"
-          value={taskDescription}
-          onChange={(e) => handleInputChange(e, setTaskDescription)}
-        />
-      </label>
-      <label>
-        Stage:
-        <select
-          name="taskStage"
-          value={taskStage}
-          onChange={(e) => handleInputChange(e, setTaskStage)}
-        >
+    <Modal show={true} onHide={handleCloseModal}>
+      <Modal.Header closeButton>
+        <Modal.Title>Update Task</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formTaskName">
+            <Form.Label>Task Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter task name"
+              value={taskName}
+              onChange={(e) => setTaskName(e.target.value)}
+            />
+          </Form.Group>
 
-          <option value="">--Select Stage--</option>
-          <option value="stage1">Stage 1</option>
-          <option value="stage2">Stage 2</option>
-          <option value="stage3">Stage 3</option>
-        </select>
-      </label>
-      <label>
-        Assignee:
-        <select
-          name="taskAssignee"
-          value={taskAssignee}
-          onChange={(e) => handleInputChange(e, setTaskAssignee)}
-        >
+          <Form.Group controlId="formTaskDescription">
+            <Form.Label>Task Description</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter task description"
+              value={taskDescription}
+              onChange={(e) => setTaskDescription(e.target.value)}
+            />
+          </Form.Group>
 
-          <option value="">--Select Assignee--</option>
-          <option value="assignee1">Assignee 1</option>
-          <option value="assignee2">Assignee 2</option>
-          <option value="assignee3">Assignee 3</option>
-        </select>
-      </label>
-      <button type="submit">Update Task</button>
-    </form>
+          <Form.Group controlId="formTaskStage">
+            <Form.Label>Stage</Form.Label>
+            <Form.Control as="select" value={taskStage} onChange={(e) => setTaskStage(e.target.value)}>
+              <option value="">--Select Stage--</option>
+              {stages.map((stage) => (
+                <option key={stage.id} value={stage.id}>
+                  {stage?.name}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+
+        
+            <Form.Group controlId="formTaskName">
+              <Form.Label>Assignee</Form.Label>
+              <Form.Control type="email" defaultValue={loggedInUserEmail} 
+                            value={loggedInUserEmail} 
+                            onChange={e => getLoggedInUserEmail(e.target.value)} />
+            </Form.Group>
+        
+
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Cancel
+          </Button>
+          <Button variant="primary" type="submit">
+            Update Task
+          </Button>
+        </Form>
+      </Modal.Body>
+    </Modal>
   );
 };
+
 export default UpdateTask;

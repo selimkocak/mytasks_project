@@ -1,0 +1,501 @@
+Projenizin iş planını öncelik sırasına göre ayırıp sıralayalım. İlk olarak backend tarafında yapılacak işler:
+
+Backend
+
++1. Django ve diğer gerekli modüllerin kurulumu
++2. Proje ve uygulamaların oluşturulması (api, custom_user, company)
++3. Kullanıcı kimlik doğrulama sistemi
+   - Kullanıcıların kayıt olması
+   - Kullanıcıların giriş yapması
+   - Şifre sıfırlama işlemleri
+   - Email doğrulama sistemi
+   - Kullanıcı profili ve ayarları
+   - Oturum süreleri ve oturum yenileme
++4. Görev kartı oluşturma özelliği
++5. Görevlerin görüntülenmesi, düzenlenmesi ve silinmesi
++6. Kanban tahtası görünümü
++7. Kullanıcı bildirimleri
++8. Ortak görevler ve atamalar
++9. Görevlere yıldız puan verme
++10. Görevlere yorum yapma özelliği
++11. Proje oluşturma
++12. Testlerin yazılması ve uygulanması
++13. API dokümantasyonunun oluşturulması
+
+Frontend
+
++1. React ve diğer gerekli modüllerin kurulumu
++2. Kullanıcı kimlik doğrulama sistemi
+   - Kullanıcıların kayıt olması
+   - Kullanıcıların giriş yapması
+   - Şifre sıfırlama işlemleri
+   - Email doğrulama sistemi
+   - Kullanıcı profili ve ayarları
++3. Görev kartı oluşturma özelliği
++4. Görevlerin görüntülenmesi, düzenlenmesi ve silinmesi
++5. Kanban tahtası görünümü
++6. Kullanıcı bildirimleri
++7. Ortak görevler ve atamalar
++8. Görevlere yıldız puan verme
++9. Görevlere yorum yapma özelliği
++10. Proje oluşturma
++11. Testlerin yazılması ve uygulanması
++12. Kullanıcı arayüzünün tasarlanması ve uygulanması
+
+Bu iş planı, projenizin genel bir özetini sunar. Her bir adım, daha küçük görevlere ayrılabilir 
+ve bu görevler, projenin ilerlemesine göre düzenlenebilir veya güncellenebilir. Bu iş planı, 
+projenizin başarılı bir şekilde tamamlanması için bir yol haritası sağlar.
+
+
+Backend 1. Django ve diğer gerekli modüllerin kurulumu
+
+
+1.1. Python'un kurulu olduğunu kontrol et: Python'un sisteminizde kurulu olduğunu kontrol edin. Eğer kurulu değilse, Python'ın en son sürümünü indirip kurun.
+1.2. Sanal ortam oluştur: Projenizin bağımlılıklarını izole bir şekilde yönetmek için bir sanal ortam (virtual environment) oluşturun. Python'un `venv` modülünü kullanabilirsiniz.
+1.3. Sanal ortamı etkinleştir: Oluşturduğunuz sanal ortamı etkinleştirin. Bu, işletim sisteminize bağlı olarak farklı komutlar gerektirebilir.
+1.4. Django'nun kurulumu: `pip install Django==4.2.1` komutunu kullanarak Django'yu kurun.
+1.5. Diğer gerekli modüllerin kurulumu: `requirements.txt` dosyanızdaki diğer modülleri kurun. Bu işlemi `pip install -r requirements.txt` komutu ile gerçekleştirebilirsiniz.
+1.6. Kurulumların doğrulanması: `pip freeze` komutunu kullanarak kurulumların doğru bir şekilde gerçekleşip gerçekleşmediğini kontrol edin.
+1.7. Django projesi oluştur: `django-admin startproject mytasks` komutunu kullanarak Django projesini oluşturun.
+1.8. Django uygulamalarını oluştur: `python manage.py startapp app_name` komutunu kullanarak gerekli Django uygulamalarını oluşturun (app_name yerine uygulamanın adını yazın).
+1.9. Veritabanı ayarları: Django'nun `settings.py` dosyasında veritabanı ayarlarını yapın.
+1.10. Veritabanı oluştur: `python manage.py migrate` komutunu kullanarak veritabanını oluşturun.
+Bu adımlar, Django ve diğer gerekli modüllerin kurulumunu içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, projenizin backend tarafının başarılı bir şekilde kurulmasını sağlar.
+
+
+Backend 2. Proje ve uygulamaların oluşturulması (api, custom_user, company)
+
+2.1. Django projesi oluştur: `django-admin startproject mytasks` komutunu kullanarak Django projesini oluşturun.
+2.2. Django uygulamalarını oluştur: `python manage.py startapp app_name` komutunu kullanarak gerekli Django uygulamalarını oluşturun (app_name yerine uygulamanın adını yazın). Bu durumda, `api`, `custom_user` ve `company` uygulamalarını oluşturmanız gerekiyor.
+2.3. Uygulamaları `settings.py` dosyasına ekle: Oluşturduğunuz uygulamaları Django'nun `settings.py` dosyasındaki `INSTALLED_APPS` listesine ekleyin.
+2.4. Modelleri oluştur: Her bir uygulamanın `models.py` dosyasında, veritabanı tablolarınızı temsil edecek modelleri oluşturun.
+2.5. Admin ayarları: Her bir uygulamanın `admin.py` dosyasında, Django admin panelinde hangi modellerin görüneceğini ayarlayın.
+2.6. URL yapılandırmaları: Her bir uygulamanın `urls.py` dosyasında, uygulamanın URL yapılandırmalarını yapın.
+2.7. View'ları oluştur: Her bir uygulamanın `views.py` dosyasında, uygulamanın view'larını oluşturun.
+2.8. Serializer'ları oluştur: Her bir uygulamanın `serializers.py` dosyasında, uygulamanın serializer'larını oluşturun.
+2.9. Testleri yaz: Her bir uygulamanın `tests.py` dosyasında, uygulamanın testlerini yazın.
+2.10. Migrasyonları oluştur ve uygula: `python manage.py makemigrations` ve `python manage.py migrate` komutlarını kullanarak veritabanı migrasyonlarını oluşturun ve uygulayın.
+Bu adımlar, Django projesinin ve uygulamalarının oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, projenizin backend tarafının başarılı bir şekilde oluşturulmasını sağlar.
+
+Backend 3. Kullanıcı Kimlik Doğrulama Sistemi
+
+3.1. Kullanıcı Modeli Oluşturma: Django'nun dahili User modelini genişletin veya kendi özel User modelinizi oluşturun. Bu, `custom_user` uygulamasının `models.py` dosyasında yapılmalıdır.
+3.2. Kullanıcı Kayıt View'ı Oluşturma: Kullanıcıların kayıt olabilmesi için bir view oluşturun. Bu, `custom_user` uygulamasının `views.py` dosyasında yapılmalıdır.
+3.3. Kullanıcı Giriş View'ı Oluşturma: Kullanıcıların giriş yapabilmesi için bir view oluşturun. Bu, `custom_user` uygulamasının `views.py` dosyasında yapılmalıdır.
+3.4. Şifre Sıfırlama View'ı Oluşturma: Kullanıcıların şifrelerini sıfırlayabilmesi için bir view oluşturun. Bu, `custom_user` uygulamasının `views.py` dosyasında yapılmalıdır.
+3.5. Email Doğrulama Sistemi: Kullanıcıların email adreslerini doğrulayabilmesi için bir sistem oluşturun. Bu, `custom_user` uygulamasının `views.py` dosyasında yapılmalıdır.
+3.6. Kullanıcı Profili ve Ayarları: Kullanıcıların profillerini görüntüleyebilmesi ve ayarlarını değiştirebilmesi için bir view oluşturun. Bu, `custom_user` uygulamasının `views.py` dosyasında yapılmalıdır.
+3.7. Oturum Süreleri ve Oturum Yenileme: Kullanıcı oturumlarının ne kadar süreyle aktif kalacağını ve nasıl yenileneceğini belirleyin. Bu, `settings.py` dosyasında ve `custom_user` uygulamasının `views.py` dosyasında yapılmalıdır.
+3.8. Serializer'ları Oluşturma: Kullanıcı modeli için bir serializer oluşturun. Bu, `custom_user` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+3.9. URL Yapılandırmaları: Kullanıcı ile ilgili tüm view'lar için URL yapılandırmalarını yapın. Bu, `custom_user` uygulamasının `urls.py` dosyasında yapılmalıdır.
+3.10. Testleri Yazma: Kullanıcı ile ilgili tüm view'lar ve işlevler için testler yazın. Bu, `custom_user` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, kullanıcı kimlik doğrulama sisteminin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tam
+amlanması, kullanıcı kimlik doğrulama sisteminizin başarılı bir şekilde oluşturulmasını sağlar.
+
+Backend 4. Görev Kartı Oluşturma Özelliği
+
+4.1. Görev Kartı Modeli Oluşturma: Görev kartlarını temsil edecek bir model oluşturun. Bu, `kanban` uygulamasının `models.py` dosyasında yapılmalıdır.
+4.2. Görev Kartı Oluşturma View'ı: Kullanıcıların yeni görev kartları oluşturabilmesi için bir view oluşturun. Bu, `kanban` uygulamasının `views.py` dosyasında yapılmalıdır.
+4.3. Görev Kartı Serializer'ı Oluşturma: Görev kartı modeli için bir serializer oluşturun. Bu, `kanban` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+4.4. URL Yapılandırmaları: Görev kartı oluşturma view'ı için URL yapılandırmasını yapın. Bu, `kanban` uygulamasının `urls.py` dosyasında yapılmalıdır.
+4.5. Testleri Yazma: Görev kartı oluşturma işlevi için testler yazın. Bu, `kanban` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, görev kartı oluşturma özelliğinin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görev kartı oluşturma özelliğinin başarılı bir şekilde oluşturulmasını sağlar.
+
+
+Backend 5. Görevlerin Görüntülenmesi, Düzenlenmesi ve Silinmesi
+
+5.1. Görev Kartı Görüntüleme View'ı: Kullanıcıların mevcut görev kartlarını görüntülemesini sağlayacak bir view oluşturun. Bu, `kanban` uygulamasının `views.py` dosyasında yapılmalıdır.
+5.2. Görev Kartı Düzenleme View'ı: Kullanıcıların mevcut görev kartlarını düzenlemesini sağlayacak bir view oluşturun. Bu, `kanban` uygulamasının `views.py` dosyasında yapılmalıdır.
+5.3. Görev Kartı Silme View'ı: Kullanıcıların mevcut görev kartlarını silmesini sağlayacak bir view oluşturun. Bu, `kanban` uygulamasının `views.py` dosyasında yapılmalıdır.
+5.4. URL Yapılandırmaları: Görev kartı görüntüleme, düzenleme ve silme view'ları için URL yapılandırmalarını yapın. Bu, `kanban` uygulamasının `urls.py` dosyasında yapılmalıdır.
+5.5. Testleri Yazma: Görev kartı görüntüleme, düzenleme ve silme işlevleri için testler yazın. Bu, `kanban` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, görev kartlarının görüntülenmesi, düzenlenmesi ve silinmesi özelliklerinin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görev kartlarının görüntülenmesi, düzenlenmesi ve silinmesi özelliklerinin başarılı bir şekilde oluşturulmasını sağlar.
+
+
+Backend 6. Kanban Tahtası Görünümü
+
+6.1. Kanban Modeli: Görevlerin hangi durumda olduğunu (örneğin, "yapılacaklar", "yapılıyor" veya "tamamlandı") takip etmek için bir Kanban modeli oluşturun. Bu, `kanban` uygulamasının `models.py` dosyasında yapılmalıdır.
+6.2. Kanban Serializer: Kanban modelini JSON formatına dönüştürmek için bir serializer oluşturun. Bu, `kanban` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+6.3. Kanban View: Kullanıcıların Kanban tahtasını görüntülemesini, düzenlemesini ve güncellemesini sağlayacak bir view oluşturun. Bu, `kanban` uygulamasının `views.py` dosyasında yapılmalıdır.
+6.4. URL Yapılandırmaları: Kanban tahtası görüntüleme ve düzenleme view'ları için URL yapılandırmalarını yapın. Bu, `kanban` uygulamasının `urls.py` dosyasında yapılmalıdır.
+6.5. Testleri Yazma: Kanban tahtası görüntüleme ve düzenleme işlevleri için testler yazın. Bu, `kanban` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, Kanban tahtası görünümünün oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, Kanban tahtası görünümünün başarılı bir şekilde oluşturulmasını sağlar.
+
+Backend 7. Kullanıcı Bildirimleri
+
+7.1. Bildirim Modeli: Kullanıcıların alacağı bildirimleri temsil eden bir model oluşturun. Bu, `notification` uygulamasının `models.py` dosyasında yapılmalıdır.
+7.2. Bildirim Serializer: Bildirim modelini JSON formatına dönüştürmek için bir serializer oluşturun. Bu, `notification` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+7.3. Bildirim View: Kullanıcıların bildirimlerini görüntülemesini, okumasını ve silmesini sağlayacak bir view oluşturun. Bu, `notification` uygulamasının `views.py` dosyasında yapılmalıdır.
+7.4. URL Yapılandırmaları: Bildirim görüntüleme, okuma ve silme view'ları için URL yapılandırmalarını yapın. Bu, `notification` uygulamasının `urls.py` dosyasında yapılmalıdır.
+7.5. Bildirim Gönderme: Kullanıcılara bildirim göndermek için bir mekanizma oluşturun. Bu, belirli olaylara yanıt olarak tetiklenebilir (örneğin, bir görevin durumu değiştiğinde veya bir kullanıcıya yeni bir görev atandığında).
+7.6. Testleri Yazma: Bildirim görüntüleme, okuma, silme ve gönderme işlevleri için testler yazın. Bu, `notification` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, kullanıcı bildirimlerinin oluşturulmasını ve yönetilmesini içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcı bildirimlerinin başarılı bir şekilde oluşturulmasını ve yönetilmesini sağlar.
+
+Backend 8. Ortak Görevler ve Atamalar
+
+8.1. Ortak Görev Modeli: Ortak görevleri temsil eden bir model oluşturun. Bu, `assignment` uygulamasının `models.py` dosyasında yapılmalıdır.
+8.2. Ortak Görev Serializer: Ortak görev modelini JSON formatına dönüştürmek için bir serializer oluşturun. Bu, `assignment` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+8.3. Ortak Görev View: Kullanıcıların ortak görevleri görüntülemesini, oluşturmasını, düzenlemesini ve silmesini sağlayacak bir view oluşturun. Bu, `assignment` uygulamasının `views.py` dosyasında yapılmalıdır.
+8.4. URL Yapılandırmaları: Ortak görev görüntüleme, oluşturma, düzenleme ve silme view'ları için URL yapılandırmalarını yapın. Bu, `assignment` uygulamasının `urls.py` dosyasında yapılmalıdır.
+8.5. Atama Modeli: Görevlerin belirli kullanıcılara atanmasını temsil eden bir model oluşturun. Bu, `assignment` uygulamasının `models.py` dosyasında yapılmalıdır.
+8.6. Atama Serializer: Atama modelini JSON formatına dönüştürmek için bir serializer oluşturun. Bu, `assignment` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+8.7. Atama View: Kullanıcıların görev atamalarını görüntülemesini, oluşturmasını, düzenlemesini ve silmesini sağlayacak bir view oluşturun. Bu, `assignment` uygulamasının `views.py` dosyasında yapılmalıdır.
+8.8. URL Yapılandırmaları: Görev atama görüntüleme, oluşturma, düzenleme ve silme view'ları için URL yapılandırmalarını yapın. Bu, `assignment` uygulamasının `urls.py` dosyasında yapılmalıdır.
+8.9. Testleri Yazma: Ortak görev ve atama görüntüleme, oluşturma, düzenleme ve silme işlevleri için testler yazın. Bu, `assignment` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, ortak görevlerin ve atamaların oluşturulmasını ve yönetilmesini içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, ortak görevlerin ve atamaların başarılı bir şekilde oluşturulmasını ve yönetilmesini sağlar.
+
+Backend 9. Görevlere Yıldız Puan Verme
+
+9.1. Rating Modeli: Görevlere verilen yıldız puanları temsil eden bir model oluşturun. Bu, `rating` uygulamasının `models.py` dosyasında yapılmalıdır.
+9.2. Rating Serializer: Rating modelini JSON formatına dönüştürmek için bir serializer oluşturun. Bu, `rating` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+9.3. Rating View: Kullanıcıların görevlere yıldız puan vermesini, görüntülemesini ve düzenlemesini sağlayacak bir view oluşturun. Bu, `rating` uygulamasının `views.py` dosyasında yapılmalıdır.
+9.4. URL Yapılandırmaları: Rating görüntüleme, oluşturma ve düzenleme view'ları için URL yapılandırmalarını yapın. Bu, `rating` uygulamasının `urls.py` dosyasında yapılmalıdır.
+9.5. Testleri Yazma: Rating görüntüleme, oluşturma ve düzenleme işlevleri için testler yazın. Bu, `rating` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, görevlere yıldız puan verme işlevinin oluşturulmasını ve yönetilmesini içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görevlere yıldız puan verme işlevinin başarılı bir şekilde oluşturulmasını ve yönetilmesini sağlar.
+
+
+Backend 10. Görevlere Yorum Yapma Özelliği
+
+10.1. Comment Modeli: Görevlere yapılan yorumları temsil eden bir model oluşturun. Bu, `comment` uygulamasının `models.py` dosyasında yapılmalıdır.
+10.2. Comment Serializer: Comment modelini JSON formatına dönüştürmek için bir serializer oluşturun. Bu, `comment` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+10.3. Comment View: Kullanıcıların görevlere yorum yapmasını, görüntülemesini ve düzenlemesini sağlayacak bir view oluşturun. Bu, `comment` uygulamasının `views.py` dosyasında yapılmalıdır.
+10.4. URL Yapılandırmaları: Comment görüntüleme, oluşturma ve düzenleme view'ları için URL yapılandırmalarını yapın. Bu, `comment` uygulamasının `urls.py` dosyasında yapılmalıdır.
+10.5. Testleri Yazma: Comment görüntüleme, oluşturma ve düzenleme işlevleri için testler yazın. Bu, `comment` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, görevlere yorum yapma işlevinin oluşturulmasını ve yönetilmesini içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görevlere yorum yapma işlevinin başarılı bir şekilde oluşturulmasını ve yönetilmesini sağlar.
+
+Backend 11. Proje Oluşturma
+
+11.1. Project Modeli: Projeleri temsil eden bir model oluşturun. Bu, `project` uygulamasının `models.py` dosyasında yapılmalıdır.
+11.2. Project Serializer: Project modelini JSON formatına dönüştürmek için bir serializer oluşturun. Bu, `project` uygulamasının `serializers.py` dosyasında yapılmalıdır.
+11.3. Project View: Kullanıcıların projeler oluşturmasını, görüntülemesini ve düzenlemesini sağlayacak bir view oluşturun. Bu, `project` uygulamasının `views.py` dosyasında yapılmalıdır.
+11.4. URL Yapılandırmaları: Project görüntüleme, oluşturma ve düzenleme view'ları için URL yapılandırmalarını yapın. Bu, `project` uygulamasının `urls.py` dosyasında yapılmalıdır.
+11.5. Testleri Yazma: Project görüntüleme, oluşturma ve düzenleme işlevleri için testler yazın. Bu, `project` uygulamasının `tests.py` dosyasında yapılmalıdır.
+Bu adımlar, proje oluşturma işlevinin oluşturulmasını ve yönetilmesini içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, proje oluşturma işlevinin başarılı bir şekilde oluşturulmasını ve yönetilmesini sağlar.
+
+Backend 12. Testlerin Yazılması ve Uygulanması
+
+12.1. Test Planı: Her bir uygulama için hangi testlerin yazılacağını belirleyin. Bu, genellikle belgelerde veya bir test planı dokümanında yapılır.
+12.2. Test Dosyaları Oluşturma: Her uygulama için bir `tests.py` dosyası oluşturun. Bu dosyalar, testlerin yazılacağı yerdir.
+12.3. Test Durumları Yazma: Her bir uygulamanın `tests.py` dosyasında, uygulamanın her bir özelliği için test durumları yazın. Bu, genellikle bir test durumu başına bir test metodu olacak şekilde yapılır.
+12.4. Test Veritabanı Ayarları: Testlerin çalıştırılacağı test veritabanını ayarlayın. Bu, genellikle `settings.py` dosyasında yapılır.
+12.5. Testleri Çalıştırma: Tüm testleri çalıştırın ve sonuçları kontrol edin. Bu, genellikle komut satırında `python manage.py test` komutu ile yapılır.
+12.6. Hataları Düzeltme: Testlerde hata bulunursa, hataları düzeltin ve testleri tekrar çalıştırın.
+Bu adımlar, testlerin yazılmasını ve uygulanmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, testlerin başarılı bir şekilde yazılmasını ve uygulanmasını sağlar.
+
+Backend 13. API Dokümantasyonunun Oluşturulması
+
+13.1. Dokümantasyon Araçlarını Kurma: Django REST Framework ile birlikte gelen dokümantasyon araçlarını kurun. Bu, genellikle `requirements.txt` dosyasına `django-rest-framework` ekleyerek ve `pip install -r requirements.txt` komutunu çalıştırarak yapılır.
+13.2. Dokümantasyon Ayarları: `settings.py` dosyasında, `INSTALLED_APPS` listesine `rest_framework.documentation` ekleyin.
+13.3. Dokümantasyon URL'leri: `urls.py` dosyasında, URL düzenlemelerini yapın. Bu, genellikle `path('api/docs/', include_docs_urls(title='MyTasks API'))` ekleyerek yapılır.
+13.4. API Görünüm ve Serializer Açıklamaları: Her bir API görünümü ve serializer için uygun açıklamalar ekleyin. Bu, genellikle görünüm ve serializer dosyalarında yapılır.
+13.5. Dokümantasyonu Kontrol Etme: Tarayıcınızda `http://localhost:8000/api/docs/` adresini ziyaret ederek dokümantasyonu kontrol edin.
+Bu adımlar, API dokümantasyonunun oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, API dokümantasyonunun başarılı bir şekilde oluşturulmasını sağlar.
+
+
++Frontend 1. React ve Diğer Gerekli Modüllerin Kurulumu
++1.1. Proje Oluşturma: React uygulamasını oluşturmak için `create-react-app` komutunu kullanın. Bu, genellikle `npx create-react-app frontend` komutu ile yapılır.
++1.2. Proje Dizinine Geçiş: Oluşturulan React uygulamasının dizinine geçin. Bu, genellikle `cd frontend` komutu ile yapılır.
++1.3. Gerekli Modüllerin Kurulumu: `package.json` dosyasında belirtilen tüm bağımlılıkları kurun. Bu, genellikle `npm install` komutu ile yapılır.
++1.4. React Uygulamasını Çalıştırma: React uygulamasını çalıştırın ve tarayıcınızda görüntüleyin. Bu, genellikle `npm start` komutu ile yapılır.
++1.5. Modül Kontrolü: Kurulan modüllerin doğru bir şekilde çalıştığını kontrol edin. Bu, genellikle uygulamanın çalıştırılması ve tarayıcıda görüntülenmesi ile yapılır.
+Bu adımlar, React ve diğer gerekli modüllerin kurulumunu içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, React ve diğer gerekli modüllerin başarılı bir şekilde kurulmasını sağlar.
+
+Frontend 2. Kullanıcı Kimlik Doğrulama Sistemi
++2.1. Kullanıcı Kayıt Komponenti Oluşturma: Kullanıcıların kayıt olabileceği bir React komponenti oluşturun. Bu komponent, kullanıcı adı, e-posta ve şifre gibi bilgileri toplamalıdır.
++2.2. Kullanıcı Giriş Komponenti Oluşturma: Kullanıcıların giriş yapabileceği bir React komponenti oluşturun. Bu komponent, kullanıcı adı ve şifre gibi bilgileri toplamalıdır.
++2.3. Şifre Sıfırlama Komponenti Oluşturma: Kullanıcıların şifrelerini sıfırlayabileceği bir React komponenti oluşturun. Bu komponent, kullanıcının e-posta adresini toplamalı ve bir şifre sıfırlama bağlantısı göndermelidir.
++2.4. Email Doğrulama Sistemi: Kullanıcıların e-posta adreslerini doğrulayabilecekleri bir sistem oluşturun. Bu, genellikle bir doğrulama e-postası gönderilmesini ve kullanıcının bu e-postadaki bir bağlantıyı tıklamasını gerektirir.
++2.5. Kullanıcı Profili ve Ayarları Komponenti Oluşturma: Kullanıcıların profillerini görüntüleyebileceği ve ayarlarını düzenleyebileceği bir React komponenti oluşturun.
++2.6. Kimlik Doğrulama Durumunun Yönetimi: Kullanıcıların kimlik doğrulama durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, kullanıcının giriş yapma durumunu ve kullanıcı bilgilerini tutmalıdır.
++2.7. Kimlik Doğrulama API İstekleri: Kullanıcı kayıt, giriş, şifre sıfırlama ve e-posta doğrulama işlemleri için gerekli API isteklerini oluşturun.
++2.8. Kimlik Doğrulama Hatalarının Yönetimi: Kullanıcıların kimlik doğrulama işlemleri sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
+Bu adımlar, kullanıcı kimlik doğrulama sisteminin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcı kimlik doğrulama sisteminin başarılı bir şekilde oluşturulmasını sağlar.
+
+Frontend 3. Görev Kartı Oluşturma Özelliği
++3.1. Görev Kartı Komponenti Oluşturma: Görev kartını temsil eden bir React komponenti oluşturun. Bu komponent, görevin adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
++3.2. Görev Kartı Formu Komponenti Oluşturma: Kullanıcıların yeni bir görev kartı oluşturabileceği bir form komponenti oluşturun. Bu form, görevin adı, açıklaması ve diğer ilgili bilgileri toplamalıdır.
++3.3. Görev Kartı Oluşturma API İsteği: Yeni bir görev kartı oluşturmak için gerekli API isteğini oluşturun. Bu istek, formdan toplanan bilgileri kullanarak bir POST isteği yapmalıdır.
++3.4. Görev Kartı Durum Yönetimi: Görev kartlarının durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, mevcut görev kartlarının listesini ve her bir görev kartının durumunu tutmalıdır.
++3.5. Görev Kartı Oluşturma Hatalarının Yönetimi: Kullanıcıların görev kartı oluşturma işlemi sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
+Bu adımlar, görev kartı oluşturma özelliğinin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görev kartı oluşturma özelliğinin başarılı bir şekilde oluşturulmasını sağlar.
+
+Frontend 4. Görevlerin Görüntülenmesi, Düzenlenmesi ve Silinmesi
++4.1. Görev Kartı Görüntüleme: Görev kartlarını görüntülemek için bir React komponenti oluşturun. Bu komponent, görev kartının adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
++4.2. Görev Kartı Düzenleme: Görev kartlarını düzenlemek için bir form komponenti oluşturun. Bu form, görevin adı, açıklaması ve diğer ilgili bilgileri toplamalı ve güncellemeli.
++4.3. Görev Kartı Silme: Görev kartlarını silmek için bir buton veya başka bir kullanıcı arayüzü öğesi oluşturun. Bu öğe, kullanıcının bir görev kartını silmesine izin vermelidir.
++4.4. Görev Kartı Görüntüleme, Düzenleme ve Silme API İstekleri: Görev kartlarını görüntülemek, düzenlemek ve silmek için gerekli API isteklerini oluşturun. Bu istekler, görev kartının durumunu güncellemek ve silmek için kullanılmalıdır.
++4.5. Görev Kartı Durum Yönetimi: Görev kartlarının durumunu yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu, mevcut görev kartlarının listesini ve her bir görev kartının durumunu tutmalıdır.
++4.6. Görev Kartı Görüntüleme, Düzenleme ve Silme Hatalarının Yönetimi: Kullanıcıların görev kartı görüntüleme, düzenleme ve silme işlemleri sırasında oluşabilecek hataları yönetmek için bir çözüm oluşturun.
+Bu adımlar, görev kartı görüntüleme, düzenleme ve silme özelliklerinin oluşturulmasını içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, görev kartı görüntüleme, düzenleme ve silme özelliklerinin başarılı bir şekilde oluşturulmasını sağlar.
+
+
+Frontend 5. Kanban Tahtası Görünümü
++5.1. Kanban Tahtası Komponenti Oluşturma: Kanban tahtasını görüntülemek için bir React komponenti oluşturun. Bu komponent, kanban tahtasını oluşturan sütunları ve sütunlarda yer alan görev kartlarını görüntülemelidir.
++5.2. Kanban Tahtası Sütunları: Kanban tahtasında yer alan sütunları temsil eden bir komponent oluşturun. Bu komponent, sütun başlığını ve içerisinde yer alan görev kartlarını görüntülemelidir.
++5.3. Görev Kartları: Kanban tahtasında yer alan görev kartlarını temsil eden bir komponent oluşturun. Bu komponent, görev kartının adını, açıklamasını, durumunu ve diğer ilgili bilgileri görüntülemelidir.
++5.4. Drag and Drop İşlevselliği: Kanban tahtasında görev kartlarını sürükleyip bırakma işlevselliğini ekleyin. Bu işlevsellik, görev kartlarını farklı sütunlara taşıyabilmeyi sağlamalıdır.
++5.5. Kanban Tahtası Görünümü İçin API İstekleri: Kanban tahtasını görüntülemek için gerekli API isteklerini oluşturun. Bu istekler, sütunları ve görev kartlarını almak için kullanılmalıdır.
++5.6. Kanban Tahtası Görünümü Yönetimi: Kanban tahtası görünümünü yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu çözüm, mevcut sütunları ve görev kartlarını tutmalıdır.
+Bu adımlar, kanban tahtası görünümünü oluşturmayı içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kanban tahtası görünümünün başarılı bir şekilde oluşturulmasını sağlar.
+
+
+Frontend 6. Kullanıcı Bildirimleri
+
+6.1. Bildirim Komponenti Oluşturma: Kullanıcı bildirimlerini görüntülemek için bir React komponenti oluşturun. Bu komponent, kullanıcıya gösterilecek bildirimleri listelemeli ve her bir bildirime ait detayları göstermelidir.
+6.2. Bildirim API İstekleri: Bildirimleri almak için gerekli API isteklerini oluşturun. Bu istekler, kullanıcının bildirimlerini almak için kullanılmalıdır.
+6.3. Bildirim Yönetimi: Bildirimleri yönetmek için bir durum yönetim çözümü (örneğin, Redux veya React Context) kullanın. Bu çözüm, mevcut bildirimleri tutmalı ve yeni bildirimlerin eklenmesini sağlamalıdır.
+6.4. Bildirimlerin Otomatik Güncellenmesi: Bildirimlerin otomatik olarak güncellenmesini sağlayacak bir mekanizma oluşturun. Bu mekanizma, belirli bir süre aralığında API istekleri yaparak yeni bildirimleri kontrol etmeli ve kullanıcıya bildirim göstermelidir.
+Bu adımlar, kullanıcı bildirimlerini yönetmeyi ve görüntülemeyi içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcı bildirimlerinin başarılı bir şekilde yönetilmesini ve görüntülenmesini sağlar.
+
+
+Frontend 7. Ortak Görevler ve Atamalar
+
+7.1. Ortak Görevlerin Listelenmesi: Ortak görevlerin listelendiği bir komponent oluşturun. Bu komponent, kullanıcının görevleri görüntülemesine ve üzerinde işlem yapmasına olanak sağlamalıdır. Görevlerin yanında atanan kullanıcılar da listelenmelidir.
+7.2. Görev Atama: Kullanıcının bir göreve atandığı veya görevden atıldığı bir atama işlemi gerçekleştirmek için bir komponent oluşturun. Bu komponent, kullanıcının diğer kullanıcılara görev atamasını sağlamalı ve atamaları kaydetmelidir.
+7.3. Görev Düzenleme: Kullanıcının bir görevi düzenlemesini sağlayan bir komponent oluşturun. Bu komponent, görevin adını, açıklamasını ve diğer özelliklerini düzenlemek için gerekli alanları içermelidir. Kullanıcı düzenlemeleri kaydettiğinde, güncellenmiş görev bilgileri backend'e gönderilmelidir.
+7.4. Görev Silme: Kullanıcının bir görevi silmesini sağlayan bir komponent oluşturun. Bu komponent, kullanıcının görevi silmek istediğini onaylamasını istemeli ve onaylandığında görevi backend'den kaldırmalıdır.
+Bu adımlar, ortak görevlerin listelenmesini, atamaların yapılmasını, görevlerin düzenlenmesini ve silinmesini içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcının ortak görevlerle ilgili işlemleri başarılı bir şekilde gerçekleştirmesini sağlar.
+
+
+Frontend 8. Görevlere Yıldız Puan Verme
+
+8.1. Görev Detay Sayfası: Bir görevin detaylarını görüntülemek için bir sayfa veya komponent oluşturun. Bu sayfada, görevin adı, açıklaması, atanan kullanıcılar ve diğer bilgiler gösterilmelidir.
+8.2. Yıldız Puanı Gösterme: Görev detay sayfasında, görevin mevcut yıldız puanını gösteren bir bileşen ekleyin. Bu bileşen, kullanıcıya görevin ne kadar iyi performans gösterdiğini gösterir.
+8.3. Yıldız Puanı Verme: Kullanıcının göreve yıldız puanı vermesini sağlayan bir bileşen oluşturun. Bu bileşen, kullanıcının göreve bir puan seçmesine olanak sağlamalı ve puanı backend'e göndermelidir.
+8.4. Yıldız Puanı Güncelleme: Kullanıcının daha önce verdiği yıldız puanını güncellemesini sağlayan bir bileşen oluşturun. Bu bileşen, kullanıcının mevcut puanı görüntülemesine ve değiştirmesine olanak tanımalıdır. Güncellenmiş puan backend'e gönderilmelidir.
+Bu adımlar, görev detaylarının görüntülenmesini, mevcut yıldız puanının gösterilmesini, yeni bir yıldız puanının verilmesini ve mevcut puanın güncellenmesini içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcının görevlere yıldız puanı verme işlemini başarılı bir şekilde gerçekleştirmesini sağlar.
+
+
+Frontend 9. Görevlere Yorum Yapma Özelliği
+
+9.1. Yorum Gösterme: Bir görevin yorumlarını görüntülemek için bir bileşen oluşturun. Bu bileşen, görevin mevcut yorumlarını listeleyen bir arayüz sağlamalıdır.
+9.2. Yorum Ekleme Formu: Kullanıcının bir göreve yorum eklemesini sağlayan bir form oluşturun. Bu form, kullanıcıdan yorum içeriğini girmesini ve "Yorum Ekle" düğmesine tıklamasını istemelidir.
+9.3. Yorum Ekleme İsteği: Yorum ekleme formunda girilen yorumu backend'e gönderen bir işlev veya istek oluşturun. Bu işlev, kullanıcının gönderdiği yorumu backend'de kaydetmeli ve görevin yorum listesini güncellemelidir.
+9.4. Yorum Silme İsteği: Her yorumun yanında bir "Sil" düğmesi ekleyin. Kullanıcı bu düğmeye tıkladığında, ilgili yorumu backend'den silen bir işlev veya istek oluşturun. Yorumun frontend üzerinde de hemen silinmesini sağlayın.
+Bu adımlar, görevlere yorum eklemeyi, mevcut yorumları görüntülemeyi ve yorumları silmeyi içerir. Her adım, belirli bir görevi tamamlar ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcının görevlere yorum yapma işlemini başarılı bir şekilde gerçekleştirmesini sağlar.
+
+
+Frontend 10. Proje Oluşturma
+
+10.1. Proje Oluşturma Formu: Kullanıcının yeni bir proje oluşturmasını sağlayan bir form oluşturun. Bu form, kullanıcıdan proje adını, açıklamasını ve diğer gerekli bilgileri girmesini istemelidir.
+10.2. Proje Oluşturma İsteği: Proje oluşturma formunda girilen bilgileri backend'e gönderen bir işlev veya istek oluşturun. Bu işlev, kullanıcının girdiği bilgileri backend'de kaydetmeli ve yeni proje oluşturmalıdır.
+10.3. Proje Listesini Güncelleme: Proje oluşturma işlemi tamamlandığında, proje listesini güncellemek için bir işlev oluşturun. Bu işlev, backend'den alınan proje verilerini frontend'e ileterek proje listesini güncellemelidir.
+10.4. Proje Detay Sayfası: Yeni proje oluşturulduktan sonra, kullanıcıyı proje detay sayfasına yönlendirin. Bu sayfa, proje adı, açıklaması ve diğer ayrıntıları içermelidir.
+Bu adımlar, yeni bir proje oluşturma işlemini tamamlar. Her adım, belirli bir görevi yerine getirir ve bir sonraki adıma geçmeden önce tamamlanmalıdır. Bu adımların tamamlanması, kullanıcının yeni bir proje oluşturma işlemini başarılı bir şekilde gerçekleştirmesini sağlar.
+
+Frontend 11. Testlerin Yazılması ve Uygulanması
+Testlerin yazılması ve uygulanması için aşağıdaki iş parçacıklarını kullanabiliriz:
+11.1. Test Ortamının Hazırlanması: Jest ve diğer test kütüphanelerini projenize dahil edin. Test dosyalarının oluşturulması için gerekli yapılandırmaları yapın.
+11.2. Bileşen Testleri: Projenizdeki bileşenlerin doğru şekilde çalıştığını doğrulamak için bileşen testlerini yazın. Bu testler, bileşenlerin doğru şekilde render edildiğini, durum ve props'ların doğru şekilde yönetildiğini ve işlevselliğin beklenen sonuçları ürettiğini doğrulamalıdır.
+11.3. İşlevsel Testler: Uygulamanızdaki işlevselliği doğrulamak için işlevsel testler yazın. Bu testler, belirli kullanıcı eylemlerini (tıklama, yazma, gezinme vb.) simüle ederek beklenen sonuçları doğrulamalıdır.
+11.4. API Testleri: Backend ile iletişimi doğrulamak için API testleri yazın. Bu testler, istekleri göndererek ve dönen verileri doğrulayarak API'ların doğru çalıştığını doğrulamalıdır.
+11.5. Tüm Testlerin Yürütülmesi: Tüm testleri yürütmek için bir test çalıştırıcısı veya komut satırı aracı kullanın. Bu, tüm testlerin otomatik olarak çalıştırılmasını ve sonuçların raporlanmasını sağlar.
+11.6. Test Sonuçlarının Değerlendirilmesi: Test sonuçlarını değerlendirin ve herhangi bir hata veya hatalı davranış tespit edildiğinde ilgili düzeltmeleri yapın. Test kapsamını artırarak uygulamanın doğruluğunu ve kalitesini iyileştirin.
+Bu iş parçacıkları, testlerin sistematik bir şekilde yazılmasını, uygulanmasını ve değerlendirilmesini sağlar. Testlerin doğru şekilde çalışması, uygulamanızın güvenilir ve istikrarlı olduğunu doğrulamanıza yardımcı olur.
+
+
+Frontend 12. Kullanıcı Arayüzünün Tasarlanması ve Uygulanması
+Kullanıcı arayüzünün tasarlanması ve uygulanması için aşağıdaki iş parçacıklarını kullanabiliriz:
+12.1. Tasarım ve Mockup Oluşturma: Kullanıcı arayüzünün tasarımını yapın ve tasarımı mockup olarak oluşturun. Bu adım, kullanıcı arayüzünün nasıl görüneceği ve kullanıcı etkileşimlerinin nasıl olacağı konusunda bir kılavuz sağlar.
+12.2. Bileşenlerin Oluşturulması: Tasarıma dayanarak, gerekli bileşenleri oluşturun. Bileşenler, kullanıcı arayüzünün farklı parçalarını temsil eder ve düzen, stiller ve işlevsellik içerir.
+12.3. Verilerin Bağlanması: Backend API ile iletişim kurmak için gerekli olan veri bağlantılarını oluşturun. Bu, kullanıcı arayüzünün gerçek verilerle çalışmasını sağlar.
+12.4. Bileşenlerin Stillemesi: Bileşenlerin stilini belirleyin ve CSS veya CSS framework'leri kullanarak bileşenlere uygulayın. Bu adım, kullanıcı arayüzünün istenen görünümünü elde etmek için önemlidir.
+12.5. Kullanıcı Etkileşimlerinin Yönetimi: Kullanıcı etkileşimlerini yönetmek için gerekli işlevleri ve olayları oluşturun. Örneğin, form gönderme, tıklama veya sürükle-bırak gibi kullanıcı eylemlerini yakalayın ve doğru işlevleri tetikleyin.
+12.6. Testlerin Uygulanması: Oluşturulan kullanıcı arayüzünün test edilmesi için gerekli testleri uygulayın. Bileşen testleri, işlevsel testler ve kullanılabilirlik testleri gibi farklı test türlerini kullanabilirsiniz.
+12.7. Kullanıcı Geri Bildirimlerini İyileştirme: Kullanıcı testleri ve geri bildirimleri kullanarak kullanıcı arayüzünü iyileştirin. Kullanıcıların deneyimini geliştirmek için kullanıcı geri bildirimlerini dikkate alın ve gerekli değişiklikleri yapın.
+Bu iş parçacıkları, kullanıcı arayüzünün tasarlanması, oluşturulması ve test edilmesini sistematik bir şekilde yönetmenizi sağlar. Kullanıcı dostu, işlevsel ve çekici bir kullanıcı arayüzü oluşturmak için tasarım prensiplerini ve en iyi uygulamaları kullanın.
+
+
+
+Kod tekrarlarını önlemek için şu adımları izleyebilirsiniz:
+1. **Komponentleri kategorize edin**: Var olan komponentlerinizi gözden geçirin ve benzer işlevlere sahip olanları gruplandırın.
+Örneğin, görev oluşturma, güncelleme ve silme işlemleriyle ilgili komponentleri bir kategori altında toplayabilirsiniz.
+Bu sayede ortak işlevlere sahip komponentler arasında kod tekrarı azaltılabilir.
+2. **Ortak fonksiyonları ve stil dosyalarını paylaşın**: İlgili komponentler arasında kullanılan ortak fonksiyonları ve 
+stil dosyalarını ayrı bir dosyada toplayabilirsiniz. Bu sayede her bir komponentin kendi dosyasında tekrar tekrar aynı 
+fonksiyonları veya stil kodlarını tanımlamak zorunda kalmazsınız.
+3. **Parametreleri ve geri çağırma fonksiyonlarını kullanın**: Komponentler arasında paylaşılan verileri veya geri çağırma 
+fonksiyonlarını parametreler aracılığıyla iletebilirsiniz. Örneğin, bir görevi silmek için kullanılan komponente, silinecek 
+görevin kimliğini ve görevleri yeniden yükleme işlevini parametre olarak iletebilirsiniz. Bu sayede aynı işlevi farklı 
+komponentlerde kullanabilirsiniz.
+4. **Yüksek düzeydeki komponentleri oluşturun**: Ortak işlevleri veya verileri paylaşan komponentleri yüksek düzeydeki 
+komponentler olarak oluşturabilirsiniz. Bu yüksek düzeydeki komponentler, alt komponentlere gerekli verileri veya fonksiyonları 
+iletebilir ve kod tekrarını azaltabilir.
+5. **İş planı**: Aşağıdaki iş planını izleyebilirsiniz:
+   - `CreateTask`, `UpdateTask` ve `DeleteTask` komponentleri aynı işleve hizmet ettiği için bu komponentleri bir kategori 
+   altında toplayın. Örneğin, `TaskActions` adında bir klasör oluşturun.
+   - `TaskActions` klasöründe `TaskActions.js` ve `TaskActions.css` dosyaları oluşturun. Bu dosyalar, komponentin işlevini ve stilini içerecektir.
+   - `ListTasks` komponenti ayrı bir klasör içinde tutulabilir. Bu klasöre `ListTasks.js` ve `ListTasks.css` dosyaları ekleyin.
+   - `TaskForm` komponentini de ayrı bir klasör içinde tutun. Bu klasöre `TaskForm.js` ve `TaskForm.css` dosyalarını ekleyin.
+   - `TaskItem` komponenti ayrı bir klasör içinde tutulabilir. Bu klasöre `TaskItem.js` ve `TaskItem.css` dosyalarını ekleyin.
+   - `TasksPage` komponenti ayrı bir klasör içinde tutulabilir. Bu klasöre `TasksPage.js` ve `TasksPage.css` dosyalarını ekleyin.
+   - Her bir klasördeki komponentler arasında paylaşılan kod parçacıklarını ortak bir dosyada (`api.js`) veya bir kütüphane içinde toplayabilirsiniz. Bu dosya veya kütüphane, veri işleme, API çağrıları vb. için kullanılabilir.
+   - Her bir komponenti ilgili dosyalarında düzenleyin ve ilgili komponentler arasında paylaşılan kod parçacıklarını ortak dosyalara yönlendirin.
+
+Bu adımları izleyerek, kod tekrarlarını azaltabilir ve kod tabanınızı daha düzenli hale getirebilirsiniz.
+
+
+İş planı aşağıdaki adımları içermektedir:
+
+1. `LoadTasks` bileşenini güncelleyerek görevleri yeniden yükleyin:
+   - `frontend/src/components/tasks/LoadTasks.js` dosyasını açın.
+   - `useEffect` kancasının içindeki `loadTasks` fonksiyonunu güncelleyin:
+     ```javascript
+     const loadTasks = async () => {
+       try {
+         await getTasks();
+         fetchTasks();
+       } catch (error) {
+         console.error('Error loading tasks:', error);
+       }
+     };
+     ```
+   - `loadTasks` fonksiyonunda `await getTasks();` satırını kaldırın.
+   - Dosyayı kaydedin ve kapatın.
+
+2. `TaskItem` bileşenine `LoadTasks` bileşenini ekleyin:
+   - `frontend/src/components/tasks/TaskItem.js` dosyasını açın.
+   - Dosyanın en üst kısmında `LoadTasks` bileşenini içe aktarın:
+     ```javascript
+     import LoadTasks from './LoadTasks';
+     ```
+   - `TaskItem` bileşeninin içinde `<LoadTasks fetchTasks={onDeleteTask} />` satırını ekleyin:
+     ```javascript
+     const TaskItem = ({ task, onDeleteTask }) => {
+       // ...
+
+       return (
+         <div className="task-item">
+           {/* ... */}
+           <LoadTasks fetchTasks={onDeleteTask} />
+         </div>
+       );
+     };
+     ```
+   - Dosyayı kaydedin ve kapatın.
+
+3. `KanbanBoard` bileşeninde görevleri yeniden yükleyin:
+   - `KanbanBoard` bileşenini içe aktardığınız dosyayı (`frontend/src/components/kanban/KanbanBoard.js`) açın.
+   - `import { getTasks, getKanbanStages, moveCard, createTask, deleteTask, updateTask } from '../../services/api';` satırının üzerine aşağıdaki import satırını ekleyin:
+     ```javascript
+     import LoadTasks from '../tasks/LoadTasks';
+     ```
+   - `KanbanBoard` bileşeni içinde `loadTasks` adında yeni bir asenkron fonksiyon tanımlayın:
+     ```javascript
+     const loadTasks = async () => {
+       try {
+         await getTasks();
+       } catch (error) {
+         console.error('Error loading tasks:', error);
+       }
+     };
+     ```
+   - `useEffect` kancasının içinde `loadTasks` fonksiyonunu çağırın:
+     ```javascript
+     useEffect(() => {
+       const fetchData = async () => {
+         try {
+           const tasksResponse = await getTasks();
+           const stagesResponse = await getKanbanStages();
+           const sortedStages = stagesResponse.sort((a, b) => b.order - a.order);
+
+           setTasks(tasksResponse.data);
+           setStages(sortedStages);
+         } catch (error) {
+           console.error('Görevler ve aşamalar alınırken hata oluştu:', error);
+         }
+       };
+
+       fetchData();
+       loadTasks(); // Burada loadTasks'ı çağırın
+
+     }, []);
+     ```
+   - Dosyanın sonuna `<LoadTasks fetchTasks={loadTasks} />` satırını ekleyin:
+     ```javascript
+     return (
+       <div className
+
+="kanban-board">
+         {/* ... */}
+         <LoadTasks fetchTasks={loadTasks} />
+       </div>
+     );
+     ```
+   - Dosyayı kaydedin ve kapatın.
+
+Bu adımları takip ederek, görevlerin create, delete ve update işlemleri sonrasında kanban tahtasının otomatik olarak güncellenmesini sağlayabilirsiniz.
+
+
+
+İş planı aşağıdaki adımları içerecektir:
+frontend\src\components\kanban\KanbanBoard.js sayfasında görevlerin create, delete ve update işlemleri 
+sonrası kanban tahtasına görevleri yeniden yüklenmesini sağlamak istiyorum bunun için ne yapmalıyız 
+bir iş planı çıkar lütfen
++1. `TaskForm` bileşenine `loadTasks` prop'unu ekleyin. Bu, görev oluşturulduktan sonra görevleri yeniden yüklemek için kullanılacaktır.
++2. `TaskForm` bileşenindeki `handleSubmit` fonksiyonunu güncelleyin. Görev başarıyla oluşturulduktan sonra `loadTasks` fonksiyonunu çağırmalıdır.
++3. `DeleteTask` bileşenine `onDelete` prop'unu ekleyin. Bu, görev başarıyla silindiğinde görevleri yeniden yüklemek için kullanılacaktır.
++4. `DeleteTask` bileşenindeki `handleDelete` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `onDelete` fonksiyonunu çağırarak görevleri yeniden yüklemelidir.
++5. `KanbanBoard` bileşeninde `fetchTasks` adında bir fonksiyon oluşturun. Bu fonksiyon, görevleri yeniden yüklemek için `getTasks` API çağrısını yapacaktır.
++6. `KanbanBoard` bileşenindeki `handleCreateTask` fonksiyonunu güncelleyin. Görev başarıyla oluşturulduktan sonra `fetchTasks` fonksiyonunu çağırmalıdır.
++7. `KanbanBoard` bileşenindeki `handleDeleteTask` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `fetchTasks` fonksiyonunu çağırmalıdır.
++8. `KanbanBoard` bileşenindeki `handleUpdateTask` fonksiyonunu güncelleyin. Görev başarıyla güncellendikten sonra `fetchTasks` fonksiyonunu çağırmalıdır.
++9. `KanbanColumn` bileşenine `loadTasks` prop'unu ekleyin. Bu, görev oluşturulduğunda veya silindiğinde görevleri yeniden yüklemek için kullanılacaktır.
++10. `KanbanColumn` bileşenindeki `handleCreateTask` fonksiyonunu güncelleyin. Görev başarıyla oluşturulduktan sonra `loadTasks` fonksiyonunu çağırmalıdır.
+11. `KanbanColumn` bileşenindeki `handleDeleteTask` fonksiyonunu güncelleyin. Görev başarıyla silindiğinde `loadTasks` fonksiyonunu çağırmalıdır.
+12. `KanbanColumn` bileşenindeki `handleUpdateTask` fonksiyonunu güncelleyin. Görev başarıyla güncellendikten sonra `loadTasks` fonksiyonunu çağırmalıdır.
+
+Bu adımları takip ederek görevlerin oluşturulması, silinmesi ve güncellenmesi sonrasında görev kartlarının yeniden yüklenmesini sağlayabilirsiniz.
+
+Sorununuzdaki hataların birkaç farklı kaynaktan kaynaklandığını görebiliyorum. 
+İlk olarak, `react-dom.development.js` uyarısı, React 18 ile birlikte `ReactDOM.render` yerine `createRoot` kullanılması gerektiğini belirtiyor. Bu nedenle, `ReactDOM.render` yerine `createRoot` kullanmanız gerekmektedir.
+İkinci hata, oturum açma sayfasında otomatik tamamlama özniteliklerinin eksik olduğunu belirtmektedir. Otomatik tamamlama özniteliklerini (`autocomplete`) `login` ve `register` sayfalarındaki şifre alanlarına eklemelisiniz.
+Üçüncü hata, `ListKanbans` bileşeninde bir hata oluştuğunu ve `TypeError: Cannot read properties of undefined (reading 'sort')` hatası alındığını belirtmektedir. Bu hata, `loadedStages` değişkeninin tanımsız olduğunu ve `sort` işlemi gerçekleştirilemediğini göstermektedir. `getKanbanStages` işlevinin doğru şekilde çalıştığından ve uygun bir değer döndürdüğünden emin olmalısınız.
+Dördüncü hata, `apiFunctions.getLoggedInUserEmail` işlevinin tanımlanmadığını belirtmektedir. `apiFunctions` içinde `getLoggedInUserEmail` işlevinin yer aldığından emin olun.
+Beşinci hata, `LoadTasks` bileşeninde `fetchTasks` işlevinin tanımlanmadığını belirtmektedir. Bu hatayı gidermek için `fetchTasks` işlevini `LoadTasks` bileşenine iletmelisiniz.
+Son olarak, altıncı hatada, görev kartının silinmesi sırasında bir hata oluştuğunu belirtmektedir. Bu hatayı gidermek için `KanbanColumn` bileşeninde `loadTasks` prop'unu `DraggableCard` bileşenine iletebilirsiniz.
+Yukarıdaki düzeltmeleri yaparak hataları gidermeye çalışabilirsiniz.
+
+
+Hataları çözmek için aşağıdaki adımları izleyebilirsiniz:
+
+1. [DOM] Input elements should have autocomplete attributes (suggested: "username") hatası:
+   - Hatanın gösterdiği gibi, otomatik tamamlama özniteliği (`autocomplete`) eksik olan `input` elementine `autocomplete="username"` özniteliğini ekleyin. Örneğin:
+     ```jsx
+     <input type="email" placeholder="E-posta" value="selimkocak@gmail.com" autocomplete="username" />
+     ```
+
+2. Kanban panoları alınırken bir hata oluştu: TypeError: Cannot read properties of undefined (reading 'sort') hatası:
+   - Bu hata, `ListKanbans.js` dosyasında bir `undefined` değerini sıralama işlemine tabi tutmaya çalıştığınızı gösterir. Hatanın nedenini tespit etmek için `ListKanbans.js` dosyasının ilgili kısmını kontrol edin ve `sort` fonksiyonunun hangi nesne veya dizi üzerinde çalıştığını doğrulayın.
+
+3. TypeError: _services_api__WEBPACK_IMPORTED_MODULE_1__.apiFunctions.getLoggedInUserEmail is not a function hatası:
+   - Bu hata, `KanbanColumn.js` dosyasında `_services_api__WEBPACK_IMPORTED_MODULE_1__.apiFunctions.getLoggedInUserEmail` işlevinin bulunamadığını gösterir. `apiFunctions` modülünde `getLoggedInUserEmail` işlevinin olup olmadığını ve doğru şekilde içe aktarıldığını kontrol edin.
+
+4. Error loading tasks: TypeError: fetchTasks is not a function hatası:
+   - Bu hata, `LoadTasks.js` ve `KanbanColumn.js` dosyalarında `fetchTasks` işlevinin tanımlanmadığını gösterir. `fetchTasks` işlevinin doğru bir şekilde tanımlandığından ve uygun bir şekilde `LoadTasks.js` dosyasında içe aktarıldığından emin olun.
+
+Bu adımları takip ederek hataları gidermeye çalışın. Hala sorun yaşıyorsanız, ilgili kod parçacıklarını ve hata mesajlarını paylaşmaya devam edin, size daha fazla yardımcı olabilirim.
+
+
+Yazılımınızda sonsuz döngü oluşturabilecek birkaç sorun var. Bu sorunlar, genellikle görevleri her işlem sonrası yeniden yüklemenizle alakalıdır. Bu sürekli yeniden yüklemeler, gereksiz API çağrılarına ve performans sorunlarına yol açabilir.
+`CreateTask` bileşeninde, bir görev oluşturulduğunda `loadTasks` fonksiyonunu çağırıyorsunuz. Benzer şekilde, `TaskForm` bileşeninde de aynı işlemi yapıyorsunuz. Ayrıca `KanbanBoard` bileşeninde `fetchTasks` fonksiyonu oluşturmuşsunuz ve bu fonksiyonu `handleMoveCard`, `handleCreateTask`, `handleDeleteTask` ve `handleUpdateTask` işlemlerinde çağırıyorsunuz. 
+Bu durum, her işlem sonrasında tüm görevlerin yeniden yüklenmesine ve dolayısıyla da sonsuz döngüye yol açıyor olabilir. Örneğin, bir görev oluşturduğunuzda, önce `CreateTask` bileşenindeki `loadTasks` fonksiyonu, ardından `TaskForm` bileşenindeki `loadTasks` fonksiyonu ve en sonunda `KanbanBoard` bileşenindeki `fetchTasks` fonksiyonu çağrılıyor olabilir. Bu süreç, her bir işlem sonrasında tekrarlanıyor ve bu da sonsuz bir döngüye yol açıyor olabilir.
+Bu sorunu çözmek için, bir görevin durumunu değiştirdiğinizde veya yeni bir görev oluşturduğunuzda sadece o görevi güncellemeyi düşünebilirsiniz. Bu şekilde, tüm görevlerin yeniden yüklenmesi yerine sadece belirli bir görevin yeniden yüklenmesi sağlanır. Bu durum, hem performansı artırır hem de gereksiz API çağrılarını önler.
+Ayrıca, `useEffect` hook'unuzdaki bağımlılıkları kontrol etmekte fayda vardır. Yanlışlıkla bir bağımlılık eklemiş olabilirsiniz ve bu da useEffect hook'unun beklenenden daha sık çalışmasına neden olabilir.
+Son olarak, Redux veya React Context gibi bir durum yönetim çözümü kullanmayı düşünebilirsiniz. Bu çözümler, özellikle birden fazla bileşenin aynı durumu paylaşması gerektiğinde çok yardımcı olur. Bu sayede, her bir bileşenin durumu bağımsız olarak yönetmesi yerine durumu merkezi bir yerde yönetebilirsiniz. Bu durum, hem kodun okunabilirliğini artırır hem de hataların önüne geçer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

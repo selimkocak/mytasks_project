@@ -11,7 +11,7 @@ class KanbanBoard(models.Model):
 
 class KanbanStage(models.Model):
     name = models.CharField(max_length=255)
-    taskIds = models.JSONField(default=list)  # List of task IDs
+    taskIds = models.JSONField(default=list, blank=True )  # List of task IDs
     board = models.ForeignKey(KanbanBoard, on_delete=models.CASCADE, related_name='stages')
     order = models.PositiveIntegerField(default=0)  # Aşamaların sırasını belirlemek için
 
