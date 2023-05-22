@@ -1,20 +1,26 @@
 // frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
-import { getKanbanStages, apiFunctions, getLoggedInUserEmail } from '../../services/api';
+import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail, apiFunctions } from '../../services/api';
 import DraggableCard from './DraggableCard';
 import './KanbanColumn.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
-import TaskForm from '../tasks/TaskForm';
 
-const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => {
+const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => { 
+  
+  const [taskName, setTaskName] = useState('');
+  const [taskDescription, setTaskDescription] = useState('');
+  const [taskStage, setTaskStage] = useState('');
+  const [taskAssignee, setTaskAssignee] = useState('');
   const [show, setShow] = useState(false);
   const [stages, setStages] = useState([]);
+  const [, setUsers] = useState([]);
   const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
 
   useEffect(() => {
-    const loadStagesAndUserEmail = async () => {
+    const loadStagesAndUsers = async () => {
       if (!isAuthenticated()) {
         console.error('No logged in user or user has no id');
         return;
@@ -22,10 +28,16 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
 
       try {
         const loadedStages = await getKanbanStages();
-        const sortedStages = loadedStages.sort((a, b) => a.order - b.order);
+        const loadedUsers = await getUserList();
         const userEmail = await getLoggedInUserEmail();
+        if (userEmail) {
+          setTaskAssignee(userEmail);
+        } else {
+          console.error('Unable to get the logged in user email');
+        }
 
-        setStages(sortedStages);
+        setStages(loadedStages);
+        setUsers(loadedUsers);
         setLoggedInUserEmail(userEmail);
       } catch (err) {
         console.error(err);
@@ -33,32 +45,47 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       }
     };
 
-    loadStagesAndUserEmail();
+    loadStagesAndUsers();
   }, []);
-
-  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleCreateTask = async (taskData) => {
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const cardId = e.dataTransfer.getData('text/plain');
+    moveCard(cardId, stage.id);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const loadTasks = async () => {
     try {
-      await apiFunctions.createTask(taskData);
-      handleClose();
-      await loadTasks; // loadTasks fonksiyonunu await ile çağırın
+      await apiFunctions.getTasks();
     } catch (error) {
-      console.error('Error creating task:', error);
+      console.error('Error loading tasks:', error);
     }
   };
 
-  const handleDelete = async (taskId) => {
-    try {
-      await deleteTask(taskId);
-      await loadTasks; // loadTasks fonksiyonunu çağırın
-      console.log('Görev başarıyla silindi');
-    } catch (error) {
-      console.error('Görev silinirken hata oluştu:', error);
-    }
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
+  const handleCreateTask = async () => {
+    await createTask({
+      title: taskName,
+      description: taskDescription,
+      stage: taskStage,
+      assignee: taskAssignee,
+    });
+    setTaskName('');
+    setTaskDescription('');
+    setTaskStage('');
+    setTaskAssignee('');
+    handleClose();
+    loadTasks(); // Yeni görevin hemen yüklenmesi için loadTasks() işlevini çağırın
   };
 
   return (
@@ -67,16 +94,16 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       <Button variant="primary" onClick={handleShow}>
         +
       </Button>
-      <div className="card-container">
+      <div className="card-container" onDrop={handleDrop} onDragOver={handleDragOver}>
         {tasks.map((task) => (
           <DraggableCard
             key={task.id}
             task={task}
             moveCard={moveCard}
-            deleteTask={handleDelete} // updated to handleDelete
+            deleteTask={deleteTask}
             updateTask={updateTask}
             canMoveTo={canMoveTo}
-            loadTasks={loadTasks} // loadTasks prop'ını ekleyin
+            loadTasks={loadTasks} // DraggableCard bileşenine loadTasks() işlevini iletiyoruz
           />
         ))}
       </div>
@@ -86,11 +113,61 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
           <Modal.Title>Create New Task</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TaskForm stages={stages} loggedInUserEmail={loggedInUserEmail} createTask={handleCreateTask} />
+          <Form>
+            <Form.Group controlId="formTaskName">
+              <Form.Label>Task Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter task name"
+                value={taskName}
+                onChange={(e) => setTaskName(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formTaskDescription">
+              <Form.Label>Task Description</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter task description"
+                value={taskDescription}
+                onChange={(e) => setTaskDescription(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formTaskStage">
+              <Form.Label>Stage</Form.Label>
+              <Form.Control
+                as="select"
+                value={taskStage}
+                onChange={(e) => setTaskStage(e.target.value)}
+              >
+                <option value="">--Select Stage--</option>
+                {stages && stages.map((stage) => (
+                  <option key={stage.id} value={stage.id}>
+                    {stage?.name}
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="formTaskAssignee">
+              <Form.Label>Assignee</Form.Label>
+              <Form.Control
+                type="email"
+                defaultValue={loggedInUserEmail}
+                value={loggedInUserEmail}
+                onChange={(e) => setTaskAssignee(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
         </Modal.Body>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
+          </Button>
+          <Button variant="primary" onClick={handleCreateTask}>
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
