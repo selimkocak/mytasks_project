@@ -108,7 +108,7 @@ const TaskForm = ({ loadTasks }) => {
         Assignee:
         <select
           name="taskAssignee"
-          value={taskAssignee}
+          defaultValue={taskAssignee} 
           onChange={(e) => handleInputChange(e, setTaskAssignee)}
         >
           <option value="">--Select Assignee--</option>
