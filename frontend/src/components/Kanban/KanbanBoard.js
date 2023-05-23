@@ -27,7 +27,7 @@ const KanbanBoard = () => {
     fetchData();
   }, []);
 
-  const fetchTasks = async () => {
+  const loadTasks = async () => {
     try {
       const tasksResponse = await getTasks();
       setTasks(tasksResponse.data);
@@ -41,7 +41,7 @@ const KanbanBoard = () => {
     try {
       await moveCard(cardId, stageId);
       console.log('Kart başarıyla taşındı');
-      await fetchTasks();
+      await loadTasks();
     } catch (error) {
       console.error('Kart taşınırken hata oluştu:', error);
     } finally {
@@ -54,11 +54,11 @@ const KanbanBoard = () => {
       const response = await createTask({
         stage: stageId,
         title: title,
-        description: '', // Açıklama verisini ekleyin
+        description: '', 
         assignee: '', // Atanan kişiyi belirtin
       });
       console.log('Görev başarıyla oluşturuldu:', response.data);
-      await fetchTasks();
+      await loadTasks();
     } catch (error) {
       console.error('Görev oluşturulurken hata oluştu:', error);
     }
@@ -68,7 +68,7 @@ const KanbanBoard = () => {
     try {
       await deleteTask(taskId);
       console.log('Görev başarıyla silindi');
-      await fetchTasks();
+      await loadTasks();
     } catch (error) {
       console.error('Görev silinirken hata oluştu:', error);
     }
@@ -78,14 +78,12 @@ const KanbanBoard = () => {
     try {
       await updateTask(taskId, data);
       console.log('Görev başarıyla güncellendi');
-      await fetchTasks();
+      await loadTasks();
     } catch (error) {
       console.error('Görev güncellenirken hata oluştu:', error);
     }
   };
 
-
- 
 
   const canMoveTo = () => {
     return !movingCard;
@@ -104,7 +102,7 @@ const KanbanBoard = () => {
         deleteTask={handleDeleteTask}
         updateTask={handleUpdateTask}
         canMoveTo={canMoveTo}
-        fetchTasks={fetchTasks}
+        loadTasks={loadTasks} 
       />
       ))}
     </div>

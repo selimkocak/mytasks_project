@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
 import './DraggableCard.css';
+import DeleteTask from '../tasks/DeleteTask';
 
-const DraggableCard = ({ task, moveCard, onDelete, loadTasks }) => {
+const DraggableCard = ({ task, moveCard, loadTasks }) => {
   const [currentTask, setCurrentTask] = useState(null);
 
   useEffect(() => {
@@ -48,7 +49,8 @@ const DraggableCard = ({ task, moveCard, onDelete, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-      <TaskItem task={currentTask} />
+     <TaskItem task={currentTask} />
+    <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
      
 
     </div>

@@ -7,9 +7,10 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
-import  fetchTasks  from '../tasks/FetchTasks'; // FetchTasks bileşenini import edin
 
-const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => { 
+
+
+const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => { 
   
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
@@ -74,7 +75,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     setTaskStage('');
     setTaskAssignee('');
     handleClose();
-    await fetchTasks(); // Yeni görevin hemen yüklenmesi için fetchTasks() işlevini await ile çağırın
+    await loadTasks(); // Yeni görevin hemen yüklenmesi için loadTasks() işlevini await ile çağırın
   };
 
   
@@ -87,14 +88,14 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       <div className="card-container" onDrop={handleDrop} onDragOver={handleDragOver}>
         {tasks.map((task) => (
           <DraggableCard
-            key={task.id}
-            task={task}
-            moveCard={moveCard}
-            deleteTask={deleteTask}
-            updateTask={updateTask}
-            canMoveTo={canMoveTo}
-            fetchTasks={fetchTasks} // DraggableCard bileşenine fetchTasks() işlevini iletiyoruz
-          />
+          key={task.id}
+          task={task}
+          moveCard={moveCard}
+          deleteTask={deleteTask}
+          updateTask={updateTask}
+          canMoveTo={canMoveTo}
+          loadTasks={loadTasks} // DraggableCard'a loadTasks'i prop olarak geçiriyoruz
+        />
         ))}
       </div>
 
@@ -161,6 +162,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
           </Button>
         </Modal.Footer>
       </Modal>
+      
     </div>
   );
 };

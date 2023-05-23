@@ -5,11 +5,12 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const UpdateTask = ({ task, loadTasks, handleCloseModal }) => {
+
+const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
   const [taskName, setTaskName] = useState(task.title);
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [taskStage, setTaskStage] = useState(task.stage);
-  const [taskAssignee, ] = useState(task.assignee);
+  const [taskAssignee] = useState(task.assignee);
   const [stages, setStages] = useState([]);
   const [, setUsers] = useState([]);
   const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
@@ -44,7 +45,7 @@ const UpdateTask = ({ task, loadTasks, handleCloseModal }) => {
         created_by: 1, // Kullanıcı kimliğini doğru değerle değiştirin veya gerekirse kaldırın
       });
       if (response.status === 200) {
-        loadTasks(); // Görevleri güncelledikten sonra loadTasks() işlevini çağırın
+        await loadTasks(); // Görevleri güncelledikten sonra fetchTasks() işlevini çağırın
         handleCloseModal();
       }
     } catch (error) {
@@ -91,14 +92,15 @@ const UpdateTask = ({ task, loadTasks, handleCloseModal }) => {
             </Form.Control>
           </Form.Group>
 
-        
-            <Form.Group controlId="formTaskName">
-              <Form.Label>Assignee</Form.Label>
-              <Form.Control type="email" defaultValue={loggedInUserEmail} 
-                            value={loggedInUserEmail} 
-                            onChange={e => getLoggedInUserEmail(e.target.value)} />
-            </Form.Group>
-        
+          <Form.Group controlId="formTaskName">
+            <Form.Label>Assignee</Form.Label>
+            <Form.Control
+              type="email"
+              defaultValue={loggedInUserEmail}
+              value={loggedInUserEmail}
+              onChange={(e) => setLoggedInUserEmail(e.target.value)}
+            />
+          </Form.Group>
 
           <Button variant="secondary" onClick={handleCloseModal}>
             Cancel

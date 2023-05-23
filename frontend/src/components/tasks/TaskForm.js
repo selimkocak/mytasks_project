@@ -1,8 +1,9 @@
-// frontend\src\components\tasks\TaskForm.js
+// frontend/src/components/tasks/TaskForm.js
 import React, { useState, useEffect } from 'react';
 import { createTask, getKanbanStages, getUserList, getLoggedInUser } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 import './TaskForm.css';
+
 
 const TaskForm = ({ loadTasks }) => {
   const [taskName, setTaskName] = useState('');
@@ -57,12 +58,8 @@ const TaskForm = ({ loadTasks }) => {
         setTaskDescription('');
         setTaskStage('');
         setTaskAssignee('');
-
+        await loadTasks(); // Görevlerin yeniden yüklenmesi için fetchTasks fonksiyonunu await ile çağırın
       }
-      if (response.status === 201) {
-        await loadTasks; // Görevlerin yeniden yüklenmesi için loadTasks fonksiyonunu çağırın
-      }
-  
     } catch (error) {
       console.error('Error creating task: ', error);
     }

@@ -1,25 +1,14 @@
 // frontend/src/components/tasks/ListTasks.js
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getTasks } from '../../services/api';
-import { setTasks } from '../../actions/taskActions';
+import { useSelector } from 'react-redux';
 
-const ListTasks = () => {
+const ListTasks = ({ loadTasks }) => {
   const tasks = useSelector((state) => state.tasks);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await getTasks();
-        dispatch(setTasks(response.data));
-      } catch (error) {
-        console.error('Error fetching tasks:', error);
-      }
-    };
-
-    fetchTasks();
-  }, [dispatch]);
+    // Call the loadTasks function passed in props instead of fetchTasks
+    loadTasks();
+  }, [loadTasks])
 
   return (
     <div>

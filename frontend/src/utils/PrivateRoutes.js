@@ -1,5 +1,5 @@
 // frontend/src/utils/PrivateRoutes.js
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Route, Navigate, Routes } from 'react-router-dom';
 import KanbanBoard from '../components/kanban/KanbanBoard';
 import NotificationPanel from '../components/notifications/NotificationPanel';
@@ -12,8 +12,23 @@ import * as Auth from './auth';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
+
 const PrivateRoutes = () => {
   const isAuthenticated = Auth.isAuthenticated();
+
+  const fetchData = useCallback(async () => {
+    if (isAuthenticated) {
+      try {
+       
+      } catch (error) {
+        console.error('Görevleri getirirken hata oluştu:', error);
+      }
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return isAuthenticated ? (
     <Routes>

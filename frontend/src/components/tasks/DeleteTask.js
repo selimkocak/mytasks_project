@@ -1,14 +1,13 @@
-// frontend/src/components/tasks/DeleteTask.js
-import React from 'react';
+// frontend\src\components\tasks\DeleteTask.js
 import { deleteTask } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 
-const DeleteTask = ({ id, loadTasks }) => {
+const DeleteTask = ({ id, loadTasks }) => { // loadTasks yerine fetchTasks'i kabul ediyoruz
   const handleDelete = async () => {
     if (isAuthenticated()) {
       try {
         await deleteTask(id);
-        await loadTasks; // Görevleri yeniden yükle
+        await loadTasks(); // loadTasks() yerine fetchTasks() çağırıyoruz
         console.log('Görev başarıyla silindi');
       } catch (error) {
         console.error('Görev silinirken hata oluştu:', error);
@@ -17,6 +16,8 @@ const DeleteTask = ({ id, loadTasks }) => {
       console.log('Lütfen giriş yapın');
     }
   };
+
+
 
   return (
     <>
