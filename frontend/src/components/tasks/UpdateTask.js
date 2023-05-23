@@ -1,10 +1,11 @@
+// frontend\src\components\tasks\UpdateTask.js
 import React, { useState, useEffect } from 'react';
 import { updateTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
+const UpdateTask = ({ task, taskId, handleCloseModal, loadTasks }) => {
   const [taskName, setTaskName] = useState(task.title);
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [taskStage, setTaskStage] = useState(task.stage);
@@ -34,7 +35,7 @@ const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await updateTask(task.id, {
+      const response = await updateTask(taskId, {
         title: taskName,
         description: taskDescription,
         stage: taskStage,
@@ -42,7 +43,7 @@ const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
       });
       if (response.status === 200) {
         handleCloseModal();
-        await loadTasks(); // Görevleri güncellemek için loadTasks fonksiyonunu await ile çağırın
+        await loadTasks(taskId);
       }
     } catch (error) {
       console.error('Error updating task: ', error);

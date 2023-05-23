@@ -7,9 +7,7 @@ import UpdateTask from '../tasks/UpdateTask';
 
 const DraggableCard = ({ task, moveCard, loadTasks }) => {
   const [currentTask, setCurrentTask] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); // Yeni durum ekleyin
-
-
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -42,7 +40,6 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
 
   const handleUpdateTask = async () => {
     setIsEditing(true);
-   
   };
 
   const handleCloseUpdateTask = () => {
@@ -64,9 +61,10 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       <TaskItem task={currentTask} />
       <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
       <button onClick={handleUpdateTask}>✏️</button>
-      {isEditing && ( 
+      {isEditing && (
         <UpdateTask
           task={currentTask}
+          taskId={currentTask.id}
           handleCloseModal={handleCloseUpdateTask}
           loadTasks={loadTasks}
         />
