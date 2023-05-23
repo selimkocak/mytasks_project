@@ -6,7 +6,7 @@ const ListTasks = ({ loadTasks }) => {
   const tasks = useSelector((state) => state.tasks);
 
   useEffect(() => {
-    // Call the loadTasks function passed in props instead of fetchTasks
+    
     loadTasks();
   }, [loadTasks])
 

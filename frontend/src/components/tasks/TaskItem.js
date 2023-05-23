@@ -4,20 +4,23 @@ import './TaskItem.css';
 import UpdateTask from './UpdateTask';
 import { isAuthenticated } from '../../utils/auth'; // isAuthenticated fonksiyonunu import ediyoruz
 
-const TaskItem = ({ task, fetchTasks }) => {
+const TaskItem = ({ task, loadTasks }) => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleShowModal = () => {
+  const handleShowModal = async () => {
     if (isAuthenticated()) { // Oturumun açık olduğunu kontrol ediyoruz
       setShowModal(true);
+      await loadTasks();
     } else {
       console.log('Lütfen giriş yapın');
     }
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = async () => {
     setShowModal(false);
+    await loadTasks(); 
   };
+  
 
   const getDescriptionPreview = (description) => {
     if (description.length > 115) {
@@ -35,14 +38,14 @@ const TaskItem = ({ task, fetchTasks }) => {
       {isAuthenticated() && ( // Oturumun açık olduğunu kontrol ediyoruz
         <>
          
-          <button onClick={handleShowModal}>✏️</button>
+         
         </>
       )}
       {task.description.length > 20 && (
         <button onClick={handleShowModal}>👁️</button>
       )}
       {showModal && (
-        <UpdateTask task={task} handleCloseModal={handleCloseModal} />
+        <UpdateTask task={task} handleCloseModal={handleCloseModal} loadTasks={loadTasks} />
       )}
     </div>
   );

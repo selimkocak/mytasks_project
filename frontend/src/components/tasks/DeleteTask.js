@@ -2,12 +2,12 @@
 import { deleteTask } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 
-const DeleteTask = ({ id, loadTasks }) => { // loadTasks yerine fetchTasks'i kabul ediyoruz
+const DeleteTask = ({ id, loadTasks }) => { 
   const handleDelete = async () => {
     if (isAuthenticated()) {
       try {
         await deleteTask(id);
-        await loadTasks(); // loadTasks() yerine fetchTasks() çağırıyoruz
+        await loadTasks(); 
         console.log('Görev başarıyla silindi');
       } catch (error) {
         console.error('Görev silinirken hata oluştu:', error);

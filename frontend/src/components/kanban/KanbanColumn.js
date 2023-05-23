@@ -1,4 +1,3 @@
-// frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
 import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
 import DraggableCard from './DraggableCard';
@@ -8,10 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
 
-
-
 const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => { 
-  
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
   const [taskStage, setTaskStage] = useState('');
@@ -75,10 +71,9 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     setTaskStage('');
     setTaskAssignee('');
     handleClose();
-    await loadTasks(); // Yeni görevin hemen yüklenmesi için loadTasks() işlevini await ile çağırın
+    await loadTasks(); 
   };
 
-  
   return (
     <div className="kanban-column">
       <h2 className="kanban-column-title">{stage?.name}</h2>
@@ -88,14 +83,14 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
       <div className="card-container" onDrop={handleDrop} onDragOver={handleDragOver}>
         {tasks.map((task) => (
           <DraggableCard
-          key={task.id}
-          task={task}
-          moveCard={moveCard}
-          deleteTask={deleteTask}
-          updateTask={updateTask}
-          canMoveTo={canMoveTo}
-          loadTasks={loadTasks} // DraggableCard'a loadTasks'i prop olarak geçiriyoruz
-        />
+            key={task.id}
+            task={task}
+            moveCard={moveCard}
+            deleteTask={deleteTask}
+            updateTask={updateTask}
+            canMoveTo={canMoveTo}
+            loadTasks={loadTasks} 
+          />
         ))}
       </div>
 
@@ -127,13 +122,9 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
 
             <Form.Group controlId="formTaskStage">
               <Form.Label>Stage</Form.Label>
-              <Form.Control
-                as="select"
-                value={taskStage}
-                onChange={(e) => setTaskStage(e.target.value)}
-              >
+              <Form.Control as="select" value={taskStage} onChange={(e) => setTaskStage(e.target.value)}>
                 <option value="">--Select Stage--</option>
-                {stages && stages.map((stage) => (
+                {stages.map((stage) => (
                   <option key={stage.id} value={stage.id}>
                     {stage?.name}
                   </option>
@@ -148,7 +139,6 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
                 value={loggedInUserEmail}
                 onChange={(e) => setTaskAssignee(e.target.value)}
               />
-
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -162,7 +152,6 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
           </Button>
         </Modal.Footer>
       </Modal>
-      
     </div>
   );
 };

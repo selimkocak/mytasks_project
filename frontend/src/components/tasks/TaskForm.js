@@ -58,7 +58,7 @@ const TaskForm = ({ loadTasks }) => {
         setTaskDescription('');
         setTaskStage('');
         setTaskAssignee('');
-        await loadTasks(); // Görevlerin yeniden yüklenmesi için fetchTasks fonksiyonunu await ile çağırın
+        await loadTasks(); 
       }
     } catch (error) {
       console.error('Error creating task: ', error);
@@ -108,7 +108,7 @@ const TaskForm = ({ loadTasks }) => {
         Assignee:
         <select
           name="taskAssignee"
-          defaultValue={taskAssignee} 
+          value={taskAssignee}
           onChange={(e) => handleInputChange(e, setTaskAssignee)}
         >
           <option value="">--Select Assignee--</option>

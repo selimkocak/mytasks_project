@@ -19,9 +19,9 @@ const PrivateRoutes = () => {
   const fetchData = useCallback(async () => {
     if (isAuthenticated) {
       try {
-       
+        // Burada gerekirse verileri yükleyebilirsiniz
       } catch (error) {
-        console.error('Görevleri getirirken hata oluştu:', error);
+        console.error('Error loading data:', error);
       }
     }
   }, [isAuthenticated]);
@@ -33,12 +33,12 @@ const PrivateRoutes = () => {
   return isAuthenticated ? (
     <Routes>
       <Route path="/" element={<Navigate to="/tasks" />} />
-      <Route path="/tasks/*" element={<TasksPage />} />
+      <Route path="/tasks/*" element={<TasksPage loadTasks={fetchData} />} />
       <Route
         path="/kanban"
         element={
           <DndProvider backend={HTML5Backend}>
-            <KanbanBoard />
+            <KanbanBoard loadTasks={fetchData} />
           </DndProvider>
         }
       />

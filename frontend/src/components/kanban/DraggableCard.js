@@ -1,12 +1,15 @@
-// frontend/src/components/kanban/DraggableCard.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
 import './DraggableCard.css';
 import DeleteTask from '../tasks/DeleteTask';
+import UpdateTask from '../tasks/UpdateTask';
 
 const DraggableCard = ({ task, moveCard, loadTasks }) => {
   const [currentTask, setCurrentTask] = useState(null);
+  const [isEditing, setIsEditing] = useState(false); // Yeni durum ekleyin
+
+
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -37,6 +40,15 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     moveCard(cardId, stageId);
   };
 
+  const handleUpdateTask = async () => {
+    setIsEditing(true);
+   
+  };
+
+  const handleCloseUpdateTask = () => {
+    setIsEditing(false);
+  };
+
   if (!currentTask) {
     return <div>Loading...</div>;
   }
@@ -49,10 +61,16 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-     <TaskItem task={currentTask} />
-     <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
-     
-
+      <TaskItem task={currentTask} />
+      <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
+      <button onClick={handleUpdateTask}>✏️</button>
+      {isEditing && ( 
+        <UpdateTask
+          task={currentTask}
+          handleCloseModal={handleCloseUpdateTask}
+          loadTasks={loadTasks}
+        />
+      )}
     </div>
   );
 };

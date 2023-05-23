@@ -1,10 +1,8 @@
-// frontend/src/components/tasks/UpdateTask.js
 import React, { useState, useEffect } from 'react';
 import { updateTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
 
 const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
   const [taskName, setTaskName] = useState(task.title);
@@ -34,19 +32,17 @@ const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
     loadStagesAndUsers();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       const response = await updateTask(task.id, {
         title: taskName,
         description: taskDescription,
         stage: taskStage,
         assignee: taskAssignee,
-        created_by: 1, // Kullanıcı kimliğini doğru değerle değiştirin veya gerekirse kaldırın
       });
       if (response.status === 200) {
-        await loadTasks(); // Görevleri güncelledikten sonra fetchTasks() işlevini çağırın
         handleCloseModal();
+        await loadTasks(); // Görevleri güncellemek için loadTasks fonksiyonunu await ile çağırın
       }
     } catch (error) {
       console.error('Error updating task: ', error);
@@ -92,7 +88,7 @@ const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="formTaskName">
+          <Form.Group controlId="formTaskAssignee">
             <Form.Label>Assignee</Form.Label>
             <Form.Control
               type="email"
@@ -105,9 +101,7 @@ const UpdateTask = ({ task, handleCloseModal, loadTasks }) => {
           <Button variant="secondary" onClick={handleCloseModal}>
             Cancel
           </Button>
-          <Button variant="primary" type="submit">
-            Update Task
-          </Button>
+          <Button type="submit">Update Task</Button>
         </Form>
       </Modal.Body>
     </Modal>
