@@ -50,7 +50,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
      <TaskItem task={currentTask} />
-    <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
+     <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
      
 
     </div>

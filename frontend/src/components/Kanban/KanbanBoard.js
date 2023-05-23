@@ -91,6 +91,7 @@ const KanbanBoard = () => {
 
   return (
     <div className="kanban-board">
+      
       <ListKanbans />
       {stages.map((stage) => (
         <KanbanColumn
@@ -104,6 +105,7 @@ const KanbanBoard = () => {
         canMoveTo={canMoveTo}
         loadTasks={loadTasks} 
       />
+      
       ))}
     </div>
   );

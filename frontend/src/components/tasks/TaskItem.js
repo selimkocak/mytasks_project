@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import './TaskItem.css';
 import UpdateTask from './UpdateTask';
-import DeleteTask from './DeleteTask';
 import { isAuthenticated } from '../../utils/auth'; // isAuthenticated fonksiyonunu import ediyoruz
 
 const TaskItem = ({ task, fetchTasks }) => {
@@ -35,7 +34,7 @@ const TaskItem = ({ task, fetchTasks }) => {
       <p>Atanan Kişi: {task.assignee}</p>
       {isAuthenticated() && ( // Oturumun açık olduğunu kontrol ediyoruz
         <>
-          <DeleteTask id={task.id} fetchTasks={fetchTasks} />
+         
           <button onClick={handleShowModal}>✏️</button>
         </>
       )}
