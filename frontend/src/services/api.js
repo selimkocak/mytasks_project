@@ -172,6 +172,7 @@ export const getUserList = async () => {
   }
 };
 
+
 // user profile frontend\src\services\api.js
 export const getUserProfile = () => {
   return service.get('auth/user-profile/');
@@ -394,15 +395,6 @@ export const moveCard = async (cardId, stageId) => {
     throw error;
   }
 };
-
-
-
-
-
-
-
-
-
 
 
 // Role

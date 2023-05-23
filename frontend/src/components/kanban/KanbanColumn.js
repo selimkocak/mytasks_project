@@ -1,12 +1,13 @@
 // frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
-import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail, apiFunctions } from '../../services/api';
+import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
 import DraggableCard from './DraggableCard';
 import './KanbanColumn.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
+import  fetchTasks  from '../tasks/FetchTasks'; // FetchTasks bileşenini import edin
 
 const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo }) => { 
   
@@ -61,18 +62,6 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     e.preventDefault();
   };
 
-  const loadTasks = async () => {
-    try {
-      await apiFunctions.getTasks();
-    } catch (error) {
-      console.error('Error loading tasks:', error);
-    }
-  };
-
-  useEffect(() => {
-    loadTasks();
-  }, []);
-
   const handleCreateTask = async () => {
     await createTask({
       title: taskName,
@@ -85,9 +74,10 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
     setTaskStage('');
     setTaskAssignee('');
     handleClose();
-    loadTasks(); // Yeni görevin hemen yüklenmesi için loadTasks() işlevini çağırın
+    await fetchTasks(); // Yeni görevin hemen yüklenmesi için fetchTasks() işlevini await ile çağırın
   };
 
+  
   return (
     <div className="kanban-column">
       <h2 className="kanban-column-title">{stage?.name}</h2>
@@ -103,7 +93,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
             deleteTask={deleteTask}
             updateTask={updateTask}
             canMoveTo={canMoveTo}
-            loadTasks={loadTasks} // DraggableCard bileşenine loadTasks() işlevini iletiyoruz
+            fetchTasks={fetchTasks} // DraggableCard bileşenine fetchTasks() işlevini iletiyoruz
           />
         ))}
       </div>
@@ -154,10 +144,10 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
               <Form.Label>Assignee</Form.Label>
               <Form.Control
                 type="email"
-                defaultValue={loggedInUserEmail}
                 value={loggedInUserEmail}
                 onChange={(e) => setTaskAssignee(e.target.value)}
               />
+
             </Form.Group>
           </Form>
         </Modal.Body>
