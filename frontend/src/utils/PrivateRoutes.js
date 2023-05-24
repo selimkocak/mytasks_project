@@ -32,8 +32,8 @@ const PrivateRoutes = () => {
 
   return isAuthenticated ? (
     <Routes>
-      <Route path="/" element={<Navigate to="/tasks" />} />
-      <Route path="/tasks/*" element={<TasksPage loadTasks={fetchData} />} />
+      <Route path="/" element={<Navigate to="/kanban" />} />
+      <Route path="/kanban/*" element={<TasksPage loadTasks={fetchData} />} />
       <Route
         path="/kanban"
         element={
