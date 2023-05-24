@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
-import './DraggableCard.css';
 import DeleteTask from '../tasks/DeleteTask';
 import UpdateTask from '../tasks/UpdateTask';
 
@@ -38,7 +37,6 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     const cardId = e.dataTransfer.getData('text');
     moveCard(cardId, stageId);
   };
-  
 
   const handleUpdateTask = async () => {
     setIsEditing(true);
@@ -54,15 +52,19 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
 
   return (
     <div
-      className="draggable-card"
+      className="card draggable-card"
       draggable="true"
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
       <TaskItem task={currentTask} taskId={task.id} loadTasks={loadTasks} />
-      <DeleteTask id={task.id} loadTasks={loadTasks} />
-      <button onClick={handleUpdateTask}>✏️</button>
+      <div className="card-footer">
+        <DeleteTask id={task.id} loadTasks={loadTasks} />
+        <button className="btn btn-primary" onClick={handleUpdateTask}>
+          Edit
+        </button>
+      </div>
       {isEditing && (
         <UpdateTask
           task={currentTask}
@@ -76,4 +78,3 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
 };
 
 export default DraggableCard;
-

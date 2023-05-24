@@ -1,12 +1,12 @@
 /* frontend/src/components/kanban/DropZone.css */
 .drop-zone {
   background-color: #d71e1e;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  min-height: 500px; 
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 100px;
+  min-height: 900px; /* Yükseklik ayarını buradan değiştirebilirsiniz */
 }
 
 .drop-zone.active {
-  background-color: #dcd20f;
+  background-color: #d71e1e; /* Kırmızı olarak kalması için tekrar #d71e1e olarak ayarlandı */
 }

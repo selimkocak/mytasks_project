@@ -84,29 +84,34 @@ const KanbanBoard = () => {
     }
   };
 
-
   const canMoveTo = () => {
     return !movingCard;
   };
 
   return (
-    <div className="kanban-board">
-      
-      <ListKanbans />
-      {stages.map((stage) => (
-        <KanbanColumn
-        key={stage.id}
-        stage={stage}
-        tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
-        moveCard={handleMoveCard}
-        createTask={handleCreateTask}
-        deleteTask={handleDeleteTask}
-        updateTask={handleUpdateTask}
-        canMoveTo={canMoveTo}
-        loadTasks={loadTasks} 
-      />
-      
-      ))}
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-6">
+          <ListKanbans />
+        </div>
+        <div className="col-lg-16">
+          <div className="d-flex flex-wrap">
+            {stages.map((stage) => (
+              <KanbanColumn
+                key={stage.id}
+                stage={stage}
+                tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
+                moveCard={handleMoveCard}
+                createTask={handleCreateTask}
+                deleteTask={handleDeleteTask}
+                updateTask={handleUpdateTask}
+                canMoveTo={canMoveTo}
+                loadTasks={loadTasks} 
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
