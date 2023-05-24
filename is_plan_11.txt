@@ -267,8 +267,7 @@ Bu adımlar, görev detaylarının görüntülenmesini, mevcut yıldız puanın�
 
 
 Frontend 9. Görevlere Yorum Yapma Özelliği
-
-9.1. Yorum Gösterme: Bir görevin yorumlarını görüntülemek için bir bileşen oluşturun. Bu bileşen, görevin mevcut yorumlarını listeleyen bir arayüz sağlamalıdır.
++9.1. Yorum Gösterme: Bir görevin yorumlarını görüntülemek için bir bileşen oluşturun. Bu bileşen, görevin mevcut yorumlarını listeleyen bir arayüz sağlamalıdır.
 9.2. Yorum Ekleme Formu: Kullanıcının bir göreve yorum eklemesini sağlayan bir form oluşturun. Bu form, kullanıcıdan yorum içeriğini girmesini ve "Yorum Ekle" düğmesine tıklamasını istemelidir.
 9.3. Yorum Ekleme İsteği: Yorum ekleme formunda girilen yorumu backend'e gönderen bir işlev veya istek oluşturun. Bu işlev, kullanıcının gönderdiği yorumu backend'de kaydetmeli ve görevin yorum listesini güncellemelidir.
 9.4. Yorum Silme İsteği: Her yorumun yanında bir "Sil" düğmesi ekleyin. Kullanıcı bu düğmeye tıkladığında, ilgili yorumu backend'den silen bir işlev veya istek oluşturun. Yorumun frontend üzerinde de hemen silinmesini sağlayın.

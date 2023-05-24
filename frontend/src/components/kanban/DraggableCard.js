@@ -35,9 +35,10 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
 
   const handleDrop = (e, stageId) => {
     e.preventDefault();
-    const cardId = e.dataTransfer.getData('text/plain');
+    const cardId = e.dataTransfer.getData('text');
     moveCard(cardId, stageId);
   };
+  
 
   const handleUpdateTask = async () => {
     setIsEditing(true);
@@ -59,8 +60,8 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-      <TaskItem task={currentTask} taskId={currentTask.id} loadTasks={loadTasks} />
-      <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
+      <TaskItem task={currentTask} taskId={task.id} loadTasks={loadTasks} />
+      <DeleteTask id={task.id} loadTasks={loadTasks} />
       <button onClick={handleUpdateTask}>✏️</button>
       {isEditing && (
         <UpdateTask
@@ -75,3 +76,4 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
 };
 
 export default DraggableCard;
+

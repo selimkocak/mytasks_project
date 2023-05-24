@@ -1,5 +1,5 @@
-// frontend/src/components/tasks/TaskItem.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getTask } from '../../services/api';
 import './TaskItem.css';
 import UpdateTask from './UpdateTask';
 import { isAuthenticated } from '../../utils/auth';
@@ -9,13 +9,29 @@ const TaskItem = ({ task, taskId, loadTasks }) => {
   const [showModal, setShowModal] = useState(false);
   const tasks = useSelector((state) => state.tasks.tasks);
   const updatedTask = tasks.find((t) => t.id === taskId);
+  const [currentTask, setCurrentTask] = useState(updatedTask);
+
+  useEffect(() => {
+    const fetchTask = async () => {
+      try {
+        const response = await getTask(taskId);
+        if (response.status === 200) {
+          setCurrentTask(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching task:', error);
+      }
+    };
+
+    fetchTask();
+  }, [taskId]);
 
   const handleShowModal = async () => {
     if (isAuthenticated()) {
       setShowModal(true);
       await loadTasks(taskId);
     } else {
-      console.log('Please login');
+      console.log('Please log in');
     }
   };
 
@@ -25,7 +41,7 @@ const TaskItem = ({ task, taskId, loadTasks }) => {
   };
 
   const getDescriptionPreview = (description) => {
-    if (description.length > 115) {
+    if (description && description.length > 115) {
       return description.substring(0, 112) + '...';
     }
     return description;
@@ -33,18 +49,26 @@ const TaskItem = ({ task, taskId, loadTasks }) => {
 
   return (
     <div className="task-item">
-      <h2>{task.title}</h2>
-      <p>{getDescriptionPreview(task.description)}</p>
-      <p>Aşama: {task.stage}</p>
-      <p>Atanan Kişi: {task.assignee}</p>
+      <h2>{currentTask?.title}</h2>
+      <p>{getDescriptionPreview(currentTask?.description)}</p>
+      <p>Aşama: {currentTask?.stage}</p>
+      <p>Atanan Kişi: {currentTask?.assignee}</p>
+      <div className="task-item-icons">
+        <div className="comment-bubble"> 
+          <button onClick={handleShowModal}>💬</button> 
+          <div className="comment-counter">
+            <span>{currentTask?.comments?.length || 0}</span> {/* Add conditional check for comments array */}
+          </div>
+        </div>
+      </div>
       {isAuthenticated() && (
         <>
-          {task.description.length > 20 && (
+          {currentTask?.description.length > 20 && (
             <button onClick={handleShowModal}>👁️</button>
           )}
           {showModal && (
             <UpdateTask
-              task={updatedTask}
+              task={currentTask}
               taskId={taskId}
               handleCloseModal={handleCloseModal}
               loadTasks={loadTasks}
