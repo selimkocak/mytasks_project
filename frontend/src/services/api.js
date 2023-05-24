@@ -298,38 +298,58 @@ export const deleteRating = async (id) => {
   return service.delete(`rating/${id}/`);
 };
 
-// Comment
+// Comment frontend\src\services\api.js
 export const createComment = async (data) => {
-  return service.post("comment/", data);
+  return service.post("comment/comments/create/", data);
 };
 
 export const getComments = async () => {
-  return service.get("comment/");
+  return service.get("comment/comments/");
 };
 
 export const updateComment = async (id, data) => {
-  return service.put(`comment/${id}/`, data);
+  return service.put(`comment/comments/${id}/`, data);
 };
 
 export const deleteComment = async (id) => {
-  return service.delete(`comment/${id}/`);
+  return service.delete(`comment/comments/${id}/`);
 };
 
+export const getCommentsByTask = async (taskId) => {
+  return service.get(`comment/comments/?task=${taskId}`);
+};
+
+export const getCommentCountByTask = async (taskId) => {
+  try {
+    const response = await getComments();
+    if (response.status === 200) {
+      const comments = response.data;
+      const filteredComments = comments.filter(comment => comment.task === taskId);
+      return filteredComments.length;
+    }
+    return 0;
+  } catch (error) {
+    console.error('Error fetching comment count:', error);
+    return 0;
+  }
+};
 // Project
 export const createProject = async (data) => {
-  return service.post("project/", data);
+  return service.post("project/projects/create/", data);
 };
 
 export const getProjects = async () => {
-  return service.get("project/");
+  return service.get("project/projects/");
 };
 
 export const updateProject = async (id, data) => {
-  return service.put(`project/${id}/`, data);
+  return service.put(`project/projects/${id}/`, data);
 };
 
+
+
 export const deleteProject = async (id) => {
-  return service.delete(`project/${id}/`);
+  return service.delete(`project/projects/${id}/`);
 };
 
 // Kanban frontend\src\services\api.js
@@ -448,6 +468,8 @@ export const apiFunctions = {
   getComments,
   updateComment,
   deleteComment,
+  getCommentsByTask,
+  getCommentCountByTask,
   createProject,
   getProjects,
   updateProject,

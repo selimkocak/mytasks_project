@@ -1,11 +1,14 @@
+// frontend\src\components\tasks\TaskItem.js
+// frontend\src\components\tasks\TaskItem.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import './TaskItem.css';
 import UpdateTask from './UpdateTask';
 import { isAuthenticated } from '../../utils/auth';
 import { useSelector } from 'react-redux';
+import CommentCounter from '../comments/CommentCounter';
 
-const TaskItem = ({ task, taskId, loadTasks }) => {
+const TaskItem = ({  taskId, loadTasks }) => {
   const [showModal, setShowModal] = useState(false);
   const tasks = useSelector((state) => state.tasks.tasks);
   const updatedTask = tasks.find((t) => t.id === taskId);
@@ -54,10 +57,10 @@ const TaskItem = ({ task, taskId, loadTasks }) => {
       <p>Aşama: {currentTask?.stage}</p>
       <p>Atanan Kişi: {currentTask?.assignee}</p>
       <div className="task-item-icons">
-        <div className="comment-bubble"> 
-          <button onClick={handleShowModal}>💬</button> 
+        <div className="comment-bubble">
+          <button onClick={handleShowModal}>💬</button>
           <div className="comment-counter">
-            <span>{currentTask?.comments?.length || 0}</span> {/* Add conditional check for comments array */}
+            <CommentCounter taskId={taskId} />
           </div>
         </div>
       </div>
