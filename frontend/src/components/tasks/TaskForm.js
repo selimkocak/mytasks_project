@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { createTask, getKanbanStages, getUserList, getLoggedInUser } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
-import './TaskForm.css';
-
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const TaskForm = ({ loadTasks }) => {
   const [taskName, setTaskName] = useState('');
@@ -58,7 +58,7 @@ const TaskForm = ({ loadTasks }) => {
         setTaskDescription('');
         setTaskStage('');
         setTaskAssignee('');
-        await loadTasks(); 
+        await loadTasks();
       }
     } catch (error) {
       console.error('Error creating task: ', error);
@@ -70,29 +70,28 @@ const TaskForm = ({ loadTasks }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="task-form">
-      <label>
-        Title:
-        <input
+    <Form onSubmit={handleSubmit} className="task-form">
+      <Form.Group controlId="taskName">
+        <Form.Label>Title:</Form.Label>
+        <Form.Control
           type="text"
-          name="taskName"
           value={taskName}
           onChange={(e) => handleInputChange(e, setTaskName)}
         />
-      </label>
-      <label>
-        Description:
-        <input
+      </Form.Group>
+
+      <Form.Group controlId="taskDescription">
+        <Form.Label>Description:</Form.Label>
+        <Form.Control
           type="text"
-          name="taskDescription"
           value={taskDescription}
           onChange={(e) => handleInputChange(e, setTaskDescription)}
         />
-      </label>
-      <label>
-        Stage:
-        <select
-          name="taskStage"
+      </Form.Group>
+
+      <Form.Group controlId="taskStage">
+        <Form.Label>Stage:</Form.Label>
+        <Form.Select
           value={taskStage}
           onChange={(e) => handleInputChange(e, setTaskStage)}
         >
@@ -102,12 +101,12 @@ const TaskForm = ({ loadTasks }) => {
               {stage.name}
             </option>
           ))}
-        </select>
-      </label>
-      <label>
-        Assignee:
-        <select
-          name="taskAssignee"
+        </Form.Select>
+      </Form.Group>
+
+      <Form.Group controlId="taskAssignee">
+        <Form.Label>Assignee:</Form.Label>
+        <Form.Select
           value={taskAssignee}
           onChange={(e) => handleInputChange(e, setTaskAssignee)}
         >
@@ -117,10 +116,13 @@ const TaskForm = ({ loadTasks }) => {
               {user.email}
             </option>
           ))}
-        </select>
-      </label>
-      <button type="submit">Create Task</button>
-    </form>
+        </Form.Select>
+      </Form.Group>
+
+      <Button variant="primary" type="submit">
+        Create Task
+      </Button>
+    </Form>
   );
 };
 

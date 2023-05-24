@@ -1,6 +1,7 @@
 // frontend\src\components\tasks\DeleteTask.js
 import { deleteTask } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
+import Button from 'react-bootstrap/Button';
 
 const DeleteTask = ({ id, loadTasks }) => { 
   const handleDelete = async () => {
@@ -17,12 +18,8 @@ const DeleteTask = ({ id, loadTasks }) => {
     }
   };
 
-
-
   return (
-    <>
-      <button onClick={handleDelete}>Sil</button>
-    </>
+    <Button variant="danger" onClick={handleDelete}>Sil</Button>
   );
 };
 

@@ -5,13 +5,11 @@ import { createTask } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 import './CreateTask.css';
 
-
 const CreateTask = ({ loadTasks }) => {
   const handleSubmit = async (taskData) => {
     try {
       const response = await createTask(taskData);
       if (response.status === 201) {
-        // load the tasks after successfully creating a new one
         await loadTasks();
       }
     } catch (error) {

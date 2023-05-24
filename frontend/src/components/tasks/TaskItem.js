@@ -1,5 +1,4 @@
 // frontend\src\components\tasks\TaskItem.js
-// frontend\src\components\tasks\TaskItem.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import './TaskItem.css';
@@ -7,8 +6,10 @@ import UpdateTask from './UpdateTask';
 import { isAuthenticated } from '../../utils/auth';
 import { useSelector } from 'react-redux';
 import CommentCounter from '../comments/CommentCounter';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
-const TaskItem = ({  taskId, loadTasks }) => {
+const TaskItem = ({ taskId, loadTasks }) => {
   const [showModal, setShowModal] = useState(false);
   const tasks = useSelector((state) => state.tasks.tasks);
   const updatedTask = tasks.find((t) => t.id === taskId);
@@ -51,35 +52,37 @@ const TaskItem = ({  taskId, loadTasks }) => {
   };
 
   return (
-    <div className="task-item">
-      <h2>{currentTask?.title}</h2>
-      <p>{getDescriptionPreview(currentTask?.description)}</p>
-      <p>Aşama: {currentTask?.stage}</p>
-      <p>Atanan Kişi: {currentTask?.assignee}</p>
-      <div className="task-item-icons">
-        <div className="comment-bubble">
-          <button onClick={handleShowModal}>💬</button>
-          <div className="comment-counter">
-            <CommentCounter taskId={taskId} />
+    <Card className="task-item">
+      <Card.Body>
+        <Card.Title>{currentTask?.title}</Card.Title>
+        <Card.Text>{getDescriptionPreview(currentTask?.description)}</Card.Text>
+        <Card.Text>Aşama: {currentTask?.stage}</Card.Text>
+        <Card.Text>Atanan Kişi: {currentTask?.assignee}</Card.Text>
+        <div className="task-item-icons">
+          <div className="comment-bubble">
+            <Button variant="light" onClick={handleShowModal}>💬</Button>
+            <div className="comment-counter">
+              <CommentCounter taskId={taskId} />
+            </div>
           </div>
         </div>
-      </div>
-      {isAuthenticated() && (
-        <>
-          {currentTask?.description.length > 20 && (
-            <button onClick={handleShowModal}>👁️</button>
-          )}
-          {showModal && (
-            <UpdateTask
-              task={currentTask}
-              taskId={taskId}
-              handleCloseModal={handleCloseModal}
-              loadTasks={loadTasks}
-            />
-          )}
-        </>
-      )}
-    </div>
+        {isAuthenticated() && (
+          <>
+            {currentTask?.description.length > 20 && (
+              <Button variant="light" onClick={handleShowModal}>👁️</Button>
+            )}
+            {showModal && (
+              <UpdateTask
+                task={currentTask}
+                taskId={taskId}
+                handleCloseModal={handleCloseModal}
+                loadTasks={loadTasks}
+              />
+            )}
+          </>
+        )}
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -1,3 +1,4 @@
+// frontend/src/components/kanban/KanbanColumn.js
 import React, { useState, useEffect } from 'react';
 import { createTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
 import DraggableCard from './DraggableCard';
