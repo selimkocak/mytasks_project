@@ -1,3 +1,4 @@
+// frontend/src/components/kanban/DraggableCard.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
@@ -58,7 +59,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-      <TaskItem task={currentTask} />
+      <TaskItem task={currentTask} taskId={currentTask.id} loadTasks={loadTasks} />
       <DeleteTask id={currentTask.id} loadTasks={loadTasks} />
       <button onClick={handleUpdateTask}>✏️</button>
       {isEditing && (

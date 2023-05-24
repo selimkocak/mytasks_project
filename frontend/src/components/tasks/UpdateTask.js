@@ -1,5 +1,6 @@
-// frontend\src\components\tasks\UpdateTask.js
+// frontend/src/components/tasks/UpdateTask.js
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { updateTask, getKanbanStages, getUserList, getLoggedInUserEmail } from '../../services/api';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -9,10 +10,11 @@ const UpdateTask = ({ task, taskId, handleCloseModal, loadTasks }) => {
   const [taskName, setTaskName] = useState(task.title);
   const [taskDescription, setTaskDescription] = useState(task.description);
   const [taskStage, setTaskStage] = useState(task.stage);
-  const [taskAssignee] = useState(task.assignee);
+  const [taskAssignee, setTaskAssignee] = useState(task.assignee);
   const [stages, setStages] = useState([]);
   const [, setUsers] = useState([]);
   const [loggedInUserEmail, setLoggedInUserEmail] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loadStagesAndUsers = async () => {
@@ -35,16 +37,20 @@ const UpdateTask = ({ task, taskId, handleCloseModal, loadTasks }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await updateTask(taskId, {
+      const updatedTask = {
+        id: taskId,
         title: taskName,
         description: taskDescription,
         stage: taskStage,
         assignee: taskAssignee,
-      });
-      if (response.status === 200) {
-        handleCloseModal();
-        await loadTasks(taskId);
-      }
+      };
+  
+      await updateTask(taskId, updatedTask); // Güncelleme işlemini gerçekleştiren API fonksiyonuna göre uyarlayın
+  
+      dispatch(updateTask(updatedTask)); // Redux store'u güncellemek için dispatch kullanın
+  
+      handleCloseModal();
+      await loadTasks(taskId);
     } catch (error) {
       console.error('Error updating task: ', error);
     }
@@ -93,9 +99,8 @@ const UpdateTask = ({ task, taskId, handleCloseModal, loadTasks }) => {
             <Form.Label>Assignee</Form.Label>
             <Form.Control
               type="email"
-              defaultValue={loggedInUserEmail}
               value={loggedInUserEmail}
-              onChange={(e) => setLoggedInUserEmail(e.target.value)}
+              onChange={(e) => setTaskAssignee(e.target.value)}
             />
           </Form.Group>
 

@@ -2,25 +2,27 @@
 import React, { useState } from 'react';
 import './TaskItem.css';
 import UpdateTask from './UpdateTask';
-import { isAuthenticated } from '../../utils/auth'; // isAuthenticated fonksiyonunu import ediyoruz
+import { isAuthenticated } from '../../utils/auth';
+import { useSelector } from 'react-redux';
 
 const TaskItem = ({ task, taskId, loadTasks }) => {
   const [showModal, setShowModal] = useState(false);
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const updatedTask = tasks.find((t) => t.id === taskId);
 
   const handleShowModal = async () => {
-    if (isAuthenticated()) { // Oturumun açık olduğunu kontrol ediyoruz
+    if (isAuthenticated()) {
       setShowModal(true);
       await loadTasks(taskId);
     } else {
-      console.log('Lütfen giriş yapın');
+      console.log('Please login');
     }
   };
 
   const handleCloseModal = async () => {
     setShowModal(false);
-    await loadTasks(taskId); 
+    await loadTasks(taskId);
   };
-  
 
   const getDescriptionPreview = (description) => {
     if (description.length > 115) {
@@ -35,22 +37,21 @@ const TaskItem = ({ task, taskId, loadTasks }) => {
       <p>{getDescriptionPreview(task.description)}</p>
       <p>Aşama: {task.stage}</p>
       <p>Atanan Kişi: {task.assignee}</p>
-      {isAuthenticated() && ( // Oturumun açık olduğunu kontrol ediyoruz
+      {isAuthenticated() && (
         <>
-
+          {task.description.length > 20 && (
+            <button onClick={handleShowModal}>👁️</button>
+          )}
+          {showModal && (
+            <UpdateTask
+              task={updatedTask}
+              taskId={taskId}
+              handleCloseModal={handleCloseModal}
+              loadTasks={loadTasks}
+            />
+          )}
         </>
       )}
-      {task.description.length > 20 && (
-        <button onClick={handleShowModal}>👁️</button>
-      )}
-      {showModal && (
-  <UpdateTask
-    task={task}
-    handleCloseModal={handleCloseModal}
-    loadTasks={loadTasks}
-  />
-)}
-
     </div>
   );
 };

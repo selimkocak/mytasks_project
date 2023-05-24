@@ -1,7 +1,10 @@
 // frontend/src/store.js
-import { createStore } from 'redux';
-import rootReducer from './reducers';
+import { combineReducers } from 'redux';
+import taskReducer from './reducers/taskReducer';
 
-const store = createStore(rootReducer);
+const rootReducer = combineReducers({
+  tasks: taskReducer,
+});
 
-export default store;
+export default rootReducer;
+
