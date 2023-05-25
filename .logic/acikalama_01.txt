@@ -1,0 +1,79 @@
+Yukarıdaki kodlar, kartlara animasyon ekleyerek hareketli ve canlı bir hissiyat oluşturur. Aşağıda yapılan değişiklikleri açıklamalarla birlikte görebilirsiniz:
+
+**frontend/src/components/kanban/DraggableCard.js**
+- `DraggableCard` bileşenine `react-dnd` bağımlılığı eklendi.
+- `handleDragStart`, `handleDragOver` ve `handleDrop` fonksiyonları, sürükle ve bırak işlemlerini gerçekleştirmek için kullanıldı.
+- Kartın sürüklenebilir olduğunu belirtmek için `draggable` özelliği eklendi.
+- Kartın `card` sınıfına sahip olmasını sağlayan `className` özelliği eklendi.
+
+**frontend/src/components/kanban/DraggableCard.css**
+- Kartın sürüklenebilir özelliğini vurgulamak için bazı stil düzenlemeleri yapıldı.
+
+**frontend/src/components/kanban/DropZone.js**
+- `DropZone` bileşenine `react-dnd` bağımlılığı eklendi.
+- `handleDrop` ve `handleDragOver` fonksiyonları, kartların sürüklenip bırakılması işlemini gerçekleştirmek için kullanıldı.
+- Kartların sıralanması için `sortTasksByCreateDate` fonksiyonu kullanıldı.
+- Bileşenin içindeki `div` elementine `card` sınıfı ve geçerli bir kartın üzerine sürüklendiğinde değişiklikleri vurgulamak için `bg-primary` veya `bg-danger` sınıfları eklendi.
+
+**frontend/src/components/kanban/DropZone.css**
+- `drop-zone` sınıfı için bazı stil düzenlemeleri yapıldı.
+
+**frontend/src/components/kanban/KanbanBoard.js**
+- `KanbanBoard` bileşenine `react-dnd` bağımlılığı eklendi.
+- `KanbanColumn` bileşenine `moveCard` prop'u eklendi.
+- `handleMoveCard` fonksiyonu, kartların taşınması işlemini gerçekleştirmek için kullanıldı.
+
+**frontend/src/components/kanban/KanbanBoard.css**
+- Bazı stil düzenlemeleri yapıldı.
+
+**frontend/src/components/kanban/KanbanDragDrop.js**
+- `KanbanDragDrop` bileşeni oluşturuldu.
+- `Card` bileşeni, sürüklenebilir kartları temsil etmek için kullanıldı.
+- `ItemTypes` nesnesi, sürüklenebilir öğe türlerini belirtmek için kullanıldı.
+
+**frontend/src/components/kanban/KanbanColumn.js**
+- `KanbanColumn` bileşenine `react-dnd` bağımlılığı eklendi.
+- `moveCard` prop'u, kartların taşınması işlemini gerçekleştirmek için kullanıldı.
+- `handleDrop` ve `handleDragOver` fonksiyonları, kartların sürüklenip bırakılması işlemini gerç
+
+ekleştirmek için kullanıldı.
+- Kartların sıralanması için `sortTasksByCreateDate` fonksiyonu kullanıldı.
+- Kartların taşınmasını engellemek için `canMoveTo` fonksiyonu oluşturuldu.
+
+**frontend/src/components/kanban/KanbanColumn.css**
+- Bazı stil düzenlemeleri yapıldı.
+
+**frontend/src/components/kanban/ListKanbans.js**
+- `ListKanbans` bileşeni oluşturuldu.
+- Kanban panolarını listelemek için `kanbans` state'i ve API'den gelen verilerle güncellenir.
+- Her kanban kartı için `Card` bileşeni kullanıldı.
+
+**frontend/src/components/kanban/ListKanbans.css**
+- Bazı stil düzenlemeleri yapıldı.
+
+**frontend/src/components/tasks/TaskItem.js**
+- Kartlara animasyon eklemek için CSS stil düzenlemeleri yapıldı.
+- `handleShowModal` ve `handleCloseModal` fonksiyonları, kart düzenlemeleri modülünün açılıp kapanması için kullanıldı.
+
+**frontend/src/components/tasks/TaskItem.css**
+- Bazı stil düzenlemeleri yapıldı.
+
+Bunlar, kartların hareketli ve canlı bir hissiyatını sağlamak için yapılan değişikliklerdir. Kodları ilgili dosyalara ekleyerek bu animasyonları uygulayabilirsiniz.
+
+Yukarıdaki kodlar, görsel tasarımı daha canlı hale getirmek için bazı animasyonlar ve stil düzenlemeleri içerir. İşte değişikliklerin özeti:
+
+1. `DraggableCard` bileşeni için CSS dosyası (`DraggableCard.css`) oluşturuldu ve kartların hareketli ve canlı bir hissiyatını sağlamak için tasarım ayarları yapıldı.
+
+2. `DropZone` bileşeni için CSS dosyası (`DropZone.css`) oluşturuldu ve sürükleme bölgesinin tasarımı ayarlandı.
+
+3. `KanbanBoard` bileşeni için CSS dosyası (`KanbanBoard.css`) oluşturuldu ve kanban panolarının tasarımı ayarlandı.
+
+4. `KanbanDragDrop` bileşeni oluşturuldu ve kartların sürüklenip bırakılması için gerekli olan React DnD (Drag and Drop) API kullanıldı.
+
+5. `KanbanColumn` bileşeni için CSS dosyası (`KanbanColumn.css`) oluşturuldu ve kanban sütunlarının tasarımı ayarlandı.
+
+6. `ListKanbans` bileşeni için CSS dosyası (`ListKanbans.css`) oluşturuldu ve kanban panolarının listesinin tasarımı ayarlandı.
+
+7. `TaskItem` bileşeni için CSS dosyası (`TaskItem.css`) oluşturuldu ve görev öğelerinin tasarımı ayarlandı.
+
+Bu değişiklikler, kartların hareketli ve canlı bir görünüm kazanmasını, sürükleme ve bırakma işlemlerini daha etkileyici hale getirmesini ve genel olarak görsel tasarımı geliştirmesini sağlar.

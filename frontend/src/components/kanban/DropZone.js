@@ -3,7 +3,7 @@ import React from 'react';
 import { useDrop } from 'react-dnd';
 
 import TaskItem from '../tasks/TaskItem';
-import { sortTasksByCreateDate } from '../../actions/sortActions'; // sortTasksByCreateDate fonksiyonunu import edin
+import { sortTasksByCreateDate } from '../../actions/sortActions';
 
 const DropZone = ({ id, moveCard, children, canMoveTo, tasks }) => {
   const [{ isOver, canDrop }, drop] = useDrop(() => ({
@@ -18,11 +18,10 @@ const DropZone = ({ id, moveCard, children, canMoveTo, tasks }) => {
 
   const isActive = isOver && canDrop;
 
-  // sortedTasks fonksiyonunu kullanarak görevleri sırala
   const sortedTasks = sortTasksByCreateDate(tasks, 'desc');
 
   return (
-    <div ref={drop} className={`card drop-zone ${isActive ? 'bg-primary' : 'bg-danger'}`}>
+    <div ref={drop} className={`drop-zone ${isActive ? 'active' : ''}`}>
       <div className="card-body">
         {children}
         {isActive && <div className="drop-indicator">Drop here</div>}
@@ -35,4 +34,3 @@ const DropZone = ({ id, moveCard, children, canMoveTo, tasks }) => {
 };
 
 export default DropZone;
-
