@@ -9,7 +9,6 @@ import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
 import { sortTasksByCreateDate } from '../../actions/sortActions';
 
-
 const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => {
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
@@ -81,7 +80,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
   const sortedTasks = sortTasksByCreateDate(tasks, 'desc');
 
   return (
-    <div className="kanban-column" style={{ minHeight: 'calc(100vh - 1rem)' }}>
+    <div className="kanban-column">
       <h2 className="kanban-column-title">{stage?.name}</h2>
       <Button variant="primary" onClick={handleShow}>
         +
@@ -96,7 +95,6 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
             updateTask={updateTask}
             canMoveTo={canMoveTo}
             loadTasks={loadTasks}
-            
           />
         ))}
       </div>

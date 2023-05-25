@@ -6,8 +6,9 @@ YAPAY ZEKA ÇAĞINA Girdik bu doğrultuda daha yaratıcı arayüzler oluşturmal
 Frontend kodlarınızı modern ve görsel olarak daha çekici hale getirmek için bazı değişiklikler yapabilirsiniz. İşte bazı öneriler:
 
 1. Görsel Tasarım:
-   + CSS stillerinizde bazı düzenlemeler yapabilirsiniz. Renkler, arka planlar, yazı tipleri vb. üzerinde oynayarak daha modern bir görünüm elde edebilirsiniz.
-   - Kartların şekil ve boyutlarını değiştirebilirsiniz. Köşeleri yuvarlak veya kenarları daha belirgin olacak şekilde ayarlayabilirsiniz.
+   + CSS stillerinizde bazı düzenlemeler yapabilirsiniz. Renkler, arka planlar, yazı tipleri vb. üzerinde oynayarak daha modern bir 
+   görünüm elde edebilirsiniz.
+   + Kartların şekil ve boyutlarını değiştirebilirsiniz. Köşeleri yuvarlak veya kenarları daha belirgin olacak şekilde ayarlayabilirsiniz.
    - Kartların üzerinde görseller veya ikonlar kullanarak daha çekici bir görünüm elde edebilirsiniz.
    - Animasyonlar ekleyerek kartların hareketli ve canlı bir hissiyatını sağlayabilirsiniz.
 
@@ -22,7 +23,8 @@ Frontend kodlarınızı modern ve görsel olarak daha çekici hale getirmek içi
    - Veri analitiği için yapay zeka kullanarak kullanıcıların davranışlarını analiz edip, daha kişiselleştirilmiş öneriler sunabilirsiniz.
 
 4. Oyunlaştırma:
-   - Kullanıcıları daha fazla etkilemek ve eğlendirmek için oyunlaştırma öğeleri ekleyebilirsiniz. Örneğin, kullanıcıların görevleri tamamladıkça puan kazanabilecekleri veya seviye atlayabilecekleri bir sistem oluşturabilirsiniz.
+   - Kullanıcıları daha fazla etkilemek ve eğlendirmek için oyunlaştırma öğeleri ekleyebilirsiniz. 
+   Örneğin, kullanıcıların görevleri tamamladıkça puan kazanabilecekleri veya seviye atlayabilecekleri bir sistem oluşturabilirsiniz.
    - Kullanıcılara başarıları veya ödüller sunarak motivasyonlarını artırabilirsiniz.
 
 Bu önerileri dikkate alarak, React bileşenlerinizi ve CSS stillerini güncelleyebilirsiniz. Böylece kullanıcıların programı kullanmaktan daha fazla zevk almalarını ve daha modern
@@ -42,12 +44,6 @@ için hangi sayfalara import etmem gerekiyor
 
 Bu bileşenler ve dosyalar, kanban tahtasında görev sıralamasını işlemek ve güncellemek için gerekli olan yapıları içerir. İçinde bulundukları sayfalara import ederek kullanabilirsiniz.
 
-
-mytasks Django Rest-React projesinde frontend/src/store.js dosyasını kullanmak için aşağıdaki sayfalara import etmeniz gerekmektedir:
-frontend/src/components/kanban/DraggableCard.js: Taşınabilir kartların (DraggableCard) oluşturulduğu bileşenlerde kullanılabilir.
-frontend/src/components/kanban/DropZone.js: Bırakma alanlarının (DropZone) oluşturulduğu bileşenlerde kullanılabilir.
-frontend/src/components/kanban/KanbanBoard.js: Kanban tahtasının ana bileşeni olan KanbanBoard bileşeni içinde kullanılabilir.
-frontend/src/components/kanban/KanbanColumn.js: Kanban sütunlarının (KanbanColumn) oluşturulduğu bileşenlerde kullanılabilir.
 
 
 

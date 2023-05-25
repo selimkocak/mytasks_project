@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { getTask } from '../../services/api';
+import { getTask, getUserProfile } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
 import DeleteTask from '../tasks/DeleteTask';
 import UpdateTask from '../tasks/UpdateTask';
 import { sortTasksByCreateDate } from '../../actions/sortActions';
 
-
 const DraggableCard = ({ task, moveCard, loadTasks }) => {
   const [currentTask, setCurrentTask] = useState(null);
+  const [assignee, setAssignee] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -24,6 +24,23 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
 
     fetchTask();
   }, [task.id]);
+
+  useEffect(() => {
+    const fetchAssignee = async () => {
+      if (currentTask && currentTask.assignee) {
+        try {
+          const response = await getUserProfile(currentTask.assignee);
+          if (response.status === 200) {
+            setAssignee(response.data);
+          }
+        } catch (error) {
+          console.error('Error fetching assignee:', error);
+        }
+      }
+    };
+
+    fetchAssignee();
+  }, [currentTask]);
 
   const handleDragStart = (e) => {
     e.dataTransfer.setData('text/plain', task.id);
@@ -47,7 +64,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     setIsEditing(false);
   };
 
-  if (!currentTask) {
+  if (!currentTask || !assignee) {
     return <div>Loading...</div>;
   }
 
@@ -65,9 +82,12 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       <TaskItem task={sortedTasks[0]} taskId={task.id} loadTasks={loadTasks} />
       <div className="card-footer">
         <DeleteTask id={task.id} loadTasks={loadTasks} />
-        <button className="btn btn-primary" onClick={handleUpdateTask}>
-          Edit
-        </button>
+        <div className="card-footer-info">
+          <div className="assignee-name">{assignee.first_name}</div>
+          <button className="btn btn-primary" onClick={handleUpdateTask}>
+            Edit
+          </button>
+        </div>
       </div>
       {isEditing && (
         <UpdateTask

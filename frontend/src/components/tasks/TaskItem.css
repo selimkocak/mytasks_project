@@ -1,10 +1,10 @@
-/* frontend/src/components/tasks/TaskItem.css */ 
+/* frontend/src/components/tasks/TaskItem.css */
 .task-item {
   border: 5px solid #0A4D68;
   padding: 10px;
   margin-bottom: 5px;
   margin-top: 5px;
- 
+  border-radius: 10px;
 }
 
 .task-item-icons {
@@ -26,7 +26,6 @@
   padding: 3px;
   border-radius: 50%;
   font-size: 10px;
-  
 }
 
 .task-item-icons button {

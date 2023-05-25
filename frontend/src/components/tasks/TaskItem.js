@@ -1,4 +1,4 @@
-// frontend\src\components\tasks\TaskItem.js
+// frontend/src/components/tasks/TaskItem.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import './TaskItem.css';
@@ -52,18 +52,18 @@ const TaskItem = ({ taskId, loadTasks }) => {
     }
     return description;
   };
-  
 
   return (
     <Card className="task-item">
       <Card.Body>
         <Card.Title>{currentTask?.title}</Card.Title>
         <Card.Text>{getDescriptionPreview(currentTask?.description)}</Card.Text>
-        
-        <Card.Text>Atanan Kişi: {currentTask?.assignee}</Card.Text>
+       
         <div className="task-item-icons">
           <div className="comment-bubble">
-            <Button variant="light" onClick={handleShowModal}>💬</Button>
+            <Button variant="light" onClick={handleShowModal}>
+              💬
+            </Button>
             <div className="comment-counter">
               <CommentCounter taskId={taskId} />
             </div>
@@ -72,7 +72,9 @@ const TaskItem = ({ taskId, loadTasks }) => {
         {isAuthenticated() && (
           <>
             {currentTask?.description.length > 20 && (
-              <Button variant="light" onClick={handleShowModal}>👁️</Button>
+              <Button variant="light" onClick={handleShowModal}>
+                👁️
+              </Button>
             )}
             {showModal && (
               <UpdateTask
