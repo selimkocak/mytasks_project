@@ -1,4 +1,6 @@
 // src/reducers/taskReducer.js
+import { sortTasksByCreateDate } from '../actions/sortActions';
+
 const initialState = {
   tasks: [],
 };
@@ -27,11 +29,16 @@ const taskReducer = (state = initialState, action) => {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.payload),
       };
+    case 'SORT_TASKS':
+      const { sortOrder } = action.payload;
+      const sortedTasks = sortTasksByCreateDate(state.tasks, sortOrder);
+      return {
+        ...state,
+        tasks: sortedTasks,
+      };
     default:
       return state;
   }
 };
 
 export default taskReducer;
-
-

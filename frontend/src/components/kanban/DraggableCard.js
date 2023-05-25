@@ -1,9 +1,10 @@
-// frontend/src/components/kanban/DraggableCard.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
 import DeleteTask from '../tasks/DeleteTask';
 import UpdateTask from '../tasks/UpdateTask';
+import { sortTasksByCreateDate } from '../../actions/sortActions';
+
 
 const DraggableCard = ({ task, moveCard, loadTasks }) => {
   const [currentTask, setCurrentTask] = useState(null);
@@ -50,6 +51,9 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     return <div>Loading...</div>;
   }
 
+  // sortedTasks fonksiyonunu kullanarak görevleri sırala
+  const sortedTasks = sortTasksByCreateDate([currentTask]);
+
   return (
     <div
       className="card draggable-card"
@@ -58,7 +62,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-      <TaskItem task={currentTask} taskId={task.id} loadTasks={loadTasks} />
+      <TaskItem task={sortedTasks[0]} taskId={task.id} loadTasks={loadTasks} />
       <div className="card-footer">
         <DeleteTask id={task.id} loadTasks={loadTasks} />
         <button className="btn btn-primary" onClick={handleUpdateTask}>
@@ -67,7 +71,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       </div>
       {isEditing && (
         <UpdateTask
-          task={currentTask}
+          task={sortedTasks[0]}
           taskId={currentTask.id}
           handleCloseModal={handleCloseUpdateTask}
           loadTasks={loadTasks}

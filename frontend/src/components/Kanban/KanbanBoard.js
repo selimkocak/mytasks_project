@@ -1,3 +1,4 @@
+// frontend/src/components/kanban/KanbanBoard.js
 import React, { useState, useEffect } from 'react';
 import { getTasks, getKanbanStages, moveCard, createTask, deleteTask, updateTask } from '../../services/api';
 import KanbanColumn from './KanbanColumn';
@@ -19,7 +20,7 @@ const KanbanBoard = () => {
         setTasks(tasksResponse.data);
         setStages(sortedStages);
       } catch (error) {
-        console.error('Görevler ve aşamalar alınırken hata oluştu:', error);
+        console.error('Error fetching tasks and stages:', error);
       }
     };
 
@@ -39,10 +40,10 @@ const KanbanBoard = () => {
     setMovingCard(true);
     try {
       await moveCard(cardId, stageId);
-      console.log('Kart başarıyla taşındı');
+      console.log('Card moved successfully');
       await loadTasks();
     } catch (error) {
-      console.error('Kart taşınırken hata oluştu:', error);
+      console.error('Error moving card:', error);
     } finally {
       setMovingCard(false);
     }
@@ -99,7 +100,7 @@ const KanbanBoard = () => {
               <KanbanColumn
                 key={stage.id}
                 stage={stage}
-                tasks={tasks ? tasks.filter((task) => task.stage === stage.id) : []}
+                tasks={tasks.filter((task) => task.stage === stage.id)}
                 moveCard={handleMoveCard}
                 createTask={handleCreateTask}
                 deleteTask={handleDeleteTask}
