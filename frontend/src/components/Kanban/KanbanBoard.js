@@ -1,4 +1,3 @@
-// frontend/src/components/kanban/KanbanBoard.js
 import React, { useState, useEffect } from 'react';
 import { getTasks, getKanbanStages, moveCard, createTask, deleteTask, updateTask } from '../../services/api';
 import KanbanColumn from './KanbanColumn';
@@ -54,7 +53,7 @@ const KanbanBoard = () => {
       const response = await createTask({
         stage: stageId,
         title: title,
-        description: '', 
+        description: '',
         assignee: '', // Atanan kişiyi belirtin
       });
       console.log('Görev başarıyla oluşturuldu:', response.data);
@@ -91,11 +90,11 @@ const KanbanBoard = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-lg-4">
           <ListKanbans />
         </div>
-        <div className="col-lg-16">
-          <div className="d-flex flex-wrap">
+        <div className="col-lg-20">
+          <div className="d-flex flex-wrap justify-content-start">
             {stages.map((stage) => (
               <KanbanColumn
                 key={stage.id}
@@ -106,7 +105,7 @@ const KanbanBoard = () => {
                 deleteTask={handleDeleteTask}
                 updateTask={handleUpdateTask}
                 canMoveTo={canMoveTo}
-                loadTasks={loadTasks} 
+                loadTasks={loadTasks}
               />
             ))}
           </div>

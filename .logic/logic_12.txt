@@ -1,0 +1,28 @@
+kanban tahtasında görev kartlarının görenünümü biraz daha modern ve marginal yapmak istiyorum 
+insanların bu programı kullanmaktan zevk almalarını programın biraz oyun havasında görsellere 
+sahip olmasını istiyorum bunu için her türlü yenilikci fikre açığım modern zamanlardan artık 
+YAPAY ZEKA ÇAĞINA Girdik bu doğrultuda daha yaratıcı arayüzler oluşturmalıyız
+
+Frontend kodlarınızı modern ve görsel olarak daha çekici hale getirmek için bazı değişiklikler yapabilirsiniz. İşte bazı öneriler:
+
+1. Görsel Tasarım:
+   + CSS stillerinizde bazı düzenlemeler yapabilirsiniz. Renkler, arka planlar, yazı tipleri vb. üzerinde oynayarak daha modern bir görünüm elde edebilirsiniz.
+   - Kartların şekil ve boyutlarını değiştirebilirsiniz. Köşeleri yuvarlak veya kenarları daha belirgin olacak şekilde ayarlayabilirsiniz.
+   - Kartların üzerinde görseller veya ikonlar kullanarak daha çekici bir görünüm elde edebilirsiniz.
+   - Animasyonlar ekleyerek kartların hareketli ve canlı bir hissiyatını sağlayabilirsiniz.
+
+2. Kullanıcı Arayüzü:
+   - Kullanıcıların işlem yapmasını kolaylaştırmak için arayüzde bazı iyileştirmeler yapabilirsiniz. Örneğin, daha net ve anlaşılır butonlar, simgeler veya açılır menüler ekleyebilirsiniz.
+   - Kartların üzerine gelindiğinde veya üzerine tıklanıldığında daha fazla bilgi veya işlemler için açılır paneller veya modallar kullanabilirsiniz.
+   - Kartları sürükleyip bırakma (drag-and-drop) işlemini daha kullanıcı dostu hale getirebilirsiniz. Görsel ipuçları, düşük opaklık veya animasyonlar kullanarak kullanıcıların sürükleme işlemini daha rahat gerçekleştirmesini sağlayabilirsiniz.
+
+3. Yapay Zeka Entegrasyonu:
+   - Yapay zeka özelliklerini projenize ekleyebilirsiniz. Örneğin, yapay zeka destekli bir arama veya öneri sistemi ekleyerek kullanıcılara daha akıllı ve hızlı bir deneyim sunabilirsiniz.
+   - Yapay zeka tabanlı bir chatbot entegrasyonuyla kullanıcıların sorularını yanıtlayabilir veya destek sağlayabilirsiniz.
+   - Veri analitiği için yapay zeka kullanarak kullanıcıların davranışlarını analiz edip, daha kişiselleştirilmiş öneriler sunabilirsiniz.
+
+4. Oyunlaştırma:
+   - Kullanıcıları daha fazla etkilemek ve eğlendirmek için oyunlaştırma öğeleri ekleyebilirsiniz. Örneğin, kullanıcıların görevleri tamamladıkça puan kazanabilecekleri veya seviye atlayabilecekleri bir sistem oluşturabilirsiniz.
+   - Kullanıcılara başarıları veya ödüller sunarak motivasyonlarını artırabilirsiniz.
+
+Bu önerileri dikkate alarak, React bileşenlerinizi ve CSS stillerini güncelleyebilirsiniz. Böylece kullanıcıların programı kullanmaktan daha fazla zevk almalarını ve daha modern

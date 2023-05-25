@@ -5,9 +5,10 @@
     margin-bottom: 10px;
     border-radius: 4px;
     cursor: move;
+    margin-left: 0;
   }
   
   .draggable-card button {
-    margin-left: 10px;
+    margin-left: 0;
   }
   

@@ -45,18 +45,21 @@ const TaskItem = ({ taskId, loadTasks }) => {
   };
 
   const getDescriptionPreview = (description) => {
-    if (description && description.length > 115) {
-      return description.substring(0, 112) + '...';
+    if (description && description.length > 55) {
+      return description.substring(0, 52) + '...';
+    } else if (!description) {
+      return ' ';
     }
     return description;
   };
+  
 
   return (
     <Card className="task-item">
       <Card.Body>
         <Card.Title>{currentTask?.title}</Card.Title>
         <Card.Text>{getDescriptionPreview(currentTask?.description)}</Card.Text>
-        <Card.Text>Aşama: {currentTask?.stage}</Card.Text>
+        
         <Card.Text>Atanan Kişi: {currentTask?.assignee}</Card.Text>
         <div className="task-item-icons">
           <div className="comment-bubble">

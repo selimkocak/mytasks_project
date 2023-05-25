@@ -1,4 +1,3 @@
-/* frontend/src/components/kanban/ListKanbans.css */
 .kanban-list {
   margin-top: 20px;
 }
@@ -9,7 +8,7 @@
   margin-bottom: 10px;
 }
 
-.kanban-card h3 {
+.kanban-card h2 {
   font-size: 18px;
   margin-bottom: 5px;
 }
@@ -23,6 +22,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-
-

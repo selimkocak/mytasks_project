@@ -76,7 +76,7 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
   };
 
   return (
-    <div className="kanban-column">
+    <div className="kanban-column" style={{ minHeight: 'calc(100vh - 1rem)' }}>
       <h2 className="kanban-column-title">{stage?.name}</h2>
       <Button variant="primary" onClick={handleShow}>
         +

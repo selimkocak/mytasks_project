@@ -1,6 +1,38 @@
+/* frontend/src/components/tasks/TaskItem.css */ 
 .task-item {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
+  border: 10px solid #0A4D68;
+  padding: 0px;
+  margin-bottom: 5px;
+  margin-top: -5px;
+ 
+}
+
+.task-item-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.comment-bubble {
+  position: relative;
+}
+
+.comment-counter {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #088395;
+  color: #fff;
+  padding: 3px;
+  border-radius: 50%;
+  font-size: 10px;
   
+}
+
+.task-item-icons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #088395;
+}
