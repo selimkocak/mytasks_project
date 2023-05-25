@@ -58,35 +58,32 @@ const TaskItem = ({ taskId, loadTasks }) => {
       <Card.Body>
         <Card.Title>{currentTask?.title}</Card.Title>
         <Card.Text>{getDescriptionPreview(currentTask?.description)}</Card.Text>
-       
         <div className="task-item-icons">
-          <div className="comment-bubble">
-            <Button variant="light" onClick={handleShowModal}>
-              💬
-            </Button>
-            <div className="comment-counter">
-              <CommentCounter taskId={taskId} />
-            </div>
+          <Button variant="light" onClick={handleShowModal}>
+            💬
+          </Button>
+          <div className="comment-counter">
+            <CommentCounter taskId={taskId} />
           </div>
+          {isAuthenticated() && (
+            <>
+              {currentTask?.description.length > 20 && (
+                <Button variant="light" onClick={handleShowModal}>
+                  👁️
+                </Button>
+              )}
+            </>
+          )}
         </div>
-        {isAuthenticated() && (
-          <>
-            {currentTask?.description.length > 20 && (
-              <Button variant="light" onClick={handleShowModal}>
-                👁️
-              </Button>
-            )}
-            {showModal && (
-              <UpdateTask
-                task={currentTask}
-                taskId={taskId}
-                handleCloseModal={handleCloseModal}
-                loadTasks={loadTasks}
-              />
-            )}
-          </>
-        )}
       </Card.Body>
+      {showModal && (
+        <UpdateTask
+          task={currentTask}
+          taskId={taskId}
+          handleCloseModal={handleCloseModal}
+          loadTasks={loadTasks}
+        />
+      )}
     </Card>
   );
 };

@@ -9,7 +9,7 @@ Frontend kodlarınızı modern ve görsel olarak daha çekici hale getirmek içi
    + CSS stillerinizde bazı düzenlemeler yapabilirsiniz. Renkler, arka planlar, yazı tipleri vb. üzerinde oynayarak daha modern bir 
    görünüm elde edebilirsiniz.
    + Kartların şekil ve boyutlarını değiştirebilirsiniz. Köşeleri yuvarlak veya kenarları daha belirgin olacak şekilde ayarlayabilirsiniz.
-   - Kartların üzerinde görseller veya ikonlar kullanarak daha çekici bir görünüm elde edebilirsiniz.
+   + Kartların üzerinde görseller veya ikonlar kullanarak daha çekici bir görünüm elde edebilirsiniz.
    - Animasyonlar ekleyerek kartların hareketli ve canlı bir hissiyatını sağlayabilirsiniz.
 
 2. Kullanıcı Arayüzü:
