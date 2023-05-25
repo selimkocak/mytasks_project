@@ -50,11 +50,14 @@ const UpdateTask = ({ task, taskId, handleCloseModal, loadTasks }) => {
       dispatch(updateTask(updatedTask)); // Redux store'u güncellemek için dispatch kullanın
   
       handleCloseModal();
+      
       await loadTasks(taskId);
     } catch (error) {
       console.error('Error updating task: ', error);
     }
   };
+
+  
 
   return (
     <Modal show={true} onHide={handleCloseModal}>

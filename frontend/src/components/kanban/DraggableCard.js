@@ -60,10 +60,13 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
 
   const handleUpdateTask = async () => {
     setIsEditing(true);
+   
   };
+  
 
   const handleCloseUpdateTask = () => {
     setIsEditing(false);
+    
   };
 
   if (!currentTask || !assignee) {
@@ -81,7 +84,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-      <TaskItem task={sortedTasks[0]} taskId={task.id} loadTasks={loadTasks} />
+      <TaskItem task={sortedTasks[0]} taskId={task.id}  />
       <div className="card-footer">
         <div className="card-footer-info">
           <div className="assignee-name">{assignee.first_name}</div>
@@ -98,7 +101,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
           task={sortedTasks[0]}
           taskId={currentTask.id}
           handleCloseModal={handleCloseUpdateTask}
-          loadTasks={loadTasks}
+        
         />
       )}
     </div>

@@ -10,7 +10,7 @@ Frontend kodlarınızı modern ve görsel olarak daha çekici hale getirmek içi
    görünüm elde edebilirsiniz.
    + Kartların şekil ve boyutlarını değiştirebilirsiniz. Köşeleri yuvarlak veya kenarları daha belirgin olacak şekilde ayarlayabilirsiniz.
    + Kartların üzerinde görseller veya ikonlar kullanarak daha çekici bir görünüm elde edebilirsiniz.
-   - Animasyonlar ekleyerek kartların hareketli ve canlı bir hissiyatını sağlayabilirsiniz.
+   + Animasyonlar ekleyerek kartların hareketli ve canlı bir hissiyatını sağlayabilirsiniz.
 
 2. Kullanıcı Arayüzü:
    - Kullanıcıların işlem yapmasını kolaylaştırmak için arayüzde bazı iyileştirmeler yapabilirsiniz. Örneğin, daha net ve anlaşılır butonlar, simgeler veya açılır menüler ekleyebilirsiniz.
@@ -47,7 +47,21 @@ Bu bileşenler ve dosyalar, kanban tahtasında görev sıralamasını işlemek v
 
 
 
+Görev kartını güncellediğinizde sadece o görev kartının verilerinin güncellenmesini sağlamak için bazı değişiklikler yapmanız gerekiyor. İşte güncellenmiş bileşenler ve açıklamaları:
 
+**UpdateTask.js**:
+- İçerisinde bulunan `handleSubmit` fonksiyonunda, güncellenen görevi `updatedTask` olarak tanımlayın.
+- `updateTask` fonksiyonunu, güncelleme işlemini gerçekleştiren API fonksiyonuna uyarlayın. API fonksiyonunuzun nasıl kullanıldığına bağlı olarak bu kısmı düzenlemelisiniz.
+- Görevi güncelledikten sonra Redux store'unu güncellemek için `dispatch(updateTask(updatedTask))` kullanın. Bu işlem, sadece güncellenen görevin verilerinin güncellenmesini sağlar.
+- `loadTasks` fonksiyonunu çağırarak görevleri yeniden yükleyin.
+
+**DraggableCard.js**:
+- `handleCloseUpdateTask` fonksiyonunu, görev kartının düzenleme modalını kapatmak için kullanın.
+
+**KanbanColumn.js**:
+- `handleUpdateTask` fonksiyonunda, güncellenen görevi `sortedTasks[0]` olarak tanımlayın. Bu, yalnızca güncellenen görevin verilerini almanızı sağlar.
+
+Bu değişikliklerle, görev kartını güncellediğinizde sadece o görev kartının verileri güncellenecektir.
 
 
 
