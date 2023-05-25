@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
+import { sortTasksByCreateDate } from '../../actions/sortActions'; // Ekledim
 
 const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => {
   const [taskName, setTaskName] = useState('');
@@ -76,24 +77,24 @@ const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask
   };
 
   return (
-    <div className="kanban-column" style={{ minHeight: 'calc(100vh - 1rem)' }}>
-      <h2 className="kanban-column-title">{stage?.name}</h2>
-      <Button variant="primary" onClick={handleShow}>
-        +
-      </Button>
-      <div className="card-container" onDrop={handleDrop} onDragOver={handleDragOver}>
-        {tasks.map((task) => (
-          <DraggableCard
-            key={task.id}
-            task={task}
-            moveCard={moveCard}
-            deleteTask={deleteTask}
-            updateTask={updateTask}
-            canMoveTo={canMoveTo}
-            loadTasks={loadTasks}
-          />
-        ))}
-      </div>
+     <div className="kanban-column" style={{ minHeight: 'calc(100vh - 1rem)' }}>
+        <h2 className="kanban-column-title">{stage?.name}</h2>
+        <Button variant="primary" onClick={handleShow}>
+          +
+        </Button>
+        <div className="card-container" onDrop={handleDrop} onDragOver={handleDragOver}>
+          {sortTasksByCreateDate(tasks).map((task) => (
+            <DraggableCard
+              key={task.id}
+              task={task}
+              moveCard={moveCard}
+              deleteTask={deleteTask}
+              updateTask={updateTask}
+              canMoveTo={canMoveTo}
+              loadTasks={loadTasks}
+            />
+          ))}
+        </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

@@ -26,3 +26,40 @@ Frontend kodlarınızı modern ve görsel olarak daha çekici hale getirmek içi
    - Kullanıcılara başarıları veya ödüller sunarak motivasyonlarını artırabilirsiniz.
 
 Bu önerileri dikkate alarak, React bileşenlerinizi ve CSS stillerini güncelleyebilirsiniz. Böylece kullanıcıların programı kullanmaktan daha fazla zevk almalarını ve daha modern
+
+
+frontend\src\actions\sortActions.js kodlarımı kanban tahtasında doğru görev sıralaması 
+için hangi sayfalara import etmem gerekiyor
+
+`frontend\src\actions\sortActions.js` dosyasını doğru görev sıralaması için aşağıdaki sayfalara import etmeniz gerekebilir:
+
+- `frontend\src\components\kanban\KanbanBoard.js`: Görevlerin bulunduğu kanban tahtasını yöneten bileşen.
+- `frontend\src\components\kanban\KanbanColumn.js`: Kanban tahtasında bir sütunu temsil eden bileşen.
+- `frontend\src\components\kanban\DraggableCard.js`: Sürüklenebilir kart bileşeni.
+- `frontend\src\components\kanban\DropZone.js`: Sürüklenen kartın bırakılabileceği bölge bileşeni.
+- `frontend\src\reducers\taskReducer.js`: Görevlerin durumunu yöneten indirgeyici (reducer).
+- `frontend\src\store.js`: Redux store konfigürasyonunu içeren dosya.
+
+Bu bileşenler ve dosyalar, kanban tahtasında görev sıralamasını işlemek ve güncellemek için gerekli olan yapıları içerir. İçinde bulundukları sayfalara import ederek kullanabilirsiniz.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
