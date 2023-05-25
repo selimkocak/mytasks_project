@@ -25,7 +25,7 @@ function ListKanbans() {
 
   return (
     <div className="kanban-list">
-      <h2>stage</h2>
+      
       {kanbans.map((kanban) => (
         <Card key={kanban.id} className="kanban-card">
           <Card.Body>

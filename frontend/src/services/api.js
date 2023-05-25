@@ -236,6 +236,7 @@ export const updateTask = async (id, data) => {
   }
 };
 
+
 export const deleteTask = async (id) => {
   try {
     await service.delete(`tasks/${id}/`);

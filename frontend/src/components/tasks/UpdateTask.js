@@ -45,7 +45,7 @@ const UpdateTask = ({ task, taskId, handleCloseModal, loadTasks }) => {
         assignee: taskAssignee,
       };
   
-      await updateTask(taskId, updatedTask); // Güncelleme işlemini gerçekleştiren API fonksiyonuna göre uyarlayın
+      await updateTask(updatedTask.id, updatedTask); // Güncelleme işlemini gerçekleştiren API fonksiyonuna göre uyarlayın
   
       dispatch(updateTask(updatedTask)); // Redux store'u güncellemek için dispatch kullanın
   
