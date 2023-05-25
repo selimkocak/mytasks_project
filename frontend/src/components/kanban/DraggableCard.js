@@ -4,6 +4,7 @@ import TaskItem from '../tasks/TaskItem';
 import DeleteTask from '../tasks/DeleteTask';
 import UpdateTask from '../tasks/UpdateTask';
 import { sortTasksByCreateDate } from '../../actions/sortActions';
+import './DraggableCard.css';
 
 const DraggableCard = ({ task, moveCard, loadTasks }) => {
   const [currentTask, setCurrentTask] = useState(null);
@@ -81,12 +82,14 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     >
       <TaskItem task={sortedTasks[0]} taskId={task.id} loadTasks={loadTasks} />
       <div className="card-footer">
-        <DeleteTask id={task.id} loadTasks={loadTasks} />
         <div className="card-footer-info">
           <div className="assignee-name">{assignee.first_name}</div>
+        </div>
+        <div className="card-footer-buttons">
           <button className="btn btn-primary" onClick={handleUpdateTask}>
             Edit
           </button>
+          <DeleteTask id={task.id} loadTasks={loadTasks} />
         </div>
       </div>
       {isEditing && (
