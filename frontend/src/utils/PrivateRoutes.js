@@ -8,6 +8,7 @@ import UserProfile from '../components/user/UserProfile';
 import UserSettings from '../components/user/UserSettings';
 import ProjectDetails from '../components/project/ProjectDetails';
 import TasksPage from '../components/tasks/TasksPage';
+import KanbanColumn from '../components/kanban/KanbanColumn';
 import * as Auth from './auth';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -33,7 +34,8 @@ const PrivateRoutes = () => {
   return isAuthenticated ? (
     <Routes>
       <Route path="/" element={<Navigate to="/kanban" />} />
-      <Route path="/kanban/*" element={<TasksPage loadTasks={fetchData} />} />
+      <Route path="/kanban/*" element={<KanbanBoard loadTasks={fetchData} />} />
+      <Route path="/kanban/*" element={<KanbanColumn loadTasks={fetchData} />} />
       <Route
         path="/kanban"
         element={
@@ -42,6 +44,7 @@ const PrivateRoutes = () => {
           </DndProvider>
         }
       />
+      <Route path="/tasks" element={<TasksPage />} />
       <Route path="/notifications" element={<NotificationPanel />} />
       <Route path="/projects/create" element={<CreateProject />} />
       <Route path="/user/profile" element={<UserProfile />} />

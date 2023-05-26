@@ -1,9 +1,9 @@
 // frontend/src/components/kanban/DropZone.js
 import React from 'react';
 import { useDrop } from 'react-dnd';
-
 import TaskItem from '../tasks/TaskItem';
 import { sortTasksByCreateDate } from '../../actions/sortActions';
+import './DropZone.css';
 
 const DropZone = ({ id, moveCard, children, canMoveTo, tasks }) => {
   const [{ isOver, canDrop }, drop] = useDrop(() => ({
@@ -21,7 +21,7 @@ const DropZone = ({ id, moveCard, children, canMoveTo, tasks }) => {
   const sortedTasks = sortTasksByCreateDate(tasks, 'desc');
 
   return (
-    <div  ref={drop} className={`drop-zone ${isActive ? 'active' : ''}`} style={{ height: columnHeight }}>
+    <div ref={drop} className={`drop-zone ${isActive ? 'active' : ''}`}>
       <div className="card-body">
         {children}
         {isActive && <div className="drop-indicator">Drop here</div>}

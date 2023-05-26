@@ -33,7 +33,7 @@ const TaskItem = ({ taskId, loadTasks }) => {
   const handleShowModal = async () => {
     if (isAuthenticated()) {
       setShowModal(true);
-      await loadTasks(taskId);
+      
     } else {
       console.log('Please log in');
     }
@@ -41,7 +41,7 @@ const TaskItem = ({ taskId, loadTasks }) => {
 
   const handleCloseModal = async () => {
     setShowModal(false);
-    await loadTasks(taskId);
+    
   };
 
   const getDescriptionPreview = (description) => {
@@ -59,30 +59,22 @@ const TaskItem = ({ taskId, loadTasks }) => {
         <Card.Title>{currentTask?.title}</Card.Title>
         <Card.Text>{getDescriptionPreview(currentTask?.description)}</Card.Text>
         <div className="task-item-icons">
-          <Button variant="light" onClick={handleShowModal}>
+          <Button variant="light" onClick={handleShowModal} loadTasks={loadTasks}>
             💬
           </Button>
           <div className="comment-counter">
             <CommentCounter taskId={taskId} />
           </div>
-          {isAuthenticated() && (
-            <>
-              {currentTask?.description.length > 20 && (
-                <Button variant="light" onClick={handleShowModal}>
-                  👁️
-                </Button>
-              )}
-            </>
-          )}
+
         </div>
       </Card.Body>
       {showModal && (
         <UpdateTask
-          task={currentTask}
-          taskId={taskId}
-          handleCloseModal={handleCloseModal}
-          loadTasks={loadTasks}
-        />
+        task={currentTask}
+        taskId={taskId}
+        handleCloseModal={handleCloseModal}
+        loadTasks={loadTasks}
+      />
       )}
     </Card>
   );

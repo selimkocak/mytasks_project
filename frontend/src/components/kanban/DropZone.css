@@ -4,20 +4,20 @@
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 0;
-  min-height: 100%; /* Yükseklik ayarını buradan değiştirebilirsiniz */
+  min-height: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .drop-zone.active {
-  background-color: #d71e1e;
+  background-color: #ee3333;
 }
 
 .drop-indicator {
   margin-top: 10px;
   text-align: center;
-  color: white;
+  color: rgb(224, 238, 19);
   font-weight: bold;
 }
 

@@ -236,6 +236,15 @@ export const updateTask = async (id, data) => {
   }
 };
 
+export const loadTasks = async () => {
+  try {
+    const response = await service.get('tasks/');
+    return response.data;
+  } catch (error) {
+    console.error('Error loading tasks:', error);
+    throw error;
+  }
+};
 
 export const deleteTask = async (id) => {
   try {
@@ -246,6 +255,7 @@ export const deleteTask = async (id) => {
     throw error;
   }
 };
+
 
 
 // Notification
@@ -452,6 +462,7 @@ export const apiFunctions = {
   getTasks,
   getTask,
   updateTask,
+  loadTasks, 
   deleteTask,
   createNotification,
   getNotifications,

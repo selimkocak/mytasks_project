@@ -15,29 +15,26 @@ const TasksPage = () => {
   const loadTasks = async () => {
     try {
       const response = await getTasks();
-      if (response.status === 200) {
-        setTasks(response.data);
-      }
+      setTasks(response.data);
     } catch (error) {
-      console.error('Error loading tasks: ', error);
+      console.error('Error getting tasks:', error);
     }
   };
 
   useEffect(() => {
-    loadTasks();
-  }, []);
-
-  if (!isAuthenticated()) {
-    navigate('/login');
-    return null;
-  }
+    if (isAuthenticated()) {
+      loadTasks();
+    } else {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   return (
-    <div className="container">
-      <h1>Tasks</h1>
-      <CreateTask loadTasks={loadTasks} /> 
-      <ListTasks tasks={tasks} loadTasks={loadTasks} /> 
+    <div className="tasks-page">
+      <CreateTask loadTasks={loadTasks} />
+      <ListTasks tasks={tasks} loadTasks={loadTasks} />
     </div>
   );
 };
+
 export default TasksPage;

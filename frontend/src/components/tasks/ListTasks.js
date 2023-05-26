@@ -13,6 +13,8 @@ const ListTasks = ({ loadTasks }) => {
   return (
     <div>
       <h2>Tasks</h2>
+      <ListTasks tasks={tasks} loadTasks={loadTasks} />
+
       {tasks.map((task) => (
         <div key={task.id}>
           <h3>{task.title}</h3>

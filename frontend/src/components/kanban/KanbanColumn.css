@@ -1,34 +1,44 @@
 /* frontend/src/components/kanban/KanbanColumn.css */
 
 .kanban-column {
-  flex: 0 0 auto;
-  margin: 0.5rem;
+  flex: 1 1 0 auto;
+  margin: 0.2rem;
+  margin-left: 0%;
+  margin-top: -20px;
   padding: 0.5rem;
-  width: 270px;
-  min-height: calc(100vh - 1rem);
-  background-color: #088395;
+  width: auto;
+  min-height: 100%;
+  min-width: 20vh;
+  background-color: #31b0cfb3;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .kanban-column-title {
-  margin-bottom: 8px;
+  margin-bottom: 0px;
+  margin-left: 0%;
+  margin-top: -10px;
 }
-
+/* DropZone alanı */
 .card-container {
+  margin-left: 0%;
   display: flex;
   flex-direction: column;
-  background-color: #088395;
+  background-color: #229508;
   padding: 2px;
   border-radius: 8px;
-  min-height: 115px;
+  min-height: 85%;
 }
 
 .draggable-card {
-  background-color: #05BFDB;
-  padding: 8px;
-  margin-bottom: 8px;
-  border-radius: 8px;
+ 
+  background-color: #addb05;
+  padding: 5px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  border-radius: 0px;
   cursor: pointer;
-  width: 250px;
+  width: 100%;
 }
