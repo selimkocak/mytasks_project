@@ -10,6 +10,7 @@ class Task(models.Model):
     stage = models.ForeignKey(KanbanStage, on_delete=models.CASCADE, related_name='tasks')
     assignee = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='tasks_assigned')
     created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='tasks_created')
+    create_date = models.DateTimeField(auto_now_add=True)  # new line
 
     def __str__(self):
         return self.title

@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import { isAuthenticated } from '../../utils/auth';
 import { sortTasksByCreateDate } from '../../actions/sortActions';
 
-const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks }) => {
+const KanbanColumn = ({ stage = {}, tasks = [], moveCard, deleteTask, updateTask, canMoveTo, loadTasks, columnHeight }) => {
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
   const [taskStage, setTaskStage] = useState('');

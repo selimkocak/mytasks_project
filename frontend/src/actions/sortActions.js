@@ -1,16 +1,17 @@
 // frontend/src/actions/sortActions.js
-export const sortTasksByCreateDate = (tasks, sortOrder) => {
+export function sortTasksByCreateDate(tasks, order = 'desc') {
   return tasks.sort((a, b) => {
-    const dateA = new Date(a.createDate);
-    const dateB = new Date(b.createDate);
+    const dateA = new Date(a.create_date);
+    const dateB = new Date(b.create_date);
 
-    if (sortOrder === 'asc') {
-      return dateA - dateB;
-    } else {
+    if (order === 'desc') {
       return dateB - dateA;
+    } else {
+      return dateA - dateB;
     }
   });
-};
+}
+
 
 
 

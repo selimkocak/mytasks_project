@@ -9,6 +9,7 @@ const KanbanBoard = () => {
   const [tasks, setTasks] = useState([]);
   const [stages, setStages] = useState([]);
   const [movingCard, setMovingCard] = useState(false);
+  const [columnHeight, setColumnHeight] = useState('100vh');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,7 +98,9 @@ const KanbanBoard = () => {
         <div className="col-lg-20">
           <div className="d-flex flex-wrap justify-content-start">
             {stages.map((stage) => (
-              <KanbanColumn
+              <KanbanColumn 
+                columnHeight={columnHeight}
+                setColumnHeight={setColumnHeight}
                 key={stage.id}
                 stage={stage}
                 tasks={tasks.filter((task) => task.stage === stage.id)}

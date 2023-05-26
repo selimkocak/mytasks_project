@@ -21,7 +21,7 @@ const DropZone = ({ id, moveCard, children, canMoveTo, tasks }) => {
   const sortedTasks = sortTasksByCreateDate(tasks, 'desc');
 
   return (
-    <div ref={drop} className={`drop-zone ${isActive ? 'active' : ''}`}>
+    <div  ref={drop} className={`drop-zone ${isActive ? 'active' : ''}`} style={{ height: columnHeight }}>
       <div className="card-body">
         {children}
         {isActive && <div className="drop-indicator">Drop here</div>}
