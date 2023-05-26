@@ -5,9 +5,10 @@ import './TaskItem.css';
 import UpdateTask from './UpdateTask';
 import { isAuthenticated } from '../../utils/auth';
 import { useSelector } from 'react-redux';
+import CreateComment from '../comments/CreateComment'; // CreateComment bileşenini içe aktar
+import CommentsList from '../comments/CommentsList'; // CommentsList bileşenini içe aktar
+import { Button, Card } from 'react-bootstrap'; // Button ve Card bileşenlerini içe aktar
 import CommentCounter from '../comments/CommentCounter';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 
 const TaskItem = ({ taskId, loadTasks }) => {
   const [showModal, setShowModal] = useState(false);
@@ -33,7 +34,6 @@ const TaskItem = ({ taskId, loadTasks }) => {
   const handleShowModal = async () => {
     if (isAuthenticated()) {
       setShowModal(true);
-      
     } else {
       console.log('Please log in');
     }
@@ -41,7 +41,6 @@ const TaskItem = ({ taskId, loadTasks }) => {
 
   const handleCloseModal = async () => {
     setShowModal(false);
-    
   };
 
   const getDescriptionPreview = (description) => {
@@ -65,16 +64,14 @@ const TaskItem = ({ taskId, loadTasks }) => {
           <div className="comment-counter">
             <CommentCounter taskId={taskId} />
           </div>
-
         </div>
       </Card.Body>
       {showModal && (
-        <UpdateTask
-        task={currentTask}
-        taskId={taskId}
-        handleCloseModal={handleCloseModal}
-        loadTasks={loadTasks}
-      />
+        <div>
+          <UpdateTask task={currentTask} taskId={taskId} handleCloseModal={handleCloseModal} loadTasks={loadTasks} />
+          <CreateComment taskId={taskId} onCommentCreated={loadTasks} />
+          <CommentsList taskId={taskId} />
+        </div>
       )}
     </Card>
   );

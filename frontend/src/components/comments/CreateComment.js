@@ -37,4 +37,3 @@ const CreateComment = ({ taskId, onCommentCreated }) => {
 };
 
 export default CreateComment;
-

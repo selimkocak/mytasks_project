@@ -1,6 +1,6 @@
 // frontend/src/components/comments/CommentsList.js
 import React, { useEffect, useState } from 'react';
-import { getComments } from '../../services/api';
+import { getCommentsByTask } from '../../services/api';
 import './CommentsList.css'; // CommentsList.css dosyasını içe aktardık
 
 const CommentsList = ({ taskId }) => {
@@ -8,7 +8,7 @@ const CommentsList = ({ taskId }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getComments(taskId);
+      const response = await getCommentsByTask(taskId);
       setComments(response.data);
     };
 
@@ -16,9 +16,9 @@ const CommentsList = ({ taskId }) => {
   }, [taskId]);
 
   return (
-    <div className="comments-list"> {/* className ile stil sınıfını ekledik */}
+    <div className="comments-list">
       {comments.map((comment) => (
-        <div className="comment" key={comment.id}> {/* className ile stil sınıfını ekledik */}
+        <div className="comment" key={comment.id}>
           <p>{comment.text}</p>
         </div>
       ))}
