@@ -13,7 +13,6 @@ import * as Auth from './auth';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
-
 const PrivateRoutes = () => {
   const isAuthenticated = Auth.isAuthenticated();
 
@@ -44,7 +43,7 @@ const PrivateRoutes = () => {
           </DndProvider>
         }
       />
-      <Route path="/tasks" element={<TasksPage />} />
+      <Route path="/tasks" element={<TasksPage loadTasks={fetchData} />} />
       <Route path="/notifications" element={<NotificationPanel />} />
       <Route path="/projects/create" element={<CreateProject />} />
       <Route path="/user/profile" element={<UserProfile />} />

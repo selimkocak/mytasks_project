@@ -1,5 +1,4 @@
 // frontend/src/components/navbar/Navbar.js
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Auth from '../../utils/auth';
@@ -17,7 +16,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+        <Link to="/tasks" className="navbar-logo">
           MyTasks
         </Link>
         <div className="navbar-links">
@@ -25,6 +24,9 @@ const Navbar = () => {
             <>
               <Link to="/kanban" className="navbar-link">
                 Kanban
+              </Link>
+              <Link to="/tasks" className="navbar-link">
+                Görev Listesi
               </Link>
               <Link to="/notifications" className="navbar-link">
                 Notifications
