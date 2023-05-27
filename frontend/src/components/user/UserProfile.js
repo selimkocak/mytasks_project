@@ -53,34 +53,48 @@ function UserProfile() {
       <div className="user-profile-card">
         <h2>User Profile</h2>
         <form onSubmit={handleSubmit}>
-          <label>
-            Email:
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email:
+            </label>
             <input
               type="email"
+              className="form-control"
+              id="email"
               name="email"
               value={userProfile.email}
               onChange={handleChange}
             />
-          </label>
-          <label>
-            First Name:
+          </div>
+          <div className="mb-3">
+            <label htmlFor="firstName" className="form-label">
+              First Name:
+            </label>
             <input
               type="text"
+              className="form-control"
+              id="firstName"
               name="first_name"
               value={userProfile.first_name}
               onChange={handleChange}
             />
-          </label>
-          <label>
-            Last Name:
+          </div>
+          <div className="mb-3">
+            <label htmlFor="lastName" className="form-label">
+              Last Name:
+            </label>
             <input
               type="text"
+              className="form-control"
+              id="lastName"
               name="last_name"
               value={userProfile.last_name}
               onChange={handleChange}
             />
-          </label>
-          <button type="submit">Update Profile</button>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Update Profile
+          </button>
         </form>
       </div>
     </div>

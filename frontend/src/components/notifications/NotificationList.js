@@ -1,7 +1,8 @@
-// frontend/src/components/notifications/NotificationList.js
 import React, { useState, useEffect } from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
+import { Button } from 'react-bootstrap';
 import { getNotifications, deleteNotification } from '../../services/api';
-import './NotificationList.css'; // NotificationList.css dosyasını içe aktardık
+import './NotificationList.css';
 
 function NotificationList() {
   const [notifications, setNotifications] = useState([]);
@@ -15,7 +16,7 @@ function NotificationList() {
       const response = await getNotifications();
       setNotifications(response.data);
     } catch (error) {
-      console.error("Error fetching notifications: ", error);
+      console.error('Error fetching notifications: ', error);
     }
   };
 
@@ -25,20 +26,54 @@ function NotificationList() {
       alert('Notification deleted successfully');
       fetchNotifications();
     } catch (error) {
-      console.error("Error deleting notification: ", error);
+      console.error('Error deleting notification: ', error);
     }
   };
 
+  const columns = [
+    {
+      dataField: 'user',
+      text: 'USER',
+      sort: true,
+    },
+    {
+      dataField: 'title',
+      text: 'TITLE',
+      sort: true,
+    },
+    {
+      dataField: 'created_at',
+      text: 'CREATED AT',
+      sort: true,
+    },
+    {
+      dataField: 'read',
+      text: 'READ',
+      sort: true,
+      formatter: (cell) => (cell ? 'Yes' : 'No'),
+    },
+    {
+      text: 'ACTIONS',
+      formatter: (_, row) => (
+        <Button variant="danger" onClick={() => handleDelete(row.id)}>
+          Delete
+        </Button>
+      ),
+    },
+  ];
+
   return (
-    <div className="notification-list-container"> {/* className ile stil sınıfını ekledik */}
+    <div className="notification-list-container">
       <h2>Notifications</h2>
-      {notifications.map(notification => (
-        <div key={notification.id}>
-          <h3>{notification.title}</h3>
-          <p>{notification.description}</p>
-          <button onClick={() => handleDelete(notification.id)}>Delete</button>
-        </div>
-      ))}
+      <BootstrapTable
+        keyField="id"
+        data={notifications}
+        columns={columns}
+        bootstrap4
+        striped
+        hover
+        condensed
+      />
     </div>
   );
 }

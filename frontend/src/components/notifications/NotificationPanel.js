@@ -1,5 +1,6 @@
 // frontend/src/components/notifications/NotificationPanel.js
 import React, { useState, useEffect } from 'react';
+import { Table } from 'react-bootstrap';
 import { getNotifications } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 
@@ -26,14 +27,30 @@ function NotificationPanel() {
   return (
     <div>
       <h2>Notification Panel</h2>
-      {notifications.map(notification => (
-        <div key={notification.id}>
-          <h3>{notification.title}</h3>
-          <p>{notification.description}</p>
-        </div>
-      ))}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>USER</th>
+            <th>TITLE</th>
+            <th>CREATED AT</th>
+            <th>READ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {notifications.map(notification => (
+            <tr key={notification.id}>
+              <td>{notification.user}</td>
+              <td>{notification.title}</td>
+              <td>{notification.created_at}</td>
+              <td>{notification.read ? 'Yes' : 'No'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 }
 
 export default NotificationPanel;
+
+

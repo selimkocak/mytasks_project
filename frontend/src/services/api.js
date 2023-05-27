@@ -258,21 +258,21 @@ export const deleteTask = async (id) => {
 
 
 
-// Notification
+// Notification frontend\src\services\api.js
 export const createNotification = async (data) => {
-  return service.post("notification/", data);
+  return service.post("notification/notifications/", data);
 };
 
 export const getNotifications = async () => {
-  return service.get("notification/");
+  return service.get("notification/notifications/");
 };
 
 export const updateNotification = async (id, data) => {
-  return service.put(`notification/${id}/`, data);
+  return service.put(`notification/notifications/${id}/`, data);
 };
 
 export const deleteNotification = async (id) => {
-  return service.delete(`notification/${id}/`);
+  return service.delete(`notification/notifications/${id}/`);
 };
 
 // Assignment
