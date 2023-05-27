@@ -6,23 +6,29 @@ import './CreateComment.css';
 
 const CreateComment = ({ taskId, onCommentCreated }) => {
   const [commentText, setCommentText] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Gerekli validasyonları kontrol et
     if (!isRequired(commentText)) {
-      console.log('Comment text is required');
+      setError('Comment text is required');
       return;
     }
 
-    const response = await createComment({
-      taskId,
-      text: commentText,
-    });
+    try {
+      const response = await createComment({
+        taskId,
+        text: commentText,
+      });
 
-    setCommentText('');
-    onCommentCreated(response.data);
+      setCommentText('');
+      setError('');
+      onCommentCreated(response.data);
+    } catch (error) {
+      setError('Error creating comment');
+    }
   };
 
   return (
@@ -32,8 +38,10 @@ const CreateComment = ({ taskId, onCommentCreated }) => {
         onChange={(e) => setCommentText(e.target.value)}
       />
       <button type="submit">Submit</button>
+      {error && <p className="error-message">{error}</p>}
     </form>
   );
 };
+
 
 export default CreateComment;

@@ -1,17 +1,16 @@
 // frontend/src/components/tasks/TaskItem.js
+// frontend/src/components/tasks/TaskItem.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import './TaskItem.css';
-import UpdateTask from './UpdateTask';
 import { isAuthenticated } from '../../utils/auth';
 import { useSelector } from 'react-redux';
-import CreateComment from '../comments/CreateComment'; // CreateComment bileşenini içe aktar
-import CommentsList from '../comments/CommentsList'; // CommentsList bileşenini içe aktar
-import { Button, Card } from 'react-bootstrap'; // Button ve Card bileşenlerini içe aktar
+import CreateComment from '../comments/CreateComment';
+import CommentsList from '../comments/CommentsList';
+import { Button, Card } from 'react-bootstrap';
 import CommentCounter from '../comments/CommentCounter';
 
 const TaskItem = ({ taskId, loadTasks }) => {
-  const [showModal, setShowModal] = useState(false);
   const tasks = useSelector((state) => state.tasks.tasks);
   const updatedTask = tasks.find((t) => t.id === taskId);
   const [currentTask, setCurrentTask] = useState(updatedTask);
@@ -31,18 +30,6 @@ const TaskItem = ({ taskId, loadTasks }) => {
     fetchTask();
   }, [taskId]);
 
-  const handleShowModal = async () => {
-    if (isAuthenticated()) {
-      setShowModal(true);
-    } else {
-      console.log('Please log in');
-    }
-  };
-
-  const handleCloseModal = async () => {
-    setShowModal(false);
-  };
-
   const getDescriptionPreview = (description) => {
     if (description && description.length > 55) {
       return description.substring(0, 52) + '...';
@@ -58,7 +45,7 @@ const TaskItem = ({ taskId, loadTasks }) => {
         <Card.Title>{currentTask?.title}</Card.Title>
         <Card.Text>{getDescriptionPreview(currentTask?.description)}</Card.Text>
         <div className="task-item-icons">
-          <Button variant="light" onClick={handleShowModal} loadTasks={loadTasks}>
+          <Button variant="light" disabled={!isAuthenticated()} onClick={loadTasks}>
             💬
           </Button>
           <div className="comment-counter">
@@ -66,15 +53,11 @@ const TaskItem = ({ taskId, loadTasks }) => {
           </div>
         </div>
       </Card.Body>
-      {showModal && (
-        <div>
-          <UpdateTask task={currentTask} taskId={taskId} handleCloseModal={handleCloseModal} loadTasks={loadTasks} />
-          <CreateComment taskId={taskId} onCommentCreated={loadTasks} />
-          <CommentsList taskId={taskId} />
-        </div>
-      )}
+      <CreateComment taskId={taskId} onCommentCreated={loadTasks} />
+      <CommentsList taskId={taskId} />
     </Card>
   );
 };
 
 export default TaskItem;
+

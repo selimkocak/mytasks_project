@@ -311,7 +311,13 @@ export const deleteRating = async (id) => {
 
 // Comment frontend\src\services\api.js
 export const createComment = async (data) => {
-  return service.post("comment/comments/create/", data);
+  try {
+    const response = await service.post("comment/comments/", data);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating comment:', error);
+    throw error;
+  }
 };
 
 export const getComments = async () => {
