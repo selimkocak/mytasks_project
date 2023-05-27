@@ -20,7 +20,7 @@
   margin-left: 0;
   flex: 1;
   padding: 10px;
-  background-color: #cad31b;
+  background-color: #2e6686;
   border-radius: 4px;
   margin: 10px;
 }
@@ -36,21 +36,21 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
-  background-color: #8fe61f;
+  background-color: #2e6686;
 }
 
 .task {
   margin-left: 0;
   margin: 5px;
   padding: 10px;
-  background-color: #05BFDB;
+  background-color: #2e6686;
   border-radius: 4px;
   cursor: grab;
 }
 
 .task:hover {
   margin-left: 0;
-  background-color: #00FFCA;
+  background-color: #2e6686;
 }
 
 .task:active {

@@ -42,10 +42,10 @@
   
   .update-task form button[type="button"] {
     margin-right: 10px;
-    background-color: #dc3545;
+    background-color: #2e6686;
   }
   
   .update-task form button[type="button"]:hover {
-    background-color: #c82333;
+    background-color: #2e6686;
   }
   

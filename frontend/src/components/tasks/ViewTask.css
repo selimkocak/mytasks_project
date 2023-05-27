@@ -14,7 +14,7 @@
   }
   
   .view-task button {
-    background-color: #dc3545;
+    background-color: #2e6686;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -22,6 +22,6 @@
   }
   
   .view-task button:hover {
-    background-color: #c82333;
+    background-color: #2e6686;
   }
   

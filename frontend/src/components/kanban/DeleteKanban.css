@@ -4,7 +4,7 @@
 }
 
 .delete-kanban button {
-  background-color: #ff6464;
+  background-color: #2e6686;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -13,5 +13,5 @@
 }
 
 .delete-kanban button:hover {
-  background-color: #ff4646;
+  background-color: #2e6686;
 }

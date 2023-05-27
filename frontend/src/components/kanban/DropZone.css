@@ -1,6 +1,6 @@
 /* frontend/src/components/kanban/DropZone.css */
 .drop-zone {
-  background-color: #d71e1e;
+  background-color: #2e6686;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 0px;
@@ -11,13 +11,13 @@
 }
 
 .drop-zone.active {
-  background-color: #ee3333;
+  background-color: #2e6686;
 }
 
 .drop-indicator {
   margin-top: 10px;
   text-align: center;
-  color: rgb(224, 238, 19);
+  color: #2e6686;
   font-weight: bold;
 }
 
