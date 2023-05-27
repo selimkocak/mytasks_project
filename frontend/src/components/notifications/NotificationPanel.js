@@ -30,6 +30,7 @@ function NotificationPanel() {
       <Table striped bordered hover>
         <thead>
           <tr>
+            <th>ID</th>
             <th>USER</th>
             <th>TITLE</th>
             <th>CREATED AT</th>
@@ -39,6 +40,7 @@ function NotificationPanel() {
         <tbody>
           {notifications.map(notification => (
             <tr key={notification.id}>
+              <td>{notification.id}</td>
               <td>{notification.user}</td>
               <td>{notification.title}</td>
               <td>{notification.created_at}</td>
