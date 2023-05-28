@@ -1,0 +1,36 @@
+Bu işlemi tamamlamak için Django REST API'nin yorumları almak ve oluşturmak için kullanılacağı ve 
+React uygulamasının bu verileri kullanarak UI'da bir form göstererek ve görevin yorumlarını listelemek 
+için kullanılacağı iki ana adım vardır.
+
+Öncelikle, mevcut yorumları almak için bir API isteği yapmalıyız. Bu isteği bir React Hook
+(örneğin, `useEffect`) içinde yapabiliriz. Daha sonra yorumları bir liste veya kart şeklinde 
+görüntülemek için bu yorumları duruma almalıyız.
+
+Forma gelince, kullanıcıdan bir yorum girişi almak için bir form oluşturmalıyız. Bu formda e-posta 
+ve görev başlığı otomatik olarak doldurulmalı ve yorum içeriği kullanıcıdan alınmalıdır. Bu formdaki 
+verileri bir post isteği olarak API'ye göndereceğiz.
+
+Yukarıda belirtildiği gibi, bunu yapmanın ayrıntılı adımları aşağıda listelenmiştir.
+
+1. **React Hook kullanarak API'den yorumları alın**
+    - `useEffect` hookunu kullanarak, belirli bir görev için yorumları almak üzere API'ye bir istekte 
+    bulunmalısınız. Bu, yorumların her zaman en son durumda olduğundan emin olmanızı sağlar.
+    - İstek başarılı olduğunda, yorumları duruma yerleştirin ve bunları bir liste veya kart formatında 
+    görüntüleyin.
+
+2. **Yorum yapma formunu oluşturun**
+    - Kullanıcının bir yorum girişi yapabileceği bir form oluşturun. Bu formda, e-posta ve görev başlığı 
+    gibi belirli alanları otomatik olarak doldurmalısınız.
+    - Formu doldurduktan ve gönderdikten sonra, API'ye bir post isteğinde bulunun ve yeni yorumu oluşturun.
+    - Yorum oluşturulduktan sonra, yorumları tekrar almak için `useEffect` hookunu kullanın. Bu, yeni 
+    yorumun hemen görüntüleneceğinden emin olmanızı sağlar.
+
+3. **Gelişmiş durum yönetimini düşünün**
+    - Bu işlevsellik, durum yönetiminin daha karmaşık hale gelebileceği bir yer olabilir. Redux veya 
+    Context API gibi bir durum yönetim çözümü kullanmayı düşünebilirsiniz.
+
+4. **Hata yönetimi**
+    - Her zaman hatayı kontrol etmek önemlidir. API isteklerinde herhangi bir hata olup olmadığını 
+    kontrol edin ve uygun hata mesajlarını gösterin. 
+
+Daha detaylı yardımcı olabilmem için lütfen daha spesifik sorular sormaktan çekinmeyin.
