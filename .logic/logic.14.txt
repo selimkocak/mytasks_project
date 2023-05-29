@@ -1,0 +1,28 @@
+Mantıklı bir yaklaşım için aşağıdaki adımları izleyebilirsiniz:
+
++1. Kullanıcıları ilişkilendirmek için mevcut `CustomUser` modelini kullanın: Kullanıcıları yorumlara ilişkilendirmek için özel bir kullanıcı 
+modeli olan `CustomUser` modelini kullanıyorsunuz. Bu modelde kullanıcıların email adresleri benzersiz bir şekilde tutuluyor. Bu nedenle, 
+yorumlar için kullanıcının email adresine dayalı bir ilişki oluşturmak isterseniz, `CustomUser` modelindeki `email` alanını birincil anahtar 
+(`primary key`) olarak kullanabilirsiniz.
+
++2. Kullanıcının kimliğini doğrulamak için JWT kullanın: Sistemdeki kullanıcıların kimlik doğrulaması için JSON Web Token (JWT) kullanabilirsiniz. 
+Kullanıcılar sisteme giriş yaptıklarında bir JWT üretilir ve her istekte bu JWT sunucuya gönderilir. Bu JWT, kullanıcının kimliğini doğrulamak 
+için kullanılabilir. Bu sayede, kullanıcı her yorum yapmak istediğinde JWT'sini sunucuya göndererek kimlik doğrulaması yapabilirsiniz.
+
++3. Yorumları oluştururken kimlik doğrulamasını kontrol edin: Yorumları oluştururken, kimlik doğrulamasını kontrol etmeniz gerekecektir. 
+Bu kontrolü, her yorum oluşturma isteğini işleyen `createComment` fonksiyonuna ekleyebilirsiniz. Bu fonksiyon, kullanıcının geçerli bir 
+JWT ile kimlik doğrulamasını yapacak ve sadece kimlik doğrulaması geçerli olan kullanıcıların yorum yapmasına izin verecektir. Aksi takdirde, 
+imlik doğrulaması başarısız olursa hata mesajı döndürecektir.
+
++4. Yorumları getirirken kullanıcının kimliğini kullanın: Yorumları getirirken, kullanıcının kimliğini kullanarak sadece ilgili kullanıcının 
+yaptığı yorumları getirebilirsiniz. Bunun için, `CommentViewSet` sınıfındaki `comments_by_task` işlevini güncelleyebilirsiniz. Bu işlevde, 
+kullanıcının kimliğini kullanarak yalnızca ilgili kullanıcının yaptığı yorumları filtreleyebilirsiniz.
+
+Bu yaklaşımı uygulamak için gerekli kod değişikliklerini yapmanız gerekmektedir. İhtiyaçlarınıza ve mevcut kod yapılarına bağlı olarak, 
+bu adımları takip edebilir ve gerekli değişiklikleri yapabilirsiniz. Örneğin, JWT için Django REST framework ve React uygulaması için uygun
+ kütüphaneleri kullanabilirsiniz. Ayrıca, kullanıcı kimlik doğrulaması ve yorum oluşturma işlemlerini doğru şekilde işleyen uygun API endpoint'lerini 
+ tanımlamalısınız.
+
+Bu adımlar,
+
+ kullanıcıların yorum yapabilmesi için sisteme giriş yapmalarını ve kimlik doğrulamasını sağlayacak bir yapı oluşturmanıza yardımcı olacaktır.

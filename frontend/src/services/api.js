@@ -1,5 +1,7 @@
 // frontend/src/services/api.js
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
+
 
 export const API_URL = "http://localhost:8000/api/";
 
@@ -95,6 +97,10 @@ export const resetPassword = (email) => {
   return service.post('auth/reset-password/', { email }, { withCredentials: true });
 };
 
+export const getToken = () => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  return token;
+};
 
 export const logout = async () => {
   try {
@@ -118,9 +124,31 @@ export const logout = async () => {
 };
 
 export const isAuthenticated = () => {
-  const user = localStorage.getItem("user");
-  return user !== null;
+  const token = getToken();
+  const user = getLoggedInUser();
+
+  if (!token || !user) {
+    return false;
+  }
+
+  try {
+    const decoded = jwt_decode(token);
+    const currentTime = Date.now() / 1000;
+
+    if (decoded.exp < currentTime) {
+      console.log('Access token has expired, please login again');
+      logout();
+      return false;
+    } else {
+      return true;
+    }
+  } catch (err) {
+    console.log('Error decoding token: ', err);
+    logout();
+    return false;
+  }
 };
+
 
 // Set auth token function
 export const setAuthToken = (token) => {
@@ -148,7 +176,7 @@ export const getLoggedInUser = () => {
 // frontend/src/services/api.js
 export const getLoggedInUserEmail = async () => {
   try {
-    const response = await service.get("auth/user/email/");
+    const response = await service.get('auth/user/email/');
     return response.data.email;
   } catch (error) {
     console.error('Error loading logged-in user email:', error);
@@ -312,12 +340,20 @@ export const deleteRating = async (id) => {
 // Comment frontend\src\services\api.js
 export const createComment = async (data) => {
   try {
-    const response = await service.post("comment/comments/", data);
+    const response = await service.post("comment/comments/", {
+      ...data,
+      user: data.user,
+    });
     return response.data;
   } catch (error) {
     console.error('Error creating comment:', error);
     throw error;
   }
+};
+
+
+export const getCommentsByTaskAndUser = async (taskId, userId) => {
+  return service.get(`comment/comments/comments_by_task/?task_id=${taskId}&user_id=${userId}`);
 };
 
 export const getComments = async () => {
@@ -483,6 +519,7 @@ export const apiFunctions = {
   updateRating,
   deleteRating,
   createComment,
+  getCommentsByTaskAndUser,
   getComments,
   updateComment,
   deleteComment,

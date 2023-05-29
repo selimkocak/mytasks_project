@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { createComment } from '../../services/api';
 import { isRequired } from '../../utils/validation';
 import { getLoggedInUserEmail } from '../../services/api';
+import { isAuthenticated } from '../../utils/auth';
 import { Modal, Form, Button } from 'react-bootstrap';
 
-const CreateComment = ({ taskId, taskTitle, onCommentCreated }) => {
+const CreateComment = ({ taskId,userId, taskTitle, onCommentCreated }) => {
   const [commentText, setCommentText] = useState('');
   const [error, setError] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -41,11 +42,17 @@ const CreateComment = ({ taskId, taskTitle, onCommentCreated }) => {
     }
 
     try {
+      if (!isAuthenticated()) {
+        setError('You need to be logged in to create a comment');
+        return;
+      }
+
       const response = await createComment({
         task: taskId,
-        user: userEmail,
+        user: userEmail, 
         content: commentText,
       });
+      
 
       setCommentText('');
       setError('');
