@@ -303,13 +303,17 @@ export const deleteNotification = async (id) => {
   return service.delete(`notification/notifications/${id}/`);
 };
 
-// Assignment
+// Assignment frontend\src\services\api.js
 export const createAssignment = async (data) => {
   return service.post("assignment/", data);
 };
 
 export const getAssignments = async () => {
   return service.get("assignment/");
+};
+
+export const getAssigneeOfTask = async (task_id) => {
+  return service.get(`assignment/task_assignments/${task_id}/assignee/`);
 };
 
 export const updateAssignment = async (id, data) => {
