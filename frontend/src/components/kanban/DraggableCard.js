@@ -1,6 +1,6 @@
 // frontend/src/components/kanban/DraggableCard.js
 import React, { useState, useEffect } from 'react';
-import { getTask, getUserProfile } from '../../services/api';
+import { getTask, getUserProfile,getAssigneeOfTask } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
 import DeleteTask from '../tasks/DeleteTask';
 import UpdateTask from '../tasks/UpdateTask';
@@ -58,10 +58,27 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     moveCard(cardId, stageId);
   };
 
+
+
+
   const handleUpdateTask = async () => {
     setIsEditing(true);
-   
+    try {
+      const response = await getAssigneeOfTask(task.id);
+      if (response.status === 200) {
+        setAssignee(response.data);
+      }
+    } catch (error) {
+      console.error('Error fetching assignee:', error);
+    }
   };
+  
+
+  
+  if (!currentTask || !assignee) {
+    return <div>Loading...</div>;
+  }
+  
   
 
   const handleCloseUpdateTask = () => {

@@ -516,6 +516,7 @@ export const apiFunctions = {
   deleteNotification,
   createAssignment,
   getAssignments,
+  getAssigneeOfTask,  
   updateAssignment,
   deleteAssignment,
   createRating,
