@@ -200,6 +200,7 @@ export const getUserList = async () => {
 };
 
 
+
 // user profile frontend\src\services\api.js
 export const getUserProfile = () => {
   return service.get('auth/user-profile/');
@@ -313,7 +314,17 @@ export const getAssignments = async () => {
 };
 
 export const getAssigneeOfTask = async (task_id) => {
-  return service.get(`assignment/task_assignments/${task_id}/assignee/`);
+  try {
+    const response = await service.get(`assignment/task_assignments/${task_id}/assignee/`, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching assignee:", error);
+    throw error;
+  }
 };
 
 export const updateAssignment = async (id, data) => {

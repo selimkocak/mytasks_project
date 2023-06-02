@@ -1,6 +1,5 @@
-// frontend/src/components/kanban/DraggableCard.js
 import React, { useState, useEffect } from 'react';
-import { getTask, getUserProfile,getAssigneeOfTask } from '../../services/api';
+import { getTask, getUserProfile } from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
 import DeleteTask from '../tasks/DeleteTask';
 import UpdateTask from '../tasks/UpdateTask';
@@ -58,39 +57,18 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     moveCard(cardId, stageId);
   };
 
-
-
-
-  const handleUpdateTask = async () => {
+  const handleUpdateTask = () => {
     setIsEditing(true);
-    try {
-      const response = await getAssigneeOfTask(task.id);
-      if (response.status === 200) {
-        setAssignee(response.data);
-      }
-    } catch (error) {
-      console.error('Error fetching assignee:', error);
-    }
   };
-  
-
-  
-  if (!currentTask || !assignee) {
-    return <div>Loading...</div>;
-  }
-  
-  
 
   const handleCloseUpdateTask = () => {
     setIsEditing(false);
-    
   };
 
   if (!currentTask || !assignee) {
     return <div>Loading...</div>;
   }
 
-  // sortedTasks fonksiyonunu kullanarak görevleri sırala
   const sortedTasks = sortTasksByCreateDate([currentTask]);
 
   return (
@@ -101,7 +79,10 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-      <TaskItem task={sortedTasks[0]} taskId={task.id}  />
+      <TaskItem task={sortedTasks[0]} taskId={task.id} />
+      <div className="assigned-user">
+        {assignee.first_name} {assignee.last_name}
+      </div>
       <div className="card-footer">
         <div className="card-footer-info">
           <div className="assignee-name">{assignee.first_name}</div>
@@ -118,7 +99,6 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
           task={sortedTasks[0]}
           taskId={currentTask.id}
           handleCloseModal={handleCloseUpdateTask}
-        
         />
       )}
     </div>

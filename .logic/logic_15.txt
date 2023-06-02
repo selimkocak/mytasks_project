@@ -1,0 +1,50 @@
+Backend İş Planı:
+
+1. Görev Atama Modeli:
+   - `assignment` uygulamasında `models.py` dosyasında `TaskAssignment` modelini oluşturun.
+   - Modelde aşağıdaki alanları tanımlayın:
+     - `user`: `CustomUser` modeline ForeignKey olarak atanan kullanıcıyı temsil eden alan.
+     - `task`: `Task` modeline ForeignKey olarak atanmış görevi temsil eden alan.
+     - `created_at`: Atama oluşturulma tarihini temsil eden DateTime alanı.
+   - Modeli oluşturduktan sonra migration işlemi yapın.
+
+2. Görev Atama Endpointleri:
+   +- `assignment` uygulamasında `serializers.py` dosyasında `TaskAssignmentSerializer` sınıfını oluşturun.
+     +- `user` ve `task` alanlarını tanımlayın ve `created_at` alanını salt okunur yapın.
+  + - `assignment` uygulamasında `views.py` dosyasında `TaskAssignmentListCreateAPIView` sınıfını oluşturun.
+    + - GET metoduyla tüm atamaları listelemek için `get_queryset` ve `get_serializer_class` metodlarını ayarlayın.
+    + - POST metoduyla yeni bir görev ataması oluşturmak için `perform_create` metodunu ayarlayın.
+   +- `assignment` uygulamasında `views.py` dosyasında `TaskAssignmentRetrieveUpdateDestroyAPIView` sınıfını oluşturun.
+    + - GET metoduyla belirli bir atamayı getirmek için `get_queryset` ve `get_serializer_class` metodlarını ayarlayın.
+    + - PUT metoduyla bir görev atamasını güncellemek için `perform_update` metodunu ayarlayın.
+    + - DELETE metoduyla bir görev atamasını silmek için `perform_destroy` metodunu ayarlayın.
+   - URL yapılandırmasında `urls.py` dosyasına endpointlerin tanımlamalarını ekleyin.
+
+3. Görev Atama İşlemleri:
+   - `assignment` uygulamasında `models.py` dosyasına `post_save` sinyalini kullanarak görev atamasını gerçekleştiren `assign_task` 
+   fonksiyonunu tanımlayın.
+     - `TaskAssignment` modeline kaydedildiğinde tetiklenecek şekilde ayarlayın.
+     - Atama oluşturulduğunda, `Task` modelindeki ilgili görevin `assignee` alanını atanan kullanıcıyla güncelleyin ve kaydedin.
+
+Frontend İş Planı:
+
+1. Görev Atama Bileşenleri:
+   - `src/components/kanban/DraggableCard.js` dosyasında `handleUpdateTask` fonksiyonunu güncelleyin.
+     - Görev atama bilgilerini almak için `getAssigneeOfTask` fonksiyonunu çağırın ve atanan kullanıcı bilgisini setAssignee ile güncelleyin.
+   - Görev kartının altına atanan kullanıcının adını görüntülemek için `src/components/kanban/DraggableCard.js` dosyasında `assigned-user` 
+   bileşenini ekleyin ve içeriğ
+
+ini atanan kullanıcının adıyla doldurun.
+   - Görev kartının altına atanan kullanıcının adını görüntülemek için `src/components/kanban/DraggableCard.js` dosyasında `card-footer-info` bileşeninin içine `assignee-name` 
+   bileşenini ekleyin ve içeriğini atanan kullanıcının adıyla doldurun.
+   - Görev kartının altında düzenleme modunda olduğunda, görev atamasını güncellemek için `src/components/kanban/DraggableCard.js` dosyasında `handleCloseUpdateTask` 
+   fonksiyonunu güncelleyin.
+
+2. API İşlemleri:
+   - `src/services/api.js` dosyasında `getAssigneeOfTask` fonksiyonunu oluşturun.
+     - Görevin atanan kullanıcısını getirmek için ilgili endpointi çağırın ve yanıtı döndürün.
+   - `src/services/api.js` dosyasında `updateAssignment` fonksiyonunu oluşturun.
+     - Görev atamasını güncellemek için ilgili endpointi çağırın ve güncelleme verilerini gönderin.
+
+Bu iş planı, `mytasks` Django Rest - React projesi için departman yöneticisi ve departman personeli açısından görev atama bileşenlerini oluşturmanıza yardımcı olacaktır. 
+Planı uygularken projenizin yapısına ve gereksinimlerine göre özelleştirmeler yapmayı unutmayın.
