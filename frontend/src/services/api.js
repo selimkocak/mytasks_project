@@ -199,11 +199,9 @@ export const getUserList = async () => {
   }
 };
 
-
-
 // user profile frontend\src\services\api.js
-export const getUserProfile = () => {
-  return service.get('auth/user-profile/');
+export const getUserProfile = (userId) => {
+  return service.get(`auth/user-profile/${userId}/`);
 };
 
 export const updateUserProfile = (data) => {
@@ -284,8 +282,6 @@ export const deleteTask = async (id) => {
     throw error;
   }
 };
-
-
 
 // Notification frontend\src\services\api.js
 export const createNotification = async (data) => {

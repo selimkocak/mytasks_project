@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getTask, getUserProfile } from '../../services/api';
+import { getTask} from '../../services/api';
 import TaskItem from '../tasks/TaskItem';
 import DeleteTask from '../tasks/DeleteTask';
 import UpdateTask from '../tasks/UpdateTask';
@@ -8,8 +8,8 @@ import './DraggableCard.css';
 
 const DraggableCard = ({ task, moveCard, loadTasks }) => {
   const [currentTask, setCurrentTask] = useState(null);
-  const [assignee, setAssignee] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [taskCreator, setTaskCreator] = useState(null);
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -17,6 +17,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
         const response = await getTask(task.id);
         if (response.status === 200) {
           setCurrentTask(response.data);
+          setTaskCreator(response.data.created_by);
         }
       } catch (error) {
         console.error('Error fetching task:', error);
@@ -26,22 +27,22 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     fetchTask();
   }, [task.id]);
 
+
   useEffect(() => {
-    const fetchAssignee = async () => {
-      if (currentTask && currentTask.assignee) {
-        try {
-          const response = await getUserProfile(currentTask.assignee);
-          if (response.status === 200) {
-            setAssignee(response.data);
-          }
-        } catch (error) {
-          console.error('Error fetching assignee:', error);
+    const fetchTaskCreator = async () => {
+      try {
+        const response = await setTaskCreator(task.id);
+        if (response.status === 200) {
+          setTaskCreator(response.data);
         }
+      } catch (error) {
+        console.error('Error fetching task creator:', error);
       }
     };
-
-    fetchAssignee();
-  }, [currentTask]);
+  
+    fetchTaskCreator();
+  }, [task.id]);
+  
 
   const handleDragStart = (e) => {
     e.dataTransfer.setData('text/plain', task.id);
@@ -65,7 +66,7 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
     setIsEditing(false);
   };
 
-  if (!currentTask || !assignee) {
+  if (!currentTask) {
     return <div>Loading...</div>;
   }
 
@@ -79,14 +80,11 @@ const DraggableCard = ({ task, moveCard, loadTasks }) => {
       onDragOver={handleDragOver}
       onDrop={(e) => handleDrop(e, currentTask.stage)}
     >
-      <TaskItem task={sortedTasks[0]} taskId={task.id} />
-      <div className="assigned-user">
-        {assignee.first_name} {assignee.last_name}
-      </div>
+      <TaskItem task={sortedTasks[0]} taskId={task.id} creator={taskCreator} />
+    
       <div className="card-footer">
-        <div className="card-footer-info">
-          <div className="assignee-name">{assignee.first_name}</div>
-        </div>
+      <p>{currentTask.id}</p>
+       <p>{taskCreator && taskCreator.first_name}</p>
         <div className="card-footer-buttons">
           <DeleteTask id={task.id} loadTasks={loadTasks} />
           <button className="btn btn-primary" onClick={handleUpdateTask}>

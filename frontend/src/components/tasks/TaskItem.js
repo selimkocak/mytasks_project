@@ -13,6 +13,7 @@ const TaskItem = ({ taskId }) => {
   const updatedTask = tasks.find((t) => t.id === taskId);
   const [currentTask, setCurrentTask] = useState(updatedTask);
   const [showCreateComment, setShowCreateComment] = useState(false);
+  
 
   useEffect(() => {
     const fetchTask = async () => {

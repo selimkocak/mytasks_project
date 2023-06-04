@@ -3,7 +3,7 @@ from django.db import models
 from custom_user.models import CustomUser
 from notification.models import Notification
 from kanban.models import KanbanStage
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class Task(models.Model):
@@ -13,7 +13,7 @@ class Task(models.Model):
     assignee = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='tasks_assigned')
     assignee_name = models.CharField(max_length=100)
     created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='tasks_created')
-    create_date = models.DateTimeField(auto_now_add=True)  # new line
+    create_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
@@ -28,8 +28,4 @@ def send_task_created_notification(sender, instance, created, **kwargs):
         )
         notification.save()
 
-@receiver(pre_save, sender=Task)
-def assign_task(sender, instance, **kwargs):
-    assignee_changed = instance._state.adding or instance.assignee != sender.objects.get(pk=instance.pk).assignee
-    if assignee_changed:
-        instance.save()
+

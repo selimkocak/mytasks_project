@@ -10,7 +10,6 @@ class TaskAssignmentListCreateAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-
 class TaskAssignmentRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = TaskAssignment.objects.all()
     serializer_class = TaskAssignmentSerializer

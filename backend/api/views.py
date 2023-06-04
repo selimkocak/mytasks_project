@@ -2,10 +2,13 @@
 from rest_framework import generics
 from .models import Task
 from .serializers import TaskSerializer
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from kanban.models import KanbanStage
+from custom_user.models import CustomUser
+from .serializers import TaskSerializer, CustomUserSerializer
+from rest_framework.permissions import IsAuthenticated
+
 
 class CheckLoggedInView(APIView):
     permission_classes = [IsAuthenticated]
@@ -24,6 +27,13 @@ class TaskListCreateAPIView(generics.ListCreateAPIView):
 class TaskRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        data = serializer.data
+        data['created_by'] = CustomUserSerializer(instance.created_by).data
+        return Response(data)
 
 
 class MoveTaskView(APIView):
@@ -62,3 +72,10 @@ class MoveTaskView(APIView):
             return Response({"error": "Task not found"}, status=404)
         except KanbanStage.DoesNotExist:
             return Response({"error": "Stage not found"}, status=404)
+
+class TaskCreatorRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+    lookup_field = 'tasks_created__id'
+    lookup_url_kwarg = 'taskId'
+    permission_classes = [IsAuthenticated]

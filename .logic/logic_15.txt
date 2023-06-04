@@ -32,9 +32,7 @@ Frontend İş Planı:
    - `src/components/kanban/DraggableCard.js` dosyasında `handleUpdateTask` fonksiyonunu güncelleyin.
      - Görev atama bilgilerini almak için `getAssigneeOfTask` fonksiyonunu çağırın ve atanan kullanıcı bilgisini setAssignee ile güncelleyin.
    - Görev kartının altına atanan kullanıcının adını görüntülemek için `src/components/kanban/DraggableCard.js` dosyasında `assigned-user` 
-   bileşenini ekleyin ve içeriğ
-
-ini atanan kullanıcının adıyla doldurun.
+   bileşenini ekleyin ve içeriğini atanan kullanıcının adıyla doldurun.
    - Görev kartının altına atanan kullanıcının adını görüntülemek için `src/components/kanban/DraggableCard.js` dosyasında `card-footer-info` bileşeninin içine `assignee-name` 
    bileşenini ekleyin ve içeriğini atanan kullanıcının adıyla doldurun.
    - Görev kartının altında düzenleme modunda olduğunda, görev atamasını güncellemek için `src/components/kanban/DraggableCard.js` dosyasında `handleCloseUpdateTask` 
