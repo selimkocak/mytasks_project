@@ -1,5 +1,5 @@
 // frontend/src/components/navbar/Navbar.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Auth from '../../utils/auth';
 import '../../components/navbar/Navbar.css';
@@ -7,6 +7,15 @@ import '../../components/navbar/Navbar.css';
 const Navbar = () => {
   const navigate = useNavigate();
   const isAuthenticated = Auth.isAuthenticated();
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const user = Auth.getLoggedInUser();
+      setUserName(user ? user.first_name : '');
+      
+    }
+  }, [isAuthenticated]);
 
   const handleLogout = () => {
     Auth.logout();
@@ -43,6 +52,8 @@ const Navbar = () => {
               <button onClick={handleLogout} className="navbar-link logout-btn">
                 Logout
               </button>
+              <span className="navbar-link welcome-user">Hoşgeldin {userName}</span>
+
             </>
           ) : (
             <>

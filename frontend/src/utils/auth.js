@@ -9,6 +9,20 @@ export const getToken = () => {
   return localStorage.getItem('token');
 };
 
+export const getLoggedInUser = () => {
+  const token = getToken();
+  if (!token) return null;
+  
+  try {
+    const decoded = jwt_decode(token);
+    return decoded;
+  } catch (err) {
+    console.log('Error decoding token: ', err);
+    removeToken();
+    return null;
+  }
+};
+
 export const removeToken = () => {
   localStorage.removeItem('token');
 };
