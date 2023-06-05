@@ -200,14 +200,23 @@ export const getUserList = async () => {
 };
 
 // user profile frontend\src\services\api.js
-export const getUserProfile = (userId) => {
-  return service.get(`auth/user-profile/${userId}/`);
+export const getUserProfile = () => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  if (token) {
+    const decodedToken = jwt_decode(token);
+    const userId = decodedToken.user_id;
+    return service.get(`auth/user-profile/${userId}/`);
+  }
 };
 
 export const updateUserProfile = (data) => {
-  return service.put('auth/update-user-profile/', data);
+  const token = JSON.parse(localStorage.getItem("token"));
+  if (token) {
+    const decodedToken = jwt_decode(token);
+    const userId = decodedToken.user_id;
+    return service.put(`auth/user-profile/${userId}/`, data);
+  }
 };
-
 export const changePassword = (data) => {
   return service.put('auth/change-password/', data);
 };

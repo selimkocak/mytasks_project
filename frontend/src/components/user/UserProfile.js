@@ -1,5 +1,6 @@
 // frontend/src/components/user/UserProfile.js
 import React, { useState, useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
 import { getUserProfile, updateUserProfile } from '../../services/api';
 import { isAuthenticated } from '../../utils/auth';
 import './UserProfile.css';
@@ -19,14 +20,20 @@ function UserProfile() {
     if (!isAuthenticated()) {
       return;
     }
-
+  
     try {
-      const response = await getUserProfile();
-      setUserProfile(response.data);
+      const token = JSON.parse(localStorage.getItem("token"));
+      if (token) {
+        const decodedToken = jwt_decode(token);
+        const userId = decodedToken.userId;
+        const response = await getUserProfile(userId);
+        setUserProfile(response.data);
+      }
     } catch (error) {
       console.error('Error fetching user profile: ', error);
     }
   };
+  
 
   const handleChange = (event) => {
     setUserProfile({
@@ -41,8 +48,10 @@ function UserProfile() {
       return;
     }
     try {
-      await updateUserProfile(userProfile);
-      alert('User profile updated successfully');
+      const response = await updateUserProfile(userProfile);
+      if (response && response.data) {
+        alert('User profile updated successfully');
+      }
     } catch (error) {
       console.error('Error updating user profile: ', error);
     }

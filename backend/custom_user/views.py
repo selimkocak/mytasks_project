@@ -97,8 +97,9 @@ class ResetPasswordView(APIView):
 class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self, request):
-        serializer = CustomUserSerializer(request.user, context={'request': request})
+    def get(self, request, pk=None):  # 'pk' argümanı ekleyin
+        user = get_object_or_404(User, pk=pk)  # 'pk' kullanarak kullanıcıyı alın
+        serializer = CustomUserSerializer(user, context={'request': request})
         return Response(serializer.data)
 
 class UpdateUserProfileView(APIView):
