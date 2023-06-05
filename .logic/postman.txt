@@ -1,0 +1,22 @@
+Postman programında bulunan HTTP metodları;
+
+1. GET: Bu istek tipi belirli bir kaynağı sorgular ve yalnızca kaynağı geri döndürür. 
+Örneğin, bir web sitesindeki bir sayfayı almak için GET isteği kullanılabilir.
+
+2. POST: Bu istek tipi belirli bir kaynağı sunucuya gönderir. Bu genellikle yeni bir 
+kaynağı oluşturmak için kullanılır, örneğin, bir form göndermek veya yeni bir kullanıcı oluşturmak.
+
+3. PUT: Bu istek tipi belirli bir kaynağın tamamını günceller. PUT isteği, POST isteğinden 
+farklı olarak, bir kaynağın tamamını değiştirmek için kullanılır. Bir kaynak zaten mevcutsa, 
+PUT isteği bu kaynağı yeni verilerle değiştirir. Eğer kaynak mevcut değilse yeni bir kaynak oluşturur.
+
+4. PATCH: Bu istek tipi belirli bir kaynağın bir kısmını günceller. Örneğin, bir kullanıcının 
+sadece adını güncellemek için kullanılabilir.
+
+5. DELETE: Bu istek tipi belirli bir kaynağı silmek için kullanılır.
+
+6. HEAD: Bu istek tipi, GET isteği gibi çalışır, ancak geriye hiçbir içerik döndürmez. Yani, HEAD 
+isteği, bir kaynağın var olup olmadığını kontrol etmek veya bir kaynak hakkında bilgi almak için kullanılır.
+
+7. OPTIONS: Bu istek tipi, hedef kaynak için kullanılabilir HTTP metodları hakkında bilgi almak 
+için kullanılır. Yani, bir sunucunun belirli bir URL için hangi HTTP metodlarını desteklediğini öğrenmek istiyorsanız OPTIONS isteği kullanılır.
