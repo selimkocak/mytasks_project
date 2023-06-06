@@ -18,10 +18,10 @@ class CommentViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def comments_by_task(self, request):
         task_id = request.query_params.get('task_id')
-        user_id = request.query_params.get('user_id')
-        comments = Comment.objects.filter(task_id=task_id, user_id=user_id)
+        comments = Comment.objects.filter(task_id=task_id)
         serializer = self.get_serializer(comments, many=True)
         return Response(serializer.data)
+
 
     def perform_create(self, serializer):
         user_email = self.request.user
@@ -30,8 +30,6 @@ class CommentViewSet(viewsets.ModelViewSet):
             user_email, _ = jwt_authentication.authenticate(self.request)  # user is the first value returned by authenticate
         user = CustomUser.objects.get(email=user_email)  # find the user with the corresponding email
         serializer.save(user=user)
-
-
 
     def create(self, request, *args, **kwargs):
         try:

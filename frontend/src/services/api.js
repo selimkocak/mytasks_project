@@ -389,8 +389,9 @@ export const deleteComment = async (id) => {
 };
 
 export const getCommentsByTask = async (taskId) => {
-  return service.get(`comment/comments/?task=${taskId}`);
+  return service.get(`comment/comments/comments_by_task/?task_id=${taskId}`);
 };
+
 
 export const getCommentCountByTask = async (taskId) => {
   try {

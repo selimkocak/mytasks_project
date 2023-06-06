@@ -22,7 +22,7 @@ const CommentsList = ({ taskId }) => {
     <div>
       {comments.map((comment) => (
         <div key={comment.id}>
-          <p>{comment.text}</p>
+          <p><strong>{comment.user}</strong>: {comment.content}</p>
         </div>
       ))}
     </div>
