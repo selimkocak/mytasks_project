@@ -1,9 +1,9 @@
-// frontend/src/components/comments/CommentsList.js
 import React, { useEffect, useState } from 'react';
 import { getCommentsByTask } from '../../services/api';
 
 const CommentsList = ({ taskId }) => {
   const [comments, setComments] = useState([]);
+  const [showAllComments, setShowAllComments] = useState(false);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -18,9 +18,17 @@ const CommentsList = ({ taskId }) => {
     fetchComments();
   }, [taskId]);
 
+  const commentsToShow = showAllComments ? comments : []; // Don't show any comments by default
+
   return (
     <div>
-      {comments.map((comment) => (
+
+      {comments.length > 0 && (
+        <button onClick={() => setShowAllComments(!showAllComments)}>
+          {showAllComments ? 'Hide all comments' : 'Show all comments'}
+        </button>
+      )}
+            {commentsToShow.map((comment) => (
         <div key={comment.id}>
           <p><strong>{comment.user}</strong>: {comment.content}</p>
         </div>
