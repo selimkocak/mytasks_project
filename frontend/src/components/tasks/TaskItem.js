@@ -1,12 +1,10 @@
-// frontend/src/components/tasks/TaskItem.js
 import React, { useState, useEffect } from 'react';
 import { getTask } from '../../services/api';
 import './TaskItem.css';
 import { useSelector } from 'react-redux';
 import { Card } from 'react-bootstrap';
 import CommentCounter from '../comments/CommentCounter';
-import CommentsList from '../comments/CommentsList';
-import CreateComment from '../../components/comments/CreateComment';
+import CommentsContainer from '../comments/CommentsContainer';
 
 const TaskItem = ({ taskId }) => {
   const tasks = useSelector((state) => state.tasks.tasks);
@@ -43,11 +41,6 @@ const TaskItem = ({ taskId }) => {
     setShowCreateComment(!showCreateComment);
   };
 
-  const handleCommentCreated = (comment) => {
-    // Handle the new comment created event
-    // You can update the comment list or perform any necessary action
-  };
-
   return (
     <Card className="task-item">
       <Card.Body>
@@ -63,13 +56,12 @@ const TaskItem = ({ taskId }) => {
         </div>
       </Card.Body>
       {showCreateComment && (
-        <CreateComment
+        <CommentsContainer
           taskId={taskId}
           taskTitle={currentTask?.title}
-          onCommentCreated={handleCommentCreated}
+          userId={currentTask.userId}
         />
       )}
-      <CommentsList taskId={taskId} />
     </Card>
   );
 };
